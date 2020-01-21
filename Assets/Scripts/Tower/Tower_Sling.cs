@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Tower_Sling : Tower
 {
-    public Consts.TeamType TeamType;
+    //public Consts.TeamType TeamType;
 
     public ProjectileAbstract BulletPrefab;
     public GameObject BulletSpawnPosition;

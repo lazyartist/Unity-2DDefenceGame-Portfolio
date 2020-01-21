@@ -8,8 +8,8 @@ static public class Consts {
         A, B
     }
 
-    static public TeamType PTeamType = TeamType.A;
-    static public TeamType ETeamType = TeamType.B;
+    //static public TeamType PTeamType = TeamType.A;
+    //static public TeamType ETeamType = TeamType.B;
 
     public enum SkillType
     {
@@ -19,13 +19,18 @@ static public class Consts {
     public enum MasterSkillType
     {
         None, Fire, Rain
-
     }
 
     public enum AttackRangeType
     {
         None, Box, Circle
     }
+
+    public enum UnitFSMType
+    {
+        Idle, Move, Attack, Wait, Died
+    }
+    //public static readonly int UnitFSMTypeCount = System.Enum.GetNames(typeof(UnitFSMType)).Length;
 
     // ===== tag names
     static public string tUnit = "Unit";

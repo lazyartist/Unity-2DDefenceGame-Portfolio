@@ -5,8 +5,6 @@ using UnityEngine;
 public class WaypointGizmos : MonoBehaviour {
     public WaypointGizmosData WaypointGizmosData;
 
-
-
     private void OnDrawGizmos()
     {
         Gizmos.color = WaypointGizmosData.Color;

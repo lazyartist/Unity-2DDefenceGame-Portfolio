@@ -51,6 +51,23 @@ public class Unit : MonoBehaviour
 
     public bool IsDied { get; private set; }
 
+    // FSM
+    [System.Serializable]
+    public struct AttackArea_
+    {
+        public Vector3 offset;
+        public Vector3 size;
+    }
+    public Waypoint TargetWaypoint2;
+    public UnitFSM UnitFSM;
+    //[SerializeField]
+    public AttackArea_ AttackArea;
+
+    
+
+
+    // FSM ==========
+
     protected void Awake()
     {
         //_animationSR = GetComponent<SpriteRenderer>();
@@ -60,6 +77,12 @@ public class Unit : MonoBehaviour
 
     protected void Start()
     {
+        if(TargetWaypoint2 == null)
+        {
+            TargetWaypoint2 = WaypointManager.Inst.WaypointPool.Get();
+            TargetWaypoint2.transform.position = transform.position;// 현재 위치로 설정
+        }
+
         Health = UnitData.Health;
 
         switch (TeamType)
@@ -78,7 +101,45 @@ public class Unit : MonoBehaviour
         HpBarGaugeSR.enabled = ShowHpBar;
     }
 
+    //private void OnEnable()
+    //{
+    //    if (TargetWaypoint2 == null)
+    //    {
+    //        TargetWaypoint2 = WaypointManager.Inst.WaypointPool.Get();
+    //    }
+    //}
+
+    //private void OnDisable()
+    //{
+    //    WaypointManager.Inst.WaypointPool.Release(TargetWaypoint2);
+    //    TargetWaypoint2 = null;
+    //}
+
+    private void OnApplicationQuit()
+    {
+        ReleaseWaypoint();
+    }
+
+    private void OnDestroy()
+    {
+        ReleaseWaypoint();
+    }
+
+    void ReleaseWaypoint()
+    {
+        if (TargetWaypoint2 != null)
+        {
+            WaypointManager.Inst.WaypointPool.Release(TargetWaypoint2);
+            TargetWaypoint2 = null;
+        }
+    }
+
     protected void Update()
+    {
+
+    }
+
+    protected void Update222()
     {
         _velocityAddition = 0f;
 
@@ -116,7 +177,6 @@ public class Unit : MonoBehaviour
                     }
                 }
             }
-
 
             if (_Attackable && AutoAttack && AttackTargetUnit != null)
             {
@@ -161,12 +221,12 @@ public class Unit : MonoBehaviour
         UnitBody.Animator.SetFloat("Velocity", _velocity);
     }
 
-    protected void FixedUpdate()
-    {
-        FindAttackTarget();
+    //protected void FixedUpdate()
+    //{
+    //    FindAttackTarget();
 
-        UpdateAttackable();
-    }
+    //    UpdateAttackable();
+    //}
 
     virtual protected bool UpdateAttackable()
     {
@@ -174,7 +234,7 @@ public class Unit : MonoBehaviour
         return _Attackable;
     }
 
-    virtual protected void Toward(Vector3 position)
+    virtual public void Toward(Vector3 position)
     {
         Vector3 direction = position - transform.position;
         UnitBody.Toward(direction.x < 0);
@@ -239,12 +299,49 @@ public class Unit : MonoBehaviour
         HpBarGaugeSR.size = new Vector2(HpBarBgSR.size.x * Health / UnitData.Health, HpBarGaugeSR.size.y);
     }
 
-    virtual protected void FindAttackTarget()
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, UnitData.TargetRange, Consts.lmUnit);
-        if (colliders.Length == 0) return;
+    //virtual public void FindAttackTarget()
+    //{
+    //    Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, UnitData.TargetRange, Consts.lmUnit);
+    //    if (colliders.Length == 0) return;
 
+    //    GameObject draftTarget = null;
+    //    //AttackTargetUnit = null;
+    //    for (int i = 0; i < colliders.Length; i++)
+    //    {
+    //        Collider2D collider = colliders[i];
+
+    //        if (this.gameObject == collider.gameObject) continue;
+
+    //        if (collider.tag == Consts.tUnit && collider.gameObject.GetComponent<Unit>().IsDied == false)
+    //        {
+    //            Unit unit = collider.gameObject.GetComponent<Unit>();
+
+    //            // 기존 타겟과 동일한 객체가 있으면 타겟을 변경하지 않는다.
+    //            if(AttackTargetUnit == unit.gameObject)
+    //            {
+    //                return;
+    //            }
+                
+    //            if (draftTarget == null && unit.TeamType != TeamType && unit.IsDied == false)
+    //            {
+    //                // 임시로 타겟을 하나 정한다.
+    //                draftTarget = collider.gameObject;
+    //                //AttackTargetUnit = collider.gameObject;
+    //                //break;
+    //            }
+    //        }
+    //    }
+
+    //    // 기존 타겟과 같은 객체가 발견되지 않았으니 새로운 타겟을 지정한다.
+    //    AttackTargetUnit = draftTarget;
+    //}
+
+    virtual public GameObject FindAttackTarget2()
+    {
         GameObject draftTarget = null;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, UnitData.TargetRange, Consts.lmUnit);
+        if (colliders.Length == 0) return draftTarget;
+
         //AttackTargetUnit = null;
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -257,11 +354,11 @@ public class Unit : MonoBehaviour
                 Unit unit = collider.gameObject.GetComponent<Unit>();
 
                 // 기존 타겟과 동일한 객체가 있으면 타겟을 변경하지 않는다.
-                if(AttackTargetUnit == unit.gameObject)
+                if (AttackTargetUnit == unit.gameObject)
                 {
-                    return;
+                    return draftTarget;
                 }
-                
+
                 if (draftTarget == null && unit.TeamType != TeamType && unit.IsDied == false)
                 {
                     // 임시로 타겟을 하나 정한다.
@@ -274,6 +371,30 @@ public class Unit : MonoBehaviour
 
         // 기존 타겟과 같은 객체가 발견되지 않았으니 새로운 타겟을 지정한다.
         AttackTargetUnit = draftTarget;
+
+        return draftTarget;
+    }
+
+    virtual public bool IsAttackTargetInAttackArea()
+    {
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position + AttackArea.offset, AttackArea.size, 0.0f, Consts.lmUnit);
+        if (colliders.Length == 0) return false;
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            Collider2D collider = colliders[i];
+            if (this.gameObject == collider.gameObject) continue;
+
+            if (collider.tag == Consts.tUnit && collider.gameObject.GetComponent<Unit>().IsDied == false)
+            {
+                Unit unit = collider.gameObject.GetComponent<Unit>();
+                if (AttackTargetUnit == unit.gameObject)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     virtual protected void MoveToAttackTarget()
@@ -297,7 +418,7 @@ public class Unit : MonoBehaviour
         MoveTo(WaitingPosition);
     }
 
-    virtual protected void MoveTo(Vector3 position)
+    virtual public void MoveTo(Vector3 position)
     {
         Vector3 direction = position - transform.position;
         float distance = direction.magnitude;

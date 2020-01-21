@@ -8,7 +8,7 @@ public class Unit_Archer : Unit
     public Transform ProjectileSpawnPosition;
     public float AttackRange = 2.5f;
 
-    protected void Start()
+    protected new void Start()
     {
         base.Start();
 
