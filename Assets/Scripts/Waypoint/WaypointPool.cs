@@ -19,8 +19,13 @@ public class WaypointPool : MonoBehaviour {
 
     public Waypoint Get()
     {
-        // todo range assert
         ++_endIndex;
+        // todo range assert
+        if(_endIndex >= WaypointCount)
+        {
+            Debug.LogAssertion("waypoint pool range error!!!");
+        }
+
         if(Waypoints[_endIndex] == null)
         {
             Waypoints[_endIndex] = GameObject.Instantiate<Waypoint>(WaypointPrefab, WaypointPoolContainer.transform);

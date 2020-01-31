@@ -4,18 +4,6 @@ using UnityEngine;
 
 public class UnitState_Move : AUnitState
 {
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     // implements AUnitState
     public override void EnterState(Unit unit)
     {
@@ -51,6 +39,8 @@ public class UnitState_Move : AUnitState
                 //공격대상이 있고 공격범위에 있으면 공격
                 if (unit.AttackTargetUnit != null && unit.IsAttackTargetInAttackArea())
                 {
+                    // 공격 대상을 Attack 상태로 바꿈
+                    unit.AttackTargetUnit.UnitFSM.Transit(Consts.UnitFSMType.Attack);
                     Debug.Log("Attack " + unit.AttackTargetUnit);
                     return unitStates[(int)Consts.UnitFSMType.Attack];
                 }

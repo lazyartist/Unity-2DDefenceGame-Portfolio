@@ -8,13 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae50041b52daecc40b506d48e1bf7928, type: 3}
-  m_Name: UnitData_Knight
+  m_Script: {fileID: 11500000, guid: 399214ab980327144a84b3bdc8dc758a, type: 3}
+  m_Name: CCData_Slow
   m_EditorClassIdentifier: 
-  Health: 18
-  Speed: 2
-  TargetRange: 0.5
-  AttackCoolTime: 1
-  AttackRangeType: 1
-  AttackRangeOffset: {x: 0, y: 0}
-  AttackRangeSize: {x: 1, y: 1}
+  CCType: 2
+  CCTime: 1
+  CCValue: 0.8

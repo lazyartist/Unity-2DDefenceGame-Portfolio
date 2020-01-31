@@ -16,18 +16,19 @@ public class Unit_Archer : Unit
         // AttackRange에 있던 타겟이 Attack 애니 플레이 후 AttackRange에서 나가버렸고
         // 타겟 범위에 있기 때문에 Target은 이전 타겟을 지정하고 있다.
         // 따라서 공격 애니에서 Attack()을 실행할 경우 공격 범위와 충돌 범위를 같게 만들어야한다.
-        UnitAttackArea.GetComponent<CircleCollider2D>().radius = UnitData.TargetRange;
+        //UnitAttackArea.GetComponent<CircleCollider2D>().radius = UnitData.TargetRange;
         //UnitAttackArea.GetComponent<CircleCollider2D>().radius = AttackRange;
     }
 
     public override void Attack()
     {
-        if (UnitAttackArea.TargetUnit != null)
+        if (AttackTargetUnit != null && AttackTargetUnit.IsDied == false)
         {
             Vector3 projectileLocalPosition = ProjectileSpawnPosition.localPosition;
             projectileLocalPosition.x = ProjectileSpawnPosition.position.x - UnitBody.UnitBodyContainer.transform.position.x;
             ProjectileAbstract projectile = Instantiate<ProjectileAbstract>(Projectile, transform.position + projectileLocalPosition, Quaternion.identity, transform);
-            projectile.InitByTarget(UnitAttackArea.TargetUnit.gameObject);
+            projectile.InitByTarget(AttackTargetUnit.gameObject);
+            //projectile.InitByTarget(UnitAttackArea.TargetUnit.gameObject);
         }
     }
 

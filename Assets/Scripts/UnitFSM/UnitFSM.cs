@@ -20,12 +20,23 @@ public class UnitFSM : MonoBehaviour {
         AUnitState unitState = CurUnitState.UpdateState(Unit, UnitStates);
         if(unitState != null && unitState != CurUnitState)
         {
-            CurUnitState.ExitState(Unit);
-            CurUnitState.enabled = false;
-            CurUnitState = unitState;
-            CurUnitState.enabled = true;
-            CurUnitState.EnterState(Unit);
-            //CurUnitState.UpdateState(Unit, UnitStates);
+            _Transit(unitState);
         }
+    }
+
+    // 상태 전환
+    public void Transit(Consts.UnitFSMType unitFSMType)
+    {
+        AUnitState unitState = UnitStates[(int)unitFSMType];
+        _Transit(unitState);
+    }
+    private void _Transit(AUnitState unitState)
+    {
+        CurUnitState.ExitState(Unit);
+        CurUnitState.enabled = false;
+        CurUnitState = unitState;
+        CurUnitState.enabled = true;
+        CurUnitState.EnterState(Unit);
+        //CurUnitState.UpdateState(Unit, UnitStates);
     }
 }

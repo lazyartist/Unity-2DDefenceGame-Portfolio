@@ -4,38 +4,32 @@ using UnityEngine;
 
 public class UnitState_Attack : AUnitState
 {
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    private float _coolTime = 0.0f;
 
     // implements AUnitState
     public override void EnterState(Unit unit)
     {
-        unit.UnitBody.Animator.SetTrigger("Attack");
+        unit.Toward(unit.AttackTargetUnit.transform.position);
+        _coolTime = 0.0f;
     }
     public override void ExitState(Unit unit)
     {
     }
     public override AUnitState UpdateState(Unit unit, AUnitState[] unitStates)
     {
-        unit.Toward(unit.TargetWaypoint2.transform.position);
-        unit.MoveTo(unit.TargetWaypoint2.transform.position);
-
-        // 웨이포인트에 다다르면 다음 웨이포인트를 타겟 웨이포인트로 지정
-        float distance = Vector3.Distance(unit.transform.position, unit.TargetWaypoint2.transform.position);
-        if (distance < 0.01f)
+        // 공격대상이 없으면 -> Idle
+        if (unit.AttackTargetUnit == null || unit.AttackTargetUnit.IsDied || unit.IsAttackTargetInAttackArea() == false)
         {
-            // arrived
             return unitStates[(int)Consts.UnitFSMType.Idle];
         }
+
+        if (_coolTime <= 0.0f)
+        {
+            unit.UnitBody.Animator.SetTrigger("Attack");
+            _coolTime = unit.UnitData.AttackCoolTime;
+        }
+        _coolTime -= Time.deltaTime;
+
         return null;
     }
 }

@@ -130,7 +130,7 @@ public class Projectile_Arrow : ProjectileAbstract
     {
         if (_target != null)
         {
-            _target.GetComponent<Unit>().Damage(AttackData);
+            _target.GetComponent<Unit>().TakeDamage(AttackData);
         }
     }
 

@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
   m_Name: AttackData_Archer
   m_EditorClassIdentifier: 
-  TargetRange: 3
-  AttackPower: 1
-  AttackCoolTime: 1.5
-  AttackRange: 0
-  SkillTime: 0
-  SkillType: 0
+  Power: 2
+  ExplosionRange: 1
+  CCData: {fileID: 0}
+  CCType: 0
+  CCTime: 0
+  CCValue: 0

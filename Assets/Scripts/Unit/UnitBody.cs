@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class UnitBody : MonoBehaviour
 {
-    public Unit Unit;
+    public Consts.UnitEventListener UnitEventListener;
+
     public Transform UnitBodyContainer;
+    public float DirectionX = 1.0f;
 
     [HideInInspector]
     public SpriteRenderer SpriteRenderer;
@@ -18,34 +20,21 @@ public class UnitBody : MonoBehaviour
         Animator = GetComponent<Animator>();
     }
 
-    //public void PlayAttack()
-    //{
-    //    Animator.SetTrigger("Attack");
-    //}
-
     public void Attack()
     {
-        Unit.Attack();
+        UnitEventListener(Consts.UnitEventType.Attack);
     }
 
     public void DiedComplete()
     {
-        Unit.DiedComplete();
+        UnitEventListener(Consts.UnitEventType.DiedComplete);
     }
 
-    public void Toward(bool left)
+    public void Toward(Vector3 direction)
     {
-        if (left)
-        {
-            UnitBodyContainer.rotation = Quaternion.Euler(UnitBodyContainer.rotation.x, 180f, UnitBodyContainer.rotation.z);
-            //UnitBody.transform.localPosition = new Vector3(Mathf.Abs(UnitBody.transform.localPosition.x), UnitBody.transform.localPosition.y, UnitBody.transform.localPosition.z);
-        }
-        else
-        {
-            UnitBodyContainer.rotation = Quaternion.Euler(UnitBodyContainer.rotation.x, 0f, UnitBodyContainer.rotation.z);
-            //transform.rotation = Quaternion.Euler(UnitBody.transform.rotation.x, 0f, UnitBody.transform.rotation.z);
-            //UnitBody.transform.localPosition = new Vector3(-Mathf.Abs(UnitBody.transform.localPosition.x), UnitBody.transform.localPosition.y, UnitBody.transform.localPosition.z);
-        }
+        DirectionX = direction.x < 0 ? 1.0f : 0f;
+        float rotationY = direction.x < 0 ? 180.0f : 0.0f;
+        UnitBodyContainer.rotation = Quaternion.Euler(UnitBodyContainer.rotation.x, rotationY, UnitBodyContainer.rotation.z);
     }
 
     //private void OnTriggerEnter2D(Collider2D collision)

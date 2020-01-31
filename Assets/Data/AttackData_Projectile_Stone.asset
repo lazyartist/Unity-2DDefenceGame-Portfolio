@@ -13,5 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Power: 6
   ExplosionRange: 0.62
-  SkillTime: 0.3
-  SkillType: 1
+  CCData: {fileID: 11400000, guid: 2abd475d06a3b52439374a14af271a9b, type: 2}
+  CCType: 0
+  CCTime: 0
+  CCValue: 0

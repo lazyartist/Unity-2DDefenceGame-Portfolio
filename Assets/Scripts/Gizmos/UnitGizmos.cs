@@ -15,10 +15,12 @@ public class UnitGizmos : MonoBehaviour {
             Gizmos.DrawWireSphere(transform.position, 0.05f);
             // 유닛 공격 타겟 범위
             Gizmos.color = unit.TeamType == Consts.TeamType.A ? unit.ATeamColor : unit.BTeamColor;
-            Gizmos.DrawWireSphere(transform.position, unit.UnitData.TargetRange);
+            Gizmos.DrawWireSphere(transform.position + unit.UnitCenterOffset, unit.UnitData.TargetRange);
             // 유닛 공격 범위
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(transform.position + unit.AttackArea.offset, unit.AttackArea.size);
+            if(unit.AttackData != null) {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireCube(transform.position + unit.AttackData.AttackArea.offset, unit.AttackData.AttackArea.size);
+            }
         }
     }
 }

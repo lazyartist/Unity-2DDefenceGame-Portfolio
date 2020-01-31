@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// todo deprecated UnitAttackArea
 public class UnitAttackArea : MonoBehaviour {
     public Unit ParentUnit;
     public Unit TargetUnit;

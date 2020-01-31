@@ -49,12 +49,18 @@ public class UnitState_Idle : AUnitState
                 {
                     // 공격대상까지 이동할 waypoint 설정
                     unit.TargetWaypoint2 = WaypointManager.Inst.WaypointPool.Get();
-                    unit.TargetWaypoint2.transform.position = unit.AttackTargetUnit.transform.position;
+                    // 공격 대상의 크기
+                    unit.TargetWaypoint2.transform.position = unit.AttackTargetUnit.transform.position
+                        + new Vector3(unit.UnitSize.x * 0.5f, 0.0f, 0.0f)
+                        + new Vector3(unit.AttackTargetUnit.UnitSize.x * 0.5f, 0.0f, 0.0f);
+                    // 공객대상의 공격대상에 현재 유닛을 등록하고 대기상태로 만듦
+                    unit.AttackTargetUnit.AttackTargetUnit = unit;
+                    unit.AttackTargetUnit.UnitFSM.Transit(Consts.UnitFSMType.Wait);
+                    //unit.AttackTargetUnit.GetComponent<UnitFSM>().Transit(Consts.UnitFSMType.Wait);
                 }
                 else
                 {
-                    // todo assert 여기 들어오면 안된다.
-                    Debug.Log("unit.TargetWaypoint2 != null !!!");
+                    Debug.LogAssertion("unit.TargetWaypoint2 != null !!!");
                 }
 
                 //Debug.Log("new AttackTargetUnit Found");
@@ -65,6 +71,8 @@ public class UnitState_Idle : AUnitState
                 return unitStates[(int)Consts.UnitFSMType.Move];
             }
         }
+
+        
 
         return null;
     }

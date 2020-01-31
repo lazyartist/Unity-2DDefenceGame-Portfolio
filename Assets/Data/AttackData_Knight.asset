@@ -11,7 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
   m_Name: AttackData_Knight
   m_EditorClassIdentifier: 
+  AttackRangeType: 1
+  AttackArea:
+    offset: {x: 0, y: 0.25, z: 0}
+    size: {x: 0.52, y: 0.26, z: 0}
   Power: 2
   ExplosionRange: 1
-  SkillTime: 0
-  SkillType: 0
+  CCData: {fileID: 11400000, guid: 2abd475d06a3b52439374a14af271a9b, type: 2}
+  CCType: 0
+  CCTime: 0
+  CCValue: 0

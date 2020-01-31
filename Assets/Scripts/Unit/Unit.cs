@@ -12,7 +12,7 @@ public class Unit : MonoBehaviour
     public bool ShowHpBar = true;
 
     public UnitBody UnitBody;
-    public UnitAttackArea UnitAttackArea;
+    //public UnitAttackArea UnitAttackArea;
 
     public Consts.TeamType TeamType;
     public Color ATeamColor;
@@ -20,6 +20,9 @@ public class Unit : MonoBehaviour
 
     public SpriteRenderer HpBarBgSR;
     public SpriteRenderer HpBarGaugeSR;
+
+    public Vector2 UnitSize;
+    public Vector3 UnitCenterOffset;
 
     //public float MaxHealth = 20;
     public float Health = 20;
@@ -34,15 +37,19 @@ public class Unit : MonoBehaviour
     public UnitData UnitData;
     public AttackData AttackData;
 
-    private AttackData _damageAttackData;
-    private float _damageElasedTime = 0f;
+    private CCData _takenCCData;
+    //private float _elasedCCTime = 0f;
+
+    private AttackData _takenAttackData;
+    //private float _damageElasedTime = 0f;
 
     //public AttackData AttackData;
 
     public Waypoint TargetWaypoint;
     public Vector3 WaitingPosition;
 
-    public GameObject AttackTargetUnit { get; private set; }
+    public Unit AttackTargetUnit { get; set; }
+    //public Unit AttackTargetUnit { get; private set; }
 
     protected bool _Attackable = false;
     protected float _elapsedAttackTime;
@@ -52,32 +59,43 @@ public class Unit : MonoBehaviour
     public bool IsDied { get; private set; }
 
     // FSM
-    [System.Serializable]
-    public struct AttackArea_
-    {
-        public Vector3 offset;
-        public Vector3 size;
-    }
     public Waypoint TargetWaypoint2;
     public UnitFSM UnitFSM;
-    //[SerializeField]
-    public AttackArea_ AttackArea;
-
     
-
-
     // FSM ==========
 
     protected void Awake()
     {
-        //_animationSR = GetComponent<SpriteRenderer>();
-        //_animator = GetComponent<Animator>();
-        //_spriteRenderer = GetComponent<SpriteRenderer>();
+        _takenCCData = new CCData();
+
+        BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
+        UnitCenterOffset = boxCollider.offset;
+        UnitSize = boxCollider.size;
+
+        UnitBody.UnitEventListener += OnUnitEventListener;
+    }
+
+    void OnUnitEventListener(Consts.UnitEventType unitEventType)
+    {
+        Debug.Log("UnitEventListener " + unitEventType);
+
+        switch (unitEventType)
+        {
+            case Consts.UnitEventType.None:
+                break;
+            case Consts.UnitEventType.Attack:
+                Attack();
+                break;
+            case Consts.UnitEventType.DiedComplete:
+                break;
+            default:
+                break;
+        }
     }
 
     protected void Start()
     {
-        if(TargetWaypoint2 == null)
+        if (TargetWaypoint2 == null)
         {
             TargetWaypoint2 = WaypointManager.Inst.WaypointPool.Get();
             TargetWaypoint2.transform.position = transform.position;// 현재 위치로 설정
@@ -149,33 +167,33 @@ public class Unit : MonoBehaviour
         }
         else
         {
-            if(_damageAttackData != null)
+            if (_takenAttackData != null)
             {
-                if(_damageElasedTime >= _damageAttackData.SkillTime)
-                {
-                    _damageAttackData = null;
-                    _damageElasedTime = 0f;
-                }
-                else
-                {
-                    _damageElasedTime += Time.deltaTime;
-                    switch (_damageAttackData.SkillType)
-                    {
-                        case Consts.SkillType.None:
-                            break;
-                        case Consts.SkillType.Stun:
-                            // 스턴 상태이므로 이동, 공격 불가
-                            _velocity = 0;
-                            return;
-                        case Consts.SkillType.Slow:
-                            // 슬로우이므로 이동 속도 감소, 공격 가능
-                            _velocityAddition = _damageAttackData.SkillValue;
-                            break;
-                        //break;
-                        default:
-                            break;
-                    }
-                }
+                //if (_damageElasedTime >= _takenAttackData.CCTime)
+                //{
+                //    _takenAttackData = null;
+                //    _damageElasedTime = 0f;
+                //}
+                //else
+                //{
+                //    _damageElasedTime += Time.deltaTime;
+                //    switch (_takenAttackData.CCType)
+                //    {
+                //        case Consts.CCType.None:
+                //            break;
+                //        case Consts.CCType.Stun:
+                //            // 스턴 상태이므로 이동, 공격 불가
+                //            _velocity = 0;
+                //            return;
+                //        case Consts.CCType.Slow:
+                //            // 슬로우이므로 이동 속도 감소, 공격 가능
+                //            _velocityAddition = _takenAttackData.CCValue;
+                //            break;
+                //        //break;
+                //        default:
+                //            break;
+                //    }
+                //}
             }
 
             if (_Attackable && AutoAttack && AttackTargetUnit != null)
@@ -228,74 +246,73 @@ public class Unit : MonoBehaviour
     //    UpdateAttackable();
     //}
 
-    virtual protected bool UpdateAttackable()
-    {
-        _Attackable = AttackTargetUnit != null && UnitAttackArea.TargetUnit != null && AttackTargetUnit.gameObject == UnitAttackArea.TargetUnit.gameObject;
-        return _Attackable;
-    }
+    //virtual protected bool UpdateAttackable()
+    //{
+    //    _Attackable = AttackTargetUnit != null && UnitAttackArea.TargetUnit != null && AttackTargetUnit.gameObject == UnitAttackArea.TargetUnit.gameObject;
+    //    return _Attackable;
+    //}
 
     virtual public void Toward(Vector3 position)
     {
         Vector3 direction = position - transform.position;
-        UnitBody.Toward(direction.x < 0);
+        UnitBody.Toward(direction);
+        //UnitBody.Toward(direction.x < 0);
     }
 
-    public void Damage(AttackData damageAttackData)
+    public void TakeDamage(AttackData attackData)
     {
-        // 현재 스킬 데미지 없음
-        if(_damageAttackData == null)
-        {
-            //if (damageAttackData.SkillType == Consts.SkillType.Stun)
-            if (damageAttackData.SkillType != Consts.SkillType.None)
-            {
-                _damageAttackData = damageAttackData;
-                _damageElasedTime = 0f;
-            }
-        }
-        // 현재 스킬 데미지를 받고 있음
-        else
-        {
-            // 이미 스턴 상태이면 추가 스턴 없음, 데미지 있음
-            if (_damageAttackData.SkillType == Consts.SkillType.Stun)
-            {
-                //_damageAttackData = damageAttackData;
-                //_damageElasedTime = 0f;
-            }
-            // 이미 스턴 상태가 아니므로 스턴, 데미지 있음
-            else if (damageAttackData.SkillType == Consts.SkillType.Stun)
-            {
-                _damageAttackData = damageAttackData;
-                _damageElasedTime = 0f;
-            }
-            //else
-            //{
-            //    _damageAttackData = null;
-            //    _damageElasedTime = 0f;
-            //}
-        }
-        
-
         if (IsDied) return;
 
-        Health -= damageAttackData.Power;
+        float damage = attackData.Power;
+
+        // CC기 추가
+        if (attackData.CCData != null && attackData.CCData.CCType != Consts.CCType.None && _takenCCData.CCType == Consts.CCType.None)
+        {
+            attackData.CCData.Copy(_takenCCData);
+            switch (_takenCCData.CCType)
+            {
+                case Consts.CCType.None:
+                    break;
+                case Consts.CCType.Stun:
+                    UnitBody.Animator.SetTrigger("Hurt");
+                    break;
+                case Consts.CCType.Slow:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        Health -= damage;
 
         if (Health < 0f)
         {
             Health = 0f;
         }
 
-        UnitBody.Animator.SetFloat("Health", Health);
+        //UnitBody.Animator.SetFloat("Health", Health);
 
         if (Health <= 0f)
         {
             IsDied = true;
             UnitBody.Animator.SetTrigger("Die");
         }
-        else
-        {
-            UnitBody.Animator.SetTrigger("Hit");
-        }
-
+        //else if (Health <= 0f)
+        //{
+            //switch (_ccData.CCType)
+            //{
+            //    case Consts.CCType.None:
+            //        break;
+            //    case Consts.CCType.Stun:
+            //        UnitBody.Animator.SetTrigger("Hurt");
+            //        break;
+            //    case Consts.CCType.Slow:
+            //        break;
+            //    default:
+            //        break;
+            //}
+        //}
+        // todo hp ui 분리
         HpBarGaugeSR.size = new Vector2(HpBarBgSR.size.x * Health / UnitData.Health, HpBarGaugeSR.size.y);
     }
 
@@ -321,7 +338,7 @@ public class Unit : MonoBehaviour
     //            {
     //                return;
     //            }
-                
+
     //            if (draftTarget == null && unit.TeamType != TeamType && unit.IsDied == false)
     //            {
     //                // 임시로 타겟을 하나 정한다.
@@ -336,11 +353,11 @@ public class Unit : MonoBehaviour
     //    AttackTargetUnit = draftTarget;
     //}
 
-    virtual public GameObject FindAttackTarget2()
+    virtual public Unit FindAttackTarget2()
     {
-        GameObject draftTarget = null;
+        Unit draftTargetUnit = null;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, UnitData.TargetRange, Consts.lmUnit);
-        if (colliders.Length == 0) return draftTarget;
+        if (colliders.Length == 0) return draftTargetUnit;
 
         //AttackTargetUnit = null;
         for (int i = 0; i < colliders.Length; i++)
@@ -356,13 +373,14 @@ public class Unit : MonoBehaviour
                 // 기존 타겟과 동일한 객체가 있으면 타겟을 변경하지 않는다.
                 if (AttackTargetUnit == unit.gameObject)
                 {
-                    return draftTarget;
+                    return draftTargetUnit;
                 }
 
-                if (draftTarget == null && unit.TeamType != TeamType && unit.IsDied == false)
+                if (draftTargetUnit == null && unit.TeamType != TeamType && unit.IsDied == false)
                 {
                     // 임시로 타겟을 하나 정한다.
-                    draftTarget = collider.gameObject;
+                    draftTargetUnit = unit;
+                    //draftTargetUnit = collider.gameObject;
                     //AttackTargetUnit = collider.gameObject;
                     //break;
                 }
@@ -370,14 +388,14 @@ public class Unit : MonoBehaviour
         }
 
         // 기존 타겟과 같은 객체가 발견되지 않았으니 새로운 타겟을 지정한다.
-        AttackTargetUnit = draftTarget;
+        AttackTargetUnit = draftTargetUnit;
 
-        return draftTarget;
+        return draftTargetUnit;
     }
 
     virtual public bool IsAttackTargetInAttackArea()
     {
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position + AttackArea.offset, AttackArea.size, 0.0f, Consts.lmUnit);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position + AttackData.AttackArea.offset, AttackData.AttackArea.size, 0.0f, Consts.lmUnit);
         if (colliders.Length == 0) return false;
 
         for (int i = 0; i < colliders.Length; i++)
@@ -385,10 +403,10 @@ public class Unit : MonoBehaviour
             Collider2D collider = colliders[i];
             if (this.gameObject == collider.gameObject) continue;
 
-            if (collider.tag == Consts.tUnit && collider.gameObject.GetComponent<Unit>().IsDied == false)
+            Unit unit = collider.gameObject.GetComponent<Unit>();
+            if (collider.tag == Consts.tUnit && unit.IsDied == false)
             {
-                Unit unit = collider.gameObject.GetComponent<Unit>();
-                if (AttackTargetUnit == unit.gameObject)
+                if (AttackTargetUnit == unit)
                 {
                     return true;
                 }
@@ -425,6 +443,22 @@ public class Unit : MonoBehaviour
 
         _velocity = Mathf.Min(distance, UnitData.Speed * Time.deltaTime);
         float velocity = _velocity + _velocityAddition;
+
+        // cc
+        switch (_takenCCData.CCType)
+        {
+            case Consts.CCType.None:
+                break;
+            case Consts.CCType.Stun:
+                velocity = 0f;
+                break;
+            case Consts.CCType.Slow:
+                velocity *= _takenCCData.CCValue;
+                break;
+            default:
+                break;
+        }
+
         if (velocity < 0)
         {
             velocity = 0f;
@@ -441,10 +475,14 @@ public class Unit : MonoBehaviour
 
     virtual public void Attack()
     {
-        if (UnitAttackArea.TargetUnit != null)
+        if (AttackTargetUnit != null && AttackTargetUnit.IsDied == false)
         {
-            UnitAttackArea.TargetUnit.Damage(AttackData);
+            AttackTargetUnit.TakeDamage(AttackData);
         }
+        //if (UnitAttackArea.TargetUnit != null)
+        //{
+        //    UnitAttackArea.TargetUnit.Damage(AttackData);
+        //}
     }
 
     public void DiedComplete()
@@ -516,7 +554,7 @@ public class Unit : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if(AttackTargetUnit != null)
+        if (AttackTargetUnit != null)
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(transform.position, AttackTargetUnit.transform.position);
