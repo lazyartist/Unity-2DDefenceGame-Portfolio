@@ -5478,11 +5478,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4427279533219578, guid: 7158cfee7764e8549b45419b7999fbea, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.619
+      value: 2.96
       objectReference: {fileID: 0}
     - target: {fileID: 4427279533219578, guid: 7158cfee7764e8549b45419b7999fbea, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.415
+      value: -3.394
       objectReference: {fileID: 0}
     - target: {fileID: 4427279533219578, guid: 7158cfee7764e8549b45419b7999fbea, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5521,6 +5521,10 @@ Prefab:
     - target: {fileID: 1509998011141510, guid: 7158cfee7764e8549b45419b7999fbea, type: 2}
       propertyPath: m_Name
       value: Unit_Monster_802 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509998011141510, guid: 7158cfee7764e8549b45419b7999fbea, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7158cfee7764e8549b45419b7999fbea, type: 2}
@@ -8135,6 +8139,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextWaypoint: {fileID: 0}
+--- !u!114 &1600925702 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114953592987179240, guid: 7158cfee7764e8549b45419b7999fbea,
+    type: 2}
+  m_PrefabInternal: {fileID: 977466955}
+  m_Script: {fileID: 11500000, guid: c23a8acdbc8b5f7499309d64d80dabb8, type: 3}
 --- !u!1 &1601188926
 GameObject:
   m_ObjectHideFlags: 0
@@ -8613,7 +8623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1792169247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8626,8 +8636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitContainer: {fileID: 2007183369}
-  UnitPrefab: {fileID: 114920949952617870, guid: 6d7a041ff868518468667d7e3202b832,
-    type: 2}
+  UnitPrefab: {fileID: 1600925702}
   StartWaypoint: {fileID: 1923292159}
   SpawnDelayMin: 0.5
   SpawnDelayMax: 1.2
