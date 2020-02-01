@@ -10,7 +10,7 @@ public class UnitState_Die : AUnitState
     public override void EnterState(Unit unit)
     {
         unit.UnitBody.Animator.SetTrigger("Die");
-        unit.AttackTargetUnit.AttackTargetUnit = null;
+        unit.AttackTargetUnit.Notify(Types.UnitNotifyType.AttackTargetUnitDied, unit);
         unit.AttackTargetUnit = null;
     }
     public override void ExitState(Unit unit)

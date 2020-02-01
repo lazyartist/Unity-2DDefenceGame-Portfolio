@@ -13,7 +13,6 @@ public class UnitState_Hurt : AUnitState
     }
     public override void ExitState(Unit unit)
     {
-        unit.UnitBody.Animator.SetTrigger("Idle");
     }
     public override AUnitState UpdateState(Unit unit, AUnitState[] unitStates)
     {

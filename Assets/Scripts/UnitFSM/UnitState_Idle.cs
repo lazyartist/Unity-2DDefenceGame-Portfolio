@@ -7,6 +7,7 @@ public class UnitState_Idle : AUnitState
     // implements IUnitState
     public override void EnterState(Unit unit)
     {
+        unit.UnitBody.Animator.SetTrigger("Idle");
     }
     public override void ExitState(Unit unit)
     {
@@ -16,13 +17,7 @@ public class UnitState_Idle : AUnitState
         // 이동
         if (unit.TargetWaypoint2 != null)
         {
-            Debug.Log("Move " + unit.TargetWaypoint2);
-            //unit.TargetWaypoint2.transform.position = unit.AttackTargetUnit.transform.position;
-            //Debug.Log("new AttackTargetUnit Found");
-            //Debug.Log(Unit.TargetWaypoint2.transform.position);
-            //Debug.Log(Unit.AttackTargetUnit.transform.position);
-            //unit.TargetWaypoint2.enabled = true;
-
+            Debug.Log("Move Waypoint " + unit.TargetWaypoint2);
             return unitStates[(int)Types.UnitFSMType.Move];
         }
 
@@ -44,29 +39,21 @@ public class UnitState_Idle : AUnitState
             // 공격범위에 없으면 이동
             else
             {
-                Debug.Log("Move " + unit.AttackTargetUnit);
+                Debug.Log("Move AttackTargetUnit " + unit.AttackTargetUnit);
                 if (unit.TargetWaypoint2 == null)
                 {
-                    // 공격대상까지 이동할 waypoint 설정
                     unit.TargetWaypoint2 = WaypointManager.Inst.WaypointPool.Get();
-                    // 공격 대상의 크기
+                    // 공격대상의 앞까지 이동할 waypoint 설정
                     unit.TargetWaypoint2.transform.position = unit.AttackTargetUnit.transform.position
                         + new Vector3(unit.UnitSize.x * 0.5f, 0.0f, 0.0f)
                         + new Vector3(unit.AttackTargetUnit.UnitSize.x * 0.5f, 0.0f, 0.0f);
-                    // 공객대상의 공격대상에 현재 유닛을 등록하고 대기상태로 만듦
-                    unit.AttackTargetUnit.AttackTargetUnit = unit;
-                    unit.AttackTargetUnit.UnitFSM.Transit(Types.UnitFSMType.Wait);
-                    //unit.AttackTargetUnit.GetComponent<UnitFSM>().Transit(Consts.UnitFSMType.Wait);
+                    // 공격대상에게 대기하라고 통보
+                    unit.AttackTargetUnit.Notify(Types.UnitNotifyType.Wait, unit);
                 }
                 else
                 {
                     Debug.LogAssertion("unit.TargetWaypoint2 != null !!!");
                 }
-
-                //Debug.Log("new AttackTargetUnit Found");
-                //Debug.Log(Unit.TargetWaypoint2.transform.position);
-                //Debug.Log(Unit.AttackTargetUnit.transform.position);
-                //unit.TargetWaypoint2.enabled = true;
 
                 return unitStates[(int)Types.UnitFSMType.Move];
             }

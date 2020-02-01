@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    //public static HashSet<Unit> AttackTargetUnits = new HashSet<Unit>();
+
     public bool AutoAttack = false;
     public bool AutoMoveToTarget = false;
     public bool AutoMoveToWaypoint = false;
@@ -153,6 +155,29 @@ public class Unit : MonoBehaviour
             {
                 TakenCCData.CCType = Types.CCType.None;
             }
+        }
+    }
+
+    public void Notify(Types.UnitNotifyType unitNotifyType, Unit notifyUnit)
+    {
+        switch (unitNotifyType)
+        {
+            case Types.UnitNotifyType.None:
+                break;
+            case Types.UnitNotifyType.Wait:
+                AttackTargetUnit = notifyUnit;
+                UnitFSM.Transit(Types.UnitFSMType.Wait);
+                break;
+            case Types.UnitNotifyType.Attack:
+                AttackTargetUnit = notifyUnit;
+                UnitFSM.Transit(Types.UnitFSMType.Attack);
+                break;
+            case Types.UnitNotifyType.AttackTargetUnitDied:
+                AttackTargetUnit = null;
+                UnitFSM.Transit(Types.UnitFSMType.Idle);
+                break;
+            default:
+                break;
         }
     }
 
@@ -477,12 +502,12 @@ public class Unit : MonoBehaviour
         return false;
     }
 
-    protected void PlayAttack()
-    {
-        if (AttackTargetUnit == null) return;
+    //protected void PlayAttack()
+    //{
+    //    if (AttackTargetUnit == null) return;
 
-        UnitBody.Animator.SetTrigger("Attack");
-    }
+    //    UnitBody.Animator.SetTrigger("Attack");
+    //}
 
     virtual public void Attack()
     {
@@ -490,10 +515,6 @@ public class Unit : MonoBehaviour
         {
             AttackTargetUnit.TakeDamage(AttackData);
         }
-        //if (UnitAttackArea.TargetUnit != null)
-        //{
-        //    UnitAttackArea.TargetUnit.Damage(AttackData);
-        //}
     }
 
     public void DiedComplete()

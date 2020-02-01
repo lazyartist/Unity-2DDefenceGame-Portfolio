@@ -36,6 +36,11 @@ static public class Types {
     }
     //public static readonly int UnitFSMTypeCount = System.Enum.GetNames(typeof(UnitFSMType)).Length;
 
+    public enum UnitNotifyType
+    {
+        None, Wait, Attack, AttackTargetUnitDied
+    }
+
     [System.Serializable]
     public struct AttackArea_
     {

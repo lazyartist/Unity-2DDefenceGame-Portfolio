@@ -15,6 +15,13 @@ public class UnitState_Move : AUnitState
     }
     public override AUnitState UpdateState(Unit unit, AUnitState[] unitStates)
     {
+        // 공격 대상으로 등록된 경우 Wait 상태로 전환
+        //if (Unit.AttackTargetUnits.Contains(unit) == true)
+        //{
+        //    return unitStates[(int)Types.UnitFSMType.Wait];
+        //}
+
+        // 이동
         unit.Toward(unit.TargetWaypoint2.transform.position);
         unit.MoveTo(unit.TargetWaypoint2.transform.position);
 

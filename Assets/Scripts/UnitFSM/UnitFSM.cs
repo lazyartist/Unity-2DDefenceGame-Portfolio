@@ -27,7 +27,7 @@ public class UnitFSM : MonoBehaviour {
             unitState = UnitStates[(int)Types.UnitFSMType.Hurt];
         }
 
-        if (unitState == null)
+        if (unitState == null || unitState == CurUnitState)
         {
             unitState = CurUnitState.UpdateState(Unit, UnitStates);
         }
@@ -42,7 +42,10 @@ public class UnitFSM : MonoBehaviour {
     public void Transit(Types.UnitFSMType unitFSMType)
     {
         AUnitState unitState = UnitStates[(int)unitFSMType];
-        _Transit(unitState);
+        if(CurUnitState != unitState)
+        {
+            _Transit(unitState);
+        }
     }
     private void _Transit(AUnitState unitState)
     {

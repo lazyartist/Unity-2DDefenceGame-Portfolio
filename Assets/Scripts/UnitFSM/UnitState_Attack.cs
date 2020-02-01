@@ -11,6 +11,7 @@ public class UnitState_Attack : AUnitState
     {
         unit.Toward(unit.AttackTargetUnit.transform.position);
         _coolTime = 0.0f;
+        unit.AttackTargetUnit.Notify(Types.UnitNotifyType.Attack, unit);
     }
     public override void ExitState(Unit unit)
     {
