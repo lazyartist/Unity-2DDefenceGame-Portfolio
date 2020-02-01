@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 114622293231981828}
   - component: {fileID: 114860774512875928}
   - component: {fileID: 114776617647403108}
+  - component: {fileID: 114511659558347260}
+  - component: {fileID: 114145094154538832}
   m_Layer: 8
   m_Name: Unit_Knight2
   m_TagString: Unit
@@ -299,11 +301,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b7e2483e1e3a3479665f790d346f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unit: {fileID: 114672875092321788}
   UnitBodyContainer: {fileID: 4263177885565904}
   DirectionX: 1
   SpriteRenderer: {fileID: 0}
   Animator: {fileID: 0}
+--- !u!114 &114145094154538832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503326821611280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed2e8f4bcca3784cb2ae74dc9ab6fd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114271592312121844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,7 +332,8 @@ MonoBehaviour:
   - {fileID: 114622293231981828}
   - {fileID: 114860774512875928}
   - {fileID: 114776617647403108}
-  - {fileID: 114860774512875928}
+  - {fileID: 114511659558347260}
+  - {fileID: 114145094154538832}
   CurUnitState: {fileID: 114960341470601430}
   Unit: {fileID: 114672875092321788}
 --- !u!114 &114448421632617110
@@ -332,6 +345,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7b17c9bdc788b140870764ca6e2e59d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114511659558347260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503326821611280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ba72158de67ea4d840dee2a50e1d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114622293231981828
@@ -362,7 +386,6 @@ MonoBehaviour:
   AutoMoveToWaitingPosition: 0
   ShowHpBar: 1
   UnitBody: {fileID: 114119440015132950}
-  UnitAttackArea: {fileID: 114989837441183544}
   TeamType: 0
   ATeamColor: {r: 0.41568628, g: 1, b: 0, a: 1}
   BTeamColor: {r: 0, g: 0.5803922, b: 1, a: 1}
@@ -374,13 +397,12 @@ MonoBehaviour:
   Speed: 1
   UnitData: {fileID: 11400000, guid: 0e2a64c80c793564ea6975e2c007a0cf, type: 2}
   AttackData: {fileID: 11400000, guid: 6c537d924f0bca240b96b116538d6b95, type: 2}
+  TakenCCData: {fileID: 0}
   TargetWaypoint: {fileID: 0}
+  WaitWaypoint: {fileID: 0}
   WaitingPosition: {x: 0, y: 0, z: 0}
   TargetWaypoint2: {fileID: 0}
   UnitFSM: {fileID: 114271592312121844}
-  AttackArea:
-    offset: {x: 0, y: 0.21, z: 0}
-    size: {x: 0.52, y: 0.26, z: 0}
 --- !u!114 &114776617647403108
 MonoBehaviour:
   m_ObjectHideFlags: 1

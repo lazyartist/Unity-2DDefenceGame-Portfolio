@@ -73,14 +73,11 @@ public class UnitState_Idle : AUnitState
         }
 
         // 대기장소로 이동
-        // todo 대기장소 도착 확인
-        if (unit.TargetWaypoint2 == null && unit.WaitWaypoint != null)
+        if (unit.TargetWaypoint2 == null && unit.WaitWaypoint != null && unit.IsArrivedWaitWaypoint() == false)
         {
-            Debug.Log("Move WaitWaypoint " + unit.TargetWaypoint2);
-            // 공격대상까지 이동할 waypoint 설정
             unit.TargetWaypoint2 = WaypointManager.Inst.WaypointPool.Get();
             unit.TargetWaypoint2.transform.position = unit.WaitWaypoint.transform.position;
-
+            Debug.Log("Move WaitWaypoint " + unit.TargetWaypoint2);
             return unitStates[(int)Types.UnitFSMType.Move];
         }
 

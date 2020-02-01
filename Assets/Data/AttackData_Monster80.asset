@@ -15,6 +15,6 @@ MonoBehaviour:
   AttackArea:
     offset: {x: 0, y: 0.25, z: 0}
     size: {x: 0.5, y: 0.26, z: 0}
-  Power: 100
+  Power: 1
   ExplosionRange: 1
   CCData: {fileID: 0}

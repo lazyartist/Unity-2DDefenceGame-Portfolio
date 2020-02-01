@@ -295,7 +295,7 @@ public class Unit : MonoBehaviour
         if (Health <= 0f)
         {
             IsDied = true;
-            UnitBody.Animator.SetTrigger("Die");
+            //UnitBody.Animator.SetTrigger("Die");
         }
         //else if (Health <= 0f)
         //{
@@ -464,6 +464,17 @@ public class Unit : MonoBehaviour
             velocity = 0f;
         }
         transform.position = transform.position + (direction.normalized * velocity);
+    }
+
+    public bool IsArrivedWaitWaypoint()
+    {
+        if (WaitWaypoint != null)
+        {
+            float distance = Vector3.Distance(transform.position, WaitWaypoint.transform.position);
+            bool arrived = distance < Consts.ArriveDistance;
+            return arrived;
+        }
+        return false;
     }
 
     protected void PlayAttack()
