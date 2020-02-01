@@ -101,7 +101,7 @@ public class Projectile_Stone : ProjectileAbstract
         for (int i = 0; i < colliders.Length; i++)
         {
             Collider2D collider = colliders[i];
-            if (collider.tag == Consts.tUnit)
+            if (collider.tag == Consts.tagUnit)
             {
                 collider.GetComponent<Unit>().TakeDamage(AttackData);
             }

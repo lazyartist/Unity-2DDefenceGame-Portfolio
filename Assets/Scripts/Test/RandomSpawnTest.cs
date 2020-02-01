@@ -28,7 +28,7 @@ public class RandomSpawnTest : MonoBehaviour {
         {
             Unit unit = Instantiate<Unit>(UnitPrefab);
 
-            unit.TeamType = Random.Range(0, 2) == 0 ? Consts.TeamType.A : Consts.TeamType.B;
+            unit.TeamType = Random.Range(0, 2) == 0 ? Types.TeamType.A : Types.TeamType.B;
 
             unit.transform.position = new Vector3(Random.Range(-4, 4), Random.Range(-2, 2), 0f);
 
@@ -53,7 +53,7 @@ public class RandomSpawnTest : MonoBehaviour {
             //unit.TargetWaypoint = StartWaypoint;
             unit.TargetWaypoint = WaypointManager.Inst.StartWaypoints[Random.Range(0, pathCount)];
 
-            unit.TeamType = Consts.TeamType.B;
+            unit.TeamType = Types.TeamType.B;
             //unit.transform.position = new Vector3(Random.Range(-4, 4), Random.Range(-2, 2), 0f);
 
             yield return new WaitForSeconds(Random.Range(SpawnDelayMin, SpawnDelayMax));

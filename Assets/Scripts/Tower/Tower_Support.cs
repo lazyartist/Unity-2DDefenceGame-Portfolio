@@ -43,7 +43,11 @@ public class Tower_Support : Tower
                 float x = Mathf.Cos(radian) * radius;
                 float y = Mathf.Sin(radian) * radius;
                 //float y = Mathf.Sin(rad) * (WaitingPositionRadius * 0.5f);
-                unit.WaitingPosition = new Vector3(WaitingPosition.position.x + x, WaitingPosition.position.y + y, WaitingPosition.position.z);
+
+                WaypointManager.Inst.WaypointPool.Release(unit.WaitWaypoint);
+                unit.WaitWaypoint = WaypointManager.Inst.WaypointPool.Get();
+                unit.WaitWaypoint.transform.position = new Vector3(WaitingPosition.position.x + x, WaitingPosition.position.y + y, WaitingPosition.position.z);
+                //unit.WaitingPosition = new Vector3(WaitingPosition.position.x + x, WaitingPosition.position.y + y, WaitingPosition.position.z);
 
             }
 

@@ -4,8 +4,8 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "AttackData_", menuName = "SO/Create AttackData")]
 public class AttackData : ScriptableObject {
-    public Consts.AttackRangeType AttackRangeType;
-    public Consts.AttackArea_ AttackArea;
+    public Types.AttackRangeType AttackRangeType;
+    public Types.AttackArea_ AttackArea;
 
     public float Power = 2f;
     public float ExplosionRange = 1f;

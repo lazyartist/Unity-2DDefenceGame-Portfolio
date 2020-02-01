@@ -46,7 +46,7 @@ public class Tower_Sling : Tower
         for (int i = 0; i < colliders.Length; i++)
         {
             Collider2D collider = colliders[i];
-            if (collider.tag == Consts.tUnit)
+            if (collider.tag == Consts.tagUnit)
             {
                 Unit unit = collider.GetComponent<Unit>();
                 if (unit.TeamType != TeamType)

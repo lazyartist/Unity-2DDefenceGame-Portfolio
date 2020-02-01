@@ -10,7 +10,7 @@ public class MasterSkillManager : SingletonBase<MasterSkillManager>
     public ProjectileAbstract Projectile_FireDrop;
     public ProjectileAbstract Projectile_RainDrop;
 
-    public Consts.MasterSkillType MasterSkillType;
+    public Types.MasterSkillType MasterSkillType;
     // Use this for initialization
     void Start()
     {
@@ -30,12 +30,12 @@ public class MasterSkillManager : SingletonBase<MasterSkillManager>
             ProjectileAbstract projectile = null;
             switch (MasterSkillType)
             {
-                case Consts.MasterSkillType.None:
+                case Types.MasterSkillType.None:
                     return;
-                case Consts.MasterSkillType.Fire:
+                case Types.MasterSkillType.Fire:
                     projectile = Instantiate<ProjectileAbstract>(Projectile_FireDrop, clickPosition, Quaternion.identity, transform);
                     break;
-                case Consts.MasterSkillType.Rain:
+                case Types.MasterSkillType.Rain:
                     projectile = Instantiate<ProjectileAbstract>(Projectile_RainDrop, clickPosition, Quaternion.identity, transform);
                     break;
                 default:

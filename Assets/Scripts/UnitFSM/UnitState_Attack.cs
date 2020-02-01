@@ -20,7 +20,7 @@ public class UnitState_Attack : AUnitState
         // 공격대상이 없으면 -> Idle
         if (unit.AttackTargetUnit == null || unit.AttackTargetUnit.IsDied || unit.IsAttackTargetInAttackArea() == false)
         {
-            return unitStates[(int)Consts.UnitFSMType.Idle];
+            return unitStates[(int)Types.UnitFSMType.Idle];
         }
 
         if (_coolTime <= 0.0f)

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class MasterSkillButton : MonoBehaviour, IPointerClickHandler {
-    public Consts.MasterSkillType MasterSkillType;
+    public Types.MasterSkillType MasterSkillType;
 	// Use this for initialization
 	void Start () {
 		

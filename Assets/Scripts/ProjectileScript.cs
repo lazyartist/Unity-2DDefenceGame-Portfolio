@@ -69,7 +69,7 @@ public class ProjectileScript : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == Consts.tUnit)
+        if (collision.tag == Consts.tagUnit)
         {
             Destroy(gameObject);
         }

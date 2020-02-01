@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitState_Wait : AUnitState
+public class UnitState_Die : AUnitState
 {
+    private float _coolTime = 0.0f;
+
     // implements AUnitState
     public override void EnterState(Unit unit)
     {
-        unit.UnitBody.Animator.SetTrigger("Idle");
+        unit.UnitBody.Animator.SetTrigger("Die");
     }
     public override void ExitState(Unit unit)
     {

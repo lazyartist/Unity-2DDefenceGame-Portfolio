@@ -40,14 +40,14 @@ public class UnitState_Move : AUnitState
                 if (unit.AttackTargetUnit != null && unit.IsAttackTargetInAttackArea())
                 {
                     // 공격 대상을 Attack 상태로 바꿈
-                    unit.AttackTargetUnit.UnitFSM.Transit(Consts.UnitFSMType.Attack);
+                    unit.AttackTargetUnit.UnitFSM.Transit(Types.UnitFSMType.Attack);
                     Debug.Log("Attack " + unit.AttackTargetUnit);
-                    return unitStates[(int)Consts.UnitFSMType.Attack];
+                    return unitStates[(int)Types.UnitFSMType.Attack];
                 }
-                return unitStates[(int)Consts.UnitFSMType.Idle];
+                return unitStates[(int)Types.UnitFSMType.Idle];
             }
         }
-
+        
         return null;
     }
 }

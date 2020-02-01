@@ -19,5 +19,5 @@ public class AttackInfo
     //public float AttackRange;
 
     public float SkillTime;
-    public Consts.CCType SkillType;
+    public Types.CCType SkillType;
 }

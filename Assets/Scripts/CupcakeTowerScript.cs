@@ -63,7 +63,7 @@ public class CupcakeTowerScript : MonoBehaviour {
                 int index = -1;
                 for (int i = 0; i < hitColliders.Length; i++)
                 {
-                    if(hitColliders[i].tag == Consts.tUnit)
+                    if(hitColliders[i].tag == Consts.tagUnit)
                     {
                         PandaScript panda = hitColliders[i].GetComponent<PandaScript>();
 

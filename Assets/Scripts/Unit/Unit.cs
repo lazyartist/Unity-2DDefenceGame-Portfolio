@@ -14,7 +14,7 @@ public class Unit : MonoBehaviour
     public UnitBody UnitBody;
     //public UnitAttackArea UnitAttackArea;
 
-    public Consts.TeamType TeamType;
+    public Types.TeamType TeamType;
     public Color ATeamColor;
     public Color BTeamColor;
 
@@ -37,15 +37,17 @@ public class Unit : MonoBehaviour
     public UnitData UnitData;
     public AttackData AttackData;
 
-    private CCData _takenCCData;
+    [SerializeField]
+    public CCData TakenCCData;
     //private float _elasedCCTime = 0f;
 
-    private AttackData _takenAttackData;
+    //private AttackData _takenAttackData;
     //private float _damageElasedTime = 0f;
 
     //public AttackData AttackData;
 
     public Waypoint TargetWaypoint;
+    public Waypoint WaitWaypoint;
     public Vector3 WaitingPosition;
 
     public Unit AttackTargetUnit { get; set; }
@@ -57,6 +59,7 @@ public class Unit : MonoBehaviour
     protected float _velocityAddition = 0f;
 
     public bool IsDied { get; private set; }
+    //public bool IsDamaged;
 
     // FSM
     public Waypoint TargetWaypoint2;
@@ -66,7 +69,7 @@ public class Unit : MonoBehaviour
 
     protected void Awake()
     {
-        _takenCCData = new CCData();
+        TakenCCData = new CCData();
 
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
         UnitCenterOffset = boxCollider.offset;
@@ -75,18 +78,19 @@ public class Unit : MonoBehaviour
         UnitBody.UnitEventListener += OnUnitEventListener;
     }
 
-    void OnUnitEventListener(Consts.UnitEventType unitEventType)
+    void OnUnitEventListener(Types.UnitEventType unitEventType)
     {
         Debug.Log("UnitEventListener " + unitEventType);
 
         switch (unitEventType)
         {
-            case Consts.UnitEventType.None:
+            case Types.UnitEventType.None:
                 break;
-            case Consts.UnitEventType.Attack:
+            case Types.UnitEventType.Attack:
                 Attack();
                 break;
-            case Consts.UnitEventType.DiedComplete:
+            case Types.UnitEventType.DiedComplete:
+                DiedComplete();
                 break;
             default:
                 break;
@@ -95,20 +99,21 @@ public class Unit : MonoBehaviour
 
     protected void Start()
     {
+        Health = UnitData.Health;
+
         if (TargetWaypoint2 == null)
         {
             TargetWaypoint2 = WaypointManager.Inst.WaypointPool.Get();
             TargetWaypoint2.transform.position = transform.position;// 현재 위치로 설정
         }
 
-        Health = UnitData.Health;
-
+        // 팀 컬러 설정
         switch (TeamType)
         {
-            case Consts.TeamType.A:
+            case Types.TeamType.A:
                 HpBarGaugeSR.color = ATeamColor;
                 break;
-            case Consts.TeamType.B:
+            case Types.TeamType.B:
                 HpBarGaugeSR.color = BTeamColor;
                 break;
             default:
@@ -118,20 +123,6 @@ public class Unit : MonoBehaviour
         HpBarBgSR.enabled = ShowHpBar;
         HpBarGaugeSR.enabled = ShowHpBar;
     }
-
-    //private void OnEnable()
-    //{
-    //    if (TargetWaypoint2 == null)
-    //    {
-    //        TargetWaypoint2 = WaypointManager.Inst.WaypointPool.Get();
-    //    }
-    //}
-
-    //private void OnDisable()
-    //{
-    //    WaypointManager.Inst.WaypointPool.Release(TargetWaypoint2);
-    //    TargetWaypoint2 = null;
-    //}
 
     private void OnApplicationQuit()
     {
@@ -154,90 +145,98 @@ public class Unit : MonoBehaviour
 
     protected void Update()
     {
-
-    }
-
-    protected void Update222()
-    {
-        _velocityAddition = 0f;
-
-        if (IsDied == true)
+        // update cc
+        if(TakenCCData.CCType != Types.CCType.None)
         {
-            _velocity = 0f;
-        }
-        else
-        {
-            if (_takenAttackData != null)
+            TakenCCData.CCTime -= Time.deltaTime;
+            if(TakenCCData.CCTime <= 0)
             {
-                //if (_damageElasedTime >= _takenAttackData.CCTime)
-                //{
-                //    _takenAttackData = null;
-                //    _damageElasedTime = 0f;
-                //}
-                //else
-                //{
-                //    _damageElasedTime += Time.deltaTime;
-                //    switch (_takenAttackData.CCType)
-                //    {
-                //        case Consts.CCType.None:
-                //            break;
-                //        case Consts.CCType.Stun:
-                //            // 스턴 상태이므로 이동, 공격 불가
-                //            _velocity = 0;
-                //            return;
-                //        case Consts.CCType.Slow:
-                //            // 슬로우이므로 이동 속도 감소, 공격 가능
-                //            _velocityAddition = _takenAttackData.CCValue;
-                //            break;
-                //        //break;
-                //        default:
-                //            break;
-                //    }
-                //}
-            }
-
-            if (_Attackable && AutoAttack && AttackTargetUnit != null)
-            {
-                Toward(AttackTargetUnit.transform.position);
-                _elapsedAttackTime += Time.deltaTime;
-                if (_elapsedAttackTime >= UnitData.AttackCoolTime)
-                {
-                    PlayAttack();
-                    _elapsedAttackTime = 0;
-                }
-
-                _velocity = 0f;
-            }
-            else if (AutoMoveToTarget && AttackTargetUnit != null)
-            {
-                Toward(AttackTargetUnit.transform.position);
-                MoveToAttackTarget();
-            }
-            else if (AutoMoveToWaypoint && TargetWaypoint != null)
-            {
-                Toward(TargetWaypoint.transform.position);
-                MoveToWaypoint();
-
-                // 웨이포인트에 다다르면 다음 웨이포인트를 타겟 웨이포인트로 지정
-                float distance = Vector3.Distance(TargetWaypoint.transform.position, transform.position);
-                if (distance < 0.01f)
-                {
-                    TargetWaypoint = TargetWaypoint.NextWaypoint;
-                }
-            }
-            else if (AutoMoveToWaitingPosition)
-            {
-                Toward(WaitingPosition);
-                MoveToWaitingPosition();
-            }
-            else
-            {
-                _velocity = 0f;
+                TakenCCData.CCType = Types.CCType.None;
             }
         }
-
-        UnitBody.Animator.SetFloat("Velocity", _velocity);
     }
+
+    //protected void Update222()
+    //{
+    //    _velocityAddition = 0f;
+
+    //    if (IsDied == true)
+    //    {
+    //        _velocity = 0f;
+    //    }
+    //    else
+    //    {
+    //        //if (_takenAttackData != null)
+    //        //{
+    //            //if (_damageElasedTime >= _takenAttackData.CCTime)
+    //            //{
+    //            //    _takenAttackData = null;
+    //            //    _damageElasedTime = 0f;
+    //            //}
+    //            //else
+    //            //{
+    //            //    _damageElasedTime += Time.deltaTime;
+    //            //    switch (_takenAttackData.CCType)
+    //            //    {
+    //            //        case Consts.CCType.None:
+    //            //            break;
+    //            //        case Consts.CCType.Stun:
+    //            //            // 스턴 상태이므로 이동, 공격 불가
+    //            //            _velocity = 0;
+    //            //            return;
+    //            //        case Consts.CCType.Slow:
+    //            //            // 슬로우이므로 이동 속도 감소, 공격 가능
+    //            //            _velocityAddition = _takenAttackData.CCValue;
+    //            //            break;
+    //            //        //break;
+    //            //        default:
+    //            //            break;
+    //            //    }
+    //            //}
+    //        //}
+
+    //        if (_Attackable && AutoAttack && AttackTargetUnit != null)
+    //        {
+    //            Toward(AttackTargetUnit.transform.position);
+    //            _elapsedAttackTime += Time.deltaTime;
+    //            if (_elapsedAttackTime >= UnitData.AttackCoolTime)
+    //            {
+    //                PlayAttack();
+    //                _elapsedAttackTime = 0;
+    //            }
+
+    //            _velocity = 0f;
+    //        }
+    //        else if (AutoMoveToTarget && AttackTargetUnit != null)
+    //        {
+    //            Toward(AttackTargetUnit.transform.position);
+    //            MoveToAttackTarget();
+    //        }
+    //        else if (AutoMoveToWaypoint && TargetWaypoint != null)
+    //        {
+    //            Toward(TargetWaypoint.transform.position);
+    //            MoveToWaypoint();
+
+    //            // 웨이포인트에 다다르면 다음 웨이포인트를 타겟 웨이포인트로 지정
+    //            float distance = Vector3.Distance(TargetWaypoint.transform.position, transform.position);
+    //            if (distance < 0.01f)
+    //            {
+    //                TargetWaypoint = TargetWaypoint.NextWaypoint;
+    //            }
+    //        }
+    //        else if (AutoMoveToWaitingPosition)
+    //        {
+    //            Toward(WaitingPosition);
+    //            MoveToWaitingPosition();
+    //        }
+    //        else
+    //        {
+    //            _velocity = 0f;
+    //        }
+    //    }
+
+    //    UnitBody.Animator.SetFloat("Velocity", _velocity);
+    //}
 
     //protected void FixedUpdate()
     //{
@@ -266,22 +265,23 @@ public class Unit : MonoBehaviour
         float damage = attackData.Power;
 
         // CC기 추가
-        if (attackData.CCData != null && attackData.CCData.CCType != Consts.CCType.None && _takenCCData.CCType == Consts.CCType.None)
+        if (attackData.CCData != null && attackData.CCData.CCType != Types.CCType.None && TakenCCData.CCType == Types.CCType.None)
         {
-            attackData.CCData.Copy(_takenCCData);
-            switch (_takenCCData.CCType)
+            attackData.CCData.Copy(TakenCCData);
+            switch (TakenCCData.CCType)
             {
-                case Consts.CCType.None:
+                case Types.CCType.None:
                     break;
-                case Consts.CCType.Stun:
-                    UnitBody.Animator.SetTrigger("Hurt");
+                case Types.CCType.Stun:
                     break;
-                case Consts.CCType.Slow:
+                case Types.CCType.Slow:
                     break;
                 default:
                     break;
             }
         }
+
+
 
         Health -= damage;
 
@@ -366,7 +366,7 @@ public class Unit : MonoBehaviour
 
             if (this.gameObject == collider.gameObject) continue;
 
-            if (collider.tag == Consts.tUnit && collider.gameObject.GetComponent<Unit>().IsDied == false)
+            if (collider.tag == Consts.tagUnit && collider.gameObject.GetComponent<Unit>().IsDied == false)
             {
                 Unit unit = collider.gameObject.GetComponent<Unit>();
 
@@ -404,7 +404,7 @@ public class Unit : MonoBehaviour
             if (this.gameObject == collider.gameObject) continue;
 
             Unit unit = collider.gameObject.GetComponent<Unit>();
-            if (collider.tag == Consts.tUnit && unit.IsDied == false)
+            if (collider.tag == Consts.tagUnit && unit.IsDied == false)
             {
                 if (AttackTargetUnit == unit)
                 {
@@ -431,10 +431,10 @@ public class Unit : MonoBehaviour
         }
     }
 
-    virtual protected void MoveToWaitingPosition()
-    {
-        MoveTo(WaitingPosition);
-    }
+    //virtual protected void MoveToWaitingPosition()
+    //{
+    //    MoveTo(WaitingPosition);
+    //}
 
     virtual public void MoveTo(Vector3 position)
     {
@@ -445,15 +445,15 @@ public class Unit : MonoBehaviour
         float velocity = _velocity + _velocityAddition;
 
         // cc
-        switch (_takenCCData.CCType)
+        switch (TakenCCData.CCType)
         {
-            case Consts.CCType.None:
+            case Types.CCType.None:
                 break;
-            case Consts.CCType.Stun:
+            case Types.CCType.Stun:
                 velocity = 0f;
                 break;
-            case Consts.CCType.Slow:
-                velocity *= _takenCCData.CCValue;
+            case Types.CCType.Slow:
+                velocity *= TakenCCData.CCValue;
                 break;
             default:
                 break;
@@ -492,7 +492,7 @@ public class Unit : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == Consts.tUnit)
+        if (collision.gameObject.tag == Consts.tagUnit)
         {
             Unit unit = collision.gameObject.GetComponent<Unit>();
 
@@ -513,7 +513,7 @@ public class Unit : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == Consts.tUnit)
+        if (collision.gameObject.tag == Consts.tagUnit)
         {
             Unit unit = collision.gameObject.GetComponent<Unit>();
 
@@ -531,7 +531,7 @@ public class Unit : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == Consts.tUnit && collision.gameObject.GetComponent<Unit>().TeamType != TeamType)
+        if (collision.gameObject.tag == Consts.tagUnit && collision.gameObject.GetComponent<Unit>().TeamType != TeamType)
         {
             _Attackable = false;
         }

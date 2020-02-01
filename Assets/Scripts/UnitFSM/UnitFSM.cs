@@ -16,8 +16,22 @@ public class UnitFSM : MonoBehaviour {
     }
 	
 	void Update () {
-        // update FSM
-        AUnitState unitState = CurUnitState.UpdateState(Unit, UnitStates);
+        AUnitState unitState = null;
+        if (Unit.IsDied == true)
+        {
+            // 유닛 사망
+            unitState = UnitStates[(int)Types.UnitFSMType.Died];
+        }else if (Unit.TakenCCData.CCType == Types.CCType.Stun && CurUnitState != UnitStates[(int)Types.UnitFSMType.Hurt])
+        {
+            // 데미지 받음
+            unitState = UnitStates[(int)Types.UnitFSMType.Hurt];
+        }
+
+        if (unitState == null)
+        {
+            unitState = CurUnitState.UpdateState(Unit, UnitStates);
+        }
+
         if(unitState != null && unitState != CurUnitState)
         {
             _Transit(unitState);
@@ -25,7 +39,7 @@ public class UnitFSM : MonoBehaviour {
     }
 
     // 상태 전환
-    public void Transit(Consts.UnitFSMType unitFSMType)
+    public void Transit(Types.UnitFSMType unitFSMType)
     {
         AUnitState unitState = UnitStates[(int)unitFSMType];
         _Transit(unitState);
