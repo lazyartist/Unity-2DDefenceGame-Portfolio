@@ -19,14 +19,16 @@ public class UnitState_Attack : AUnitState
     public override AUnitState UpdateState(Unit unit, AUnitState[] unitStates)
     {
         // 공격대상이 없으면 -> Idle
-        if (unit.AttackTargetUnit == null || unit.AttackTargetUnit.IsDied || unit.IsAttackTargetInAttackArea() == false)
+        if (unit.UnitBody.Attacking == false && (unit.AttackTargetUnit == null || unit.AttackTargetUnit.IsDied || unit.IsAttackTargetInAttackArea() == false))
         {
             return unitStates[(int)Types.UnitFSMType.Idle];
         }
 
         if (_coolTime <= 0.0f)
         {
+            Debug.Log("Attack " + unit.AttackTargetUnit);
             unit.UnitBody.Animator.SetTrigger("Attack");
+            //unit.UnitBody.Animator.SetTrigger("Attack");
             _coolTime = unit.UnitData.AttackCoolTime;
         }
         _coolTime -= Time.deltaTime;

@@ -46,9 +46,9 @@ public class RandomSpawnTest : MonoBehaviour {
 
             unit.name = unit.name + unitNumber++;
 
-            unit.AutoAttack = true;
-            unit.AutoMoveToTarget = true;
-            unit.AutoMoveToWaypoint = true;
+            //unit.AutoAttack = true;
+            //unit.AutoMoveToTarget = true;
+            //unit.AutoMoveToWaypoint = true;
 
             //unit.TargetWaypoint = StartWaypoint;
             unit.TargetWaypoint = WaypointManager.Inst.StartWaypoints[Random.Range(0, pathCount)];

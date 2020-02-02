@@ -51,6 +51,7 @@ public class UnitFSM : MonoBehaviour {
     {
         CurUnitState.ExitState(Unit);
         CurUnitState.enabled = false;
+        unitState.PrevUnitState = CurUnitState;
         CurUnitState = unitState;
         CurUnitState.enabled = true;
         CurUnitState.EnterState(Unit);

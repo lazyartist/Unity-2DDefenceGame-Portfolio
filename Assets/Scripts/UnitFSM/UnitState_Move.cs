@@ -22,35 +22,35 @@ public class UnitState_Move : AUnitState
         //}
 
         // 이동
-        unit.Toward(unit.TargetWaypoint2.transform.position);
-        unit.MoveTo(unit.TargetWaypoint2.transform.position);
+        unit.Toward(unit.TargetWaypoint.transform.position);
+        unit.MoveTo(unit.TargetWaypoint.transform.position);
 
-        float distance = Vector3.Distance(unit.transform.position, unit.TargetWaypoint2.transform.position);
+        float distance = Vector3.Distance(unit.transform.position, unit.TargetWaypoint.transform.position);
         if (distance < 0.01f)
         {
             // 목표지점 도착
-            unit.transform.position = unit.TargetWaypoint2.transform.position;
+            unit.transform.position = unit.TargetWaypoint.transform.position;
 
             // 다음 waypoint가 있으면 이동
-            if (unit.TargetWaypoint2.NextWaypoint != null)
+            if (unit.TargetWaypoint.NextWaypoint != null)
             {
-                unit.TargetWaypoint2 = unit.TargetWaypoint2.NextWaypoint;
+                unit.TargetWaypoint = unit.TargetWaypoint.NextWaypoint;
                 return null;
             }
             else
             {
                 // waypoint 해제
-                WaypointManager.Inst.WaypointPool.Release(unit.TargetWaypoint2);
-                unit.TargetWaypoint2 = null;
+                WaypointManager.Inst.WaypointPool.Release(unit.TargetWaypoint);
+                unit.TargetWaypoint = null;
 
                 //공격대상이 있고 공격범위에 있으면 공격
-                if (unit.AttackTargetUnit != null && unit.IsAttackTargetInAttackArea())
-                {
-                    // 공격 대상을 Attack 상태로 바꿈
-                    unit.AttackTargetUnit.UnitFSM.Transit(Types.UnitFSMType.Attack);
-                    Debug.Log("Attack " + unit.AttackTargetUnit);
-                    return unitStates[(int)Types.UnitFSMType.Attack];
-                }
+                //if (unit.AttackTargetUnit != null && unit.IsAttackTargetInAttackArea())
+                //{
+                //    // 공격 대상을 Attack 상태로 바꿈
+                //    unit.AttackTargetUnit.UnitFSM.Transit(Types.UnitFSMType.Attack);
+                //    Debug.Log("Attack " + unit.AttackTargetUnit);
+                //    return unitStates[(int)Types.UnitFSMType.Attack];
+                //}
                 return unitStates[(int)Types.UnitFSMType.Idle];
             }
         }

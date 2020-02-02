@@ -15,21 +15,21 @@ public class UnitState_Idle : AUnitState
     public override AUnitState UpdateState(Unit unit, AUnitState[] unitStates)
     {
         // 이동
-        if (unit.TargetWaypoint2 != null)
+        if (unit.TargetWaypoint != null)
         {
-            Debug.Log("Move Waypoint " + unit.TargetWaypoint2);
+            Debug.Log("Move Waypoint " + unit.TargetWaypoint);
             return unitStates[(int)Types.UnitFSMType.Move];
         }
 
         // 공격대상이 없으면 찾는다
-        if (unit.AttackTargetUnit == null && unit.FindAttackTarget2() != null)
+        if (unit.AttackTargetUnit == null && unit.FindAttackTarget() != null)
         {
             // 공격대상을 찾았다
             // todo 근거리 공격이면 이동, 원거리이면 공격
             Debug.Log("Found AttackTarget " + unit.AttackTargetUnit);
             // 공격대상의 앞까지 이동할 waypoint 설정
-            unit.TargetWaypoint2 = WaypointManager.Inst.WaypointPool.Get();
-            unit.TargetWaypoint2.transform.position = unit.AttackTargetUnit.transform.position
+            unit.TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
+            unit.TargetWaypoint.transform.position = unit.AttackTargetUnit.transform.position
                 + new Vector3(unit.UnitSize.x * 0.5f, 0.0f, 0.0f)
                 + new Vector3(unit.AttackTargetUnit.UnitSize.x * 0.5f, 0.0f, 0.0f);
             unit.AttackTargetUnit.Notify(Types.UnitNotifyType.Wait, unit);
@@ -42,7 +42,7 @@ public class UnitState_Idle : AUnitState
             // 공격범위에 있으면 공격
             if (unit.IsAttackTargetInAttackArea())
             {
-                Debug.Log("Attack " + unit.AttackTargetUnit);
+                Debug.Log("Attack in idle" + unit.AttackTargetUnit);
                 return unitStates[(int)Types.UnitFSMType.Attack];
             }
             // 공격범위에 없으면 이동
@@ -69,11 +69,11 @@ public class UnitState_Idle : AUnitState
         }
 
         // 대기장소로 이동
-        if (unit.TargetWaypoint2 == null && unit.WaitWaypoint != null && unit.IsArrivedWaitWaypoint() == false)
+        if (unit.TargetWaypoint == null && unit.WaitWaypoint != null && unit.IsArrivedWaitWaypoint() == false)
         {
-            unit.TargetWaypoint2 = WaypointManager.Inst.WaypointPool.Get();
-            unit.TargetWaypoint2.transform.position = unit.WaitWaypoint.transform.position;
-            Debug.Log("Move WaitWaypoint " + unit.TargetWaypoint2);
+            unit.TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
+            unit.TargetWaypoint.transform.position = unit.WaitWaypoint.transform.position;
+            Debug.Log("Move WaitWaypoint " + unit.TargetWaypoint);
             return unitStates[(int)Types.UnitFSMType.Move];
         }
 

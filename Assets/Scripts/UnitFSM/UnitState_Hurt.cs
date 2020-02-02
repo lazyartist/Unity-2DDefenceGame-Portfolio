@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class UnitState_Hurt : AUnitState
 {
-    private float _coolTime = 0.0f;
-
     // implements AUnitState
     public override void EnterState(Unit unit)
     {
@@ -22,7 +20,7 @@ public class UnitState_Hurt : AUnitState
         }
         else
         {
-            return unitStates[(int)Types.UnitFSMType.Idle];
+            return PrevUnitState;
         }
     }
 }

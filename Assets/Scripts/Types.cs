@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 static public class Types {
-    public delegate void UnitEventListener(UnitEventType unitEventType);
+    public delegate void UnitEventListener(UnitBodyEventType unitEventType);
 
-    public enum UnitEventType
+    public enum UnitBodyEventType
     {
         None, Attack, DiedComplete
     }

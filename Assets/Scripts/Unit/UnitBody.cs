@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class UnitBody : MonoBehaviour
 {
-    public Types.UnitEventListener UnitEventListener;
+    public Types.UnitEventListener UnitBodyEventListener;
 
     public Transform UnitBodyContainer;
     public float DirectionX = 1.0f;
+    public bool Attacking = false;
 
     [HideInInspector]
     public SpriteRenderer SpriteRenderer;
@@ -22,12 +23,22 @@ public class UnitBody : MonoBehaviour
 
     public void Attack()
     {
-        UnitEventListener(Types.UnitEventType.Attack);
+        UnitBodyEventListener(Types.UnitBodyEventType.Attack);
+    }
+    public void AttackStart()
+    {
+        Debug.Log("AttackStart");
+        Attacking = true;
+    }
+    public void AttackEnd()
+    {
+        Debug.Log("AttackEnd");
+        Attacking = false;
     }
 
     public void DiedComplete()
     {
-        UnitEventListener(Types.UnitEventType.DiedComplete);
+        UnitBodyEventListener(Types.UnitBodyEventType.DiedComplete);
     }
 
     public void Toward(Vector3 direction)

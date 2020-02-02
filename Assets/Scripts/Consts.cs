@@ -12,6 +12,6 @@ static public class Consts {
 
     // ===== physics layers
     static public int lmUnit = LayerMask.GetMask("Unit");
-    static public int lmUnitBody = LayerMask.GetMask("UnitBody");
-    static public int lmUnitAttackArea = LayerMask.GetMask("UnitAttackArea");
+    static public int lmATeam = LayerMask.GetMask("ATeam");
+    static public int lmBTeam = LayerMask.GetMask("BTeam");
 }
