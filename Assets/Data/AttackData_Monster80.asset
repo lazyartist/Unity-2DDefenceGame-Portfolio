@@ -17,4 +17,4 @@ MonoBehaviour:
     size: {x: 0.5, y: 0.26, z: 0}
   Power: 1
   ExplosionRange: 1
-  CCData: {fileID: 0}
+  CCData: {fileID: 11400000, guid: 2abd475d06a3b52439374a14af271a9b, type: 2}

@@ -14,7 +14,7 @@ MonoBehaviour:
   Health: 18
   Speed: 2
   TargetRange: 0.5
-  AttackCoolTime: 1
+  AttackCoolTime: 2
   AttackRangeType: 1
   AttackRangeOffset: {x: 0, y: 0}
   AttackRangeSize: {x: 1, y: 1}

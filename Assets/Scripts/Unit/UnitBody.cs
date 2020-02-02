@@ -8,7 +8,7 @@ public class UnitBody : MonoBehaviour
 
     public Transform UnitBodyContainer;
     public float DirectionX = 1.0f;
-    public bool Attacking = false;
+    public bool PlayingAttackAni = false;
 
     [HideInInspector]
     public SpriteRenderer SpriteRenderer;
@@ -28,12 +28,12 @@ public class UnitBody : MonoBehaviour
     public void AttackStart()
     {
         Debug.Log("AttackStart");
-        Attacking = true;
+        PlayingAttackAni = true;
     }
     public void AttackEnd()
     {
         Debug.Log("AttackEnd");
-        Attacking = false;
+        PlayingAttackAni = false;
     }
 
     public void DiedComplete()

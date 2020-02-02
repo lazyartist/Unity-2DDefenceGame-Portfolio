@@ -18,18 +18,21 @@ public class UnitState_Attack : AUnitState
     }
     public override AUnitState UpdateState(Unit unit, AUnitState[] unitStates)
     {
-        // 공격대상이 없으면 -> Idle
-        if (unit.UnitBody.Attacking == false && (unit.AttackTargetUnit == null || unit.AttackTargetUnit.IsDied || unit.IsAttackTargetInAttackArea() == false))
+        // 공격 애니가 끝날때까지 기다린다
+        if (unit.UnitBody.PlayingAttackAni == false)
         {
-            return unitStates[(int)Types.UnitFSMType.Idle];
-        }
-
-        if (_coolTime <= 0.0f)
-        {
-            Debug.Log("Attack " + unit.AttackTargetUnit);
-            unit.UnitBody.Animator.SetTrigger("Attack");
-            //unit.UnitBody.Animator.SetTrigger("Attack");
-            _coolTime = unit.UnitData.AttackCoolTime;
+            // 공격대상이 없으면 Idle 상태로 전환
+            if (unit.AttackTargetUnit == null || unit.AttackTargetUnit.IsDied || unit.IsAttackTargetInAttackArea() == false)
+            {
+                return unitStates[(int)Types.UnitFSMType.Idle];
+            }
+            // 공격대상이 있고 쿨타임이 지났으면 공격
+            else if (_coolTime <= 0.0f)
+            {
+                Debug.Log("Attack " + unit + " to " + unit.AttackTargetUnit);
+                unit.UnitBody.Animator.SetTrigger("Attack");
+                _coolTime = unit.UnitData.AttackCoolTime;
+            }
         }
         _coolTime -= Time.deltaTime;
 
