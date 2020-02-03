@@ -18,10 +18,10 @@ public class UnitGizmos : MonoBehaviour {
             Gizmos.color = unit.TeamData.TeamColors[(int)unit.TeamType];
             Gizmos.DrawWireSphere(transform.position + unit.UnitCenterOffset, unit.UnitData.TargetRange);
             // 유닛 공격 범위
-            if(unit.AttackData != null) {
-                Gizmos.color = Color.red;
-                Gizmos.DrawWireCube(transform.position + unit.AttackData.AttackArea.offset, unit.AttackData.AttackArea.size);
-            }
+            //if(unit.AttackData != null) {
+            //    Gizmos.color = Color.red;
+            //    Gizmos.DrawWireCube(transform.position + unit.AttackData.AttackArea.offset, unit.AttackData.AttackArea.size);
+            //}
         }
     }
 }

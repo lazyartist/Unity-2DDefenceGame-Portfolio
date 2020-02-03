@@ -153,7 +153,7 @@ public class Projectile_Arrow : ProjectileAbstract
             }
         }
 
-        Gizmos.DrawWireSphere(transform.position, AttackData.ExplosionRange);
+        Gizmos.DrawWireSphere(transform.position, AttackData.AttackRange);
     }
 }
 

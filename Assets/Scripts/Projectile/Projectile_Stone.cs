@@ -97,7 +97,7 @@ public class Projectile_Stone : ProjectileAbstract
 
     void Attack()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, AttackData.ExplosionRange, Consts.lmUnit);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, AttackData.AttackRange, Consts.lmUnit);
         for (int i = 0; i < colliders.Length; i++)
         {
             Collider2D collider = colliders[i];
@@ -127,6 +127,6 @@ public class Projectile_Stone : ProjectileAbstract
             }
         }
 
-        Gizmos.DrawWireSphere(transform.position, AttackData.ExplosionRange);
+        Gizmos.DrawWireSphere(transform.position, AttackData.AttackRange);
     }
 }

@@ -15,7 +15,7 @@ public class Unit : MonoBehaviour
     public UnitData UnitData;
     public AttackData AttackData;
 
-    public Unit AttackTargetUnit { get; set; }
+    public Unit AttackTargetUnit;
     public Waypoint WaitWaypoint;
 
     public float Health = 20;
@@ -40,27 +40,27 @@ public class Unit : MonoBehaviour
         UnitCenterOffset = boxCollider.offset;
         UnitSize = boxCollider.size;
 
-        UnitBody.UnitBodyEventListener += OnUnitBodyEventListener;
+        //UnitBody.UnitBodyEventHandler += OnUnitBodyEventListener;
     }
 
-    void OnUnitBodyEventListener(Types.UnitBodyEventType unitBodyEventType)
-    {
-        Debug.Log("UnitEventListener " + unitBodyEventType);
+    //void OnUnitBodyEventListener(Types.UnitBodyEventType unitBodyEventType)
+    //{
+    //    Debug.Log("UnitEventListener " + unitBodyEventType);
 
-        switch (unitBodyEventType)
-        {
-            case Types.UnitBodyEventType.None:
-                break;
-            case Types.UnitBodyEventType.Attack:
-                Attack();
-                break;
-            case Types.UnitBodyEventType.DiedComplete:
-                DiedComplete();
-                break;
-            default:
-                break;
-        }
-    }
+    //    switch (unitBodyEventType)
+    //    {
+    //        case Types.UnitBodyEventType.None:
+    //            break;
+    //        case Types.UnitBodyEventType.Attack:
+    //            Attack();
+    //            break;
+    //        case Types.UnitBodyEventType.DiedComplete:
+    //            DiedComplete();
+    //            break;
+    //        default:
+    //            break;
+    //    }
+    //}
 
     protected void Start()
     {
@@ -98,16 +98,18 @@ public class Unit : MonoBehaviour
 
     private void CleanUpUnit()
     {
-        if (UnitBody != null && UnitBody.UnitBodyEventListener != null)
-        {
-            UnitBody.UnitBodyEventListener -= OnUnitBodyEventListener;
-        }
+        //if (UnitBody != null && UnitBody.UnitBodyEventHandler != null)
+        //{
+        //    UnitBody.UnitBodyEventHandler -= OnUnitBodyEventListener;
+        //}
 
         if (TargetWaypoint != null)
         {
             WaypointManager.Inst.WaypointPool.Release(TargetWaypoint);
             TargetWaypoint = null;
         }
+
+        UnitFSM.ClearnUp();
     }
 
     public void Notify(Types.UnitNotifyType unitNotifyType, Unit notifyUnit)
@@ -209,26 +211,26 @@ public class Unit : MonoBehaviour
         return draftTargetUnit;
     }
 
-    virtual public bool IsAttackTargetInAttackArea()
-    {
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position + AttackData.AttackArea.offset, AttackData.AttackArea.size, 0.0f, EnemyTeamLayerMask);
-        if (colliders.Length == 0) return false;
+    //virtual public bool IsAttackTargetInAttackArea()
+    //{
+    //    Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position + AttackData.AttackArea.offset, AttackData.AttackArea.size, 0.0f, EnemyTeamLayerMask);
+    //    if (colliders.Length == 0) return false;
 
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            Collider2D collider = colliders[i];
+    //    for (int i = 0; i < colliders.Length; i++)
+    //    {
+    //        Collider2D collider = colliders[i];
 
-            Unit unit = collider.gameObject.GetComponent<Unit>();
-            if (collider.tag == Consts.tagUnit && unit.IsDied == false)
-            {
-                if (AttackTargetUnit == unit)
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+    //        Unit unit = collider.gameObject.GetComponent<Unit>();
+    //        if (collider.tag == Consts.tagUnit && unit.IsDied == false)
+    //        {
+    //            if (AttackTargetUnit == unit)
+    //            {
+    //                return true;
+    //            }
+    //        }
+    //    }
+    //    return false;
+    //}
 
     virtual public void MoveTo(Vector3 position)
     {
@@ -271,18 +273,18 @@ public class Unit : MonoBehaviour
         return false;
     }
 
-    virtual public void Attack()
-    {
-        if (AttackTargetUnit != null && AttackTargetUnit.IsDied == false)
-        {
-            AttackTargetUnit.TakeDamage(AttackData);
-        }
-    }
+    //virtual public void Attack()
+    //{
+    //    if (AttackTargetUnit != null && AttackTargetUnit.IsDied == false)
+    //    {
+    //        AttackTargetUnit.TakeDamage(AttackData);
+    //    }
+    //}
 
-    public void DiedComplete()
-    {
-        Destroy(this.gameObject);
-    }
+    //public void DiedComplete()
+    //{
+    //    Destroy(this.gameObject);
+    //}
 
     private void OnDrawGizmos()
     {

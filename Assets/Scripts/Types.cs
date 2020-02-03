@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 static public class Types {
-    public delegate void UnitEventListener(UnitBodyEventType unitEventType);
+    public delegate void UnitBodyEvent(UnitBodyEventType unitEventType);
 
     public enum UnitBodyEventType
     {
@@ -25,10 +25,10 @@ static public class Types {
         None, Fire, Rain
     }
 
-    public enum AttackRangeType
-    {
-        None, Target, Box, Circle
-    }
+    //public enum AttackRangeType
+    //{
+    //    None, Target, Box, Circle
+    //}
 
     public enum UnitFSMType
     {

@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class AUnitState : MonoBehaviour
 {
     public AUnitState PrevUnitState;
+    protected Unit _unit;
 
     public abstract void EnterState(Unit unit);
     public abstract void ExitState(Unit unit);

@@ -20,17 +20,16 @@ public class Unit_Archer : Unit
         //UnitAttackArea.GetComponent<CircleCollider2D>().radius = AttackRange;
     }
 
-    public override void Attack()
-    {
-        if (AttackTargetUnit != null && AttackTargetUnit.IsDied == false)
-        {
-            Vector3 projectileLocalPosition = ProjectileSpawnPosition.localPosition;
-            projectileLocalPosition.x = ProjectileSpawnPosition.position.x - UnitBody.UnitBodyContainer.transform.position.x;
-            ProjectileAbstract projectile = Instantiate<ProjectileAbstract>(Projectile, transform.position + projectileLocalPosition, Quaternion.identity, transform);
-            projectile.InitByTarget(AttackTargetUnit.gameObject);
-            //projectile.InitByTarget(UnitAttackArea.TargetUnit.gameObject);
-        }
-    }
+    //public override void Attack()
+    //{
+    //    if (AttackTargetUnit != null && AttackTargetUnit.IsDied == false)
+    //    {
+    //        Vector3 projectileLocalPosition = ProjectileSpawnPosition.localPosition;
+    //        projectileLocalPosition.x = ProjectileSpawnPosition.position.x - UnitBody.UnitBodyContainer.transform.position.x;
+    //        ProjectileAbstract projectile = Instantiate<ProjectileAbstract>(Projectile, transform.position + projectileLocalPosition, Quaternion.identity, transform);
+    //        projectile.InitByTarget(AttackTargetUnit.gameObject);
+    //    }
+    //}
 
     private void OnDrawGizmos()
     {

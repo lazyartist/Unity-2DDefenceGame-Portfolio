@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnitBody : MonoBehaviour
 {
-    public Types.UnitEventListener UnitBodyEventListener;
+    public Types.UnitBodyEvent UnitBodyEventHandler;
 
     public Transform UnitBodyContainer;
     public float DirectionX = 1.0f;
@@ -23,7 +23,7 @@ public class UnitBody : MonoBehaviour
 
     public void Attack()
     {
-        UnitBodyEventListener(Types.UnitBodyEventType.Attack);
+        UnitBodyEventHandler(Types.UnitBodyEventType.Attack);
     }
     public void AttackStart()
     {
@@ -38,7 +38,7 @@ public class UnitBody : MonoBehaviour
 
     public void DiedComplete()
     {
-        UnitBodyEventListener(Types.UnitBodyEventType.DiedComplete);
+        UnitBodyEventHandler(Types.UnitBodyEventType.DiedComplete);
     }
 
     public void Toward(Vector3 direction)

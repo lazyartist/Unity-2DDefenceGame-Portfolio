@@ -24,7 +24,7 @@ public class Projectile_Rain : ProjectileAbstract
 
     void Attack()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, AttackData.ExplosionRange, Consts.lmUnit);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, AttackData.AttackRange, Consts.lmUnit);
         for (int i = 0; i < colliders.Length; i++)
         {
             Collider2D collider = colliders[i];
@@ -37,6 +37,6 @@ public class Projectile_Rain : ProjectileAbstract
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, AttackData.ExplosionRange);
+        Gizmos.DrawWireSphere(transform.position, AttackData.AttackRange);
     }
 }

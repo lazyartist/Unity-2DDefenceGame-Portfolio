@@ -217,7 +217,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1509998011141510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.545, y: -3.373, z: 0}
+  m_LocalPosition: {x: 1.476, y: -2.369, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4337202680079958}
@@ -367,6 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitBodyContainer: {fileID: 4740837589922292}
   DirectionX: 1
+  PlayingAttackAni: 0
   SpriteRenderer: {fileID: 0}
   Animator: {fileID: 0}
 --- !u!114 &114511334819230952
@@ -380,6 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a17a1445269e1448656cdd20509844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PrevUnitState: {fileID: 0}
 --- !u!114 &114617355724301494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -391,6 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e0cad7d3d86784a9f6547c9bebc655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PrevUnitState: {fileID: 0}
 --- !u!114 &114639357860183946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -416,6 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba72158de67ea4d840dee2a50e1d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PrevUnitState: {fileID: 0}
 --- !u!114 &114703849053338444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -427,6 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed2e8f4bcca3784cb2ae74dc9ab6fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PrevUnitState: {fileID: 0}
 --- !u!114 &114839447750105528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -449,6 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7486dbc04cbece4488eb882c5c7d691b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PrevUnitState: {fileID: 0}
 --- !u!114 &114897432182434272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -480,25 +486,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23a8acdbc8b5f7499309d64d80dabb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AutoAttack: 1
-  AutoMoveToTarget: 0
-  AutoMoveToWaypoint: 0
-  AutoMoveToWaitingPosition: 0
-  UnitBody: {fileID: 114320070185498788}
   TeamType: 1
-  ATeamColor: {r: 0.41568628, g: 1, b: 0, a: 1}
-  BTeamColor: {r: 0, g: 0.5803922, b: 1, a: 1}
+  UnitBody: {fileID: 114320070185498788}
+  EnemyTeamLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
   UnitSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: 0.28, z: 0}
-  Health: 0
-  Speed: 1
   UnitData: {fileID: 11400000, guid: 164fd4d96835c834ebd661382a8f0e15, type: 2}
   AttackData: {fileID: 11400000, guid: f45972611bfee684994b9a4a25bc4453, type: 2}
+  WaitWaypoint: {fileID: 0}
+  Health: 0
+  Speed: 1
   TakenCCData: {fileID: 0}
   TargetWaypoint: {fileID: 0}
-  WaitWaypoint: {fileID: 0}
-  WaitingPosition: {x: 0, y: 0, z: 0}
-  TargetWaypoint2: {fileID: 0}
   UnitFSM: {fileID: 114897432182434272}
 --- !u!114 &114995575944795956
 MonoBehaviour:
@@ -511,6 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819d6a576f1bf684ba296232caef0433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PrevUnitState: {fileID: 0}
 --- !u!212 &212107979062538058
 SpriteRenderer:
   m_ObjectHideFlags: 1

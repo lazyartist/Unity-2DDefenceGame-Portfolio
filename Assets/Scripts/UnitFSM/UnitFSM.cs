@@ -57,4 +57,9 @@ public class UnitFSM : MonoBehaviour {
         CurUnitState.EnterState(Unit);
         //CurUnitState.UpdateState(Unit, UnitStates);
     }
+
+    public void ClearnUp()
+    {
+        CurUnitState.ExitState(Unit);
+    }
 }

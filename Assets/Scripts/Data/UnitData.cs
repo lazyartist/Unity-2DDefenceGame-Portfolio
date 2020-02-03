@@ -11,7 +11,7 @@ public class UnitData : ScriptableObject
     public float TargetRange = 1f;
     public float AttackCoolTime = 2f;
 
-    public Types.AttackRangeType AttackRangeType;
-    public Vector2 AttackRangeOffset;
-    public Vector2 AttackRangeSize;
+    //public Types.AttackRangeType AttackRangeType;
+    //public Vector2 AttackRangeOffset;
+    //public Vector2 AttackRangeSize;
 }
