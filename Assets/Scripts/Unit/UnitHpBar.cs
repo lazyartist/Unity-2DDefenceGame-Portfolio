@@ -8,6 +8,7 @@ public class UnitHpBar : MonoBehaviour {
     public SpriteRenderer HpBarGaugeSR;
 
     void Start () {
+        // todo use UnitEvent
         // 팀 컬러 설정
         HpBarGaugeSR.color = Unit.TeamData.TeamColors[(int)Unit.TeamType];
     }

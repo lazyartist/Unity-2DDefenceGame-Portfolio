@@ -5,7 +5,7 @@ using UnityEngine;
 public class Unit_Archer : Unit
 {
     public ProjectileAbstract Projectile;
-    public Transform ProjectileSpawnPosition;
+    //public Transform ProjectileSpawnPosition;
     public float AttackRange = 2.5f;
 
     protected new void Start()
@@ -33,15 +33,15 @@ public class Unit_Archer : Unit
 
     private void OnDrawGizmos()
     {
-        Vector3 projectileLocalPosition = ProjectileSpawnPosition.localPosition;
-        projectileLocalPosition.x = ProjectileSpawnPosition.position.x - UnitBody.UnitBodyContainer.transform.position.x;
-        Gizmos.DrawWireSphere(transform.position + projectileLocalPosition, 0.1f);
+        //Vector3 projectileLocalPosition = ProjectileSpawnPosition.localPosition;
+        //projectileLocalPosition.x = ProjectileSpawnPosition.position.x - UnitBody.UnitBodyContainer.transform.position.x;
+        //Gizmos.DrawWireSphere(transform.position + projectileLocalPosition, 0.1f);
 
-        if (AttackTargetUnit != null)
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position, AttackTargetUnit.transform.position);
-        }
+        //if (AttackTargetUnit != null)
+        //{
+        //    Gizmos.color = Color.blue;
+        //    Gizmos.DrawLine(transform.position, AttackTargetUnit.transform.position);
+        //}
     }
 
     //private void OnTriggerEnter2D(Collider2D collision)

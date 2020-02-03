@@ -25,22 +25,30 @@ public class UnitState_Idle : AUnitState
         if (unit.AttackTargetUnit == null && unit.FindAttackTarget() != null)
         {
             // 공격대상을 찾았다
-            // todo 근거리 공격이면 이동, 원거리이면 공격
             Debug.Log("Found AttackTarget " + unit.AttackTargetUnit);
-            // 공격대상의 앞까지 이동할 waypoint 설정
-            unit.TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
-            unit.TargetWaypoint.transform.position = unit.AttackTargetUnit.transform.position
-                + new Vector3(unit.UnitSize.x * 0.5f, 0.0f, 0.0f)
-                + new Vector3(unit.AttackTargetUnit.UnitSize.x * 0.5f, 0.0f, 0.0f);
-            unit.AttackTargetUnit.Notify(Types.UnitNotifyType.Wait, unit);
-            return unitStates[(int)Types.UnitFSMType.Move];
+            if(unit.AttackData.ProjectilePrefab == null)
+            {
+                // 근거리 공격 : 공격대상의 앞까지 이동할 waypoint 설정
+                unit.TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
+                unit.TargetWaypoint.transform.position = unit.AttackTargetUnit.transform.position
+                    + new Vector3(unit.UnitSize.x * 0.5f, 0.0f, 0.0f)
+                    + new Vector3(unit.AttackTargetUnit.UnitSize.x * 0.5f, 0.0f, 0.0f);
+                // 공격대상에게 이동할 동안 대기하도록 통보
+                unit.AttackTargetUnit.Notify(Types.UnitNotifyType.Wait, unit);
+                return unitStates[(int)Types.UnitFSMType.Move];
+            }
+            else
+            {
+                // 원거리 공격 : 즉시 공격
+                return unitStates[(int)Types.UnitFSMType.Attack];
+            }
         }
 
         //공격대상이 있다
         if (unit.AttackTargetUnit != null)
         {
+            Debug.LogAssertion("Idle : unit.AttackTargetUnit != null");
             return unitStates[(int)Types.UnitFSMType.Attack];
-            //Debug.LogAssertion("Idle : unit.AttackTargetUnit != null");
             // 공격범위에 있으면 공격
             //if (unit.IsAttackTargetInAttackArea())
             //{

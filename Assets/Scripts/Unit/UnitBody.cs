@@ -2,48 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// todo UnitBody -> UnitSprite
 public class UnitBody : MonoBehaviour
 {
-    public Types.UnitBodyEvent UnitBodyEventHandler;
-
+    public Unit Unit;
     public Transform UnitBodyContainer;
-    public float DirectionX = 1.0f;
-    public bool PlayingAttackAni = false;
-
-    [HideInInspector]
-    public SpriteRenderer SpriteRenderer;
     [HideInInspector]
     public Animator Animator;
 
     private void Awake()
     {
-        SpriteRenderer = GetComponent<SpriteRenderer>();
         Animator = GetComponent<Animator>();
     }
-
+    // todo Attack -> AniEvent_Attack
     public void Attack()
     {
-        UnitBodyEventHandler(Types.UnitBodyEventType.Attack);
+        Unit.UnitEvent(Types.UnitEventType.Attack);
     }
     public void AttackStart()
     {
         Debug.Log("AttackStart");
-        PlayingAttackAni = true;
+        Unit.UnitEvent(Types.UnitEventType.AttackStart);
     }
     public void AttackEnd()
     {
         Debug.Log("AttackEnd");
-        PlayingAttackAni = false;
+        Unit.UnitEvent(Types.UnitEventType.AttackEnd);
     }
 
     public void DiedComplete()
     {
-        UnitBodyEventHandler(Types.UnitBodyEventType.DiedComplete);
+        Unit.UnitEvent(Types.UnitEventType.DiedComplete);
     }
 
     public void Toward(Vector3 direction)
     {
-        DirectionX = direction.x < 0 ? 1.0f : 0f;
         float rotationY = direction.x < 0 ? 180.0f : 0.0f;
         UnitBodyContainer.rotation = Quaternion.Euler(UnitBodyContainer.rotation.x, rotationY, UnitBodyContainer.rotation.z);
     }

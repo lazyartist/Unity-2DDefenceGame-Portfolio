@@ -6,7 +6,7 @@ public abstract class AUnitState : MonoBehaviour
 {
     public AUnitState PrevUnitState;
     protected Unit _unit;
-
+    // todo EnterState(Unit unit, AUnitState[] unitStates);
     public abstract void EnterState(Unit unit);
     public abstract void ExitState(Unit unit);
     public abstract AUnitState UpdateState(Unit unit, AUnitState[] unitStates);

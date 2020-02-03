@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    public Types.UnitEvent UnitEvent;
+
     public Types.TeamType TeamType;
     public UnitBody UnitBody;
     public LayerMask EnemyTeamLayerMask;
@@ -16,19 +18,19 @@ public class Unit : MonoBehaviour
     public AttackData AttackData;
 
     public Unit AttackTargetUnit;
+    public Waypoint TargetWaypoint;
     public Waypoint WaitWaypoint;
 
+    public UnitFSM UnitFSM;
+    public GameObject ProjectileSpawnPosition;
+
+    // todo create UnitStatus
     public float Health = 20;
     public float Speed = 2f;
     protected float _velocity = 0f;
-
+    public bool IsDied { get; private set; }
     public CCData TakenCCData;
     
-    public bool IsDied { get; private set; }
-
-    public Waypoint TargetWaypoint;
-    public UnitFSM UnitFSM;
-
     protected void Awake()
     {
         gameObject.layer = Mathf.RoundToInt(Mathf.Log(TeamData.TeamLayerMask[(int)TeamType].value, 2f));//LayerMask를 LayerIndex로 변환
@@ -39,28 +41,7 @@ public class Unit : MonoBehaviour
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
         UnitCenterOffset = boxCollider.offset;
         UnitSize = boxCollider.size;
-
-        //UnitBody.UnitBodyEventHandler += OnUnitBodyEventListener;
     }
-
-    //void OnUnitBodyEventListener(Types.UnitBodyEventType unitBodyEventType)
-    //{
-    //    Debug.Log("UnitEventListener " + unitBodyEventType);
-
-    //    switch (unitBodyEventType)
-    //    {
-    //        case Types.UnitBodyEventType.None:
-    //            break;
-    //        case Types.UnitBodyEventType.Attack:
-    //            Attack();
-    //            break;
-    //        case Types.UnitBodyEventType.DiedComplete:
-    //            DiedComplete();
-    //            break;
-    //        default:
-    //            break;
-    //    }
-    //}
 
     protected void Start()
     {
@@ -98,11 +79,6 @@ public class Unit : MonoBehaviour
 
     private void CleanUpUnit()
     {
-        //if (UnitBody != null && UnitBody.UnitBodyEventHandler != null)
-        //{
-        //    UnitBody.UnitBodyEventHandler -= OnUnitBodyEventListener;
-        //}
-
         if (TargetWaypoint != null)
         {
             WaypointManager.Inst.WaypointPool.Release(TargetWaypoint);
@@ -119,16 +95,50 @@ public class Unit : MonoBehaviour
             case Types.UnitNotifyType.None:
                 break;
             case Types.UnitNotifyType.Wait:
-                AttackTargetUnit = notifyUnit;
+                _AddAttackTargetUnit(notifyUnit);
                 UnitFSM.Transit(Types.UnitFSMType.Wait);
                 break;
             case Types.UnitNotifyType.Attack:
-                AttackTargetUnit = notifyUnit;
+                _AddAttackTargetUnit(notifyUnit);
                 UnitFSM.Transit(Types.UnitFSMType.Attack);
                 break;
-            case Types.UnitNotifyType.AttackTargetUnitDied:
-                AttackTargetUnit = null;
-                //UnitFSM.Transit(Types.UnitFSMType.Idle);
+            default:
+                break;
+        }
+    }
+
+    private void _AddAttackTargetUnit(Unit unit)
+    {
+        if(AttackTargetUnit != null)
+        {
+            _RemoveAttackTargetUnit();
+        }
+        AttackTargetUnit = unit;
+        AttackTargetUnit.UnitEvent += _OnUnitEventHandler_AttackTargetUnit;
+    }
+
+    private void _RemoveAttackTargetUnit()
+    {
+        AttackTargetUnit.UnitEvent -= _OnUnitEventHandler_AttackTargetUnit;
+        AttackTargetUnit = null;
+    }
+
+    private void _OnUnitEventHandler_AttackTargetUnit(Types.UnitEventType unitEventType)
+    {
+        switch (unitEventType)
+        {
+            case Types.UnitEventType.None:
+                break;
+            case Types.UnitEventType.AttackStart:
+                break;
+            case Types.UnitEventType.AttackEnd:
+                break;
+            case Types.UnitEventType.Attack:
+                break;
+            case Types.UnitEventType.Die:
+                _RemoveAttackTargetUnit();
+                break;
+            case Types.UnitEventType.DiedComplete:
                 break;
             default:
                 break;
@@ -166,15 +176,17 @@ public class Unit : MonoBehaviour
 
         Health -= damage;
 
-        //if (Health < 0f)
-        //{
-        //    Health = 0f;
-        //}
-
         if (Health <= 0f)
         {
-            IsDied = true;
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        gameObject.layer = 0; // 타겟으로 검색되지 않도록 LayerMask 초기화
+        IsDied = true;
+        UnitEvent(Types.UnitEventType.Die);
     }
 
     virtual public Unit FindAttackTarget()
@@ -206,31 +218,10 @@ public class Unit : MonoBehaviour
         }
 
         // 기존 타겟과 같은 객체가 발견되지 않았으니 새로운 타겟을 지정한다.
-        AttackTargetUnit = draftTargetUnit;
+        _AddAttackTargetUnit(draftTargetUnit);
 
         return draftTargetUnit;
     }
-
-    //virtual public bool IsAttackTargetInAttackArea()
-    //{
-    //    Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position + AttackData.AttackArea.offset, AttackData.AttackArea.size, 0.0f, EnemyTeamLayerMask);
-    //    if (colliders.Length == 0) return false;
-
-    //    for (int i = 0; i < colliders.Length; i++)
-    //    {
-    //        Collider2D collider = colliders[i];
-
-    //        Unit unit = collider.gameObject.GetComponent<Unit>();
-    //        if (collider.tag == Consts.tagUnit && unit.IsDied == false)
-    //        {
-    //            if (AttackTargetUnit == unit)
-    //            {
-    //                return true;
-    //            }
-    //        }
-    //    }
-    //    return false;
-    //}
 
     virtual public void MoveTo(Vector3 position)
     {
@@ -272,19 +263,6 @@ public class Unit : MonoBehaviour
         }
         return false;
     }
-
-    //virtual public void Attack()
-    //{
-    //    if (AttackTargetUnit != null && AttackTargetUnit.IsDied == false)
-    //    {
-    //        AttackTargetUnit.TakeDamage(AttackData);
-    //    }
-    //}
-
-    //public void DiedComplete()
-    //{
-    //    Destroy(this.gameObject);
-    //}
 
     private void OnDrawGizmos()
     {

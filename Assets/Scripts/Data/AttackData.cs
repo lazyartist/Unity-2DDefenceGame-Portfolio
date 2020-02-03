@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "AttackData_", menuName = "SO/Create AttackData")]
 public class AttackData : ScriptableObject {
-    public GameObject ProjectilePrefab;
+    public ProjectileAbstract ProjectilePrefab;
     //public Types.AttackRangeType AttackRangeType;
     //public Types.AttackArea_ AttackArea;
 

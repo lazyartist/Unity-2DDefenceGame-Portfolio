@@ -11,9 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
   m_Name: AttackData_Archer
   m_EditorClassIdentifier: 
+  ProjectilePrefab: {fileID: 114838908851091314, guid: e1fff1eaf29012443ac08f83e9a1e159,
+    type: 2}
   Power: 2
-  ExplosionRange: 1
-  CCData: {fileID: 0}
-  CCType: 0
-  CCTime: 0
-  CCValue: 0
+  AttackRange: 0
+  CCData: {fileID: 11400000, guid: 2abd475d06a3b52439374a14af271a9b, type: 2}
