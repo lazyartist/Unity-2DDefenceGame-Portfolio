@@ -97,10 +97,14 @@ public class Projectile_Arrow : ProjectileAbstract
     override public void InitByTarget(GameObject target)
     {
         _target = target;
+        InitByPosition(target.transform.position);
+    }
 
+    override public void InitByPosition(Vector3 position)
+    {
         _startPosition = transform.position;
         _prevPosition = _startPosition;
-        _lastTargetPosition = target.transform.position;
+        _lastTargetPosition = position;
 
         // 최대 높이보다 더 위에 있는 타겟인 경우 차이만큼 더해서 보정한다.
         // 차이만큼만 더하면 타겟까지 포물선 이동은 하지만 떨어지는 느낌이 없기 때문에
@@ -108,7 +112,7 @@ public class Projectile_Arrow : ProjectileAbstract
         //float distanceY = target.transform.position.y - transform.position.y;
         //if (distanceY > HeightLimit)
         //{
-            //HeightLimit += (distanceY - HeightLimit) * 3;
+        //HeightLimit += (distanceY - HeightLimit) * 3;
         //}
         //_paralobaAlgorithm.Init(HeightLimit, TimeToTopmostHeight, transform.position, target.transform.position);
 
@@ -119,11 +123,6 @@ public class Projectile_Arrow : ProjectileAbstract
 
         _elapsedTime = 0;
         _isMoving = true;
-    }
-
-    override public void InitByPosition(Vector3 position)
-    {
-        // 
     }
 
     void Attack()
@@ -153,7 +152,9 @@ public class Projectile_Arrow : ProjectileAbstract
             }
         }
 
-        Gizmos.DrawWireSphere(transform.position, AttackData.AttackRange);
+        if(AttackData != null) {
+            Gizmos.DrawWireSphere(transform.position, AttackData.AttackRange);
+        }
     }
 }
 

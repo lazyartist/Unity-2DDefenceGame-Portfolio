@@ -9,11 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
-  m_Name: AttackData_Projectile_Stone
+  m_Name: AttackData_Catapult
   m_EditorClassIdentifier: 
+  ProjectilePrefab: {fileID: 114605935260907434, guid: dc2669deccd8ada49a5ec764e71b2691,
+    type: 2}
   Power: 6
-  ExplosionRange: 0.62
+  AttackRange: 1
   CCData: {fileID: 11400000, guid: 2abd475d06a3b52439374a14af271a9b, type: 2}
-  CCType: 0
-  CCTime: 0
-  CCValue: 0

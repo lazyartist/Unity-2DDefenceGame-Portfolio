@@ -37,6 +37,9 @@ public class Projectile_FireDrop : ProjectileAbstract
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, AttackData.AttackRange);
+        if (AttackData != null)
+        {
+            Gizmos.DrawWireSphere(transform.position, AttackData.AttackRange); 
+        }
     }
 }

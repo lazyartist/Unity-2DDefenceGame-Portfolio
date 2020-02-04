@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Tower : MonoBehaviour {
-    public Types.TeamType TeamType { get; set; }
+    public TeamData TeamData;
     public UnitData UnitData;
+    public AttackTargetData AttackTargetData;
+    public AttackData AttackData;
 }

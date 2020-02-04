@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac7f5c905d6c4944b6c77b135203bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackData: {fileID: 11400000, guid: 5eb88b7e7c9f0fe4496024923ec41edc, type: 2}
+  AttackData: {fileID: 0}
 --- !u!212 &212713553128273612
 SpriteRenderer:
   m_ObjectHideFlags: 1

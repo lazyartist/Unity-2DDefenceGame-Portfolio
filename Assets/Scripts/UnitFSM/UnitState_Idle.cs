@@ -28,13 +28,13 @@ public class UnitState_Idle : AUnitState
             Debug.Log("Found AttackTarget " + unit.AttackTargetUnit);
             if(unit.AttackData.ProjectilePrefab == null)
             {
+                // 공격대상에게 이동할 동안 대기하도록 통보
+                unit.AttackTargetUnit.Notify(Types.UnitNotifyType.Wait, unit);
                 // 근거리 공격 : 공격대상의 앞까지 이동할 waypoint 설정
                 unit.TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
                 unit.TargetWaypoint.transform.position = unit.AttackTargetUnit.transform.position
                     + new Vector3(unit.UnitSize.x * 0.5f, 0.0f, 0.0f)
                     + new Vector3(unit.AttackTargetUnit.UnitSize.x * 0.5f, 0.0f, 0.0f);
-                // 공격대상에게 이동할 동안 대기하도록 통보
-                unit.AttackTargetUnit.Notify(Types.UnitNotifyType.Wait, unit);
                 return unitStates[(int)Types.UnitFSMType.Move];
             }
             else
@@ -47,14 +47,8 @@ public class UnitState_Idle : AUnitState
         //공격대상이 있다
         if (unit.AttackTargetUnit != null)
         {
-            Debug.LogAssertion("Idle : unit.AttackTargetUnit != null");
+            //Debug.LogAssertion("Idle : unit.AttackTargetUnit != null " + unit);
             return unitStates[(int)Types.UnitFSMType.Attack];
-            // 공격범위에 있으면 공격
-            //if (unit.IsAttackTargetInAttackArea())
-            //{
-            //    Debug.Log("Attack in idle" + unit.AttackTargetUnit);
-            //    return unitStates[(int)Types.UnitFSMType.Attack];
-            //}
         }
 
         // 대기장소로 이동

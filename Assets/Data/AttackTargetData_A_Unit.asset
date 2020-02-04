@@ -11,5 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ceeb7f0bd3a1ee40bcbff48c8e87ad0, type: 3}
   m_Name: AttackTargetData_A_Unit
   m_EditorClassIdentifier: 
-  LayerMask: []
-  AttackTargetLayerMask: []
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  AttackTargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 512

@@ -90,21 +90,14 @@ public class Projectile_Stone : ProjectileAbstract
         _elapsedTime = 0;
         _isMoving = true;
     }
-    //void PlayAttack()
-    //{
-    //    _animator.SetTrigger("Explosion");
-    //}
 
     void Attack()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, AttackData.AttackRange, Consts.lmUnit);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, AttackData.AttackRange, AttackTargetData.AttackTargetLayerMask);
         for (int i = 0; i < colliders.Length; i++)
         {
             Collider2D collider = colliders[i];
-            if (collider.tag == Consts.tagUnit)
-            {
-                collider.GetComponent<Unit>().TakeDamage(AttackData);
-            }
+            collider.GetComponent<Unit>().TakeDamage(AttackData);
         }
     }
 

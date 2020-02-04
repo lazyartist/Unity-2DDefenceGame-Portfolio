@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f952bc8de77a7647b477ebc48b8f7e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackData: {fileID: 11400000, guid: aadbef9c7ad13014497e6bc744fa33ab, type: 2}
+  AttackData: {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
   HeightLimit: 0.5
   TimeToTopmostHeight: 0.3
 --- !u!212 &212756071531049022

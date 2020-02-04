@@ -15,7 +15,7 @@ public class UnitState_Attack : AUnitState
         unit.Toward(unit.AttackTargetUnit.transform.position);
         _coolTime = 0.0f;
         unit.UnitEvent += OnUnitEventHandler;
-        if(unit.AttackData.ProjectilePrefab == null)
+        if (unit.AttackData.ProjectilePrefab == null)
         {
             // 근거리 공격 : 공격을 통보하여 함께 싸움
             unit.AttackTargetUnit.Notify(Types.UnitNotifyType.Attack, unit);
@@ -78,18 +78,47 @@ public class UnitState_Attack : AUnitState
     }
     virtual public void Attack()
     {
-        if (_unit.AttackTargetUnit != null && _unit.AttackTargetUnit.IsDied == false)
+        // 공격이 발사체가 아닌 경우
+        if (_unit.AttackData.ProjectilePrefab == null)
         {
-            if (_unit.AttackData.ProjectilePrefab == null)
+            _unit.AttackTargetUnit.TakeDamage(_unit.AttackData);
+        }
+        // 공격이 발사체인 경우
+        else
+        {
+            ProjectileAbstract projectile = Instantiate(_unit.AttackData.ProjectilePrefab, _unit.ProjectileSpawnPosition.transform.position, Quaternion.identity, _unit.ProjectileSpawnPosition.transform);
+            projectile.AttackData = _unit.AttackData;
+            projectile.AttackTargetData = _unit.AttackTargetData;
+            // 공격대상이 살아있는 경우
+            if (_unit.AttackTargetUnit != null && _unit.AttackTargetUnit.IsDied == false)
             {
-                _unit.AttackTargetUnit.TakeDamage(_unit.AttackData);
+                projectile.InitByTarget(_unit.AttackTargetUnit.gameObject);
             }
             else
             {
-                ProjectileAbstract projectile = Instantiate(_unit.AttackData.ProjectilePrefab, _unit.ProjectileSpawnPosition.transform.position, Quaternion.identity, _unit.ProjectileSpawnPosition.transform);
-                projectile.AttackData = _unit.AttackData;
-                projectile.InitByTarget(_unit.AttackTargetUnit.gameObject);
+                projectile.InitByPosition(_unit.LastAttackTargetPosition);
             }
+            //Fire();
         }
+
+        //if (_unit.AttackTargetUnit != null && _unit.AttackTargetUnit.IsDied == false)
+        //{
+        //    if (_unit.AttackData.ProjectilePrefab == null)
+        //    {
+        //        _unit.AttackTargetUnit.TakeDamage(_unit.AttackData);
+        //    }
+        //    else
+        //    {
+        //        Fire();
+        //    }
+        //}
     }
+
+    //private void Fire()
+    //{
+    //    ProjectileAbstract projectile = Instantiate(_unit.AttackData.ProjectilePrefab, _unit.ProjectileSpawnPosition.transform.position, Quaternion.identity, _unit.ProjectileSpawnPosition.transform);
+    //    projectile.AttackData = _unit.AttackData;
+    //    projectile.AttackTargetData = _unit.AttackTargetData;
+    //    projectile.InitByTarget(_unit.AttackTargetUnit.gameObject);
+    //}
 }

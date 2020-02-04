@@ -7,20 +7,20 @@ public class Unit : MonoBehaviour
     public Types.UnitEvent UnitEvent;
 
     public TeamData TeamData;
-    public AttackTargetData AttackTargetData;
-    public UnitBody UnitBody;
-
-    public Vector2 UnitSize;
-    public Vector3 UnitCenterOffset;
-
     public UnitData UnitData;
+    public AttackTargetData AttackTargetData;
     public AttackData AttackData;
 
-    public Unit AttackTargetUnit;
+    public UnitBody UnitBody;
+    public Vector2 UnitSize;
+    public Vector3 UnitCenterOffset;
+    public UnitFSM UnitFSM;
+
     public Waypoint TargetWaypoint;
     public Waypoint WaitWaypoint;
 
-    public UnitFSM UnitFSM;
+    public Unit AttackTargetUnit;
+    public Vector3 LastAttackTargetPosition;
     public GameObject ProjectileSpawnPosition;
 
     // todo create UnitStatus
@@ -117,6 +117,8 @@ public class Unit : MonoBehaviour
 
     private void _RemoveAttackTargetUnit()
     {
+        LastAttackTargetPosition = AttackTargetUnit.GetCenterPosition();
+
         AttackTargetUnit.UnitEvent -= _OnUnitEventHandler_AttackTargetUnit;
         AttackTargetUnit = null;
     }
@@ -277,5 +279,10 @@ public class Unit : MonoBehaviour
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(transform.position, AttackTargetUnit.transform.position);
         }
+    }
+
+    public Vector3 GetCenterPosition()
+    {
+        return transform.position + UnitCenterOffset;
     }
 }

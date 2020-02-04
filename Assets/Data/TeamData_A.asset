@@ -9,18 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57b989051c7720b498ac084f8d5fecef, type: 3}
-  m_Name: TeamData
+  m_Name: TeamData_A
   m_EditorClassIdentifier: 
-  TeamColors:
-  - {r: 0.41568628, g: 1, b: 0, a: 1}
-  - {r: 0, g: 0.5803922, b: 1, a: 1}
-  TeamLayerMask:
-  - serializedVersion: 2
-    m_Bits: 256
-  - serializedVersion: 2
-    m_Bits: 512
-  EnemyTeamLayerMask:
-  - serializedVersion: 2
-    m_Bits: 512
-  - serializedVersion: 2
-    m_Bits: 256
+  TeamType: 0
+  TeamColor: {r: 0.30627057, g: 0.9622642, b: 0.28595585, a: 1}

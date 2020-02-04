@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212305059828909278}
   - component: {fileID: 95903535531921048}
   - component: {fileID: 58715300966078438}
-  - component: {fileID: 114946986484010682}
   - component: {fileID: 114605935260907434}
   m_Layer: 0
   m_Name: Projectile_Stone
@@ -88,21 +87,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6daccac332022dc4db85a052755c7549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackData: {fileID: 11400000, guid: 451ad228f6d86d440aa4310b084c9edb, type: 2}
+  AttackData: {fileID: 0}
   HeightLimit: 2
   TimeToTopmostHeight: 0.5
---- !u!114 &114946986484010682
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1106931926785962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 475cdfd41b2d31e4c8c970031dc3e88e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RangeColor: {r: 1, g: 0.97120583, b: 0, a: 1}
 --- !u!212 &212305059828909278
 SpriteRenderer:
   m_ObjectHideFlags: 1
