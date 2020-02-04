@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: AttackData_Barracks
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 0}
-  Power: 2
-  AttackRange: 1
+  Power: 0
+  AttackRange: 0
   CCData: {fileID: 0}

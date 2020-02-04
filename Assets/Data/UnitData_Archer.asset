@@ -14,4 +14,4 @@ MonoBehaviour:
   Health: 10
   Speed: 1
   TargetRange: 3
-  AttackCoolTime: 0.5
+  AttackCoolTime: 1

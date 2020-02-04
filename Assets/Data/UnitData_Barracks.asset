@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 10
   Speed: 2
-  TargetRange: 1
+  TargetRange: 2.3
   AttackCoolTime: 2

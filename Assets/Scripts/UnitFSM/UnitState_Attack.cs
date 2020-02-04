@@ -10,18 +10,25 @@ public class UnitState_Attack : AUnitState
     // implements AUnitState
     public override void EnterState(Unit unit)
     {
-        _unit = unit;
-
-        _coolTime = 0.0f;
-        unit.UnitEvent += OnUnitEventHandler;
-        if (unit.AttackData.ProjectilePrefab == null)
+        if (unit.AttackTargetUnit == null)
         {
-            // 근거리 공격 : 공격을 통보하여 Attack 상태로 전환시킴
-            unit.AttackTargetUnit.Notify(Types.UnitNotifyType.Attack, unit);
+            // 다른 유닛의 원거리 공격등으로 공격대상이 이미 죽었다
         }
         else
         {
-            // 원거리 공격 : 공격을 통보하지 않음
+            _unit = unit;
+
+            _coolTime = 0.0f;
+            unit.UnitEvent += OnUnitEventHandler;
+            if (unit.AttackData.ProjectilePrefab == null)
+            {
+                // 근거리 공격 : 공격을 통보하여 Attack 상태로 전환시킴
+                unit.AttackTargetUnit.Notify(Types.UnitNotifyType.Attack, unit);
+            }
+            else
+            {
+                // 원거리 공격 : 공격을 통보하지 않음
+            }
         }
     }
     public override void ExitState(Unit unit)
@@ -81,7 +88,11 @@ public class UnitState_Attack : AUnitState
         // 공격이 발사체가 아닌 경우
         if (_unit.AttackData.ProjectilePrefab == null)
         {
-            _unit.AttackTargetUnit.TakeDamage(_unit.AttackData);
+            // 공격하는 순간 다른 유닛의 공격에 의해 공격대상이 이미 죽었을 수 있다
+            if(_unit.AttackTargetUnit != null)
+            {
+                _unit.AttackTargetUnit.TakeDamage(_unit.AttackData);
+            }
         }
         // 공격이 발사체인 경우
         else

@@ -88,6 +88,19 @@ public class Unit : MonoBehaviour
         UnitFSM.ClearnUp();
     }
 
+    public void DispatchUnitEvent(Types.UnitEventType unitEventType, Unit unit)
+    {
+        if(UnitEvent == null)
+        {
+            // 이 유닛이 죽거나 이 유닛의 공격대상이 죽어서 등록된 이벤트핸들러가 모두 사라진 경우
+            // 스플래시 데미지로 죽을 경우 나를 감시하는 유닛이 없을 수 있기 때문에 UnitEvent == null일 수 있다
+        }
+        else
+        {
+            UnitEvent(unitEventType, unit);
+        }
+    }
+
     public void Notify(Types.UnitNotifyType unitNotifyType, Unit notifyUnit)
     {
         switch (unitNotifyType)
@@ -119,7 +132,7 @@ public class Unit : MonoBehaviour
 
     private void _RemoveAttackTargetUnit()
     {
-        if(AttackTargetUnit == null)
+        if (AttackTargetUnit == null)
         {
             Debug.LogAssertion("AttackTargetUnit == null " + this);
         }
@@ -192,15 +205,7 @@ public class Unit : MonoBehaviour
     {
         gameObject.layer = 0; // 타겟으로 검색되지 않도록 LayerMask 초기화
         IsDied = true;
-        if (UnitEvent != null)
-        {
-            UnitEvent(Types.UnitEventType.Die, this);
-        }
-        else
-        {
-            Debug.LogAssertion("UnitEvent != null " + this);
-            Debug.Break();
-        }
+        DispatchUnitEvent(Types.UnitEventType.Die, this);
 
         if (AttackTargetUnit != null)
         {
@@ -211,7 +216,7 @@ public class Unit : MonoBehaviour
     virtual public Unit FindAttackTarget()
     {
         // 이미 공격목표가 있다
-        if(AttackTargetUnit != null)
+        if (AttackTargetUnit != null)
         {
             return AttackTargetUnit;
         }
@@ -228,10 +233,31 @@ public class Unit : MonoBehaviour
             // 사망하거나 전투중이 아닌 유닛만 공격대상으로 한다
             if (unit.IsDied == false && unit.AttackTargetUnit == null)
             {
-                _AddAttackTargetUnit(unit);
-                draftTargetUnit = unit;
-                break;
+                if (draftTargetUnit == null)
+                {
+                    draftTargetUnit = unit;
+                }
+                else
+                {
+                    if (unit.TargetWaypoint == null)
+                    {
+                        //
+                    }
+                    else if (draftTargetUnit.TargetWaypoint == null)
+                    {
+                        draftTargetUnit = unit;
+                    }
+                    else if (draftTargetUnit.TargetWaypoint.OrderNumber < unit.TargetWaypoint.OrderNumber)
+                    {
+                        draftTargetUnit = unit;
+                    }
+                }
             }
+        }
+
+        if (draftTargetUnit != null)
+        {
+            _AddAttackTargetUnit(draftTargetUnit);
         }
 
         return draftTargetUnit;

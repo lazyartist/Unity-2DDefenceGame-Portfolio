@@ -17,22 +17,22 @@ public class UnitBody : MonoBehaviour
     // todo Attack -> AniEvent_Attack
     public void Attack()
     {
-        Unit.UnitEvent(Types.UnitEventType.Attack, Unit);
+        Unit.DispatchUnitEvent(Types.UnitEventType.Attack, Unit);
     }
     public void AttackStart()
     {
         Debug.Log("AttackStart");
-        Unit.UnitEvent(Types.UnitEventType.AttackStart, Unit);
+        Unit.DispatchUnitEvent(Types.UnitEventType.AttackStart, Unit);
     }
     public void AttackEnd()
     {
         Debug.Log("AttackEnd");
-        Unit.UnitEvent(Types.UnitEventType.AttackEnd, Unit);
+        Unit.DispatchUnitEvent(Types.UnitEventType.AttackEnd, Unit);
     }
 
     public void DiedComplete()
     {
-        Unit.UnitEvent(Types.UnitEventType.DiedComplete, Unit);
+        Unit.DispatchUnitEvent(Types.UnitEventType.DiedComplete, Unit);
     }
 
     public void Toward(Vector3 direction)

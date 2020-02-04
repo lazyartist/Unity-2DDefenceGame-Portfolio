@@ -33,6 +33,7 @@ public class WaypointManager : SingletonBase<WaypointManager>
             {
                 Waypoint wp = waypointContainer.transform.GetChild(j).GetComponent<Waypoint>();
                 curWaypoint.NextWaypoint = wp;
+                curWaypoint.OrderNumber = j;
                 curWaypoint = wp;
             }
         }

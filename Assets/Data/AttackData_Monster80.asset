@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: AttackData_Monster80
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 0}
-  Power: 1
+  Power: 9
   AttackRange: 1
   CCData: {fileID: 0}

@@ -117,7 +117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1904991752889578
 GameObject:
   m_ObjectHideFlags: 1
@@ -411,21 +411,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23a8acdbc8b5f7499309d64d80dabb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TeamType: 0
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
+  UnitData: {fileID: 11400000, guid: 0e2a64c80c793564ea6975e2c007a0cf, type: 2}
   AttackTargetData: {fileID: 11400000, guid: 3e629cc51b0c0634d9ca744dfc66a3a3, type: 2}
+  AttackData: {fileID: 11400000, guid: 6c537d924f0bca240b96b116538d6b95, type: 2}
   UnitBody: {fileID: 114723352867318568}
-  AttackTargetLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
   UnitSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: 0.25, z: 0}
-  UnitData: {fileID: 11400000, guid: 0e2a64c80c793564ea6975e2c007a0cf, type: 2}
-  AttackData: {fileID: 11400000, guid: 6c537d924f0bca240b96b116538d6b95, type: 2}
-  AttackTargetUnit: {fileID: 0}
+  UnitFSM: {fileID: 114180412939993244}
   TargetWaypoint: {fileID: 0}
   WaitWaypoint: {fileID: 0}
-  UnitFSM: {fileID: 114180412939993244}
+  AttackTargetUnit: {fileID: 0}
+  LastAttackTargetPosition: {x: 0, y: 0, z: 0}
   ProjectileSpawnPosition: {fileID: 0}
   Health: 0
   Speed: 1
