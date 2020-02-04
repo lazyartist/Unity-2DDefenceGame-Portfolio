@@ -12,12 +12,11 @@ public class UnitState_Attack : AUnitState
     {
         _unit = unit;
 
-        unit.Toward(unit.AttackTargetUnit.transform.position);
         _coolTime = 0.0f;
         unit.UnitEvent += OnUnitEventHandler;
         if (unit.AttackData.ProjectilePrefab == null)
         {
-            // 근거리 공격 : 공격을 통보하여 함께 싸움
+            // 근거리 공격 : 공격을 통보하여 Attack 상태로 전환시킴
             unit.AttackTargetUnit.Notify(Types.UnitNotifyType.Attack, unit);
         }
         else
@@ -43,6 +42,7 @@ public class UnitState_Attack : AUnitState
             else if (_coolTime <= 0.0f)
             {
                 Debug.Log("Attack " + unit + " to " + unit.AttackTargetUnit);
+                unit.Toward(unit.AttackTargetUnit.transform.position);
                 unit.UnitBody.Animator.SetTrigger("Attack");
                 _coolTime = unit.UnitData.AttackCoolTime;
             }
