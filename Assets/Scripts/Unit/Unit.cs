@@ -30,7 +30,7 @@ public class Unit : MonoBehaviour
     protected float _velocity = 0f;
     public bool IsDied { get; private set; }
     public CCData TakenCCData;
-    
+
     protected void Awake()
     {
         gameObject.layer = Mathf.RoundToInt(Mathf.Log(TeamData.TeamLayerMask[(int)TeamType].value, 2f));//LayerMask를 LayerIndex로 변환
@@ -109,7 +109,7 @@ public class Unit : MonoBehaviour
 
     private void _AddAttackTargetUnit(Unit unit)
     {
-        if(AttackTargetUnit != null)
+        if (AttackTargetUnit != null)
         {
             _RemoveAttackTargetUnit();
         }
@@ -186,7 +186,15 @@ public class Unit : MonoBehaviour
     {
         gameObject.layer = 0; // 타겟으로 검색되지 않도록 LayerMask 초기화
         IsDied = true;
-        UnitEvent(Types.UnitEventType.Die);
+        if (UnitEvent != null)
+        {
+            UnitEvent(Types.UnitEventType.Die);
+        }
+        else
+        {
+            Debug.LogAssertion("UnitEvent != null " + this);
+            Debug.Break();
+        }
     }
 
     virtual public Unit FindAttackTarget()

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
   m_Name: AttackData_Projectile_Arrow
   m_EditorClassIdentifier: 
-  Power: 2
-  ExplosionRange: 0
-  SkillTime: 0
-  SkillType: 0
+  ProjectilePrefab: {fileID: 0}
+  Power: 5
+  AttackRange: 1
+  CCData: {fileID: 0}

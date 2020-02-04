@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: CCData_Stun
   m_EditorClassIdentifier: 
   CCType: 1
-  CCTime: 2
+  CCTime: 1
   CCValue: 0

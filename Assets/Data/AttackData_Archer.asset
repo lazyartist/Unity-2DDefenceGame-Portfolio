@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 114838908851091314, guid: e1fff1eaf29012443ac08f83e9a1e159,
     type: 2}
-  Power: 2
-  AttackRange: 0
+  Power: 5
+  AttackRange: 5
   CCData: {fileID: 11400000, guid: 2abd475d06a3b52439374a14af271a9b, type: 2}

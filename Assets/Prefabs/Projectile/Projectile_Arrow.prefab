@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212756071531049022}
   - component: {fileID: 95636240905479010}
   - component: {fileID: 58752580284089828}
-  - component: {fileID: 114658602050064726}
   - component: {fileID: 114838908851091314}
   m_Layer: 0
   m_Name: Projectile_Arrow
@@ -77,18 +76,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114658602050064726
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1506064412979460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 475cdfd41b2d31e4c8c970031dc3e88e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RangeColor: {r: 1, g: 0.97120583, b: 0, a: 1}
 --- !u!114 &114838908851091314
 MonoBehaviour:
   m_ObjectHideFlags: 1
