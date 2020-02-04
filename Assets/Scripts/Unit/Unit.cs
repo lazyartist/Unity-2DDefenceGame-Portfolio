@@ -6,6 +6,8 @@ public class Unit : MonoBehaviour
 {
     public Types.UnitEvent UnitEvent;
 
+    public Dictionary<int, int> aa;
+
     public TeamData TeamData;
     public UnitData UnitData;
     public AttackTargetData AttackTargetData;

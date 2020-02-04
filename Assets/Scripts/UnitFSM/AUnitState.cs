@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Abstract UnitState
 public abstract class AUnitState : MonoBehaviour
 {
+    [HideInInspector]
     public AUnitState PrevUnitState;
     protected Unit _unit;
     // todo EnterState(Unit unit, AUnitState[] unitStates);

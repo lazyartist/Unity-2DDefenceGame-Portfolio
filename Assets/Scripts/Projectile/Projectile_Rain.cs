@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Projectile_Rain : ProjectileAbstract
+public class Projectile_Rain : AProjectile
 {
     private Animator _animator;
 

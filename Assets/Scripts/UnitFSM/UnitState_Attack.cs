@@ -86,7 +86,7 @@ public class UnitState_Attack : AUnitState
         // 공격이 발사체인 경우
         else
         {
-            ProjectileAbstract projectile = Instantiate(_unit.AttackData.ProjectilePrefab, _unit.ProjectileSpawnPosition.transform.position, Quaternion.identity, _unit.ProjectileSpawnPosition.transform);
+            AProjectile projectile = Instantiate(_unit.AttackData.ProjectilePrefab, _unit.ProjectileSpawnPosition.transform.position, Quaternion.identity, _unit.ProjectileSpawnPosition.transform);
             projectile.AttackData = _unit.AttackData;
             projectile.AttackTargetData = _unit.AttackTargetData;
             // 공격대상이 살아있는 경우

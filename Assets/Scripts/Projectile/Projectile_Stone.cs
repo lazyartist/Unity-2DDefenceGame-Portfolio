@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Projectile_Stone : ProjectileAbstract
+public class Projectile_Stone : AProjectile
 {
     public float HeightLimit = 5f;
     public float TimeToTopmostHeight = 2f;

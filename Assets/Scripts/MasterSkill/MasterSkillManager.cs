@@ -7,8 +7,8 @@ public class MasterSkillManager : SingletonBase<MasterSkillManager>
 {
     public Animator ClickAnimator;
 
-    public ProjectileAbstract Projectile_FireDrop;
-    public ProjectileAbstract Projectile_RainDrop;
+    public AProjectile Projectile_FireDrop;
+    public AProjectile Projectile_RainDrop;
 
     public Types.MasterSkillType MasterSkillType;
     // Use this for initialization
@@ -27,16 +27,16 @@ public class MasterSkillManager : SingletonBase<MasterSkillManager>
             ClickAnimator.transform.position = clickPosition;
             ClickAnimator.SetTrigger("Click");
 
-            ProjectileAbstract projectile = null;
+            AProjectile projectile = null;
             switch (MasterSkillType)
             {
                 case Types.MasterSkillType.None:
                     return;
                 case Types.MasterSkillType.Fire:
-                    projectile = Instantiate<ProjectileAbstract>(Projectile_FireDrop, clickPosition, Quaternion.identity, transform);
+                    projectile = Instantiate<AProjectile>(Projectile_FireDrop, clickPosition, Quaternion.identity, transform);
                     break;
                 case Types.MasterSkillType.Rain:
-                    projectile = Instantiate<ProjectileAbstract>(Projectile_RainDrop, clickPosition, Quaternion.identity, transform);
+                    projectile = Instantiate<AProjectile>(Projectile_RainDrop, clickPosition, Quaternion.identity, transform);
                     break;
                 default:
                     break;

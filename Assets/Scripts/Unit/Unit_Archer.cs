@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Unit_Archer : Unit
 {
-    public ProjectileAbstract Projectile;
+    public AProjectile Projectile;
     //public Transform ProjectileSpawnPosition;
     public float AttackRange = 2.5f;
 
