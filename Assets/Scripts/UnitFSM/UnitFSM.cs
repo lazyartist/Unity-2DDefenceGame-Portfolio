@@ -11,6 +11,7 @@ public class UnitFSM : MonoBehaviour {
         foreach (var item in UnitStates)
         {
             item.enabled = CurUnitState == item;
+            // todo UnitState.Init(Unit, UnitStates);
         }
         CurUnitState.EnterState(Unit);
     }

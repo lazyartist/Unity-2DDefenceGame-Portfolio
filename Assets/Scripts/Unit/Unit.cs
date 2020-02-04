@@ -119,13 +119,17 @@ public class Unit : MonoBehaviour
 
     private void _RemoveAttackTargetUnit()
     {
+        if(AttackTargetUnit == null)
+        {
+            Debug.LogAssertion("AttackTargetUnit == null " + this);
+        }
         LastAttackTargetPosition = AttackTargetUnit.GetCenterPosition();
 
         AttackTargetUnit.UnitEvent -= _OnUnitEventHandler_AttackTargetUnit;
         AttackTargetUnit = null;
     }
 
-    private void _OnUnitEventHandler_AttackTargetUnit(Types.UnitEventType unitEventType)
+    private void _OnUnitEventHandler_AttackTargetUnit(Types.UnitEventType unitEventType, Unit unit)
     {
         switch (unitEventType)
         {
@@ -190,45 +194,45 @@ public class Unit : MonoBehaviour
         IsDied = true;
         if (UnitEvent != null)
         {
-            UnitEvent(Types.UnitEventType.Die);
+            UnitEvent(Types.UnitEventType.Die, this);
         }
         else
         {
             Debug.LogAssertion("UnitEvent != null " + this);
             Debug.Break();
         }
+
+        if (AttackTargetUnit != null)
+        {
+            AttackTargetUnit.UnitEvent -= _OnUnitEventHandler_AttackTargetUnit;
+        }
     }
 
     virtual public Unit FindAttackTarget()
     {
+        // 이미 공격목표가 있다
+        if(AttackTargetUnit != null)
+        {
+            return AttackTargetUnit;
+        }
+
         Unit draftTargetUnit = null;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, UnitData.TargetRange, AttackTargetData.AttackTargetLayerMask);
         if (colliders.Length == 0) return draftTargetUnit;
 
+        // todo 가장 목표지점에 가까운 적을 찾는다.
         for (int i = 0; i < colliders.Length; i++)
         {
             Collider2D collider = colliders[i];
-
-            if (collider.tag == Consts.tagUnit && collider.gameObject.GetComponent<Unit>().IsDied == false)
+            Unit unit = collider.gameObject.GetComponent<Unit>();
+            // 사망하거나 전투중이 아닌 유닛만 공격대상으로 한다
+            if (unit.IsDied == false && unit.AttackTargetUnit == null)
             {
-                Unit unit = collider.gameObject.GetComponent<Unit>();
-
-                // 기존 타겟과 동일한 객체가 있으면 타겟을 변경하지 않는다.
-                if (AttackTargetUnit == unit.gameObject)
-                {
-                    return draftTargetUnit;
-                }
-
-                if (draftTargetUnit == null && unit.IsDied == false)
-                {
-                    // 임시로 타겟을 하나 정한다.
-                    draftTargetUnit = unit;
-                }
+                _AddAttackTargetUnit(unit);
+                draftTargetUnit = unit;
+                break;
             }
         }
-
-        // 기존 타겟과 같은 객체가 발견되지 않았으니 새로운 타겟을 지정한다.
-        _AddAttackTargetUnit(draftTargetUnit);
 
         return draftTargetUnit;
     }

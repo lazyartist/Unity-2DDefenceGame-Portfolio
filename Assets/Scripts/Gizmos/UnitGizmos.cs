@@ -17,6 +17,13 @@ public class UnitGizmos : MonoBehaviour {
             //Gizmos.color = unit.TeamType == Types.TeamType.A ? unit.ATeamColor : unit.BTeamColor;
             Gizmos.color = unit.TeamData.TeamColor;
             Gizmos.DrawWireSphere(transform.position + unit.UnitCenterOffset, unit.UnitData.TargetRange);
+            // 투사체 생성 지점
+            if(unit.ProjectileSpawnPosition != null)
+            {
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawWireSphere(unit.ProjectileSpawnPosition.transform.position, 0.05f);
+            }
+
             // 유닛 공격 범위
             //if(unit.AttackData != null) {
             //    Gizmos.color = Color.red;

@@ -21,7 +21,7 @@ public class UnitState_Die : AUnitState
     {
         return null;
     }
-    void OnUnitBodyEventHandler(Types.UnitEventType unitBodyEventType)
+    void OnUnitBodyEventHandler(Types.UnitEventType unitBodyEventType, Unit unit)
     {
         Debug.Log("UnitEventListener " + unitBodyEventType);
 

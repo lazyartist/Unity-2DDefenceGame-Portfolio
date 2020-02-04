@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 static public class Types {
-    public delegate void UnitEvent(UnitEventType unitEventType);
+    public delegate void UnitEvent(UnitEventType unitEventType, Unit unit);
 
     public enum UnitEventType
     {

@@ -64,7 +64,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1299584712736648
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 114561099645385340}
   - component: {fileID: 114447239558583854}
   - component: {fileID: 114083970544744062}
-  - component: {fileID: 114198818403079844}
+  - component: {fileID: 114627217347556148}
   - component: {fileID: 114792745593350560}
   - component: {fileID: 114485995525816242}
   - component: {fileID: 114060179040907994}
@@ -175,7 +175,7 @@ Transform:
   - {fileID: 4173837582524278}
   - {fileID: 4040894306784736}
   m_Father: {fileID: 4423060185369834}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4352934188584210
 Transform:
@@ -187,6 +187,7 @@ Transform:
   m_LocalPosition: {x: 7.05, y: -1.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4508797607411722}
   - {fileID: 4423060185369834}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -201,10 +202,9 @@ Transform:
   m_LocalPosition: {x: -0.037000656, y: 0.20599985, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4508797607411722}
   - {fileID: 4267300970033836}
   m_Father: {fileID: 4352934188584210}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4508797607411722
 Transform:
@@ -213,10 +213,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1299584712736648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.030000627, y: 1.2590002, z: 0}
+  m_LocalPosition: {x: -1.7, y: 1.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4423060185369834}
+  m_Father: {fileID: 4352934188584210}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4946709125138052
@@ -355,18 +355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b17c9bdc788b140870764ca6e2e59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114198818403079844
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1718194122817380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78a17a1445269e1448656cdd20509844, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PrevUnitState: {fileID: 0}
 --- !u!114 &114357581221210042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -378,7 +366,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb29365898316b49b8c7ecca3337d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChildUnitPrefab: {fileID: 114781674197796128, guid: b6c8386ac315cf64fb88841752ced57a,
+    type: 2}
   Units: []
+  MaxUnitCount: 3
 --- !u!114 &114447239558583854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -417,12 +408,24 @@ MonoBehaviour:
   UnitStates:
   - {fileID: 114447239558583854}
   - {fileID: 114083970544744062}
-  - {fileID: 114198818403079844}
+  - {fileID: 114627217347556148}
   - {fileID: 114792745593350560}
   - {fileID: 114485995525816242}
   - {fileID: 114060179040907994}
-  CurUnitState: {fileID: 114447239558583854}
+  CurUnitState: {fileID: 114627217347556148}
   Unit: {fileID: 114991902228683878}
+--- !u!114 &114627217347556148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1718194122817380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db18d6783e61f244911d8292c553d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrevUnitState: {fileID: 0}
 --- !u!114 &114645467911676466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -461,12 +464,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
-  UnitData: {fileID: 11400000, guid: 8976ce3c529d1ed49bcaa6199d3bcefa, type: 2}
+  UnitData: {fileID: 11400000, guid: 9940e7965d4fe24429652e96876d797f, type: 2}
   AttackTargetData: {fileID: 11400000, guid: d81539ef5a14e544b8f233a5c6c710ab, type: 2}
-  AttackData: {fileID: 11400000, guid: 451ad228f6d86d440aa4310b084c9edb, type: 2}
+  AttackData: {fileID: 11400000, guid: 741041b14276d454693bf3b3c21b5689, type: 2}
   UnitBody: {fileID: 114645467911676466}
   UnitSize: {x: 0, y: 0}
-  UnitCenterOffset: {x: 0, y: 0.28, z: 0}
+  UnitCenterOffset: {x: 0, y: 0.26, z: 0}
   UnitFSM: {fileID: 114561099645385340}
   TargetWaypoint: {fileID: 0}
   WaitWaypoint: {fileID: 0}
