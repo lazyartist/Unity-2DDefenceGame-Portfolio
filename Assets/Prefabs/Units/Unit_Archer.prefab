@@ -86,7 +86,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1685357474663072
 GameObject:
   m_ObjectHideFlags: 1
@@ -386,11 +386,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TeamType: 0
-  UnitBody: {fileID: 114674158599414336}
-  EnemyTeamLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
+  AttackTargetData: {fileID: 11400000, guid: 3e629cc51b0c0634d9ca744dfc66a3a3, type: 2}
+  UnitBody: {fileID: 114674158599414336}
+  AttackTargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   UnitSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: 0.25, z: 0}
   UnitData: {fileID: 11400000, guid: aad809a304d44284ea7125cca2837cd3, type: 2}

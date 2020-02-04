@@ -4,7 +4,6 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "TeamData_", menuName = "SO/Create TeamData")]
 public class TeamData : ScriptableObject {
-    public Color[] TeamColors;
-    public LayerMask[] TeamLayerMask;
-    public LayerMask[] EnemyTeamLayerMask;
+    public Types.TeamType TeamType;
+    public Color TeamColor;
 }

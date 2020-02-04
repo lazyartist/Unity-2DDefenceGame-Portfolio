@@ -115,7 +115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1539418023192598
 GameObject:
   m_ObjectHideFlags: 1
@@ -217,7 +217,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1509998011141510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.476, y: -2.369, z: 0}
+  m_LocalPosition: {x: 3.49, y: -3.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4337202680079958}
@@ -484,12 +484,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23a8acdbc8b5f7499309d64d80dabb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TeamType: 1
+  TeamData: {fileID: 11400000, guid: d9165ec3e3bbdfd4198bf3e7258b5afd, type: 2}
+  AttackTargetData: {fileID: 11400000, guid: 82e9e44e536c6c542b27909404acf311, type: 2}
   UnitBody: {fileID: 114320070185498788}
-  EnemyTeamLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
   UnitSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: 0.28, z: 0}
   UnitData: {fileID: 11400000, guid: 164fd4d96835c834ebd661382a8f0e15, type: 2}
@@ -594,7 +591,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1233282405
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: dcd0c6559df3d94469991d8d7795ffc8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

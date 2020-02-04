@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212103539937492684}
   - component: {fileID: 95523898691970844}
   - component: {fileID: 114876549613355156}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: UnitBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4033148216719036}
   - component: {fileID: 114754081562300560}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UnitHpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4238864708516996}
   - component: {fileID: 212756477230878322}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4404421032470478}
   - component: {fileID: 212704485173307896}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HpBarGaugeSR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4055736904872736}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: UnitBodyContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4629595996522418}
   - component: {fileID: 212795563064714426}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HpBarBgSR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4535622387744538}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: ProjectileSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4903052405631842}
   - component: {fileID: 212685190122931806}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 114136944678730368}
   - component: {fileID: 114412353152336588}
   - component: {fileID: 114424123361281524}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Unit_Archer (1)
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -174,7 +174,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4523181999817178}
   - component: {fileID: 114325642816277908}
-  m_Layer: 0
+  - component: {fileID: 114367369083712476}
+  m_Layer: 10
   m_Name: Tower_Archer
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -231,7 +232,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1124275119336054}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.154, y: 0.799, z: 0}
+  m_LocalPosition: {x: -0.054000095, y: 1.1090001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4523181999817178}
@@ -244,7 +245,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1869012818398506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.088, y: 0.608, z: 0}
+  m_LocalPosition: {x: 0.011999905, y: 0.918, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4033148216719036}
@@ -272,7 +273,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1990256030576994}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.33, y: 1.36, z: 0}
+  m_LocalPosition: {x: 2.98, y: -1.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4238864708516996}
@@ -314,7 +315,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816195499362912}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.1, y: 0.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4523181999817178}
@@ -439,6 +440,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitData: {fileID: 11400000, guid: 5849c7eb9c981404594eae9b6350b40a, type: 2}
+--- !u!114 &114367369083712476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1990256030576994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3333fb9ed83b2ed45a8786afbbeb01ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114412353152336588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -512,11 +524,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TeamType: 0
-  UnitBody: {fileID: 114876549613355156}
-  EnemyTeamLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
+  AttackTargetData: {fileID: 11400000, guid: 3e629cc51b0c0634d9ca744dfc66a3a3, type: 2}
+  UnitBody: {fileID: 114876549613355156}
+  AttackTargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   UnitSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: 0.25, z: 0}
   UnitData: {fileID: 11400000, guid: aad809a304d44284ea7125cca2837cd3, type: 2}

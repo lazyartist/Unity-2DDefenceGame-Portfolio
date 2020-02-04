@@ -6,10 +6,9 @@ public class Unit : MonoBehaviour
 {
     public Types.UnitEvent UnitEvent;
 
-    public Types.TeamType TeamType;
-    public UnitBody UnitBody;
-    public LayerMask EnemyTeamLayerMask;
     public TeamData TeamData;
+    public AttackTargetData AttackTargetData;
+    public UnitBody UnitBody;
 
     public Vector2 UnitSize;
     public Vector3 UnitCenterOffset;
@@ -33,8 +32,7 @@ public class Unit : MonoBehaviour
 
     protected void Awake()
     {
-        gameObject.layer = Mathf.RoundToInt(Mathf.Log(TeamData.TeamLayerMask[(int)TeamType].value, 2f));//LayerMask를 LayerIndex로 변환
-        EnemyTeamLayerMask = TeamData.EnemyTeamLayerMask[(int)TeamType];
+        gameObject.layer = Mathf.RoundToInt(Mathf.Log(AttackTargetData.LayerMask.value, 2f));//LayerMask를 LayerIndex로 변환
 
         TakenCCData = new CCData();
 
@@ -200,7 +198,7 @@ public class Unit : MonoBehaviour
     virtual public Unit FindAttackTarget()
     {
         Unit draftTargetUnit = null;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, UnitData.TargetRange, EnemyTeamLayerMask);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, UnitData.TargetRange, AttackTargetData.AttackTargetLayerMask);
         if (colliders.Length == 0) return draftTargetUnit;
 
         for (int i = 0; i < colliders.Length; i++)
@@ -217,7 +215,7 @@ public class Unit : MonoBehaviour
                     return draftTargetUnit;
                 }
 
-                if (draftTargetUnit == null && unit.TeamType != TeamType && unit.IsDied == false)
+                if (draftTargetUnit == null && unit.IsDied == false)
                 {
                     // 임시로 타겟을 하나 정한다.
                     draftTargetUnit = unit;

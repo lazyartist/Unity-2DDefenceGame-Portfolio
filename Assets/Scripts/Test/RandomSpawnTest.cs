@@ -22,13 +22,11 @@ public class RandomSpawnTest : MonoBehaviour {
         UnitCountText.text = UnitContainer.transform.childCount.ToString();
     }
 
-    IEnumerator RandomSpawnCoRoutine()
+    IEnumerator RandomSpawnCoroutine()
     {
         while (true)
         {
             Unit unit = Instantiate<Unit>(UnitPrefab);
-
-            unit.TeamType = Random.Range(0, 2) == 0 ? Types.TeamType.A : Types.TeamType.B;
 
             unit.transform.position = new Vector3(Random.Range(-4, 4), Random.Range(-2, 2), 0f);
 
@@ -43,19 +41,8 @@ public class RandomSpawnTest : MonoBehaviour {
         while (true)
         {
             Unit unit = Instantiate<Unit>(UnitPrefab, StartWaypoint.transform.position, Quaternion.identity, UnitContainer.transform);
-
             unit.name = unit.name + unitNumber++;
-
-            //unit.AutoAttack = true;
-            //unit.AutoMoveToTarget = true;
-            //unit.AutoMoveToWaypoint = true;
-
-            //unit.TargetWaypoint = StartWaypoint;
             unit.TargetWaypoint = WaypointManager.Inst.StartWaypoints[Random.Range(0, pathCount)];
-
-            unit.TeamType = Types.TeamType.B;
-            //unit.transform.position = new Vector3(Random.Range(-4, 4), Random.Range(-2, 2), 0f);
-
             yield return new WaitForSeconds(Random.Range(SpawnDelayMin, SpawnDelayMax));
         }
     }

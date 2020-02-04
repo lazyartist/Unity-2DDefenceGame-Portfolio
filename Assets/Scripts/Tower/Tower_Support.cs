@@ -30,11 +30,6 @@ public class Tower_Support : Tower
         if (_elasedSpawnTime >= UnitData.AttackCoolTime && _units.Count < UnitCount)
         {
             Unit unit = Instantiate<Unit>(UnitPrefab, SpawnPosition.position, Quaternion.identity, transform);
-            unit.TeamType = TeamType;
-            //unit.AutoAttack = true;
-            //unit.AutoMoveToTarget = true;
-            //unit.AutoMoveToWaitingPosition = true;
-            //unit.AutoMoveToWaypoint = false;
 
             // 대기장소 인근 랜덤한 위치
             {

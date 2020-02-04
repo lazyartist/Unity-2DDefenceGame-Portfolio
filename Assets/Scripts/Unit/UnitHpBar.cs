@@ -10,7 +10,7 @@ public class UnitHpBar : MonoBehaviour {
     void Start () {
         // todo use UnitEvent
         // 팀 컬러 설정
-        HpBarGaugeSR.color = Unit.TeamData.TeamColors[(int)Unit.TeamType];
+        HpBarGaugeSR.color = Unit.TeamData.TeamColor;
     }
 	
 	// Update is called once per frame

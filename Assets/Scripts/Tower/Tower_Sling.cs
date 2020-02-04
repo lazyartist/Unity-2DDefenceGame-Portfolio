@@ -49,11 +49,8 @@ public class Tower_Sling : Tower
             if (collider.tag == Consts.tagUnit)
             {
                 Unit unit = collider.GetComponent<Unit>();
-                if (unit.TeamType != TeamType)
-                {
-                    _target = collider.gameObject;
-                    break;
-                }
+                _target = collider.gameObject;
+                break;
             }
         }
 
