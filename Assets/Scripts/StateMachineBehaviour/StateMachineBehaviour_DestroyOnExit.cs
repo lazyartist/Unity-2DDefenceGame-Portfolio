@@ -9,9 +9,14 @@ public class StateMachineBehaviour_DestroyOnExit : StateMachineBehaviour {
         //Destroy(animator.gameObject);
     }
 
-    public override void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
+    public override void OnStateMachineExit(Animator animator, int stateMachinePathHash)
     {
         Destroy(animator.gameObject);
-        
+    }
+
+    public override void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
+    {
+        // todo OnStateMachineExit가 호출되고 바로 OnStateMachineEnter가 호출되는 이유가 뭘까?
+        //Destroy(animator.gameObject);
     }
 }

@@ -173,7 +173,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4523181999817178}
-  - component: {fileID: 114325642816277908}
   - component: {fileID: 114367369083712476}
   m_Layer: 10
   m_Name: Tower_Archer
@@ -428,21 +427,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
---- !u!114 &114325642816277908
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1990256030576994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57f762802c5c1b44aa46b7ebda8befec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
-  UnitData: {fileID: 11400000, guid: 5849c7eb9c981404594eae9b6350b40a, type: 2}
-  AttackTargetData: {fileID: 11400000, guid: d81539ef5a14e544b8f233a5c6c710ab, type: 2}
-  AttackData: {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
 --- !u!114 &114367369083712476
 MonoBehaviour:
   m_ObjectHideFlags: 1

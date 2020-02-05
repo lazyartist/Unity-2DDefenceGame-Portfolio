@@ -24,7 +24,7 @@ public class ShadowTest : MonoBehaviour {
             float x = Mathf.Cos(rad) * distance;
             float y = Mathf.Sin(rad) * distance;
             Shadow.effectDistance = new Vector2(x, y);
-        }
+        } 
 
         if(false)
         {
