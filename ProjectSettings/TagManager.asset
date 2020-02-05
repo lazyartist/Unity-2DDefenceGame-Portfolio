@@ -49,11 +49,14 @@ TagManager:
   - name: Bg
     uniqueID: 3597775775
     locked: 0
-  - name: Path
-    uniqueID: 213105155
+  - name: Selection
+    uniqueID: 1027460859
     locked: 0
-  - name: Fg
-    uniqueID: 1369762791
+  - name: TowerStub
+    uniqueID: 3335365791
+    locked: 0
+  - name: UnitShadow
+    uniqueID: 2544752535
     locked: 0
   - name: Unit
     uniqueID: 3061684891

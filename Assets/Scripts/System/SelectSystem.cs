@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class SelectSystem : SingletonBase<SelectSystem> {
     public Types.SelectionEvent SelectionEvent;
     public GameObject SelectedGameObject;
-    public Selector Selector;
+    public Selector CurSelector;
 
     private int _pointerId;
 
@@ -43,45 +43,53 @@ public class SelectSystem : SingletonBase<SelectSystem> {
             }
             else
             {
+                Selector selector = null;
                 Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D raycastHit = Physics2D.Raycast(clickPosition, Vector3.forward, 10f);
                 if(raycastHit)
                 {
-                    Debug.Log("click on gameobject " + raycastHit.collider);
-                    Selector selector = raycastHit.collider.GetComponent<Selector>();
-                    if(selector == null)
-                    {
-                        // 아무것도 클릭하지 않았다. 현재 선택된 오브젝트 해제
-                        selector = null;
-                        SelectionEvent();
-                    }
+                    selector = raycastHit.collider.GetComponent<Selector>();
+                }
+
+                if (selector == null)
+                {
+                    // 선택 가능한 오브젝트를 선택하지 않았다. 현재 선택된 오브젝트 해제
+                    Deselect();
+                }
+                else
+                {
+                    // 선택 가능한 새로운 오브젝트를 클릭했다. 
+                    Debug.Log("click on gameobject " + selector);
+                    SelectSelector(selector);
                 }
             }
+        }
+    }
 
+    public void Deselect()
+    {
+        if (CurSelector != null)
+        {
+            CurSelector.Deselect();
+        }
+        CurSelector = null;
+    }
 
-            //clickPosition.z = 0;
-            //ClickAnimator.transform.position = clickPosition;
-            //ClickAnimator.SetTrigger("Click");
-
-            //AProjectile projectile = null;
-            //switch (MasterSkillType)
-            //{
-            //    case Types.MasterSkillType.None:
-            //        return;
-            //    case Types.MasterSkillType.Fire:
-            //        projectile = Instantiate<AProjectile>(Projectile_FireDrop, clickPosition, Quaternion.identity, transform);
-            //        break;
-            //    case Types.MasterSkillType.Rain:
-            //        projectile = Instantiate<AProjectile>(Projectile_RainDrop, clickPosition, Quaternion.identity, transform);
-            //        break;
-            //    default:
-            //        break;
-            //}
-
-            //if (projectile != null)
-            //{
-            //    projectile.InitByPosition(clickPosition);
-            //}
+    public void SelectSelector(Selector selector)
+    {
+        if (selector.Select())
+        {
+            // 선택 오브젝트 교체
+            if (CurSelector != null && CurSelector != selector)
+            {
+                CurSelector.Deselect();
+            }
+            CurSelector = selector;
+            //SelectSelector(selector);
+        }
+        else
+        {
+            // 선택 오브젝트가 현재 선택될 수 없다. 교체하지 않음
         }
     }
 }

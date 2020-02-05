@@ -4,19 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Tower : MonoBehaviour {
-    public Button StubButton;
-    public SpriteRenderer SelectionSR;
     public GameObject UnitContainer;
-
-    //public TeamData TeamData;
-    //public UnitData UnitData;
-    //public AttackTargetData AttackTargetData;
-    //public AttackData AttackData;
+    public Unit Unit;
+    public GameObject MenuButtonsContainer;
+    public Button[] MenuButtons;
+    public Unit[] UnitPrefabs;
 
     private void Start()
     {
-        SelectionSR.enabled = false;
-        SelectSystem.Inst.SelectionEvent += _OnSelectionEvent;
+        MenuButtonsContainer.SetActive(false);
     }
 
     private void OnApplicationQuit()
@@ -31,28 +27,26 @@ public class Tower : MonoBehaviour {
 
     private void CleanUpUnit()
     {
-        SelectSystem.Inst.SelectionEvent -= _OnSelectionEvent;
     }
 
-    private void _OnSelectionEvent(Types.SelectionEventType selectionEventType, GameObject gameObject)
+    public void Select()
     {
-        Select();
+        MenuButtonsContainer.SetActive(true);
     }
 
-    public void OnClick_StubButton()
+    public void Deselect()
     {
-        SelectSystem.Inst.Notify(gameObject);
+        MenuButtonsContainer.SetActive(false);
     }
 
-    public bool Select()
+    public void OnClick_MenuButton(int index)
     {
-        SelectionSR.enabled = true;
-        return true;
-    }
-
-    public bool Unselect()
-    {
-        SelectionSR.enabled = false;
-        return true;
+        Debug.Log(index);
+        if(index == 0)
+        {
+            Unit = Instantiate(UnitPrefabs[index], UnitContainer.transform);
+            Unit.transform.localPosition = Vector3.zero;
+            Unit.gameObject.SetActive(true);
+        }
     }
 }
