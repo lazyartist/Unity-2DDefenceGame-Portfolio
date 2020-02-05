@@ -14,8 +14,8 @@ public class TowerGizmos : MonoBehaviour {
             Gizmos.color = Color.white;
             Gizmos.DrawWireSphere(transform.position, 0.05f);
             // 타워 타겟 범위
-            Gizmos.color = tower.TeamData.TeamColor;
-            Gizmos.DrawWireSphere(transform.position, tower.UnitData.TargetRange);
+            //Gizmos.color = tower.TeamData.TeamColor;
+            //Gizmos.DrawWireSphere(transform.position, tower.UnitData.TargetRange);
         }
     }
 }

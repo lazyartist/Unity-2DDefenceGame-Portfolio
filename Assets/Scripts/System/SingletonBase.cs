@@ -12,7 +12,8 @@ public class SingletonBase<T> : MonoBehaviour where T: MonoBehaviour
             {
                 GameObject go = new GameObject();
                 _inst = go.AddComponent<T>();
-                Debug.Log("SingletonBase Inst " + _inst);
+                _inst.name = typeof(T).Name;
+                Debug.Log("SingletonBase Create " + _inst);
             }
             return _inst;
         }

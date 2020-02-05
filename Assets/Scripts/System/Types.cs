@@ -4,10 +4,16 @@ using UnityEngine;
 
 static public class Types {
     public delegate void UnitEvent(UnitEventType unitEventType, Unit unit);
+    public delegate void SelectionEvent(SelectionEventType selectionEventType, GameObject gameObject);
 
     public enum UnitEventType
     {
         None, AttackStart, AttackEnd, Attack, Die, DiedComplete
+    }
+
+    public enum SelectionEventType
+    {
+        None, Selected
     }
 
     public enum TeamType
