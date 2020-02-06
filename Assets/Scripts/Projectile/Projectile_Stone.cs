@@ -120,6 +120,9 @@ public class Projectile_Stone : AProjectile
             }
         }
 
-        Gizmos.DrawWireSphere(transform.position, AttackData.AttackRange);
+        if (AttackData != null)
+        {
+            Gizmos.DrawWireSphere(transform.position, AttackData.AttackRange);
+        }
     }
 }
