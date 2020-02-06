@@ -29,7 +29,7 @@ public class Selector : MonoBehaviour {
         UpdateSelected();
     }
 
-    private void UpdateSelected()
+    virtual protected void UpdateSelected()
     {
         SelectSR.enabled = Selected;
     }

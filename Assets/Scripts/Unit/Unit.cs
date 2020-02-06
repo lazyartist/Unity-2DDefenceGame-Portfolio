@@ -39,8 +39,11 @@ public class Unit : MonoBehaviour
         TakenCCData = new CCData();
 
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
-        UnitCenterOffset = boxCollider.offset;
-        UnitSize = boxCollider.size;
+        if(boxCollider != null)
+        {
+            //UnitCenterOffset = boxCollider.offset;
+            UnitSize = boxCollider.size;
+        }
     }
 
     protected void Start()
@@ -222,7 +225,7 @@ public class Unit : MonoBehaviour
         }
 
         Unit draftTargetUnit = null;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, UnitData.TargetRange, AttackTargetData.AttackTargetLayerMask);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + UnitCenterOffset, UnitData.TargetRange, AttackTargetData.AttackTargetLayerMask);
         if (colliders.Length == 0) return draftTargetUnit;
 
         // todo 가장 목표지점에 가까운 적을 찾는다.

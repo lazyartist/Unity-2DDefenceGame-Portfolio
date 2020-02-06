@@ -12,6 +12,8 @@ public class SelectSystem : SingletonBase<SelectSystem> {
 
     protected override void Awake()
     {
+        base.Awake();
+
         //PC에서는 포인터 아이디가 -1이고 모바일에서는 0이므로 다르게 값을 넣어준다
 #if UNITY_EDITOR || UNITY_STANDALONE || UNITYPLAYER
         _pointerId = -1;

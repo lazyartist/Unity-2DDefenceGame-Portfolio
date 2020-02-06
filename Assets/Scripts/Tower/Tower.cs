@@ -7,57 +7,14 @@ using UnityEngine.UI;
 public class Tower : MonoBehaviour
 {
     public TowerUpgradeData TowerUpgradeData;
-    public Sprite UpgradeIcon;
-    public Sprite CheckedIcon;
-
+    public TowerUpgradeData RootTowerUpgradeData;
     public GameObject UnitContainer;
+    public GameObject UIPosition;
     public Unit Unit;
-    public GameObject MenuButtonsContainer;
-    public TowerMenuButton TowerMenuButtonPrefab;
-
-    //public Button[] MenuButtons;
-    //public Unit[] UnitPrefabs;
 
     private void Start()
     {
-        MenuButtonsContainer.SetActive(false);
-
-        int length = TowerUpgradeData.TowerUpgradeDatas.Length;
-        if (length == 0) return;
-
-        float startAngle = 90f;
-        switch (length)
-        {
-            case 1:
-                startAngle = 90f;
-                break;
-            case 2:
-                startAngle = 0f;
-                break;
-            case 3:
-                startAngle = 360f / 3f;
-                break;
-            case 4:
-                startAngle = 360f / 4f;
-                break;
-            default:
-                break;
-        }
-        for (int i = 0; i < length; i++)
-        {
-            TowerUpgradeData towerUpgradeData = TowerUpgradeData.TowerUpgradeDatas[i];
-            Vector3 localPosition = Quaternion.Euler(0f, 0f, (startAngle + 360f / length) * i) * Vector3.right;
-            TowerMenuButton towerMenuButton = Instantiate(TowerMenuButtonPrefab, localPosition, Quaternion.identity, MenuButtonsContainer.transform);
-            towerMenuButton.TowerUpgradeData = towerUpgradeData;
-            towerMenuButton.name = "towerMenuButton" + i;
-            towerMenuButton.Button.onClick.AddListener(() => OnClick_MenuButton(towerMenuButton));
-            towerMenuButton.GetComponent<DataProvider>().Data = towerUpgradeData;
-            towerMenuButton.IconImage.sprite = towerUpgradeData.IconSprite;
-            towerMenuButton.Text.text = towerUpgradeData.Cost.ToString();
-        }
-
-        //UnityAction a = new UnityAction();
-
+        ClearUnit();
     }
 
     private void OnApplicationQuit()
@@ -74,24 +31,44 @@ public class Tower : MonoBehaviour
     {
     }
 
+    public void CreateUnit(int index)
+    {
+        ClearUnit();
+
+        TowerUpgradeData towerUpgradeData = TowerUpgradeData.TowerUpgradeDatas[index];
+        Unit = Instantiate(towerUpgradeData.UnitPrefab, UnitContainer.transform);
+        //Rigidbody2D rigidbody2D = Unit.GetComponent<Rigidbody2D>();
+        //if(rigidbody2D != null)
+        //{
+        //    rigidbody2D.simulated = false;
+        //}
+        Unit.transform.localPosition = Vector3.zero;
+        Unit.gameObject.SetActive(true);
+
+        TowerUpgradeData = towerUpgradeData;
+    }
+
+    public void ClearUnit()
+    {
+        // todo 타워의 종류에 따라 정리작업을 다르게 해줌
+
+        if (Unit != null)
+        {
+            Destroy(Unit.gameObject);
+        }
+        Unit = null;
+        TowerUpgradeData = RootTowerUpgradeData;
+    }
+
     public void Select()
     {
-        //TowerMenuButton.
-
-        MenuButtonsContainer.SetActive(true);
+        UICanvas.Inst.ShowTowerMenu(this, true);
     }
 
     public void Deselect()
     {
-        MenuButtonsContainer.SetActive(false);
+        UICanvas.Inst.ShowTowerMenu(this, false);
     }
 
-    public void OnClick_MenuButton(TowerMenuButton _towerMenuButton)
-    {
-        Debug.Log(_towerMenuButton);
-        Unit = Instantiate(_towerMenuButton.TowerUpgradeData.UnitPrefab, UnitContainer.transform);
-        Unit.GetComponent<Rigidbody2D>().simulated = false;
-        Unit.transform.localPosition = Vector3.zero;
-        Unit.gameObject.SetActive(true);
-    }
+
 }

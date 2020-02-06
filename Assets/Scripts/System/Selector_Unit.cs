@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Selector_Unit : Selector {
+public class Selector_Unit : Selector
+{
     public Unit Unit;
 
     override protected void Start()
