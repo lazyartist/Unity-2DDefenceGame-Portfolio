@@ -203,7 +203,7 @@ MonoBehaviour:
   UnitContainer: {fileID: 1994466751913844}
   UIPosition: {fileID: 1296681712149462}
   Unit: {fileID: 0}
-  UnitSR: {fileID: 212015583977026644}
+  UnitThumbSR: {fileID: 212015583977026644}
 --- !u!114 &114353606096339792
 MonoBehaviour:
   m_ObjectHideFlags: 1
