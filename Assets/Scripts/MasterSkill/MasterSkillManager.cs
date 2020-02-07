@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class MasterSkillManager : SingletonBase<MasterSkillManager>
 {
+    public GameObject ClickContainer;
     public Animator ClickAnimator;
 
     public AProjectile Projectile_FireDrop;
@@ -24,7 +25,7 @@ public class MasterSkillManager : SingletonBase<MasterSkillManager>
         {
             Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             clickPosition.z = 0;
-            ClickAnimator.transform.position = clickPosition;
+            ClickContainer.transform.position = clickPosition;
             ClickAnimator.SetTrigger("Click");
 
             AProjectile projectile = null;

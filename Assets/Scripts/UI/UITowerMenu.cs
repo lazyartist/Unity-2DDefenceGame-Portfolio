@@ -16,6 +16,7 @@ public class UITowerMenu : MonoBehaviour
     public TowerMenuButton SellTowerMenuButton;
 
     private TowerMenuButton _checkedTowerMenuButton;
+    private int _sellCost;
 
     void Start()
     {
@@ -116,6 +117,18 @@ public class UITowerMenu : MonoBehaviour
                 towerMenuButton.Text.text = towerUpgradeData.Cost.ToString();
                 towerMenuButton.Check(false);
             }
+        }
+
+        if (tower.Unit != null)
+        {
+            // sell
+            _sellCost = Mathf.RoundToInt(tower.TowerUpgradeData.Cost * Consts.TowerUnitSellCostRate);
+            SellTowerMenuButton.Text.text = _sellCost.ToString();
+            SellTowerMenuButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            SellTowerMenuButton.gameObject.SetActive(false);
         }
 
         transform.position = Camera.main.WorldToScreenPoint(Tower.UIPosition.transform.position);
