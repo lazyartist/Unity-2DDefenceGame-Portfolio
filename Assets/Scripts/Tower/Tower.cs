@@ -11,6 +11,7 @@ public class Tower : MonoBehaviour
     public GameObject UnitContainer;
     public GameObject UIPosition;
     public Unit Unit;
+    public SpriteRenderer UnitSR;
 
     private void Start()
     {
@@ -29,6 +30,13 @@ public class Tower : MonoBehaviour
 
     private void CleanUpUnit()
     {
+    }
+
+    public void ShowDraftUnit(int index)
+    {
+        TowerUpgradeData towerUpgradeData = TowerUpgradeData.TowerUpgradeDatas[index];
+        UnitSR.enabled = true;
+        UnitSR.sprite = towerUpgradeData.UnitSprite;
     }
 
     public void CreateUnit(int index)
@@ -58,6 +66,7 @@ public class Tower : MonoBehaviour
         }
         Unit = null;
         TowerUpgradeData = RootTowerUpgradeData;
+        UnitSR.enabled = false;
     }
 
     public void Select()

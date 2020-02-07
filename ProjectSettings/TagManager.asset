@@ -55,6 +55,9 @@ TagManager:
   - name: TowerStub
     uniqueID: 3335365791
     locked: 0
+  - name: UnitThumb
+    uniqueID: 1682758161
+    locked: 0
   - name: UnitShadow
     uniqueID: 2544752535
     locked: 0

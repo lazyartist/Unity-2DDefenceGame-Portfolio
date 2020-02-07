@@ -14,6 +14,7 @@ MonoBehaviour:
   Name: "\uBCD1\uC601"
   Cost: 1
   IconSprite: {fileID: 21300000, guid: fc09dce961ce1eb4286afcef5c48dd50, type: 3}
+  UnitSprite: {fileID: 21300000, guid: 4c362268660403d4f9897873729a82cc, type: 3}
   UnitPrefab: {fileID: 114991902228683878, guid: 5d19e215ac682c840aa6142eeca9d7eb,
     type: 2}
   TowerUpgradeDatas:

@@ -14,5 +14,6 @@ MonoBehaviour:
   Name: "\uAD81\uC218\uD0C0\uC6CC"
   Cost: 2
   IconSprite: {fileID: 21300000, guid: 03989841ef2e11b4db0e7b4fd83594d8, type: 3}
+  UnitSprite: {fileID: 21300000, guid: 590a589264a27df4fbac8756194796e4, type: 3}
   UnitPrefab: {fileID: 0}
   TowerUpgradeDatas: []

@@ -8,6 +8,7 @@ public class TowerUpgradeData : ScriptableObject
     public string Name;
     public float Cost;
     public Sprite IconSprite;
+    public Sprite UnitSprite;
     public Unit UnitPrefab;
     public TowerUpgradeData[] TowerUpgradeDatas;
 }

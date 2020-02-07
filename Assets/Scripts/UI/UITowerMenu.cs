@@ -48,7 +48,9 @@ public class UITowerMenu : MonoBehaviour
             {
                 if (towerMenuButton.IsChecked)
                 {
-                    OnClick_TowerMenuButton(index);
+                    Debug.Log("CreateUnit " + index);
+                    Tower.CreateUnit(index);
+                    SelectSystem.Inst.Deselect();
                 }
                 else
                 {
@@ -58,6 +60,9 @@ public class UITowerMenu : MonoBehaviour
                     }
                     towerMenuButton.Check(true);
                     _checkedTowerMenuButton = towerMenuButton;
+
+                    Debug.Log("DraftUnit " + index);
+                    Tower.ShowDraftUnit(index);
                 }
             });
             towerMenuButton.name = "towerMenuButton" + i;
@@ -121,12 +126,5 @@ public class UITowerMenu : MonoBehaviour
     {
         Tower = null;
         gameObject.SetActive(false);
-    }
-
-    public void OnClick_TowerMenuButton(int index)
-    {
-        Debug.Log(index);
-        Tower.CreateUnit(index);
-        SelectSystem.Inst.Deselect();
     }
 }
