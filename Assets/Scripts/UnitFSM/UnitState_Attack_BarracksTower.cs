@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// todo naming UnitState_Attack_Barracks -> Barracks_UnitState_Attack
-public class Barracks_UnitState_Attack : AUnitState
+public class UnitState_Attack_BarracksTower : AUnitState
 {
     private ChildUnits _childUnits;
     private float _coolTime = 0.0f;
