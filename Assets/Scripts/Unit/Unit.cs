@@ -17,6 +17,7 @@ public class Unit : MonoBehaviour
     public Vector2 UnitSize;
     public Vector3 UnitCenterOffset;
     public UnitFSM UnitFSM;
+    public Animator HitEffectAnimator;
 
     public Waypoint TargetWaypoint;
     public Waypoint WaitWaypoint;
@@ -39,7 +40,7 @@ public class Unit : MonoBehaviour
         TakenCCData = new CCData();
 
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
-        if(boxCollider != null)
+        if (boxCollider != null)
         {
             //UnitCenterOffset = boxCollider.offset;
             UnitSize = boxCollider.size;
@@ -87,13 +88,18 @@ public class Unit : MonoBehaviour
             WaypointManager.Inst.WaypointPool.Release(TargetWaypoint);
             TargetWaypoint = null;
         }
+        if (WaitWaypoint != null)
+        {
+            WaypointManager.Inst.WaypointPool.Release(WaitWaypoint);
+            WaitWaypoint = null;
+        }
 
         UnitFSM.ClearnUp();
     }
 
     public void DispatchUnitEvent(Types.UnitEventType unitEventType, Unit unit)
     {
-        if(UnitEvent == null)
+        if (UnitEvent == null)
         {
             // 이 유닛이 죽거나 이 유닛의 공격대상이 죽어서 등록된 이벤트핸들러가 모두 사라진 경우
             // 스플래시 데미지로 죽을 경우 나를 감시하는 유닛이 없을 수 있기 때문에 UnitEvent == null일 수 있다
@@ -197,6 +203,10 @@ public class Unit : MonoBehaviour
         }
 
         Health -= damage;
+        if (HitEffectAnimator != null)
+        {
+            HitEffectAnimator.SetTrigger("Hit");
+        }
 
         if (Health <= 0f)
         {

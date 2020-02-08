@@ -48,7 +48,7 @@ public class UnitState_Attack : AUnitState
             // 공격대상이 있고 쿨타임이 지났으면 공격
             else if (_coolTime <= 0.0f)
             {
-                Debug.Log("Attack " + unit + " to " + unit.AttackTargetUnit);
+                //Debug.Log("Attack " + unit + " to " + unit.AttackTargetUnit);
                 unit.Toward(unit.AttackTargetUnit.transform.position);
                 unit.UnitBody.Animator.SetTrigger("Attack");
                 _coolTime = unit.UnitData.AttackCoolTime;
