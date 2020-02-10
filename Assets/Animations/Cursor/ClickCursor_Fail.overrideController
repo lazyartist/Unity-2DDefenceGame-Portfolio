@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ClickCursor_Fail
+  m_Controller: {fileID: 9100000, guid: c0637b6a3714b854e9198001d4f0716c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 802537b85edabfa46af38c2398e44ba5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 249ebb971bd34f64ab46f06126cba4bc, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6737362b671742946aa7e034489c23c0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 49c59d2c581c66b4f846aa7cb4ec04b6, type: 2}

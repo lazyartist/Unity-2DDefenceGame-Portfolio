@@ -8,6 +8,12 @@ public class SelectSystem : SingletonBase<SelectSystem> {
     public GameObject SelectedGameObject;
     public Selector CurSelector;
 
+    public GameObject ClickContainer;
+    public Animator ClickCursorAnimator_Fail;
+    public Animator ClickCursorAnimator_Success;
+    public Animator RallyPointAnimator;
+    public SpriteRenderer WaymapSpriteRenderer;
+
     private int _pointerId;
 
     protected override void Awake()
@@ -41,7 +47,7 @@ public class SelectSystem : SingletonBase<SelectSystem> {
         {
             if (EventSystem.current.IsPointerOverGameObject(_pointerId)) // true:UI오브젝트 위, false:게임오브젝트 위
             {
-                Debug.Log("click on ui");
+                Debug.Log("click on UI");
             }
             else
             {
@@ -64,6 +70,38 @@ public class SelectSystem : SingletonBase<SelectSystem> {
                     Debug.Log("click on gameobject " + selector);
                     SelectSelector(selector);
                 }
+
+                // 길을 클릭했는지 확인
+                Color pixel = WaymapSpriteRenderer.sprite.texture.GetPixel((int)Input.mousePosition.x, (int)Input.mousePosition.y);
+                clickPosition.z = 0;
+                ClickContainer.transform.position = clickPosition;
+                Debug.Log("Click color " + pixel);
+
+                if(pixel == Color.black) // 길 클릭
+                {
+                    ClickCursorAnimator_Success.gameObject.SetActive(true);
+                    ClickCursorAnimator_Fail.gameObject.SetActive(false);
+                    ClickCursorAnimator_Success.SetTrigger("Click");
+                }
+                else // 길아닌 곳 클릭
+                {
+                    ClickCursorAnimator_Success.gameObject.SetActive(false);
+                    ClickCursorAnimator_Fail.gameObject.SetActive(true);
+                    ClickCursorAnimator_Fail.SetTrigger("Click");
+                }
+
+                if (true)
+                {
+                    RallyPointAnimator.gameObject.SetActive(true);
+                    RallyPointAnimator.SetTrigger("Click");
+                }else
+                {
+                    RallyPointAnimator.gameObject.SetActive(false);
+                }
+
+                // todo 클릭 결과에 따라 클릭 아이콘 애니 재생 출력
+                //Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                //ClickCursorAnimator_Success.SetTrigger("Click");
             }
         }
     }

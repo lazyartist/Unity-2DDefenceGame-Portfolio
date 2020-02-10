@@ -17,7 +17,7 @@ public class UnitState_Idle : AUnitState
         // 이동
         if (unit.TargetWaypoint != null)
         {
-            Debug.Log("Move Waypoint " + unit.TargetWaypoint);
+            //Debug.Log("Move Waypoint " + unit.TargetWaypoint);
             return unitStates[(int)Types.UnitFSMType.Move];
         }
 
@@ -56,7 +56,7 @@ public class UnitState_Idle : AUnitState
         {
             unit.TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
             unit.TargetWaypoint.transform.position = unit.WaitWaypoint.transform.position;
-            Debug.Log("Move WaitWaypoint " + unit.TargetWaypoint);
+            //Debug.Log("Move WaitWaypoint " + unit.TargetWaypoint);
             return unitStates[(int)Types.UnitFSMType.Move];
         }
 

@@ -32,7 +32,7 @@ public class WaypointPool : MonoBehaviour {
             Waypoints[_endIndex].GetComponent<WaypointGizmos>().WaypointGizmosData = WaypointGizmosData;
         }
         Waypoints[_endIndex].enabled = true;
-        Debug.Log("waypoint get _endIndex " + _endIndex);
+        //Debug.Log("waypoint get _endIndex " + _endIndex);
         return Waypoints[_endIndex];
     }
 
@@ -64,6 +64,6 @@ public class WaypointPool : MonoBehaviour {
         Waypoints[_endIndex] = tempWaypoint;
         // 활성화된 Waypoint의 끝을 한칸 앞으로 이동
         --_endIndex;
-        Debug.Log("waypoint rel _endIndex " + _endIndex);
+        //Debug.Log("waypoint rel _endIndex " + _endIndex);
     }
 }
