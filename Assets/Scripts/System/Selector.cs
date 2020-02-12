@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class Selector : MonoBehaviour {
     public bool Selected = false;
-    public SpriteRenderer SelectSR;
+    public SpriteRenderer SelectSR;//todo SelectedSR
+    protected Types.SelectResult _selectResult;
 
-    // Use this for initialization
     virtual protected void Start()
     {
         Selected = false;
         UpdateSelected();
     }
 
-    // 이 Selector가 관리하는 유닛을 선택한다.
-    // return 선택 성공 여부
-    virtual public bool Select()
+    // 선택
+    virtual public Types.SelectResult Select()
     {
         Selected = true;
         UpdateSelected();
-        return true;
+        return _selectResult;
     }
 
-    // 이 Selector가 관리하는 유닛의 선택을 해제한다.
+    // 선택 이후 클릭에 대한 처리
+    virtual public Types.SelectResult SelectNext(Selector selector, Vector3 position, bool isOnWay)
+    {
+        return _selectResult;
+    }
+
+    // 선택 해제
     virtual public void Deselect()
     {
         Selected = false;

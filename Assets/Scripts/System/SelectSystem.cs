@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public class SelectSystem : SingletonBase<SelectSystem>
 {
     public Types.SelectionEvent SelectionEvent;
-    //public GameObject SelectedGameObject;
     public Selector CurSelector;
 
     public GameObject ClickContainer;
@@ -56,59 +55,87 @@ public class SelectSystem : SingletonBase<SelectSystem>
             }
             else
             {
+                // 현재 Selector 있으면 클릭 처리의 우선권을 줌
                 Selector selector = null;
                 Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D raycastHit = Physics2D.Raycast(clickPosition, Vector3.forward, 99f);
-                if (raycastHit)
-                {
-                    selector = raycastHit.collider.GetComponent<Selector>();
-                }
-
-                if (selector == null)
-                {
-                    // 선택 가능한 오브젝트를 선택하지 않았다. 현재 선택된 오브젝트 해제
-                    Deselect();
-                }
-                else
-                {
-                    // 선택 가능한 새로운 오브젝트를 클릭했다. 
-                    Debug.Log("click on gameobject " + selector);
-                    SelectSelector(selector);
-                }
-
-                // 클릭한 위치의 Waymap의 색상정보로 길인지 아닌지 판단
-                // Map의 월드에서의 Map의 위치와 스케일까지 고려
                 Vector3 positionOnWaymap = (_waymapSpritePivot + ((clickPosition - MapSpriteRenderer.transform.position) * WaymapSpriteRenderer.sprite.pixelsPerUnit / MapSpriteRenderer.gameObject.transform.localScale.x));
                 Color pixelOnWaymap = WaymapSpriteRenderer.sprite.texture.GetPixel((int)positionOnWaymap.x, (int)positionOnWaymap.y);
-
-                clickPosition.z = 0;
-                ClickContainer.transform.position = clickPosition;
-                if (pixelOnWaymap == Color.black) // 길 클릭
+                bool isClickPositionOnWay = pixelOnWaymap == Color.black;
+                Types.SelectResult selectResult = new Types.SelectResult();
+                if (CurSelector != null)
                 {
-                    ClickCursorAnimator_Success.gameObject.SetActive(true);
-                    ClickCursorAnimator_Fail.gameObject.SetActive(false);
-                    ClickCursorAnimator_Success.SetTrigger("Click");
-                }
-                else // 길아닌 곳 클릭
-                {
-                    ClickCursorAnimator_Success.gameObject.SetActive(false);
-                    ClickCursorAnimator_Fail.gameObject.SetActive(true);
-                    ClickCursorAnimator_Fail.SetTrigger("Click");
+                    selectResult = CurSelector.SelectNext(selector, clickPosition, isClickPositionOnWay);
                 }
 
-                // 현재 Barraks의 랠리포인트 지정하고 있으면 RallyPointFlag 출력
-                // todo rally Point mode
-                if (true)
+                if(selectResult.SelectResultType == Types.SelectResultType.None)
+                {
+                    // 현재 Selector가 아무런 처리를 하지 않았으므로 클릭된 Selector에게 처리 기회를 줌
+                    RaycastHit2D raycastHit = Physics2D.Raycast(clickPosition, Vector3.forward, Camera.main.transform.position.z);
+                    if (raycastHit)
+                    {
+                        //Selector selector = null;
+                        selector = raycastHit.collider.GetComponent<Selector>();
+                        if(selector != null)
+                        {
+                            selectResult = selector.Select();
+                        }
+                    }
+                }
+
+                // cursor
+                ClickCursorAnimator_Success.gameObject.SetActive(false);
+                ClickCursorAnimator_Fail.gameObject.SetActive(false);
+                switch (selectResult.CursorType)
+                {
+                    case Types.CursorType.None:
+                        break;
+                    case Types.CursorType.Success:
+                        ClickCursorAnimator_Success.gameObject.SetActive(true);
+                        ClickCursorAnimator_Success.SetTrigger("Click");
+                        break;
+                    case Types.CursorType.Fail:
+                        ClickCursorAnimator_Fail.gameObject.SetActive(true);
+                        ClickCursorAnimator_Fail.SetTrigger("Click");
+                        break;
+                    default:
+                        break;
+                }
+
+                // flag
+                if (selectResult.IsFlag)
                 {
                     RallyPointAnimator.gameObject.SetActive(true);
                     RallyPointAnimator.SetTrigger("Click");
-                }
-                else
+                } else
                 {
                     RallyPointAnimator.gameObject.SetActive(false);
                 }
+
+                switch (selectResult.SelectResultType)
+                {
+                    case Types.SelectResultType.None:
+                        break;
+                    case Types.SelectResultType.Select:
+                        SetCurSelector(selector);
+                        break;
+                    case Types.SelectResultType.Deselect:
+                        Deselect();
+                        break;
+                }
+
+                clickPosition.z = 0;
+                ClickContainer.transform.position = clickPosition;
             }
         }
+    }
+
+    public void SetCurSelector(Selector selector)
+    {
+        if (CurSelector != null)
+        {
+            CurSelector.Deselect();
+        }
+        CurSelector = selector;
     }
 
     public void Deselect()
@@ -118,23 +145,5 @@ public class SelectSystem : SingletonBase<SelectSystem>
             CurSelector.Deselect();
         }
         CurSelector = null;
-    }
-
-    public void SelectSelector(Selector selector)
-    {
-        if (selector.Select())
-        {
-            // 선택 오브젝트 교체
-            if (CurSelector != null && CurSelector != selector)
-            {
-                CurSelector.Deselect();
-            }
-            CurSelector = selector;
-            //SelectSelector(selector);
-        }
-        else
-        {
-            // 선택 오브젝트가 현재 선택될 수 없다. 교체하지 않음
-        }
     }
 }

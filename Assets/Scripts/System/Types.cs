@@ -47,4 +47,30 @@ static public class Types {
         public Vector3 offset;
         public Vector3 size;
     }
+
+    public enum CursorType
+    {
+        None, Success, Fail
+    }
+    public enum SelectResultType
+    {
+        None, // 선택관련 아무런 작업을 하지 않음
+        Select, // 선택
+        Deselect, // 선택 해제
+    }
+    //[System.Serializable]
+    public struct SelectResult
+    {
+        public SelectResultType SelectResultType;
+        public CursorType CursorType;
+        public bool IsFlag;
+
+    //    public SelectResult(SelectPropagationType selectPropagationType = SelectPropagationType.Done, CursorType cursorType = CursorType.None, bool isFlag = false)
+    //    {
+    //        SelectPropagationType = SelectPropagationType.Done;
+    //        CursorType = CursorType.None;
+    //        IsFlag = false;
+    //}
+    }
+
 }
