@@ -131,7 +131,9 @@ public class UITowerMenu : MonoBehaviour
             SellTowerMenuButton.gameObject.SetActive(false);
         }
 
-        transform.position = Camera.main.WorldToScreenPoint(Tower.UIPosition.transform.position);
+        Vector3 uiPosition = Camera.main.WorldToScreenPoint(Tower.UIPosition.transform.position);
+        transform.position = new Vector3(uiPosition.x, uiPosition.y, 0f);
+        Debug.Log("UItowerMenu position " + transform.position);
         gameObject.SetActive(true);
     }
 
