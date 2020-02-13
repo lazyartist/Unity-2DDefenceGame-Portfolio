@@ -53,22 +53,8 @@ public class UITowerMenu : MonoBehaviour
         });
         RallyPointMenuButton.Button.onClick.AddListener(() =>
         {
-            if (RallyPointMenuButton.IsChecked)
-            {
-                Tower.SetRallyPointMode(false);
-                //SelectorManager.Inst.Deselect();
-            }
-            else
-            {
-                if (_checkedTowerMenuButton != null)
-                {
-                    _checkedTowerMenuButton.Check(false);
-                }
-                RallyPointMenuButton.Check(true);
-                _checkedTowerMenuButton = RallyPointMenuButton;
-
-                Tower.SetRallyPointMode(true);
-            }
+            Tower.SetRallyPointMode(true);
+            Hide();
         });
 
         TowerMenuButtons = new TowerMenuButton[MaxTowerButtonCount];
@@ -105,9 +91,11 @@ public class UITowerMenu : MonoBehaviour
     public void Show(Tower tower)
     {
         gameObject.SetActive(true);
-        Tower = tower;
         _checkedTowerMenuButton = null;
         SellTowerMenuButton.Check(false);
+
+        Tower = tower;
+        Tower.SetRallyPointMode(false);
 
         int length = tower.TowerUpgradeData.TowerUpgradeDatas.Length;
         float startAngle = 90f;
@@ -148,13 +136,23 @@ public class UITowerMenu : MonoBehaviour
 
         if (tower.Unit != null)
         {
-            // sell button
+            // Sell button
             _sellCost = Mathf.RoundToInt(tower.TowerUpgradeData.Cost * Consts.TowerUnitSellCostRate);
             SellTowerMenuButton.Text.text = _sellCost.ToString();
+            SellTowerMenuButton.Check(false);
             SellTowerMenuButton.gameObject.SetActive(true);
 
-            if(tower.Unit)
-            RallyPointMenuButton.gameObject.SetActive(true);
+            // RallyPoint button
+            ChildUnits childUnits = tower.Unit.GetComponent<ChildUnits>();
+            if (childUnits != null)
+            {
+                RallyPointMenuButton.Check(false);
+                RallyPointMenuButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                RallyPointMenuButton.gameObject.SetActive(false);
+            }
         }
         else
         {

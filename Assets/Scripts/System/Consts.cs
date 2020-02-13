@@ -15,4 +15,10 @@ static public class Consts {
     static public int lmUnit = LayerMask.GetMask("Unit");
     //static public int lmATeam = LayerMask.GetMask("ATeam");
     //static public int lmBTeam = LayerMask.GetMask("BTeam");
+
+    static private int _unitId = 0;
+    static public int GetUnitId()
+    {
+        return ++_unitId;
+    }
 }

@@ -62,51 +62,14 @@ public class UnitState_Attack_BarracksTower : AUnitState
                 break;
             case Types.UnitEventType.DiedComplete:
                 break;
+            case Types.UnitEventType.AttackStop:
+                break;
             default:
                 break;
         }
     }
     virtual public void Attack()
     {
-        for (int i = 0; i < _childUnits.MaxUnitCount; i++)
-        {
-            if(_childUnits.Units[i] == null)
-            {
-                Unit childUnit = Instantiate(_childUnits.ChildUnitPrefab, _unit.SpawnPosition.transform.position, Quaternion.identity, _unit.transform);
-                //Unit childUnit = Instantiate(_childUnits.ChildUnitPrefab, _unit.transform.position + _unit.UnitCenterOffset, Quaternion.identity, _unit.transform);
-                childUnit.UnitEvent += _OnUnitEventHandler_ChildUnit;
-                childUnit.WaitWaypoint = WaypointManager.Inst.WaypointPool.Get();
-                Vector3 position = Quaternion.Euler(0f, 0f, (360f / 3f) * i) * (Vector3.up * 0.3f);
-                childUnit.WaitWaypoint.transform.position = _childUnits.RallyPoint.transform.position + position;
-                //childUnit.WaitWaypoint.transform.position = _unit.ProjectileSpawnPosition.transform.position + position;
-                _childUnits.Units[i] = childUnit;
-            }
-        }
-    }
-    void _OnUnitEventHandler_ChildUnit(Types.UnitEventType unitBodyEventType, Unit unit)
-    {
-        Debug.Log("ChildUnitEventListener " + unitBodyEventType);
-
-        switch (unitBodyEventType)
-        {
-            case Types.UnitEventType.None:
-                break;
-            case Types.UnitEventType.Attack:
-                //Attack();
-                break;
-            case Types.UnitEventType.AttackStart:
-                //_isPlayingAttackAni = true;
-                break;
-            case Types.UnitEventType.AttackEnd:
-                //_isPlayingAttackAni = false;
-                break;
-            case Types.UnitEventType.Die:
-                unit.UnitEvent -= _OnUnitEventHandler_ChildUnit;
-                break;
-            case Types.UnitEventType.DiedComplete:
-                break;
-            default:
-                break;
-        }
+        _childUnits.CreateUnits();
     }
 }

@@ -36,6 +36,7 @@ public class Unit : MonoBehaviour
     protected void Awake()
     {
         gameObject.layer = Mathf.RoundToInt(Mathf.Log(AttackTargetData.LayerMask.value, 2f));//LayerMask를 LayerIndex로 변환
+        gameObject.name += Consts.GetUnitId();
 
         TakenCCData = new CCData();
 
@@ -167,6 +168,10 @@ public class Unit : MonoBehaviour
                 _RemoveAttackTargetUnit();
                 break;
             case Types.UnitEventType.DiedComplete:
+                break;
+            case Types.UnitEventType.AttackStop:// 공격대상 유닛이 공격을 멈추고 다른 행동을 한다.
+                _RemoveAttackTargetUnit();
+                UnitFSM.Transit(Types.UnitFSMType.Idle);
                 break;
             default:
                 break;

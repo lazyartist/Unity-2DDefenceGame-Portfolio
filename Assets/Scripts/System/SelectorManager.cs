@@ -58,6 +58,7 @@ public class SelectorManager : SingletonBase<SelectorManager>
                 // 현재 Selector 있으면 클릭 처리의 우선권을 줌
                 Selector selector = null;
                 Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                clickPosition.z = 0;
                 Vector3 positionOnWaymap = (_waymapSpritePivot + ((clickPosition - MapSpriteRenderer.transform.position) * WaymapSpriteRenderer.sprite.pixelsPerUnit / MapSpriteRenderer.gameObject.transform.localScale.x));
                 Color pixelOnWaymap = WaymapSpriteRenderer.sprite.texture.GetPixel((int)positionOnWaymap.x, (int)positionOnWaymap.y);
                 bool isClickPositionOnWay = pixelOnWaymap == Color.black;
@@ -133,7 +134,6 @@ public class SelectorManager : SingletonBase<SelectorManager>
                         break;
                 }
 
-                clickPosition.z = 0;
                 CursorContainer.transform.position = clickPosition;
             }
         }

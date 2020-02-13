@@ -8,7 +8,7 @@ static public class Types {
 
     public enum UnitEventType
     {
-        None, AttackStart, AttackEnd, Attack, Die, DiedComplete
+        None, AttackStart, AttackEnd, Attack, Die, DiedComplete, AttackStop
     }
 
     public enum SelectionEventType

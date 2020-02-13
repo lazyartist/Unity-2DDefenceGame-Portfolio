@@ -79,6 +79,8 @@ public class UnitState_Attack : AUnitState
                 break;
             case Types.UnitEventType.DiedComplete:
                 break;
+            case Types.UnitEventType.AttackStop:
+                break;
             default:
                 break;
         }
@@ -109,27 +111,6 @@ public class UnitState_Attack : AUnitState
             {
                 projectile.InitByPosition(_unit.LastAttackTargetPosition);
             }
-            //Fire();
         }
-
-        //if (_unit.AttackTargetUnit != null && _unit.AttackTargetUnit.IsDied == false)
-        //{
-        //    if (_unit.AttackData.ProjectilePrefab == null)
-        //    {
-        //        _unit.AttackTargetUnit.TakeDamage(_unit.AttackData);
-        //    }
-        //    else
-        //    {
-        //        Fire();
-        //    }
-        //}
     }
-
-    //private void Fire()
-    //{
-    //    ProjectileAbstract projectile = Instantiate(_unit.AttackData.ProjectilePrefab, _unit.ProjectileSpawnPosition.transform.position, Quaternion.identity, _unit.ProjectileSpawnPosition.transform);
-    //    projectile.AttackData = _unit.AttackData;
-    //    projectile.AttackTargetData = _unit.AttackTargetData;
-    //    projectile.InitByTarget(_unit.AttackTargetUnit.gameObject);
-    //}
 }

@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Selector_Tower : Selector {
+public class Selector_Tower : Selector
+{
     public Tower Tower;
 
-	override protected void Start () {
+    override protected void Start()
+    {
         Tower = GetComponent<Tower>();
         base.Start();
     }
-	
+
     override public Types.SelectResult Select()
     {
         base.Select();
@@ -22,10 +24,24 @@ public class Selector_Tower : Selector {
 
     override public Types.SelectResult SelectNext(Selector selector, Vector3 position, bool isOnWay)
     {
-        // todo barracks rallypoint
-        _selectResult.CursorType = isOnWay ? Types.CursorType.Success : Types.CursorType.Fail;
-        _selectResult.IsFlag = false;
-        _selectResult.SelectResultType = Types.SelectResultType.Deselect;
+        if (Tower.IsRallyPointModeOn)
+        {
+            // barracks rallypoint
+            _selectResult.CursorType = isOnWay ? Types.CursorType.Success : Types.CursorType.Fail;
+            _selectResult.IsFlag = true;
+            _selectResult.SelectResultType = Types.SelectResultType.Deselect;
+
+            ChildUnits childUnits = Tower.Unit.GetComponent<ChildUnits>();
+            childUnits.RallyPoint.transform.position = position;
+            childUnits.SetRallyPointOfAllUnits();
+        }
+        else
+        {
+            _selectResult.CursorType = Types.CursorType.None;
+            _selectResult.IsFlag = false;
+            _selectResult.SelectResultType = Types.SelectResultType.Deselect;
+        }
+
         return _selectResult;
     }
 
@@ -38,16 +54,5 @@ public class Selector_Tower : Selector {
     override protected void UpdateSelected()
     {
         //base.UpdateSelected();
-
-        //if(Tower.Unit == null)
-        //{
-        //    SelectedSR.enabled = false;
-        //}
-        //else
-        //{
-        //    SelectedSR.transform.position = Tower.Unit.transform.position + Tower.Unit.UnitCenterOffset;
-        //    SelectedSR.transform.localScale = new Vector3(Tower.Unit.UnitData.TargetRange * 2f, Tower.Unit.UnitData.TargetRange * 2f, 1);
-        //    SelectedSR.enabled = Selected;
-        //}
     }
 }

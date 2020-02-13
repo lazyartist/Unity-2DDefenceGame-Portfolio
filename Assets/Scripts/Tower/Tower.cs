@@ -14,8 +14,7 @@ public class Tower : MonoBehaviour
     public SpriteRenderer UnitThumbSR;
     public SpriteRenderer UnitRangeSR;
     public SpriteRenderer DraftUnitRangeSR;
-
-    private bool _isRallyPointMode;
+    public bool IsRallyPointModeOn;
 
     private void Start()
     {
@@ -80,7 +79,7 @@ public class Tower : MonoBehaviour
     public void Select()
     {
         UICanvas.Inst.ShowTowerMenu(this, true);
-        if(Unit != null)
+        if (Unit != null)
         {
             ShowRange(UnitRangeSR, Unit.transform.position, Unit);
         }
@@ -92,7 +91,7 @@ public class Tower : MonoBehaviour
         UnitThumbSR.enabled = false;
         UnitRangeSR.enabled = false;
         DraftUnitRangeSR.enabled = false;
-        _isRallyPointMode = false;
+        IsRallyPointModeOn = false;
         UICanvas.Inst.ShowTowerMenu(this, false);
     }
 
@@ -105,11 +104,15 @@ public class Tower : MonoBehaviour
 
     //public void HideRange()
     //{
-
     //}
 
-    public void SetRallyPointMode(bool isRallyPointMode)
+    public void SetRallyPointMode(bool isOn)
     {
-        _isRallyPointMode = isRallyPointMode;
+        IsRallyPointModeOn = isOn;
+        UnitRangeSR.enabled = isOn;
+        if (isOn == true && Unit != null)
+        {
+            ShowRange(UnitRangeSR, Unit.transform.position, Unit);
+        }
     }
 }
