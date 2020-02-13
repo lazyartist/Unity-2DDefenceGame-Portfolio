@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Selector : MonoBehaviour {
     public bool Selected = false;
-    public SpriteRenderer SelectSR;//todo SelectedSR
+    public SpriteRenderer SelectedSR;
     protected Types.SelectResult _selectResult;
 
     virtual protected void Start()
@@ -36,6 +36,6 @@ public class Selector : MonoBehaviour {
 
     virtual protected void UpdateSelected()
     {
-        SelectSR.enabled = Selected;
+        SelectedSR.enabled = Selected;
     }
 }

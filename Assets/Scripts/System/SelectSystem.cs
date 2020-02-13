@@ -65,9 +65,19 @@ public class SelectSystem : SingletonBase<SelectSystem>
                 if (CurSelector != null)
                 {
                     selectResult = CurSelector.SelectNext(selector, clickPosition, isClickPositionOnWay);
+                    switch (selectResult.SelectResultType)
+                    {
+                        case Types.SelectResultType.None:
+                            break;
+                        case Types.SelectResultType.Select:
+                            break;
+                        case Types.SelectResultType.Deselect:
+                            Deselect();
+                            break;
+                    }
                 }
 
-                if(selectResult.SelectResultType == Types.SelectResultType.None)
+                if(selectResult.SelectResultType == Types.SelectResultType.None || selectResult.SelectResultType == Types.SelectResultType.Deselect)
                 {
                     // 현재 Selector가 아무런 처리를 하지 않았으므로 클릭된 Selector에게 처리 기회를 줌
                     RaycastHit2D raycastHit = Physics2D.Raycast(clickPosition, Vector3.forward, Camera.main.transform.position.z);

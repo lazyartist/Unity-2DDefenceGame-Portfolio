@@ -12,24 +12,30 @@ public class Tower : MonoBehaviour
     public GameObject UIPosition;
     public Unit Unit;
     public SpriteRenderer UnitThumbSR;
+    public SpriteRenderer UnitRangeSR;
+    public SpriteRenderer DraftUnitRangeSR;
 
     private void Start()
     {
-        ClearUnit();
+        TowerUpgradeData = RootTowerUpgradeData;
+        Deselect();
     }
 
     private void OnApplicationQuit()
     {
-        CleanUpUnit();
+        DeleteUnit();
     }
 
     private void OnDestroy()
     {
-        CleanUpUnit();
+        DeleteUnit();
     }
 
-    private void CleanUpUnit()
+    private void CleanUp()
     {
+        DeleteUnit();
+        TowerUpgradeData = null;
+        RootTowerUpgradeData = null;
     }
 
     public void ShowDraftUnit(int index)
@@ -37,11 +43,13 @@ public class Tower : MonoBehaviour
         TowerUpgradeData towerUpgradeData = TowerUpgradeData.TowerUpgradeDatas[index];
         UnitThumbSR.enabled = true;
         UnitThumbSR.sprite = towerUpgradeData.UnitSprite;
+
+        ShowRange(DraftUnitRangeSR, UnitContainer.transform.position, towerUpgradeData.UnitPrefab);
     }
 
     public void CreateUnit(int index)
     {
-        ClearUnit();
+        DeleteUnit();
 
         TowerUpgradeData towerUpgradeData = TowerUpgradeData.TowerUpgradeDatas[index];
         Unit = Instantiate(towerUpgradeData.UnitPrefab, UnitContainer.transform);
@@ -56,27 +64,44 @@ public class Tower : MonoBehaviour
         TowerUpgradeData = towerUpgradeData;
     }
 
-    public void ClearUnit()
+    public void DeleteUnit()
     {
         // todo 타워의 종류에 따라 정리작업을 다르게 해줌
-
         if (Unit != null)
         {
             Destroy(Unit.gameObject);
         }
         Unit = null;
         TowerUpgradeData = RootTowerUpgradeData;
-        UnitThumbSR.enabled = false;
     }
 
     public void Select()
     {
         UICanvas.Inst.ShowTowerMenu(this, true);
+        if(Unit != null)
+        {
+            ShowRange(UnitRangeSR, Unit.transform.position, Unit);
+        }
     }
 
     public void Deselect()
     {
+        HideRange();
         UnitThumbSR.enabled = false;
+        UnitRangeSR.enabled = false;
+        DraftUnitRangeSR.enabled = false;
         UICanvas.Inst.ShowTowerMenu(this, false);
+    }
+
+    public void ShowRange(SpriteRenderer rangeSR, Vector3 unitPosition, Unit unit)
+    {
+        rangeSR.transform.position = unitPosition + unit.UnitCenterOffset;
+        rangeSR.transform.localScale = new Vector3(unit.UnitData.TargetRange * 2f, unit.UnitData.TargetRange * 2f, 1);
+        rangeSR.enabled = true;
+    }
+
+    public void HideRange()
+    {
+
     }
 }

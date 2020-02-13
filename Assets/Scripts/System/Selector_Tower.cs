@@ -22,8 +22,8 @@ public class Selector_Tower : Selector {
 
     override public Types.SelectResult SelectNext(Selector selector, Vector3 position, bool isOnWay)
     {
-        _selectResult.CursorType = Types.CursorType.Success;
-        _selectResult.IsFlag = true;
+        _selectResult.CursorType = isOnWay ? Types.CursorType.Success : Types.CursorType.Fail;
+        _selectResult.IsFlag = false;
         _selectResult.SelectResultType = Types.SelectResultType.Deselect;
         return _selectResult;
     }
@@ -36,15 +36,17 @@ public class Selector_Tower : Selector {
 
     override protected void UpdateSelected()
     {
-        if(Tower.Unit == null)
-        {
-            SelectSR.enabled = false;
-        }
-        else
-        {
-            SelectSR.transform.position = Tower.Unit.transform.position + Tower.Unit.UnitCenterOffset;
-            SelectSR.transform.localScale = new Vector3(Tower.Unit.UnitData.TargetRange * 2f, Tower.Unit.UnitData.TargetRange * 2f, 1);
-            SelectSR.enabled = Selected;
-        }
+        //base.UpdateSelected();
+
+        //if(Tower.Unit == null)
+        //{
+        //    SelectedSR.enabled = false;
+        //}
+        //else
+        //{
+        //    SelectedSR.transform.position = Tower.Unit.transform.position + Tower.Unit.UnitCenterOffset;
+        //    SelectedSR.transform.localScale = new Vector3(Tower.Unit.UnitData.TargetRange * 2f, Tower.Unit.UnitData.TargetRange * 2f, 1);
+        //    SelectedSR.enabled = Selected;
+        //}
     }
 }

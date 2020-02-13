@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 4434673878465430}
   - component: {fileID: 212904772809878692}
   m_Layer: 0
-  m_Name: SelectArea
+  m_Name: SelectedSR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -545,7 +545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Selected: 0
-  SelectSR: {fileID: 212904772809878692}
+  SelectedSR: {fileID: 212904772809878692}
   Unit: {fileID: 0}
 --- !u!114 &114897432182434272
 MonoBehaviour:

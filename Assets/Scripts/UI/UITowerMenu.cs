@@ -18,15 +18,26 @@ public class UITowerMenu : MonoBehaviour
     private TowerMenuButton _checkedTowerMenuButton;
     private int _sellCost;
 
-    void Start()
+    private void Awake()
     {
         this.gameObject.SetActive(false);
+        Init();
+    }
+    void Start()
+    {
+    }
 
+    void Update()
+    {
+    }
+
+    void Init()
+    {
         SellTowerMenuButton.Button.onClick.AddListener(() =>
         {
             if (SellTowerMenuButton.IsChecked)
             {
-                Tower.ClearUnit();
+                Tower.DeleteUnit();
                 SelectSystem.Inst.Deselect();
             }
             else
@@ -71,14 +82,10 @@ public class UITowerMenu : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-    }
-
     public void Show(Tower tower)
     {
+        gameObject.SetActive(true);
         Tower = tower;
-
         _checkedTowerMenuButton = null;
         SellTowerMenuButton.Check(false);
 
@@ -134,12 +141,11 @@ public class UITowerMenu : MonoBehaviour
         Vector3 uiPosition = Camera.main.WorldToScreenPoint(Tower.UIPosition.transform.position);
         transform.position = new Vector3(uiPosition.x, uiPosition.y, 0f);
         Debug.Log("UItowerMenu position " + transform.position);
-        gameObject.SetActive(true);
     }
 
     public void Hide()
     {
-        Tower = null;
         gameObject.SetActive(false);
+        Tower = null;
     }
 }

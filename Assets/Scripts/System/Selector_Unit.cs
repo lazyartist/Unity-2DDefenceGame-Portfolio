@@ -19,13 +19,16 @@ public class Selector_Unit : Selector
         _selectResult.CursorType = Types.CursorType.None;
         _selectResult.IsFlag = false;
         _selectResult.SelectResultType = Types.SelectResultType.Select;
+
+        UICanvas.Inst.ShowUnitInfo(Unit);
+
         return _selectResult;
     }
 
     override public Types.SelectResult SelectNext(Selector selector, Vector3 position, bool isOnWay)
     {
-        _selectResult.CursorType = Types.CursorType.Success;
-        _selectResult.IsFlag = true;
+        _selectResult.CursorType = Types.CursorType.None;
+        _selectResult.IsFlag = false;
         _selectResult.SelectResultType = Types.SelectResultType.Deselect;
         return _selectResult;
     }
@@ -33,5 +36,7 @@ public class Selector_Unit : Selector
     override public void Deselect()
     {
         base.Deselect();
+
+        UICanvas.Inst.HideUnitInfo();
     }
 }

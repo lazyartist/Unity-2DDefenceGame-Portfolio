@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UICanvas : SingletonBase<UICanvas> {
     public UITowerMenu UITowerMenu;
+    public Text UnitInfoText;
 
     public void ShowTowerMenu(Tower tower, bool isShow) {
         if (isShow)
@@ -14,5 +16,14 @@ public class UICanvas : SingletonBase<UICanvas> {
         {
             UITowerMenu.Hide();
         }
+    }
+
+    public void ShowUnitInfo(Unit unit)
+    {
+        UnitInfoText.text = unit.ToString();
+    }
+    public void HideUnitInfo()
+    {
+        UnitInfoText.text = "";
     }
 }
