@@ -61,7 +61,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4599774306521008}
   m_Layer: 0
-  m_Name: ProjectileSpawnPosition
+  m_Name: SpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -464,11 +464,12 @@ MonoBehaviour:
   UnitSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: 0.28, z: 0}
   UnitFSM: {fileID: 114373489412837970}
+  HitEffectAnimator: {fileID: 0}
   TargetWaypoint: {fileID: 0}
   WaitWaypoint: {fileID: 0}
   AttackTargetUnit: {fileID: 0}
   LastAttackTargetPosition: {x: 0, y: 0, z: 0}
-  ProjectileSpawnPosition: {fileID: 1248839147899762}
+  SpawnPosition: {fileID: 1248839147899762}
   Health: 0
   Speed: 1
   TakenCCData: {fileID: 0}

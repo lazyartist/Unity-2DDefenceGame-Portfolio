@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4189213911529114}
   m_Layer: 8
-  m_Name: ProjectileSpawnPosition
+  m_Name: SpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,22 +385,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23a8acdbc8b5f7499309d64d80dabb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TeamType: 0
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
+  UnitData: {fileID: 11400000, guid: aad809a304d44284ea7125cca2837cd3, type: 2}
   AttackTargetData: {fileID: 11400000, guid: 3e629cc51b0c0634d9ca744dfc66a3a3, type: 2}
+  AttackData: {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
   UnitBody: {fileID: 114674158599414336}
-  AttackTargetLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
   UnitSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: 0.25, z: 0}
-  UnitData: {fileID: 11400000, guid: aad809a304d44284ea7125cca2837cd3, type: 2}
-  AttackData: {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
-  AttackTargetUnit: {fileID: 0}
+  UnitFSM: {fileID: 114271592312121844}
+  HitEffectAnimator: {fileID: 0}
   TargetWaypoint: {fileID: 0}
   WaitWaypoint: {fileID: 0}
-  UnitFSM: {fileID: 114271592312121844}
-  ProjectileSpawnPosition: {fileID: 1685357474663072}
+  AttackTargetUnit: {fileID: 0}
+  LastAttackTargetPosition: {x: 0, y: 0, z: 0}
+  SpawnPosition: {fileID: 1685357474663072}
   Health: 0
   Speed: 1
   TakenCCData: {fileID: 0}
@@ -487,7 +485,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1233282405
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cbbe5825771048c43a546a294340e383, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -533,7 +531,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1233282405
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 54ecc95b79e0ef84ca8c027ad5075247, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -579,7 +577,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1233282405
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: cbbe5825771048c43a546a294340e383, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -15,6 +15,8 @@ public class Tower : MonoBehaviour
     public SpriteRenderer UnitRangeSR;
     public SpriteRenderer DraftUnitRangeSR;
 
+    private bool _isRallyPointMode;
+
     private void Start()
     {
         TowerUpgradeData = RootTowerUpgradeData;
@@ -86,10 +88,11 @@ public class Tower : MonoBehaviour
 
     public void Deselect()
     {
-        HideRange();
+        //HideRange();
         UnitThumbSR.enabled = false;
         UnitRangeSR.enabled = false;
         DraftUnitRangeSR.enabled = false;
+        _isRallyPointMode = false;
         UICanvas.Inst.ShowTowerMenu(this, false);
     }
 
@@ -100,8 +103,13 @@ public class Tower : MonoBehaviour
         rangeSR.enabled = true;
     }
 
-    public void HideRange()
-    {
+    //public void HideRange()
+    //{
 
+    //}
+
+    public void SetRallyPointMode(bool isRallyPointMode)
+    {
+        _isRallyPointMode = isRallyPointMode;
     }
 }

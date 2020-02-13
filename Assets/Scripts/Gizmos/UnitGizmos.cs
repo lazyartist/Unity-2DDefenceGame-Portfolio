@@ -17,10 +17,10 @@ public class UnitGizmos : MonoBehaviour {
             Gizmos.color = unit.TeamData.TeamColor;
             Gizmos.DrawWireSphere(transform.position + unit.UnitCenterOffset, unit.UnitData.TargetRange);
             // 투사체 생성 지점
-            if(unit.ProjectileSpawnPosition != null)
+            if(unit.SpawnPosition != null)
             {
                 Gizmos.color = Color.yellow;
-                Gizmos.DrawWireSphere(unit.ProjectileSpawnPosition.transform.position, 0.05f);
+                Gizmos.DrawWireSphere(unit.SpawnPosition.transform.position, 0.05f);
             }
         }
     }

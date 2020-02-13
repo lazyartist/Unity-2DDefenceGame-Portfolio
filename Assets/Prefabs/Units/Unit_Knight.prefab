@@ -161,12 +161,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4706603556286538}
   m_Layer: 8
-  m_Name: ProjectileSpawnPosition
+  m_Name: SpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4026474593380944
 Transform:
   m_ObjectHideFlags: 1
@@ -518,7 +518,7 @@ MonoBehaviour:
   WaitWaypoint: {fileID: 0}
   AttackTargetUnit: {fileID: 0}
   LastAttackTargetPosition: {x: 0, y: 0, z: 0}
-  ProjectileSpawnPosition: {fileID: 0}
+  SpawnPosition: {fileID: 1904991752889578}
   Health: 0
   Speed: 1
   TakenCCData: {fileID: 0}

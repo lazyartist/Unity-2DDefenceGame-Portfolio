@@ -6,6 +6,7 @@ public class ChildUnits : MonoBehaviour {
     public Unit ChildUnitPrefab;
     public Unit[] Units;
     public int MaxUnitCount;
+    public GameObject RallyPoint;
     //public List<Unit> Units;
     private void Awake()
     {

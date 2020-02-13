@@ -14,6 +14,7 @@ public class UITowerMenu : MonoBehaviour
     public TowerUpgradeData TowerUpgradeData;
     public TowerMenuButton[] TowerMenuButtons;
     public TowerMenuButton SellTowerMenuButton;
+    public TowerMenuButton RallyPointMenuButton;
 
     private TowerMenuButton _checkedTowerMenuButton;
     private int _sellCost;
@@ -48,6 +49,25 @@ public class UITowerMenu : MonoBehaviour
                 }
                 SellTowerMenuButton.Check(true);
                 _checkedTowerMenuButton = SellTowerMenuButton;
+            }
+        });
+        RallyPointMenuButton.Button.onClick.AddListener(() =>
+        {
+            if (RallyPointMenuButton.IsChecked)
+            {
+                Tower.SetRallyPointMode(false);
+                //SelectorManager.Inst.Deselect();
+            }
+            else
+            {
+                if (_checkedTowerMenuButton != null)
+                {
+                    _checkedTowerMenuButton.Check(false);
+                }
+                RallyPointMenuButton.Check(true);
+                _checkedTowerMenuButton = RallyPointMenuButton;
+
+                Tower.SetRallyPointMode(true);
             }
         });
 
@@ -128,14 +148,18 @@ public class UITowerMenu : MonoBehaviour
 
         if (tower.Unit != null)
         {
-            // sell
+            // sell button
             _sellCost = Mathf.RoundToInt(tower.TowerUpgradeData.Cost * Consts.TowerUnitSellCostRate);
             SellTowerMenuButton.Text.text = _sellCost.ToString();
             SellTowerMenuButton.gameObject.SetActive(true);
+
+            if(tower.Unit)
+            RallyPointMenuButton.gameObject.SetActive(true);
         }
         else
         {
             SellTowerMenuButton.gameObject.SetActive(false);
+            RallyPointMenuButton.gameObject.SetActive(false);
         }
 
         Vector3 uiPosition = Camera.main.WorldToScreenPoint(Tower.UIPosition.transform.position);

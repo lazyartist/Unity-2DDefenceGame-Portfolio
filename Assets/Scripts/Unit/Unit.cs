@@ -24,7 +24,7 @@ public class Unit : MonoBehaviour
 
     public Unit AttackTargetUnit;
     public Vector3 LastAttackTargetPosition;
-    public GameObject ProjectileSpawnPosition;
+    public GameObject SpawnPosition;
 
     // todo create UnitStatus
     public float Health = 20;

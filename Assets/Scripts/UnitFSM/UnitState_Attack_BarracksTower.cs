@@ -72,11 +72,13 @@ public class UnitState_Attack_BarracksTower : AUnitState
         {
             if(_childUnits.Units[i] == null)
             {
-                Unit childUnit = Instantiate(_childUnits.ChildUnitPrefab, _unit.transform.position + _unit.UnitCenterOffset, Quaternion.identity, _unit.transform);
+                Unit childUnit = Instantiate(_childUnits.ChildUnitPrefab, _unit.SpawnPosition.transform.position, Quaternion.identity, _unit.transform);
+                //Unit childUnit = Instantiate(_childUnits.ChildUnitPrefab, _unit.transform.position + _unit.UnitCenterOffset, Quaternion.identity, _unit.transform);
                 childUnit.UnitEvent += _OnUnitEventHandler_ChildUnit;
                 childUnit.WaitWaypoint = WaypointManager.Inst.WaypointPool.Get();
                 Vector3 position = Quaternion.Euler(0f, 0f, (360f / 3f) * i) * (Vector3.up * 0.3f);
-                childUnit.WaitWaypoint.transform.position = _unit.ProjectileSpawnPosition.transform.position + position;
+                childUnit.WaitWaypoint.transform.position = _childUnits.RallyPoint.transform.position + position;
+                //childUnit.WaitWaypoint.transform.position = _unit.ProjectileSpawnPosition.transform.position + position;
                 _childUnits.Units[i] = childUnit;
             }
         }
