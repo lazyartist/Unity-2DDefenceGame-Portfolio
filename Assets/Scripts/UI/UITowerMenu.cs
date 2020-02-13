@@ -38,7 +38,7 @@ public class UITowerMenu : MonoBehaviour
             if (SellTowerMenuButton.IsChecked)
             {
                 Tower.DeleteUnit();
-                SelectSystem.Inst.Deselect();
+                SelectorManager.Inst.Deselect();
             }
             else
             {
@@ -62,7 +62,7 @@ public class UITowerMenu : MonoBehaviour
                 {
                     Debug.Log("CreateUnit " + index);
                     Tower.CreateUnit(index);
-                    SelectSystem.Inst.Deselect();
+                    SelectorManager.Inst.Deselect();
                 }
                 else
                 {

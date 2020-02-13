@@ -22,6 +22,7 @@ public class Selector_Tower : Selector {
 
     override public Types.SelectResult SelectNext(Selector selector, Vector3 position, bool isOnWay)
     {
+        // todo barracks rallypoint
         _selectResult.CursorType = isOnWay ? Types.CursorType.Success : Types.CursorType.Fail;
         _selectResult.IsFlag = false;
         _selectResult.SelectResultType = Types.SelectResultType.Deselect;

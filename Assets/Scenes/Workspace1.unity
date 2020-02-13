@@ -5041,7 +5041,7 @@ GameObject:
   - component: {fileID: 1586869406}
   - component: {fileID: 1586869407}
   m_Layer: 0
-  m_Name: ClickCursor_Fail
+  m_Name: Cursor_Fail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5165,7 +5165,7 @@ GameObject:
   - component: {fileID: 1663615992}
   - component: {fileID: 1663615993}
   m_Layer: 0
-  m_Name: ClickContainer
+  m_Name: CursorContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5484,7 +5484,7 @@ GameObject:
   - component: {fileID: 1767055124}
   - component: {fileID: 1767055123}
   m_Layer: 0
-  m_Name: ClickCursor_Success
+  m_Name: Cursor_Success
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6650,7 +6650,7 @@ GameObject:
   - component: {fileID: 2115295321}
   - component: {fileID: 2115295322}
   m_Layer: 0
-  m_Name: SelectSystem
+  m_Name: SelectorManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6681,9 +6681,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurSelector: {fileID: 0}
-  ClickContainer: {fileID: 1663615991}
-  ClickCursorAnimator_Fail: {fileID: 1586869407}
-  ClickCursorAnimator_Success: {fileID: 1767055123}
+  CursorContainer: {fileID: 1663615991}
+  CursorAnimator_Fail: {fileID: 1586869407}
+  CursorAnimator_Success: {fileID: 1767055123}
   RallyPointAnimator: {fileID: 331570570}
   MapSpriteRenderer: {fileID: 378351444}
   WaymapSpriteRenderer: {fileID: 1953397127}

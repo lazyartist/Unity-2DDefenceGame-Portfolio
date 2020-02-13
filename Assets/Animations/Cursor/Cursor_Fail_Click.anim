@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ClickCursor_Fail_Click
+  m_Name: Cursor_Fail_Click
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0

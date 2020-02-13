@@ -5,7 +5,7 @@ AnimatorOverrideController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ClickCursor_Fail
+  m_Name: Cursor_Fail
   m_Controller: {fileID: 9100000, guid: c0637b6a3714b854e9198001d4f0716c, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 802537b85edabfa46af38c2398e44ba5, type: 2}

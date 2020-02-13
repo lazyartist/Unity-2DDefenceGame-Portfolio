@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SelectSystem : SingletonBase<SelectSystem>
+public class SelectorManager : SingletonBase<SelectorManager>
 {
     public Types.SelectionEvent SelectionEvent;
     public Selector CurSelector;
 
-    public GameObject ClickContainer;
-    public Animator ClickCursorAnimator_Fail;
-    public Animator ClickCursorAnimator_Success;
+    public GameObject CursorContainer;
+    public Animator CursorAnimator_Fail;
+    public Animator CursorAnimator_Success;
     public Animator RallyPointAnimator;
     public SpriteRenderer MapSpriteRenderer;
     public SpriteRenderer WaymapSpriteRenderer;
@@ -93,19 +93,19 @@ public class SelectSystem : SingletonBase<SelectSystem>
                 }
 
                 // cursor
-                ClickCursorAnimator_Success.gameObject.SetActive(false);
-                ClickCursorAnimator_Fail.gameObject.SetActive(false);
+                CursorAnimator_Success.gameObject.SetActive(false);
+                CursorAnimator_Fail.gameObject.SetActive(false);
                 switch (selectResult.CursorType)
                 {
                     case Types.CursorType.None:
                         break;
                     case Types.CursorType.Success:
-                        ClickCursorAnimator_Success.gameObject.SetActive(true);
-                        ClickCursorAnimator_Success.SetTrigger("Click");
+                        CursorAnimator_Success.gameObject.SetActive(true);
+                        CursorAnimator_Success.SetTrigger("Click");
                         break;
                     case Types.CursorType.Fail:
-                        ClickCursorAnimator_Fail.gameObject.SetActive(true);
-                        ClickCursorAnimator_Fail.SetTrigger("Click");
+                        CursorAnimator_Fail.gameObject.SetActive(true);
+                        CursorAnimator_Fail.SetTrigger("Click");
                         break;
                     default:
                         break;
@@ -134,7 +134,7 @@ public class SelectSystem : SingletonBase<SelectSystem>
                 }
 
                 clickPosition.z = 0;
-                ClickContainer.transform.position = clickPosition;
+                CursorContainer.transform.position = clickPosition;
             }
         }
     }
