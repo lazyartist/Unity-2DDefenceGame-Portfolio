@@ -40,7 +40,7 @@ public class UnitState_Die : AUnitState
             case Types.UnitEventType.DiedComplete:
                 DiedComplete();
                 break;
-            case Types.UnitEventType.AttackStop:
+            case Types.UnitEventType.AttackStopped:
                 break;
             default:
                 break;

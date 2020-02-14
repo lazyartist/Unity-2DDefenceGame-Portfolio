@@ -81,7 +81,7 @@ public class UnitState_Attack : AUnitState
                 break;
             case Types.UnitEventType.DiedComplete:
                 break;
-            case Types.UnitEventType.AttackStop:
+            case Types.UnitEventType.AttackStopped:
                 break;
             default:
                 break;

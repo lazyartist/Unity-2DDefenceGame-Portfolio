@@ -10,6 +10,8 @@ public class RandomSpawnTest : MonoBehaviour {
     public float SpawnDelayMin = 1f;
     public float SpawnDelayMax = 2f;
     public Text UnitCountText;
+    public int UnitCountLimit = 999;
+    private int _createdUnitCount = 0;
 
     private void Start()
     {
@@ -40,9 +42,14 @@ public class RandomSpawnTest : MonoBehaviour {
         int pathCount = WaypointManager.Inst.PathCount;
         while (true)
         {
+            ++_createdUnitCount;
             Unit unit = Instantiate<Unit>(UnitPrefab, StartWaypoint.transform.position, Quaternion.identity, UnitContainer.transform);
             unit.name = unit.name + unitNumber++;
             unit.TargetWaypoint = WaypointManager.Inst.StartWaypoints[Random.Range(0, pathCount)];
+            if(_createdUnitCount >= UnitCountLimit)
+            {
+                yield break;
+            }
             yield return new WaitForSeconds(Random.Range(SpawnDelayMin, SpawnDelayMax));
         }
     }

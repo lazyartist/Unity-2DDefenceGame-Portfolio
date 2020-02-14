@@ -128,8 +128,8 @@ public class Unit : MonoBehaviour
                 break;
             case Types.UnitNotifyType.ClearAttackTarget:
                 if (HasAttackTargetUnit()) {
-                    UnitFSM.Transit(Types.UnitFSMType.Idle);
-                    DispatchUnitEvent(Types.UnitEventType.AttackStop, null);
+                    //UnitFSM.Transit(Types.UnitFSMType.Idle);
+                    DispatchUnitEvent(Types.UnitEventType.AttackStopped, null);
                     _RemoveAttackTargetUnit();
                 }
                 break;
@@ -178,7 +178,7 @@ public class Unit : MonoBehaviour
                 break;
             case Types.UnitEventType.DiedComplete:
                 break;
-            case Types.UnitEventType.AttackStop:// 공격대상 유닛이 공격을 멈추고 다른 행동을 한다.
+            case Types.UnitEventType.AttackStopped:// 공격대상 유닛이 공격을 멈추고 다른 행동을 한다.
                 _RemoveAttackTargetUnit();
                 UnitFSM.Transit(Types.UnitFSMType.Idle);
                 break;
