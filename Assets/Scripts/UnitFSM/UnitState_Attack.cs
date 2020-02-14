@@ -10,7 +10,7 @@ public class UnitState_Attack : AUnitState
     // implements AUnitState
     public override void EnterState(Unit unit)
     {
-        if (unit.AttackTargetUnit == null)
+        if (unit.HasAttackTargetUnit() == false)
         {
             // 다른 유닛의 원거리 공격등으로 공격대상이 이미 죽었다
         }
@@ -23,7 +23,7 @@ public class UnitState_Attack : AUnitState
             if (unit.AttackData.ProjectilePrefab == null)
             {
                 // 근거리 공격 : 공격을 통보하여 Attack 상태로 전환시킴
-                unit.AttackTargetUnit.Notify(Types.UnitNotifyType.Attack, unit);
+                unit.AttackTargetUnit.Notify(Types.UnitNotifyType.BeAttackState, unit);
             }
             else
             {
@@ -34,6 +34,8 @@ public class UnitState_Attack : AUnitState
     public override void ExitState(Unit unit)
     {
         unit.UnitEvent -= OnUnitEventHandler;
+        _isPlayingAttackAni = false;
+        _coolTime = 0.0f;
     }
     public override AUnitState UpdateState(Unit unit, AUnitState[] unitStates)
     {
@@ -41,7 +43,7 @@ public class UnitState_Attack : AUnitState
         if (_isPlayingAttackAni == false)
         {
             // 공격대상이 없으면 Idle 상태로 전환
-            if (unit.AttackTargetUnit == null || unit.AttackTargetUnit.IsDied)
+            if (unit.IsValidAttackTargetUnit() == false)
             {
                 return unitStates[(int)Types.UnitFSMType.Idle];
             }
@@ -91,7 +93,7 @@ public class UnitState_Attack : AUnitState
         if (_unit.AttackData.ProjectilePrefab == null)
         {
             // 공격하는 순간 다른 유닛의 공격에 의해 공격대상이 이미 죽었을 수 있다
-            if(_unit.AttackTargetUnit != null)
+            if(_unit.HasAttackTargetUnit())
             {
                 _unit.AttackTargetUnit.TakeDamage(_unit.AttackData);
             }
@@ -103,7 +105,7 @@ public class UnitState_Attack : AUnitState
             projectile.AttackData = _unit.AttackData;
             projectile.AttackTargetData = _unit.AttackTargetData;
             // 공격대상이 살아있는 경우
-            if (_unit.AttackTargetUnit != null && _unit.AttackTargetUnit.IsDied == false)
+            if (_unit.IsValidAttackTargetUnit())
             {
                 projectile.InitByTarget(_unit.AttackTargetUnit.gameObject);
             }

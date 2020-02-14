@@ -199,7 +199,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1718194122817380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.35, y: -1.17, z: 0}
+  m_LocalPosition: {x: 7.04, y: -1.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4508797607411722}
@@ -242,7 +242,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1088280849392450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.129, y: 1.647, z: 0}
+  m_LocalPosition: {x: -1.69, y: 1.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4352934188584210}
@@ -395,11 +395,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb29365898316b49b8c7ecca3337d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParentUnit: {fileID: 0}
   ChildUnitPrefab: {fileID: 114781674197796128, guid: b6c8386ac315cf64fb88841752ced57a,
     type: 2}
   Units: []
   MaxUnitCount: 3
   RallyPoint: {fileID: 1088280849392450}
+  RallyPointRadius: 0.3
 --- !u!114 &114447239558583854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -504,11 +506,11 @@ MonoBehaviour:
   HitEffectAnimator: {fileID: 0}
   TargetWaypoint: {fileID: 0}
   WaitWaypoint: {fileID: 0}
-  AttackTargetUnit: {fileID: 0}
   LastAttackTargetPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1299584712736648}
   Health: 0
   Speed: 1
+  IsDied: 0
   TakenCCData: {fileID: 0}
 --- !u!212 &212209478913660530
 SpriteRenderer:

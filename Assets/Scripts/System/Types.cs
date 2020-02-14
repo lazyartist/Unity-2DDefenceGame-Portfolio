@@ -38,7 +38,7 @@ static public class Types {
 
     public enum UnitNotifyType
     {
-        None, Wait, Attack
+        None, Wait, BeAttackState, ClearAttackTarget
     }
 
     [System.Serializable]

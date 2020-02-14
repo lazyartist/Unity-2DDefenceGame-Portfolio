@@ -10,7 +10,7 @@ public class UnitState_Die : AUnitState
         _unit = unit;
 
         unit.UnitBody.Animator.SetTrigger("Die");
-        unit.AttackTargetUnit = null;
+        unit.Notify(Types.UnitNotifyType.ClearAttackTarget, null);
         unit.UnitEvent += OnUnitBodyEventHandler;
     }
     public override void ExitState(Unit unit)
@@ -21,11 +21,11 @@ public class UnitState_Die : AUnitState
     {
         return null;
     }
-    void OnUnitBodyEventHandler(Types.UnitEventType unitBodyEventType, Unit unit)
+    void OnUnitBodyEventHandler(Types.UnitEventType unitEventType, Unit unit)
     {
-        Debug.Log("UnitEventListener " + unitBodyEventType);
+        Debug.Log("UnitEventListener " + unitEventType);
 
-        switch (unitBodyEventType)
+        switch (unitEventType)
         {
             case Types.UnitEventType.None:
                 break;

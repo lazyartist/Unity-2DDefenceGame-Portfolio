@@ -22,7 +22,7 @@ public class UnitState_Idle : AUnitState
         }
 
         // 공격대상이 없으면 찾는다
-        if (unit.AttackTargetUnit == null && unit.FindAttackTarget() != null)
+        if (unit.HasAttackTargetUnit() == false && unit.FindAttackTarget() != null)
         {
             // 공격대상을 찾았다
             //Debug.Log("Found AttackTarget " + unit.AttackTargetUnit);
@@ -45,7 +45,7 @@ public class UnitState_Idle : AUnitState
         }
 
         //공격대상이 있다
-        if (unit.AttackTargetUnit != null)
+        if (unit.HasAttackTargetUnit())
         {
             //Debug.LogAssertion("Idle : unit.AttackTargetUnit != null " + unit);
             return unitStates[(int)Types.UnitFSMType.Attack];

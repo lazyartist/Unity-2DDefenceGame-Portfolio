@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4522332166440886}
   m_Layer: 10
-  m_Name: ProjectileSpawnPosition
+  m_Name: SpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 114967502376588390}
   - component: {fileID: 50595680946373142}
   - component: {fileID: 61416652118964560}
-  - component: {fileID: 114096841915416184}
   - component: {fileID: 114473184380942948}
   - component: {fileID: 114484818814319848}
   - component: {fileID: 114228830754148118}
@@ -52,7 +51,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1374238682958870
 GameObject:
   m_ObjectHideFlags: 1
@@ -581,22 +580,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
---- !u!114 &114096841915416184
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1350713528623468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bb29365898316b49b8c7ecca3337d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ChildUnitPrefab: {fileID: 114672875092321788, guid: f44b1f94d19a36f43be0b1244db60058,
-    type: 2}
-  Units: []
-  MaxUnitCount: 3
-  RallyPoint: {fileID: 0}
 --- !u!114 &114130808932761646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -809,11 +792,11 @@ MonoBehaviour:
   HitEffectAnimator: {fileID: 0}
   TargetWaypoint: {fileID: 0}
   WaitWaypoint: {fileID: 0}
-  AttackTargetUnit: {fileID: 0}
   LastAttackTargetPosition: {x: 0, y: 0, z: 0}
-  SpawnPosition: {fileID: 0}
+  SpawnPosition: {fileID: 1083582964749310}
   Health: 0
   Speed: 1
+  IsDied: 0
   TakenCCData: {fileID: 0}
 --- !u!114 &114967502376588390
 MonoBehaviour:
@@ -837,11 +820,11 @@ MonoBehaviour:
   HitEffectAnimator: {fileID: 0}
   TargetWaypoint: {fileID: 0}
   WaitWaypoint: {fileID: 0}
-  AttackTargetUnit: {fileID: 0}
   LastAttackTargetPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1920152767210224}
   Health: 0
   Speed: 1
+  IsDied: 0
   TakenCCData: {fileID: 0}
 --- !u!114 &114990053605017292
 MonoBehaviour:

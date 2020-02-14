@@ -70,6 +70,12 @@ public class Tower : MonoBehaviour
         // todo 타워의 종류에 따라 정리작업을 다르게 해줌
         if (Unit != null)
         {
+            ChildUnits _childUnits = Unit.gameObject.GetComponent<ChildUnits>();
+            if(_childUnits != null)
+            {
+                _childUnits.ClearAllAttackTargetUnits();
+            }
+
             Destroy(Unit.gameObject);
         }
         Unit = null;

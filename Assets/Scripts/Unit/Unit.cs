@@ -22,7 +22,7 @@ public class Unit : MonoBehaviour
     public Waypoint TargetWaypoint;
     public Waypoint WaitWaypoint;
 
-    public Unit AttackTargetUnit;
+    public Unit AttackTargetUnit { get; private set; }
     public Vector3 LastAttackTargetPosition;
     public GameObject SpawnPosition;
 
@@ -30,8 +30,9 @@ public class Unit : MonoBehaviour
     public float Health = 20;
     public float Speed = 2f;
     protected float _velocity = 0f;
-    public bool IsDied { get; private set; }
+    public bool IsDied = false;
     public CCData TakenCCData;
+    public bool Test { get; set; }
 
     protected void Awake()
     {
@@ -121,9 +122,16 @@ public class Unit : MonoBehaviour
                 _AddAttackTargetUnit(notifyUnit);
                 UnitFSM.Transit(Types.UnitFSMType.Wait);
                 break;
-            case Types.UnitNotifyType.Attack:
+            case Types.UnitNotifyType.BeAttackState:
                 _AddAttackTargetUnit(notifyUnit);
                 UnitFSM.Transit(Types.UnitFSMType.Attack);
+                break;
+            case Types.UnitNotifyType.ClearAttackTarget:
+                if (HasAttackTargetUnit()) {
+                    UnitFSM.Transit(Types.UnitFSMType.Idle);
+                    DispatchUnitEvent(Types.UnitEventType.AttackStop, null);
+                    _RemoveAttackTargetUnit();
+                }
                 break;
             default:
                 break;
@@ -132,7 +140,7 @@ public class Unit : MonoBehaviour
 
     private void _AddAttackTargetUnit(Unit unit)
     {
-        if (AttackTargetUnit != null)
+        if (HasAttackTargetUnit())
         {
             _RemoveAttackTargetUnit();
         }
@@ -142,9 +150,10 @@ public class Unit : MonoBehaviour
 
     private void _RemoveAttackTargetUnit()
     {
-        if (AttackTargetUnit == null)
+        if (HasAttackTargetUnit() == false)
         {
-            Debug.LogAssertion("AttackTargetUnit == null " + this);
+            Debug.LogAssertion("HasAttackTargetUnit() == false " + this);
+            Debug.Break();
         }
         LastAttackTargetPosition = AttackTargetUnit.GetCenterPosition();
 
@@ -225,7 +234,7 @@ public class Unit : MonoBehaviour
         IsDied = true;
         DispatchUnitEvent(Types.UnitEventType.Die, this);
 
-        if (AttackTargetUnit != null)
+        if (HasAttackTargetUnit())
         {
             AttackTargetUnit.UnitEvent -= _OnUnitEventHandler_AttackTargetUnit;
         }
@@ -234,7 +243,7 @@ public class Unit : MonoBehaviour
     virtual public Unit FindAttackTarget()
     {
         // 이미 공격목표가 있다
-        if (AttackTargetUnit != null)
+        if (HasAttackTargetUnit())
         {
             return AttackTargetUnit;
         }
@@ -249,7 +258,7 @@ public class Unit : MonoBehaviour
             Collider2D collider = colliders[i];
             Unit unit = collider.gameObject.GetComponent<Unit>();
             // 사망하거나 전투중이 아닌 유닛만 공격대상으로 한다
-            if (unit.IsDied == false && unit.AttackTargetUnit == null)
+            if (unit.IsDied == false && unit.HasAttackTargetUnit() == false)
             {
                 if (draftTargetUnit == null)
                 {
@@ -322,9 +331,19 @@ public class Unit : MonoBehaviour
         return false;
     }
 
+    public bool HasAttackTargetUnit()
+    {
+        return AttackTargetUnit != null;
+    }
+
+    public bool IsValidAttackTargetUnit()
+    {
+        return HasAttackTargetUnit() && AttackTargetUnit.IsDied == false;
+    }
+
     private void OnDrawGizmos()
     {
-        if (AttackTargetUnit != null)
+        if (HasAttackTargetUnit())
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(transform.position, AttackTargetUnit.transform.position);
