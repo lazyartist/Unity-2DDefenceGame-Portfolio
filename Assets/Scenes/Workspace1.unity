@@ -256,6 +256,7 @@ MonoBehaviour:
   SpawnDelayMin: 10
   SpawnDelayMax: 10
   UnitCountText: {fileID: 1272869456}
+  UnitCountLimit: 999
 --- !u!4 &127443445
 Transform:
   m_ObjectHideFlags: 0
@@ -309,13 +310,50 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1718194122817380, guid: 5d19e215ac682c840aa6142eeca9d7eb, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d19e215ac682c840aa6142eeca9d7eb, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &151797643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 151797644}
+  - component: {fileID: 151797645}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &151797644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 151797643}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 766800044}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &151797645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 151797643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad51e29b9770594f9e2a0b701f0c999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwipeStartDistanceOver: 10
 --- !u!1 &158410999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,11 +1170,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4989592482463272, guid: 08c796fe2ec0afe468ee8c0823dd189f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.03
+      value: 3.76
       objectReference: {fileID: 0}
     - target: {fileID: 4989592482463272, guid: 08c796fe2ec0afe468ee8c0823dd189f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.33
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 4989592482463272, guid: 08c796fe2ec0afe468ee8c0823dd189f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2477,6 +2515,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2115295321}
+  - {fileID: 151797644}
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5434,6 +5473,7 @@ MonoBehaviour:
   SpawnDelayMin: 2
   SpawnDelayMax: 3
   UnitCountText: {fileID: 1272869456}
+  UnitCountLimit: 999
 --- !u!4 &1792169248
 Transform:
   m_ObjectHideFlags: 0

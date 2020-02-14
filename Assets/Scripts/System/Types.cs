@@ -5,6 +5,7 @@ using UnityEngine;
 static public class Types {
     public delegate void UnitEvent(UnitEventType unitEventType, Unit unit);
     public delegate void SelectionEvent(SelectionEventType selectionEventType, GameObject gameObject);
+    public delegate void MouseEvent(MouseEventType mouseEventType, Vector3 value);
 
     public enum UnitEventType
     {
@@ -14,6 +15,11 @@ static public class Types {
     public enum SelectionEventType
     {
         None, Selected
+    }
+
+    public enum MouseEventType
+    {
+        None, Click, Swipe
     }
 
     public enum TeamType
