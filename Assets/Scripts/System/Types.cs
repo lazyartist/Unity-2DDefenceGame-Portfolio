@@ -19,7 +19,7 @@ static public class Types {
 
     public enum MouseEventType
     {
-        None, Click, Swipe
+        None, Down, Up, Swipe
     }
 
     public enum TeamType

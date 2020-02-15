@@ -39,6 +39,7 @@ public class InputManager : SingletonBase<InputManager>
             {
                 _isMouseDown = true;
                 _mousePositionDown = Input.mousePosition;
+                DispatchEvent(Types.MouseEventType.Down, _mousePositionDown);
             }
             _isSwiping = false;
         }
@@ -57,7 +58,7 @@ public class InputManager : SingletonBase<InputManager>
         if (_isMouseDown && Input.GetMouseButtonUp(0))
         {
             if (_isSwiping == false) {
-                DispatchEvent(Types.MouseEventType.Click, Input.mousePosition);
+                DispatchEvent(Types.MouseEventType.Up, Input.mousePosition);
             }
             _isSwiping = false;
             _isMouseDown = false;

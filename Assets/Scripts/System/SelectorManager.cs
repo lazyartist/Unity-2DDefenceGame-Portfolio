@@ -49,7 +49,7 @@ public class SelectorManager : SingletonBase<SelectorManager>
         }
         CurSelector = null;
     }
-
+    Vector3 _lastCameraPosition;
     private void _OnMouseEvent_InputManager(Types.MouseEventType mouseEventType, Vector3 value)
     {
         Debug.Log("MouseEvent " + mouseEventType + ", " + value);
@@ -57,7 +57,10 @@ public class SelectorManager : SingletonBase<SelectorManager>
         {
             case Types.MouseEventType.None:
                 break;
-            case Types.MouseEventType.Click:
+            case Types.MouseEventType.Down:
+                _lastCameraPosition = Camera.main.transform.position;
+                break;
+            case Types.MouseEventType.Up:
                 {
                     // 현재 Selector 있으면 클릭 처리의 우선권을 줌
                     Selector selector = null;
@@ -143,6 +146,10 @@ public class SelectorManager : SingletonBase<SelectorManager>
                 }
                 break;
             case Types.MouseEventType.Swipe:
+                {
+                    Vector3 swipeDistance = value / 100f * -1;
+                    Camera.main.transform.position = _lastCameraPosition + swipeDistance;
+                }
                 break;
             default:
                 break;
