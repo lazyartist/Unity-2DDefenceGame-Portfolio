@@ -5,6 +5,9 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Camera Camera;
+    public Vector3 ValidMapAreaCenter;
+    public Vector2 ValidMapAreaSize;
+
     public float MaxCameraSize = 5;
     public float MinCameraSize = 3;
     public float MapPixelPerUnit = 100;
@@ -49,7 +52,20 @@ public class CameraController : MonoBehaviour
             case Types.MouseEventType.Swipe:
                 {
                     Vector3 swipeDistance = (value / MapPixelPerUnit) * (Camera.orthographicSize / MaxCameraSize) * -1;
-                    Camera.transform.position = _lastCameraPosition + swipeDistance;
+                    Vector3 cameraPosition = _lastCameraPosition + swipeDistance;
+                    Rect r = new Rect();
+                    r.yMax = ValidMapAreaCenter.y + (ValidMapAreaSize.y * 0.5f - Camera.orthographicSize);
+                    r.yMin = ValidMapAreaCenter.y - (ValidMapAreaSize.y * 0.5f - Camera.orthographicSize);
+                    if (cameraPosition.y > r.yMax)
+                    {
+                        cameraPosition.y = r.yMax;
+                    }
+                    else if (cameraPosition.y < r.yMin)
+                    {
+                        cameraPosition.y = r.yMin;
+                    }
+
+                    Camera.transform.position = cameraPosition;
                 }
                 break;
             case Types.MouseEventType.Zoom:
@@ -59,5 +75,11 @@ public class CameraController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(ValidMapAreaCenter, new Vector3(ValidMapAreaSize.x, ValidMapAreaSize.y, 1f));
     }
 }
