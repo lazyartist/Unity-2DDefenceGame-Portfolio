@@ -30,12 +30,14 @@ public class InputManager : SingletonBase<InputManager>
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)){
+        if (Input.GetMouseButtonDown(0))
+        {
             if (EventSystem.current.IsPointerOverGameObject(_pointerId)) // true:UI오브젝트 위, false:게임오브젝트 위
             {
                 Debug.Log("click on UI");
                 _isMouseDown = false;
-            } else
+            }
+            else
             {
                 _isMouseDown = true;
                 _mousePositionDown = Input.mousePosition;
@@ -48,7 +50,7 @@ public class InputManager : SingletonBase<InputManager>
         {
             Vector3 mousePositionLast = Input.mousePosition;
             float distance = Vector2.Distance(mousePositionLast, _mousePositionDown);
-            if(distance >= SwipeStartDistanceOver)
+            if (distance >= SwipeStartDistanceOver)
             {
                 _isSwiping = true;
                 DispatchEvent(Types.MouseEventType.Swipe, mousePositionLast - _mousePositionDown);
@@ -57,11 +59,18 @@ public class InputManager : SingletonBase<InputManager>
 
         if (_isMouseDown && Input.GetMouseButtonUp(0))
         {
-            if (_isSwiping == false) {
+            if (_isSwiping == false)
+            {
                 DispatchEvent(Types.MouseEventType.Up, Input.mousePosition);
             }
             _isSwiping = false;
             _isMouseDown = false;
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+        {
+            float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
+            DispatchEvent(Types.MouseEventType.Zoom, new Vector3(scrollWheel, 0f, 0f));
         }
     }
 
