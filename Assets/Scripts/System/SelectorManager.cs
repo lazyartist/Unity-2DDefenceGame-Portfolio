@@ -14,7 +14,8 @@ public class SelectorManager : SingletonBase<SelectorManager>
     public Animator RallyPointAnimator;
     public SpriteRenderer MapSpriteRenderer;
     public SpriteRenderer WaymapSpriteRenderer;
-    public Vector3 _waymapSpritePivot;
+
+    private Vector3 _waymapSpritePivot;
 
     protected override void Awake()
     {
@@ -49,16 +50,14 @@ public class SelectorManager : SingletonBase<SelectorManager>
         }
         CurSelector = null;
     }
-    Vector3 _lastCameraPosition;
     private void _OnMouseEvent_InputManager(Types.MouseEventType mouseEventType, Vector3 value)
     {
-        Debug.Log("MouseEvent " + mouseEventType + ", " + value);
+        //Debug.Log("MouseEvent " + mouseEventType + ", " + value);
         switch (mouseEventType)
         {
             case Types.MouseEventType.None:
                 break;
             case Types.MouseEventType.Down:
-                _lastCameraPosition = Camera.main.transform.position;
                 break;
             case Types.MouseEventType.Up:
                 {
@@ -146,10 +145,6 @@ public class SelectorManager : SingletonBase<SelectorManager>
                 }
                 break;
             case Types.MouseEventType.Swipe:
-                {
-                    Vector3 swipeDistance = value / 100f * -1;
-                    Camera.main.transform.position = _lastCameraPosition + swipeDistance;
-                }
                 break;
             default:
                 break;
