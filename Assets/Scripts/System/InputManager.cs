@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class InputManager : SingletonBase<InputManager>
 {
-    public Types.MouseEvent MouseEvent;
+    public Types.InputEvent InputEvent;
     public float SwipeStartDistanceOver = 2f;
     private bool _isMouseDown = false;
     private bool _isSwiping = false;
@@ -41,7 +41,7 @@ public class InputManager : SingletonBase<InputManager>
             {
                 _isMouseDown = true;
                 _mousePositionDown = Input.mousePosition;
-                DispatchEvent(Types.MouseEventType.Down, _mousePositionDown);
+                DispatchEvent(Types.InputEventType.Down, _mousePositionDown);
             }
             _isSwiping = false;
         }
@@ -53,7 +53,7 @@ public class InputManager : SingletonBase<InputManager>
             if (distance >= SwipeStartDistanceOver)
             {
                 _isSwiping = true;
-                DispatchEvent(Types.MouseEventType.Swipe, mousePositionLast - _mousePositionDown);
+                DispatchEvent(Types.InputEventType.Swipe, mousePositionLast - _mousePositionDown);
             }
         }
 
@@ -61,7 +61,7 @@ public class InputManager : SingletonBase<InputManager>
         {
             if (_isSwiping == false)
             {
-                DispatchEvent(Types.MouseEventType.Up, Input.mousePosition);
+                DispatchEvent(Types.InputEventType.Up, Input.mousePosition);
             }
             _isSwiping = false;
             _isMouseDown = false;
@@ -70,7 +70,7 @@ public class InputManager : SingletonBase<InputManager>
         if (Input.GetAxis("Mouse ScrollWheel") != 0f)
         {
             float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
-            DispatchEvent(Types.MouseEventType.Zoom, new Vector3(scrollWheel, 0f, 0f));
+            DispatchEvent(Types.InputEventType.Zoom, new Vector3(scrollWheel, 0f, 0f));
         }
     }
 
@@ -79,11 +79,11 @@ public class InputManager : SingletonBase<InputManager>
     //    //Debug.Log("MouseEvent " + mouseEventType + ", " + value);
     //}
 
-    public void DispatchEvent(Types.MouseEventType mouseEventType, Vector3 value)
+    public void DispatchEvent(Types.InputEventType inputEventType, Vector3 value)
     {
-        if (MouseEvent != null)
+        if (InputEvent != null)
         {
-            MouseEvent(mouseEventType, value);
+            InputEvent(inputEventType, value);
         }
     }
 }

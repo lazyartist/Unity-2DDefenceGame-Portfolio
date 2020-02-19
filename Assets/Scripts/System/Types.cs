@@ -5,7 +5,7 @@ using UnityEngine;
 static public class Types {
     public delegate void UnitEvent(UnitEventType unitEventType, Unit unit);
     public delegate void SelectionEvent(SelectionEventType selectionEventType, GameObject gameObject);
-    public delegate void MouseEvent(MouseEventType mouseEventType, Vector3 value);
+    public delegate void InputEvent(InputEventType inputEventType, Vector3 value);
 
     public enum UnitEventType
     {
@@ -17,7 +17,7 @@ static public class Types {
         None, Selected
     }
 
-    public enum MouseEventType
+    public enum InputEventType
     {
         None, Down, Up, Swipe, Zoom
     }

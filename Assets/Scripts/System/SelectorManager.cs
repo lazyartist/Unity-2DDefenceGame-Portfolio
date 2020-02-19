@@ -26,7 +26,7 @@ public class SelectorManager : SingletonBase<SelectorManager>
 
     void Start()
     {
-        InputManager.Inst.MouseEvent += _OnMouseEvent_InputManager;
+        InputManager.Inst.InputEvent += _OnInputEvent_InputManager;
     }
 
     //void Update()
@@ -50,16 +50,15 @@ public class SelectorManager : SingletonBase<SelectorManager>
         }
         CurSelector = null;
     }
-    private void _OnMouseEvent_InputManager(Types.MouseEventType mouseEventType, Vector3 value)
+    private void _OnInputEvent_InputManager(Types.InputEventType inputEventType, Vector3 value)
     {
-        //Debug.Log("MouseEvent " + mouseEventType + ", " + value);
-        switch (mouseEventType)
+        switch (inputEventType)
         {
-            case Types.MouseEventType.None:
+            case Types.InputEventType.None:
                 break;
-            case Types.MouseEventType.Down:
+            case Types.InputEventType.Down:
                 break;
-            case Types.MouseEventType.Up:
+            case Types.InputEventType.Up:
                 {
                     // 현재 Selector 있으면 클릭 처리의 우선권을 줌
                     Selector selector = null;
@@ -144,7 +143,7 @@ public class SelectorManager : SingletonBase<SelectorManager>
                     CursorContainer.transform.position = clickPosition;
                 }
                 break;
-            case Types.MouseEventType.Swipe:
+            case Types.InputEventType.Swipe:
                 break;
             default:
                 break;

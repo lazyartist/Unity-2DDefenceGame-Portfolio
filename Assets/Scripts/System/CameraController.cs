@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
 
     virtual protected void Start()
     {
-        InputManager.Inst.MouseEvent += _OnMouseEvent_InputManager;
+        InputManager.Inst.InputEvent += _OnInputEvent_InputManager;
         _targetCameraSize = Camera.orthographicSize;
         UpdateValidCameraArea();
         SetCameraPositionInValidArea();
@@ -38,21 +38,23 @@ public class CameraController : MonoBehaviour
             {
                 _cameraSizeChangeT += 0.05f;
             }
+            UpdateValidCameraArea();
+            SetCameraPositionInValidArea();
         }
     }
 
-    private void _OnMouseEvent_InputManager(Types.MouseEventType mouseEventType, Vector3 value)
+    private void _OnInputEvent_InputManager(Types.InputEventType inputEventType, Vector3 value)
     {
-        switch (mouseEventType)
+        switch (inputEventType)
         {
-            case Types.MouseEventType.None:
+            case Types.InputEventType.None:
                 break;
-            case Types.MouseEventType.Down:
+            case Types.InputEventType.Down:
                 _lastCameraPosition = Camera.transform.position;
                 break;
-            case Types.MouseEventType.Up:
+            case Types.InputEventType.Up:
                 break;
-            case Types.MouseEventType.Swipe:
+            case Types.InputEventType.Swipe:
                 {
                     Vector3 swipeDistance = (value / MapPixelPerUnit) * (Camera.orthographicSize / MaxCameraSize) * -1;
                     Camera.transform.position = _lastCameraPosition + swipeDistance;
@@ -60,7 +62,7 @@ public class CameraController : MonoBehaviour
                     SetCameraPositionInValidArea();
                 }
                 break;
-            case Types.MouseEventType.Zoom:
+            case Types.InputEventType.Zoom:
                 _targetCameraSize = (value.x > 0) ? MinCameraSize : MaxCameraSize;
                 _cameraSizeChangeT = 0f;
                 break;
