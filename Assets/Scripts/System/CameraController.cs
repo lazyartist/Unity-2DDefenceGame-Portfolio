@@ -15,11 +15,14 @@ public class CameraController : MonoBehaviour
     float _targetCameraSize;
     float _cameraSizeChangeT;
     Vector3 _lastCameraPosition;
+    Rect _validCameraArea;
 
     virtual protected void Start()
     {
         InputManager.Inst.MouseEvent += _OnMouseEvent_InputManager;
         _targetCameraSize = Camera.orthographicSize;
+        UpdateValidCameraArea();
+        SetCameraPositionInValidArea();
     }
 
     private void Update()
@@ -52,20 +55,9 @@ public class CameraController : MonoBehaviour
             case Types.MouseEventType.Swipe:
                 {
                     Vector3 swipeDistance = (value / MapPixelPerUnit) * (Camera.orthographicSize / MaxCameraSize) * -1;
-                    Vector3 cameraPosition = _lastCameraPosition + swipeDistance;
-                    Rect r = new Rect();
-                    r.yMax = ValidMapAreaCenter.y + (ValidMapAreaSize.y * 0.5f - Camera.orthographicSize);
-                    r.yMin = ValidMapAreaCenter.y - (ValidMapAreaSize.y * 0.5f - Camera.orthographicSize);
-                    if (cameraPosition.y > r.yMax)
-                    {
-                        cameraPosition.y = r.yMax;
-                    }
-                    else if (cameraPosition.y < r.yMin)
-                    {
-                        cameraPosition.y = r.yMin;
-                    }
-
-                    Camera.transform.position = cameraPosition;
+                    Camera.transform.position = _lastCameraPosition + swipeDistance;
+                    UpdateValidCameraArea();
+                    SetCameraPositionInValidArea();
                 }
                 break;
             case Types.MouseEventType.Zoom:
@@ -75,6 +67,37 @@ public class CameraController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    void UpdateValidCameraArea()
+    {
+        Vector2 validCameraSize = new Vector2(ValidMapAreaSize.x * 0.5f - (Camera.orthographicSize * Camera.aspect), ValidMapAreaSize.y * 0.5f - Camera.orthographicSize);
+        _validCameraArea.yMax = ValidMapAreaCenter.y + validCameraSize.y;
+        _validCameraArea.yMin = ValidMapAreaCenter.y - validCameraSize.y;
+        _validCameraArea.xMin = ValidMapAreaCenter.x - validCameraSize.x;
+        _validCameraArea.xMax = ValidMapAreaCenter.x + validCameraSize.x;
+    }
+
+    void SetCameraPositionInValidArea()
+    {
+        Vector3 cameraPosition = Camera.transform.position;
+        if (cameraPosition.y > _validCameraArea.yMax)
+        {
+            cameraPosition.y = _validCameraArea.yMax;
+        }
+        else if (cameraPosition.y < _validCameraArea.yMin)
+        {
+            cameraPosition.y = _validCameraArea.yMin;
+        }
+        if (cameraPosition.x > _validCameraArea.xMax)
+        {
+            cameraPosition.x = _validCameraArea.xMax;
+        }
+        else if (cameraPosition.x < _validCameraArea.xMin)
+        {
+            cameraPosition.x = _validCameraArea.xMin;
+        }
+        Camera.transform.position = cameraPosition;
     }
 
     private void OnDrawGizmos()
