@@ -48,6 +48,14 @@ public class UICanvas : SingletonBase<UICanvas>
     {
         UnitInfoText.text = "";
     }
+    public void ShowInfo(string info)
+    {
+        UnitInfoText.text = info;
+    }
+    public void HideInfo()
+    {
+        UnitInfoText.text = "";
+    }
 
     void _OnInputEvent_InputManager(Types.InputEventType inputEventType, Vector3 value)
     {

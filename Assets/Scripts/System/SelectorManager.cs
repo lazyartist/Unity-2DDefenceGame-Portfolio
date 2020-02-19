@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class SelectorManager : SingletonBase<SelectorManager>
 {
-    public Types.SelectionEvent SelectionEvent;
     public Selector CurSelector;
 
     public GameObject CursorContainer;
@@ -33,7 +32,7 @@ public class SelectorManager : SingletonBase<SelectorManager>
     //{
     //}
 
-    public void SetCurSelector(Selector selector)
+    public void RegisterSelector(Selector selector)
     {
         if (CurSelector != null)
         {
@@ -42,7 +41,7 @@ public class SelectorManager : SingletonBase<SelectorManager>
         CurSelector = selector;
     }
 
-    public void Deselect()
+    public void UnregisterSelector()
     {
         if (CurSelector != null)
         {
@@ -78,7 +77,7 @@ public class SelectorManager : SingletonBase<SelectorManager>
                             case Types.SelectResultType.Select:
                                 break;
                             case Types.SelectResultType.Deselect:
-                                Deselect();
+                                UnregisterSelector();
                                 break;
                         }
                     }
@@ -133,10 +132,10 @@ public class SelectorManager : SingletonBase<SelectorManager>
                         case Types.SelectResultType.None:
                             break;
                         case Types.SelectResultType.Select:
-                            SetCurSelector(selector);
+                            RegisterSelector(selector);
                             break;
                         case Types.SelectResultType.Deselect:
-                            Deselect();
+                            UnregisterSelector();
                             break;
                     }
 

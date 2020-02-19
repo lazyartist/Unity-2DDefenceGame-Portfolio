@@ -4,22 +4,22 @@ using UnityEngine;
 
 static public class Types {
     public delegate void UnitEvent(UnitEventType unitEventType, Unit unit);
-    public delegate void SelectionEvent(SelectionEventType selectionEventType, GameObject gameObject);
     public delegate void InputEvent(InputEventType inputEventType, Vector3 value);
+    public delegate void MasterSkillEvent(MasterSkillEventType masterSkillEventType);
 
     public enum UnitEventType
     {
         None, AttackStart, AttackEnd, Attack, Die, DiedComplete, AttackStopped
     }
 
-    public enum SelectionEventType
-    {
-        None, Selected
-    }
-
     public enum InputEventType
     {
         None, Down, Up, Swipe, Zoom
+    }
+
+    public enum MasterSkillEventType
+    {
+        None, Selected, Unselected
     }
 
     public enum TeamType
