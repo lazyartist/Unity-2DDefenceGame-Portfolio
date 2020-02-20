@@ -11,9 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
   m_Name: AttackData_Projectile_Rain
   m_EditorClassIdentifier: 
+  ProjectilePrefab: {fileID: 114905019756347756, guid: ff5f6a4da2af1db4cb55ea9de62b7ab7,
+    type: 2}
   Power: 2
-  ExplosionRange: 1
+  AttackRange: 1
   CCData: {fileID: 11400000, guid: d3199a1a3a76f0e4cb71f12d3be21e97, type: 2}
-  CCType: 0
-  CCTime: 0
-  CCValue: 0

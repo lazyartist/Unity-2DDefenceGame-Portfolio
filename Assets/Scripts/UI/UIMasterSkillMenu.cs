@@ -57,36 +57,4 @@ public class UIMasterSkillMenu : MonoBehaviour
         }
         UICanvas.Inst.HideInfo();
     }
-
-    //void _SelectMasterSkillButton(int idx)
-    //{
-    //    Debug.Log(idx);
-    //}
-
-    //void _SetListener(bool isAdd)
-    //{
-    //    for (int i = 0; i < MasterSkillButtons.Length; i++)
-    //    {
-    //        MasterSkillButton masterSkillButton = MasterSkillButtons[i];
-    //        masterSkillButton.MasterSkillData = MasterSkillDatas[i];
-    //        masterSkillButton.Toggle.onValueChanged.AddListener((bool isOn) =>
-    //        {
-    //            _SelectMasterSkillButton(i);
-    //        });
-    //    }
-    //}
-
-    //void _SelectAllButtons(bool selected)
-    //{
-    //    for (int i = 0; i < MasterSkillButtons.Length; i++)
-    //    {
-    //        MasterSkillButton masterSkillButton = MasterSkillButtons[i];
-    //        masterSkillButton.Toggle.isOn = selected;
-    //        masterSkillButton.MasterSkillData = MasterSkillDatas[i];
-    //        masterSkillButton.Toggle.onValueChanged.AddListener((bool isOn) =>
-    //        {
-    //            _SelectMasterSkillButton(i);
-    //        });
-    //    }
-    //}
 }

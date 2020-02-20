@@ -59,14 +59,14 @@ public class SelectorManager : SingletonBase<SelectorManager>
                 break;
             case Types.InputEventType.Up:
                 {
-                    // 현재 Selector 있으면 클릭 처리의 우선권을 줌
+                    // 현재 Selector가 있으면 처리의 우선권을 줌
                     Selector selector = null;
                     Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     clickPosition.z = 0;
                     Vector3 positionOnWaymap = (_waymapSpritePivot + ((clickPosition - MapSpriteRenderer.transform.position) * WaymapSpriteRenderer.sprite.pixelsPerUnit / MapSpriteRenderer.gameObject.transform.localScale.x));
                     Color pixelOnWaymap = WaymapSpriteRenderer.sprite.texture.GetPixel((int)positionOnWaymap.x, (int)positionOnWaymap.y);
                     bool isClickPositionOnWay = pixelOnWaymap == Color.black;
-                    Types.SelectResult selectResult = new Types.SelectResult();
+                    Types.SelectResult selectResult = Types.SelectResult.Create();
                     if (CurSelector != null)
                     {
                         selectResult = CurSelector.SelectNext(selector, clickPosition, isClickPositionOnWay);
@@ -82,9 +82,10 @@ public class SelectorManager : SingletonBase<SelectorManager>
                         }
                     }
 
-                    if (selectResult.SelectResultType == Types.SelectResultType.None || selectResult.SelectResultType == Types.SelectResultType.Deselect)
+                    //if (selectResult.SelectResultType == Types.SelectResultType.None || selectResult.SelectResultType == Types.SelectResultType.Deselect)
+                    if (selectResult.IsSpread)
                     {
-                        // 현재 Selector가 아무런 처리를 하지 않았으므로 클릭된 Selector에게 처리 기회를 줌
+                        // 현재 Selector가 다음 Selector에게 이벤트 전파를 해도 된다고 함
                         RaycastHit2D raycastHit = Physics2D.Raycast(clickPosition, Vector3.forward, Camera.main.transform.position.z);
                         if (raycastHit)
                         {

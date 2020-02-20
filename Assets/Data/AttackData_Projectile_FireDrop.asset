@@ -11,9 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
   m_Name: AttackData_Projectile_FireDrop
   m_EditorClassIdentifier: 
+  ProjectilePrefab: {fileID: 114091672208601204, guid: 711286fd8e78ea546982572f7bb28a54,
+    type: 2}
   Power: 5
-  ExplosionRange: 1.2
+  AttackRange: 1
   CCData: {fileID: 11400000, guid: 2abd475d06a3b52439374a14af271a9b, type: 2}
-  CCType: 0
-  CCTime: 0
-  CCValue: 0

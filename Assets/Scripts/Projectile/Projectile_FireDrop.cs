@@ -12,6 +12,14 @@ public class Projectile_FireDrop : AProjectile
         _animator = GetComponent<Animator>();
     }
 
+    override public void Init(AttackData attackData, AttackTargetData attackTargetData, GameObject target, Vector3 position)
+    {
+        AttackData = attackData;
+        AttackTargetData = attackTargetData;
+        //_target = target;
+        InitByPosition(position);
+    }
+
     override public void InitByTarget(GameObject target)
     {
         _animator.SetTrigger("Attack");

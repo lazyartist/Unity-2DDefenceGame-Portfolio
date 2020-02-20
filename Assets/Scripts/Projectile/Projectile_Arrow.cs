@@ -94,6 +94,14 @@ public class Projectile_Arrow : AProjectile
     //{
     //}
 
+    override public void Init(AttackData attackData, AttackTargetData attackTargetData, GameObject target, Vector3 position)
+    {
+        AttackData = attackData;
+        AttackTargetData = attackTargetData;
+        _target = target;
+        InitByPosition(position);
+    }
+
     override public void InitByTarget(GameObject target)
     {
         _target = target;

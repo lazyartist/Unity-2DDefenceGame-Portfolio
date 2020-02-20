@@ -61,14 +61,14 @@ TagManager:
   - name: UnitShadow
     uniqueID: 2544752535
     locked: 0
+  - name: Cursor
+    uniqueID: 1943578843
+    locked: 0
   - name: Unit
     uniqueID: 3061684891
     locked: 0
   - name: Tower
     uniqueID: 1993133199
-    locked: 0
-  - name: Cursor
-    uniqueID: 1943578843
     locked: 0
   - name: Projectile
     uniqueID: 193212725

@@ -47,13 +47,6 @@ static public class Types {
         None, Wait, BeAttackState, ClearAttackTarget
     }
 
-    [System.Serializable]
-    public struct AttackArea_
-    {
-        public Vector3 offset;
-        public Vector3 size;
-    }
-
     public enum CursorType
     {
         None, Success, Fail
@@ -64,19 +57,21 @@ static public class Types {
         Select, // 선택
         Deselect, // 선택 해제
     }
-    //[System.Serializable]
     public struct SelectResult
     {
         public SelectResultType SelectResultType;
         public CursorType CursorType;
-        public bool IsFlag;
+        public bool IsFlag; // 커서에 깃발 표시 여부
+        public bool IsSpread; // 다음 Selector에게 이벤트 전파할지 여부
 
-    //    public SelectResult(SelectPropagationType selectPropagationType = SelectPropagationType.Done, CursorType cursorType = CursorType.None, bool isFlag = false)
-    //    {
-    //        SelectPropagationType = SelectPropagationType.Done;
-    //        CursorType = CursorType.None;
-    //        IsFlag = false;
-    //}
+        static public SelectResult Create() {
+            SelectResult selectResult;
+            selectResult.SelectResultType = SelectResultType.None;
+            selectResult.CursorType = CursorType.None;
+            selectResult.IsFlag = false;
+            selectResult.IsSpread = true;
+            return selectResult;
+        }
     }
 
 }

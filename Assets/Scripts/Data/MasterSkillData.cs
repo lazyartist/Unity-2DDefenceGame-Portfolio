@@ -8,4 +8,5 @@ public class MasterSkillData : ScriptableObject {
     public float CoolTime;
     public string Name;
     public AttackData AttackData;
+    public AttackTargetData AttackTargetData;
 }

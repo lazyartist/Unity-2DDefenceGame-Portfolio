@@ -17,8 +17,9 @@ public class Selector_Tower : Selector
         base.Select();
         Tower.Select();
         _selectResult.CursorType = Types.CursorType.None;
-        _selectResult.IsFlag = false;
         _selectResult.SelectResultType = Types.SelectResultType.Select;
+        _selectResult.IsFlag = false;
+        _selectResult.IsSpread = false;
         return _selectResult;
     }
 
@@ -28,18 +29,23 @@ public class Selector_Tower : Selector
         {
             // barracks rallypoint
             _selectResult.CursorType = isOnWay ? Types.CursorType.Success : Types.CursorType.Fail;
-            _selectResult.IsFlag = true;
             _selectResult.SelectResultType = Types.SelectResultType.Deselect;
+            _selectResult.IsFlag = isOnWay;
+            _selectResult.IsSpread = false;
 
-            ChildUnits childUnits = Tower.Unit.GetComponent<ChildUnits>();
-            childUnits.RallyPoint.transform.position = position;
-            childUnits.SetRallyPointOfAllUnits();
+            if (isOnWay)
+            {
+                ChildUnits childUnits = Tower.Unit.GetComponent<ChildUnits>();
+                childUnits.RallyPoint.transform.position = position;
+                childUnits.SetRallyPointOfAllUnits();
+            }
         }
         else
         {
             _selectResult.CursorType = Types.CursorType.None;
-            _selectResult.IsFlag = false;
             _selectResult.SelectResultType = Types.SelectResultType.Deselect;
+            _selectResult.IsFlag = false;
+            _selectResult.IsSpread = true;
         }
 
         return _selectResult;

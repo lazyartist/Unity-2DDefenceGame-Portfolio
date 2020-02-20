@@ -15,3 +15,4 @@ MonoBehaviour:
   CoolTime: 5
   Name: Fire
   AttackData: {fileID: 11400000, guid: a3e09b4bc9f20144d8be5d3eef6a3aea, type: 2}
+  AttackTargetData: {fileID: 11400000, guid: d81539ef5a14e544b8f233a5c6c710ab, type: 2}

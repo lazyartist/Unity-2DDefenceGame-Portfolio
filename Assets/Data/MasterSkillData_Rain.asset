@@ -15,3 +15,4 @@ MonoBehaviour:
   CoolTime: 3
   Name: Rain
   AttackData: {fileID: 11400000, guid: 5eb88b7e7c9f0fe4496024923ec41edc, type: 2}
+  AttackTargetData: {fileID: 11400000, guid: d81539ef5a14e544b8f233a5c6c710ab, type: 2}
