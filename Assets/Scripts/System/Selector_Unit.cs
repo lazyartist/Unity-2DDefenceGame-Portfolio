@@ -17,8 +17,9 @@ public class Selector_Unit : Selector
         base.SelectEnter();
         //Unit.Select();
         _selectResult.CursorType = Types.CursorType.None;
-        _selectResult.IsFlag = false;
         _selectResult.SelectResultType = Types.SelectResultType.Select;
+        _selectResult.IsFlag = false;
+        _selectResult.IsSpread = true;
 
         UICanvas.Inst.ShowUnitInfo(Unit);
 
@@ -28,8 +29,9 @@ public class Selector_Unit : Selector
     override public Types.SelectResult SelectUpdate(Selector selector, Vector3 position, bool isOnWay)
     {
         _selectResult.CursorType = Types.CursorType.None;
-        _selectResult.IsFlag = false;
         _selectResult.SelectResultType = Types.SelectResultType.Deselect;
+        _selectResult.IsFlag = false;
+        _selectResult.IsSpread = true;
         return _selectResult;
     }
 
