@@ -421,6 +421,7 @@ MonoBehaviour:
   Speed: 1
   IsDied: 0
   TakenCCData: {fileID: 0}
+  CanChangeDirection: 0
 --- !u!212 &212008996346684152
 SpriteRenderer:
   m_ObjectHideFlags: 1

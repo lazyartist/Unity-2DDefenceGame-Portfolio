@@ -51,7 +51,10 @@ public class UnitState_Attack : AUnitState
             else if (_coolTime <= 0.0f)
             {
                 //Debug.Log("Attack " + unit + " to " + unit.AttackTargetUnit);
-                unit.Toward(unit.AttackTargetUnit.transform.position);
+                if (unit.CanChangeDirection)
+                {
+                    unit.Toward(unit.AttackTargetUnit.transform.position);
+                }
                 unit.UnitBody.Animator.SetTrigger("Attack");
                 _coolTime = unit.UnitData.AttackCoolTime;
             }
@@ -93,7 +96,7 @@ public class UnitState_Attack : AUnitState
         if (_unit.AttackData.ProjectilePrefab == null)
         {
             // 공격하는 순간 다른 유닛의 공격에 의해 공격대상이 이미 죽었을 수 있다
-            if(_unit.HasAttackTargetUnit())
+            if (_unit.HasAttackTargetUnit())
             {
                 _unit.AttackTargetUnit.TakeDamage(_unit.AttackData);
             }

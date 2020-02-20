@@ -6,8 +6,6 @@ public class Unit : MonoBehaviour
 {
     public Types.UnitEvent UnitEvent;
 
-    public Dictionary<int, int> aa;
-
     public TeamData TeamData;
     public UnitData UnitData;
     public AttackTargetData AttackTargetData;
@@ -29,10 +27,11 @@ public class Unit : MonoBehaviour
     // todo create UnitStatus
     public float Health = 20;
     public float Speed = 2f;
-    protected float _velocity = 0f;
     public bool IsDied = false;
     public CCData TakenCCData;
-    public bool Test { get; set; }
+    public bool CanChangeDirection = true;
+
+    float _velocity = 0f;
 
     protected void Awake()
     {

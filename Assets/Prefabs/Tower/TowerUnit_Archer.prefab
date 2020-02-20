@@ -720,6 +720,7 @@ MonoBehaviour:
   Speed: 1
   IsDied: 0
   TakenCCData: {fileID: 0}
+  CanChangeDirection: 1
 --- !u!114 &114967502376588390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -748,6 +749,7 @@ MonoBehaviour:
   Speed: 1
   IsDied: 0
   TakenCCData: {fileID: 0}
+  CanChangeDirection: 0
 --- !u!114 &114990053605017292
 MonoBehaviour:
   m_ObjectHideFlags: 1
