@@ -126,7 +126,8 @@ public class Unit : MonoBehaviour
                 UnitFSM.Transit(Types.UnitFSMType.Attack);
                 break;
             case Types.UnitNotifyType.ClearAttackTarget:
-                if (HasAttackTargetUnit()) {
+                if (HasAttackTargetUnit())
+                {
                     //UnitFSM.Transit(Types.UnitFSMType.Idle);
                     DispatchUnitEvent(Types.UnitEventType.AttackStopped, null);
                     _RemoveAttackTargetUnit();
@@ -251,7 +252,6 @@ public class Unit : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + UnitCenterOffset, UnitData.TargetRange, AttackTargetData.AttackTargetLayerMask);
         if (colliders.Length == 0) return draftTargetUnit;
 
-        // todo 가장 목표지점에 가까운 적을 찾는다.
         for (int i = 0; i < colliders.Length; i++)
         {
             Collider2D collider = colliders[i];
@@ -273,6 +273,7 @@ public class Unit : MonoBehaviour
                     {
                         draftTargetUnit = unit;
                     }
+                    // 가장 목표지점에 가까운 적을 찾는다.
                     else if (draftTargetUnit.TargetWaypoint.OrderNumber < unit.TargetWaypoint.OrderNumber)
                     {
                         draftTargetUnit = unit;
@@ -338,6 +339,15 @@ public class Unit : MonoBehaviour
     public bool IsValidAttackTargetUnit()
     {
         return HasAttackTargetUnit() && AttackTargetUnit.IsDied == false;
+    }
+
+    public bool IsValidAttackTargetUnitInRange()
+    {
+        if (HasAttackTargetUnit() == false) return false;
+
+        float distance = Vector3.Distance(transform.position + UnitCenterOffset, AttackTargetUnit.transform.position);
+        Debug.Log("distance " + distance);
+        return distance < UnitData.TargetRange;
     }
 
     private void OnDrawGizmos()

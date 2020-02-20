@@ -47,6 +47,12 @@ public class UnitState_Attack : AUnitState
             {
                 return unitStates[(int)Types.UnitFSMType.Idle];
             }
+            // 공격대상이 공격 범위를 벗어나면 AttackTargetUnit을 제거하고 Idle 상태로 전환
+            else if (unit.IsValidAttackTargetUnitInRange() == false)
+            {
+                unit.Notify(Types.UnitNotifyType.ClearAttackTarget, null);
+                return unitStates[(int)Types.UnitFSMType.Idle];
+            }
             // 공격대상이 있고 쿨타임이 지났으면 공격
             else if (_coolTime <= 0.0f)
             {
