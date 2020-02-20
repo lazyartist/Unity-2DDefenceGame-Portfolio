@@ -22,7 +22,7 @@ public class UIMasterSkillMenu : MonoBehaviour
             MasterSkillButton masterSkillButton = Instantiate<MasterSkillButton>(MasterSkillButtonPrefab);
             MasterSkillButtons[i] = masterSkillButton;
             masterSkillButton.transform.SetParent(HorizontalLayoutGroup.transform);
-            masterSkillButton.MasterSkillData = MasterSkillDatas[i];
+            masterSkillButton.Init(MasterSkillDatas[i]);
             masterSkillButton.Toggle.isOn = false;
             masterSkillButton.Toggle.group = ToggleGroup;
             masterSkillButton.Toggle.onValueChanged.AddListener((bool isOn) =>

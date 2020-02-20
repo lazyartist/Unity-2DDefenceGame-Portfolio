@@ -23,16 +23,16 @@ public class Selector_MasterSkill : Selector
         UIMasterSkillMenu.MasterSkillEvent -= OnMasterSkillEvent_UIMasterSkillMenu;
     }
 
-    override public Types.SelectResult Select()
+    override public Types.SelectResult SelectEnter()
     {
-        base.Select();
+        base.SelectEnter();
         _selectResult.CursorType = Types.CursorType.None;
         _selectResult.IsFlag = false;
         _selectResult.SelectResultType = Types.SelectResultType.None;
         return _selectResult;
     }
 
-    override public Types.SelectResult SelectNext(Selector selector, Vector3 position, bool isOnWay)
+    override public Types.SelectResult SelectUpdate(Selector selector, Vector3 position, bool isOnWay)
     {
         if (UIMasterSkillMenu.SelectedMasterSkillButton != null)
         {
@@ -43,6 +43,7 @@ public class Selector_MasterSkill : Selector
 
             if (isOnWay)
             {
+                UIMasterSkillMenu.SelectedMasterSkillButton.Reset();
                 AProjectile projectile = Instantiate<AProjectile>(UIMasterSkillMenu.SelectedMasterSkillButton.MasterSkillData.AttackData.ProjectilePrefab, position, Quaternion.identity, transform);
                 projectile.Init(UIMasterSkillMenu.SelectedMasterSkillButton.MasterSkillData.AttackData, UIMasterSkillMenu.SelectedMasterSkillButton.MasterSkillData.AttackTargetData, null, position);
             }
@@ -58,10 +59,10 @@ public class Selector_MasterSkill : Selector
         return _selectResult;
     }
 
-    override public void Deselect()
+    override public void SelectExit()
     {
         UIMasterSkillMenu.Deselect();
-        base.Deselect();
+        base.SelectExit();
     }
 
     override protected void UpdateSelected()

@@ -12,9 +12,9 @@ public class Selector_Tower : Selector
         base.Start();
     }
 
-    override public Types.SelectResult Select()
+    override public Types.SelectResult SelectEnter()
     {
-        base.Select();
+        base.SelectEnter();
         Tower.Select();
         _selectResult.CursorType = Types.CursorType.None;
         _selectResult.SelectResultType = Types.SelectResultType.Select;
@@ -23,7 +23,7 @@ public class Selector_Tower : Selector
         return _selectResult;
     }
 
-    override public Types.SelectResult SelectNext(Selector selector, Vector3 position, bool isOnWay)
+    override public Types.SelectResult SelectUpdate(Selector selector, Vector3 position, bool isOnWay)
     {
         if (Tower.IsRallyPointModeOn)
         {
@@ -51,10 +51,10 @@ public class Selector_Tower : Selector
         return _selectResult;
     }
 
-    override public void Deselect()
+    override public void SelectExit()
     {
         Tower.Deselect();
-        base.Deselect();
+        base.SelectExit();
     }
 
     override protected void UpdateSelected()

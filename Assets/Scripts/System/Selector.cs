@@ -14,7 +14,7 @@ public class Selector : MonoBehaviour {
     }
 
     // 선택
-    virtual public Types.SelectResult Select()
+    virtual public Types.SelectResult SelectEnter()
     {
         Selected = true;
         UpdateSelected();
@@ -22,13 +22,13 @@ public class Selector : MonoBehaviour {
     }
 
     // 선택 이후 클릭에 대한 처리
-    virtual public Types.SelectResult SelectNext(Selector selector, Vector3 position, bool isOnWay)
+    virtual public Types.SelectResult SelectUpdate(Selector selector, Vector3 position, bool isOnWay)
     {
         return _selectResult;
     }
 
     // 선택 해제
-    virtual public void Deselect()
+    virtual public void SelectExit()
     {
         Selected = false;
         UpdateSelected();

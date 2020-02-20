@@ -12,9 +12,9 @@ public class Selector_Unit : Selector
         Unit = GetComponent<Unit>();
     }
 
-    override public Types.SelectResult Select()
+    override public Types.SelectResult SelectEnter()
     {
-        base.Select();
+        base.SelectEnter();
         //Unit.Select();
         _selectResult.CursorType = Types.CursorType.None;
         _selectResult.IsFlag = false;
@@ -25,7 +25,7 @@ public class Selector_Unit : Selector
         return _selectResult;
     }
 
-    override public Types.SelectResult SelectNext(Selector selector, Vector3 position, bool isOnWay)
+    override public Types.SelectResult SelectUpdate(Selector selector, Vector3 position, bool isOnWay)
     {
         _selectResult.CursorType = Types.CursorType.None;
         _selectResult.IsFlag = false;
@@ -33,9 +33,9 @@ public class Selector_Unit : Selector
         return _selectResult;
     }
 
-    override public void Deselect()
+    override public void SelectExit()
     {
-        base.Deselect();
+        base.SelectExit();
 
         UICanvas.Inst.HideUnitInfo();
     }

@@ -36,7 +36,7 @@ public class SelectorManager : SingletonBase<SelectorManager>
     {
         if (CurSelector != null)
         {
-            CurSelector.Deselect();
+            CurSelector.SelectExit();
         }
         CurSelector = selector;
     }
@@ -45,7 +45,7 @@ public class SelectorManager : SingletonBase<SelectorManager>
     {
         if (CurSelector != null)
         {
-            CurSelector.Deselect();
+            CurSelector.SelectExit();
         }
         CurSelector = null;
     }
@@ -69,7 +69,7 @@ public class SelectorManager : SingletonBase<SelectorManager>
                     Types.SelectResult selectResult = Types.SelectResult.Create();
                     if (CurSelector != null)
                     {
-                        selectResult = CurSelector.SelectNext(selector, clickPosition, isClickPositionOnWay);
+                        selectResult = CurSelector.SelectUpdate(selector, clickPosition, isClickPositionOnWay);
                         switch (selectResult.SelectResultType)
                         {
                             case Types.SelectResultType.None:
@@ -93,7 +93,7 @@ public class SelectorManager : SingletonBase<SelectorManager>
                             selector = raycastHit.collider.GetComponent<Selector>();
                             if (selector != null)
                             {
-                                selectResult = selector.Select();
+                                selectResult = selector.SelectEnter();
                             }
                         }
                     }
