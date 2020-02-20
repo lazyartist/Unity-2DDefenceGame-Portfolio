@@ -709,7 +709,7 @@ MonoBehaviour:
   AttackData: {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
   UnitBody: {fileID: 114674303218684092}
   UnitSize: {x: 0, y: 0}
-  UnitCenterOffset: {x: 0, y: 0.25, z: 0}
+  UnitCenterOffset: {x: 0, y: -0.92, z: 0}
   UnitFSM: {fileID: 114990053605017292}
   HitEffectAnimator: {fileID: 0}
   TargetWaypoint: {fileID: 0}
