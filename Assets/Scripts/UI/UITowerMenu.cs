@@ -129,7 +129,7 @@ public class UITowerMenu : MonoBehaviour
                 towerMenuButton.TowerUpgradeData = towerUpgradeData;
                 towerMenuButton.GetComponent<DataProvider>().Data = towerUpgradeData;
                 towerMenuButton.IconImage.sprite = towerUpgradeData.IconSprite;
-                towerMenuButton.Text.text = towerUpgradeData.Cost.ToString();
+                towerMenuButton.Text.text = towerUpgradeData.GoldCost.ToString();
                 towerMenuButton.Check(false);
             }
         }
@@ -137,7 +137,7 @@ public class UITowerMenu : MonoBehaviour
         if (tower.Unit != null)
         {
             // Sell button
-            _sellCost = Mathf.RoundToInt(tower.TowerUpgradeData.Cost * Consts.TowerUnitSellCostRate);
+            _sellCost = Mathf.RoundToInt(tower.TowerUpgradeData.GoldCost * Consts.TowerUnitSellCostRate);
             SellTowerMenuButton.Text.text = _sellCost.ToString();
             SellTowerMenuButton.Check(false);
             SellTowerMenuButton.gameObject.SetActive(true);

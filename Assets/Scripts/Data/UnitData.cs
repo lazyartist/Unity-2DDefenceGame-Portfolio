@@ -10,4 +10,6 @@ public class UnitData : ScriptableObject
 
     public float TargetRange = 1f;
     public float AttackCoolTime = 2f;
+
+    public int Gold;
 }

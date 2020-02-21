@@ -6,7 +6,7 @@ using UnityEngine;
 public class TowerUpgradeData : ScriptableObject
 {
     public string Name;
-    public float Cost;
+    public float GoldCost;
     public Sprite IconSprite;
     public Sprite UnitSprite;
     public Unit UnitPrefab;

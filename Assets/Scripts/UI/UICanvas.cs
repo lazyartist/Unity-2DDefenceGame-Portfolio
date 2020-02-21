@@ -13,20 +13,20 @@ public class UICanvas : SingletonBase<UICanvas>
         InputManager.Inst.InputEvent += _OnInputEvent_InputManager;
     }
 
-    private void OnApplicationQuit()
-    {
-        _ClearnUp();
-    }
+    //private void OnApplicationQuit()
+    //{
+    //    _ClearnUp();
+    //}
 
-    private void OnDestroy()
-    {
-        _ClearnUp();
-    }
+    //private void OnDestroy()
+    //{
+    //    _ClearnUp();
+    //}
 
-    void _ClearnUp()
-    {
-        InputManager.Inst.InputEvent -= _OnInputEvent_InputManager;
-    }
+    //void _ClearnUp()
+    //{
+    //    InputManager.Inst.InputEvent -= _OnInputEvent_InputManager;
+    //}
 
     public void ShowTowerMenu(Tower tower, bool isShow)
     {
