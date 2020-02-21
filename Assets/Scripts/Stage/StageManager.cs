@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class StageManager : SingletonBase<StageManager> {
     public Types.StageEvent StageEvent;
-
     public StageData StageData;
     public StageInfo StageInfo;
 
@@ -12,19 +11,23 @@ public class StageManager : SingletonBase<StageManager> {
     {
         base.Awake();
         StageInfo = new StageInfo();
-        StageInfo.Copy(StageData);
-        StageInfo.WaveCount = 0;
     }
 
     private void Start()
     {
+        StageInfo.Copy(StageData);
+        StageInfo.WaveCount = 0;
     }
 
-    public void DispatchEvent(Types.StageEventType stageEventType)
+    private void Update()
     {
-        if (StageEvent != null)
+        if (StageInfo.IsDirty)
         {
-            StageEvent(stageEventType);
+            if (StageEvent != null)
+            {
+                StageEvent(Types.StageEventType.Changed);
+            }
+            StageInfo.Clean();
         }
     }
 }

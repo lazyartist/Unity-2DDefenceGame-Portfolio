@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Name: TowerUpgradeData_Barracks2
   m_EditorClassIdentifier: 
   Name: "\uBCD1\uC6012"
-  Cost: 10
+  GoldCost: 15
   IconSprite: {fileID: 21300000, guid: a824b02206f2fea44b92f1208efa8068, type: 3}
+  UnitSprite: {fileID: 0}
   UnitPrefab: {fileID: 114991902228683878, guid: 5d19e215ac682c840aa6142eeca9d7eb,
     type: 2}
   TowerUpgradeDatas: []

@@ -46,7 +46,6 @@ public class UnitAndStageBinder : MonoBehaviour {
                 break;
             case Types.UnitEventType.Die:
                 StageManager.Inst.StageInfo.Gold += unit.UnitData.Gold;
-                StageManager.Inst.DispatchEvent(Types.StageEventType.Changed);
                 CleanUp();
                 break;
             case Types.UnitEventType.DiedComplete:

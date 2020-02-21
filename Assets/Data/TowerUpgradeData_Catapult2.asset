@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: TowerUpgradeData_Catapult2
   m_EditorClassIdentifier: 
   Name: "\uD22C\uC11D\uAE302"
-  Cost: 5
+  GoldCost: 30
   IconSprite: {fileID: 21300000, guid: eee86132e5aaf4642ac9fc9bce5aac6d, type: 3}
   UnitSprite: {fileID: 21300000, guid: b76a372be5ec0e443b679faa18049c65, type: 3}
   UnitPrefab: {fileID: 114983846545771790, guid: 268da0f6ac566574c8ae3dcbc3f6da41,

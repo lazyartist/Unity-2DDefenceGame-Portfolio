@@ -38,7 +38,7 @@ public class UITowerMenu : MonoBehaviour
         {
             if (SellTowerMenuButton.IsChecked)
             {
-                Tower.DeleteUnit();
+                Tower.SellUnit();
                 SelectorManager.Inst.UnregisterSelector();
             }
             else

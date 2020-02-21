@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 114353606096339792}
   - component: {fileID: 212525123201911660}
   - component: {fileID: 61701707201112652}
+  - component: {fileID: 114011924595486126}
   m_Layer: 8
   m_Name: Tower
   m_TagString: Untagged
@@ -180,7 +181,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1281099522430760}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.74, y: 2.03, z: 0}
+  m_LocalPosition: {x: 12.98, y: 5.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4266965794854658}
@@ -216,6 +217,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.92, y: 0.95}
   m_EdgeRadius: 0
+--- !u!114 &114011924595486126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281099522430760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0517aa887c0dce6468721716b1ae126f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tower: {fileID: 0}
 --- !u!114 &114267300303259396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,6 +249,7 @@ MonoBehaviour:
   UnitThumbSR: {fileID: 212015583977026644}
   UnitRangeSR: {fileID: 212166020964502196}
   DraftUnitRangeSR: {fileID: 212496068269202454}
+  IsRallyPointModeOn: 0
 --- !u!114 &114353606096339792
 MonoBehaviour:
   m_ObjectHideFlags: 1

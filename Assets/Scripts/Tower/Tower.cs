@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Tower : MonoBehaviour
 {
+    public Types.TowerEvent TowerEvent;
+
     public TowerUpgradeData TowerUpgradeData;
     public TowerUpgradeData RootTowerUpgradeData;
     public GameObject UnitContainer;
@@ -63,8 +65,15 @@ public class Tower : MonoBehaviour
         Unit.gameObject.SetActive(true);
 
         TowerUpgradeData = towerUpgradeData;
+        _DispatchEvent(Types.TowerEventType.Created);
     }
 
+    public void SellUnit()
+    {
+        DeleteUnit();
+        _DispatchEvent(Types.TowerEventType.Sold);
+        TowerUpgradeData = RootTowerUpgradeData;
+    }
     public void DeleteUnit()
     {
         // todo 타워의 종류에 따라 정리작업을 다르게 해줌
@@ -79,7 +88,6 @@ public class Tower : MonoBehaviour
             Destroy(Unit.gameObject);
         }
         Unit = null;
-        TowerUpgradeData = RootTowerUpgradeData;
     }
 
     public void Select()
@@ -119,6 +127,14 @@ public class Tower : MonoBehaviour
         if (isOn == true && Unit != null)
         {
             ShowRange(UnitRangeSR, Unit.transform.position, Unit);
+        }
+    }
+
+    void _DispatchEvent(Types.TowerEventType towerEventType)
+    {
+        if(TowerEvent != null)
+        {
+            TowerEvent(towerEventType, this);
         }
     }
 }

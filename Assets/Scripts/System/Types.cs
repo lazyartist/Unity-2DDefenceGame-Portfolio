@@ -4,6 +4,7 @@ using UnityEngine;
 
 static public class Types {
     public delegate void UnitEvent(UnitEventType unitEventType, Unit unit);
+    public delegate void TowerEvent(TowerEventType towerEventType, Tower tower);
     public delegate void InputEvent(InputEventType inputEventType, Vector3 value);
     public delegate void MasterSkillEvent(MasterSkillEventType masterSkillEventType);
     public delegate void StageEvent(StageEventType stageEventType);
@@ -11,6 +12,11 @@ static public class Types {
     public enum UnitEventType
     {
         None, AttackStart, AttackEnd, Attack, Die, DiedComplete, AttackStopped
+    }
+
+    public enum TowerEventType
+    {
+        None, Created, Sold,
     }
 
     public enum InputEventType
