@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: StageData_01
   m_EditorClassIdentifier: 
   Health: 20
-  Gold: 100
+  Gold: 10
   WaveCount: 10

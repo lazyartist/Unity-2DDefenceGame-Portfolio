@@ -26,6 +26,7 @@ public class UITowerMenu : MonoBehaviour
     }
     void Start()
     {
+        StageManager.Inst.StageEvent += _OnStageEvent;
     }
 
     void Update()
@@ -64,7 +65,7 @@ public class UITowerMenu : MonoBehaviour
             TowerMenuButton towerMenuButton = Instantiate(TowerMenuButtonPrefab, transform);
             towerMenuButton.Button.onClick.AddListener(() =>
             {
-                if (towerMenuButton.IsChecked)
+                if (towerMenuButton.IsChecked && towerMenuButton.CanBuy)
                 {
                     Debug.Log("CreateUnit " + index);
                     Tower.CreateUnit(index);
@@ -134,6 +135,8 @@ public class UITowerMenu : MonoBehaviour
             }
         }
 
+        UpdateCanBuyOfAllTowerMenuButtons();
+
         if (tower.Unit != null)
         {
             // Sell button
@@ -165,9 +168,44 @@ public class UITowerMenu : MonoBehaviour
         Debug.Log("UItowerMenu position " + transform.position);
     }
 
+    public void UpdateCanBuyOfAllTowerMenuButtons()
+    {
+        int length = Tower.TowerUpgradeData.TowerUpgradeDatas.Length;
+        for (int i = 0; i < MaxTowerButtonCount; i++)
+        {
+            bool active = i < length;
+            TowerMenuButton towerMenuButton = TowerMenuButtons[i];
+            if (active)
+            {
+                towerMenuButton.CanBuy = towerMenuButton.TowerUpgradeData.GoldCost <= StageManager.Inst.StageInfo.Gold;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
     public void Hide()
     {
         gameObject.SetActive(false);
         Tower = null;
+    }
+
+    void _OnStageEvent(Types.StageEventType stageEventType)
+    {
+        if (this.gameObject.activeSelf)
+        {
+            switch (stageEventType)
+            {
+                case Types.StageEventType.None:
+                    break;
+                case Types.StageEventType.Changed:
+                    UpdateCanBuyOfAllTowerMenuButtons();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
