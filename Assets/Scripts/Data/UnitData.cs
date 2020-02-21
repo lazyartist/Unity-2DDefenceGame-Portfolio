@@ -12,4 +12,5 @@ public class UnitData : ScriptableObject
     public float AttackCoolTime = 2f;
 
     public int Gold;
+    public int StageHealthDamage = 1;
 }

@@ -30,6 +30,7 @@ public class Unit : MonoBehaviour
     public bool IsDied = false;
     public CCData TakenCCData;
     public bool CanChangeDirection = true;
+    public bool GoalComplete = false;
 
     float _velocity = 0f;
 
@@ -228,7 +229,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         gameObject.layer = 0; // 타겟으로 검색되지 않도록 LayerMask 초기화
         IsDied = true;

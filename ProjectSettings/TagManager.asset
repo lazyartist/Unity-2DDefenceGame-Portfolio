@@ -21,9 +21,9 @@ TagManager:
   - ATeamUnit
   - BTeamUnit
   - ATeamTower
-  - 
-  - 
-  - 
+  - NoTeamUnit
+  - GoalZone
+  - DestroyUnitZone
   - 
   - 
   - 

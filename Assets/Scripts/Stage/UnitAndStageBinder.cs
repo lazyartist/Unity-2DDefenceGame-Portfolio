@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitAndStageBinder : MonoBehaviour {
+public class UnitAndStageBinder : MonoBehaviour
+{
     public Unit Unit;
 
-	void Start () {
+    void Start()
+    {
         Unit = GetComponent<Unit>();
-        if(Unit != null)
+        if (Unit != null)
         {
             Unit.UnitEvent += _OnUnitEvent;
         }
@@ -25,7 +27,7 @@ public class UnitAndStageBinder : MonoBehaviour {
 
     void CleanUp()
     {
-        if(Unit != null)
+        if (Unit != null)
         {
             Unit.UnitEvent -= _OnUnitEvent;
             Unit = null;
@@ -45,7 +47,10 @@ public class UnitAndStageBinder : MonoBehaviour {
             case Types.UnitEventType.Attack:
                 break;
             case Types.UnitEventType.Die:
-                StageManager.Inst.StageInfo.Gold += unit.UnitData.Gold;
+                if (unit.GoalComplete == false)
+                {
+                    StageManager.Inst.StageInfo.Gold += unit.UnitData.Gold;
+                }
                 CleanUp();
                 break;
             case Types.UnitEventType.DiedComplete:
