@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Tower_Catapult_Attack
+  m_Name: TowerUnit_Catapult_Attack
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -697,21 +697,21 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: 0
-    functionName: AttackStart
+    functionName: AniEvent_AttackStart
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.23333333
-    functionName: Attack
+    functionName: AniEvent_AttackFire
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.1
-    functionName: AttackEnd
+    functionName: AniEvent_AttackEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

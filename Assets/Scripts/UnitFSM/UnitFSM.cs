@@ -35,7 +35,7 @@ public class UnitFSM : MonoBehaviour {
 
         if(unitState != null && unitState != CurUnitState)
         {
-            _Transit(unitState);
+            Transit(unitState);
         }
     }
 
@@ -45,10 +45,11 @@ public class UnitFSM : MonoBehaviour {
         AUnitState unitState = UnitStates[(int)unitFSMType];
         if(CurUnitState != unitState)
         {
-            _Transit(unitState);
+            Transit(unitState);
         }
     }
-    private void _Transit(AUnitState unitState)
+
+    void Transit(AUnitState unitState)
     {
         CurUnitState.ExitState(Unit);
         CurUnitState.enabled = false;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TowerGizmos : MonoBehaviour {
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Tower tower = GetComponent<Tower>();
 

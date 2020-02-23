@@ -11,7 +11,7 @@ static public class Types {
 
     public enum UnitEventType
     {
-        None, AttackStart, AttackEnd, Attack, Die, DiedComplete, AttackStopped
+        None, AttackStart, AttackEnd, AttackFire, Die, DiedComplete, AttackStopped
     }
 
     public enum TowerEventType

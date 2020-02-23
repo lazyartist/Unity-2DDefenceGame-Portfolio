@@ -11,7 +11,7 @@ public class ChildUnits : MonoBehaviour
     public GameObject RallyPoint;
     public float RallyPointRadius = 0.3f;
 
-    private void Awake()
+    void Awake()
     {
         ParentUnit = GetComponent<Unit>();
         Units = new Unit[MaxUnitCount];
@@ -37,12 +37,12 @@ public class ChildUnits : MonoBehaviour
             {
                 Unit unit = Instantiate(ChildUnitPrefab, ParentUnit.SpawnPosition.transform.position, Quaternion.identity, ParentUnit.transform);
                 Units[i] = unit;
-                _SetRallyPoint(unit, i);
+                SetRallyPoint(unit, i);
             }
         }
     }
 
-    private void _SetRallyPoint(Unit unit, int index)
+    void SetRallyPoint(Unit unit, int index)
     {
         Vector3 position = Quaternion.Euler(0f, 0f, (360f / (float)MaxUnitCount) * (float)index) * (Vector3.up * RallyPointRadius);
         if (unit.WaitWaypoint == null)
@@ -65,7 +65,7 @@ public class ChildUnits : MonoBehaviour
             Unit unit = Units[i];
             if (unit != null && unit.IsDied == false)
             {
-                _SetRallyPoint(unit, i);
+                SetRallyPoint(unit, i);
             }
         }
     }

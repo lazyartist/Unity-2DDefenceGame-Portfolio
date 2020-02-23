@@ -77,8 +77,8 @@ public class UnitState_Attack : AUnitState
         {
             case Types.UnitEventType.None:
                 break;
-            case Types.UnitEventType.Attack:
-                Attack();
+            case Types.UnitEventType.AttackFire:
+                AttackFire();
                 break;
             case Types.UnitEventType.AttackStart:
                 _isPlayingAttackAni = true;
@@ -96,16 +96,12 @@ public class UnitState_Attack : AUnitState
                 break;
         }
     }
-    virtual public void Attack()
+    virtual public void AttackFire()
     {
         // 공격이 발사체가 아닌 경우
         if (_unit.AttackData.ProjectilePrefab == null)
         {
-            // 공격하는 순간 다른 유닛의 공격에 의해 공격대상이 이미 죽었을 수 있다
-            if (_unit.HasAttackTargetUnit())
-            {
-                _unit.AttackTargetUnit.TakeDamage(_unit.AttackData);
-            }
+            Hit();
         }
         // 공격이 발사체인 경우
         else
@@ -125,6 +121,15 @@ public class UnitState_Attack : AUnitState
                 projectile.Init(_unit.AttackData, _unit.AttackTargetData, null, _unit.LastAttackTargetPosition);
                 projectile.InitByPosition(_unit.LastAttackTargetPosition);
             }
+        }
+    }
+
+    void Hit()
+    {
+        // 공격이 히트하는 순간 다른 유닛의 공격에 의해 공격대상이 이미 죽었을 수 있다
+        if (_unit.HasAttackTargetUnit())
+        {
+            _unit.AttackTargetUnit.TakeDamage(_unit.AttackData);
         }
     }
 }

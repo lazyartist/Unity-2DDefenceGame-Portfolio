@@ -19,14 +19,14 @@ public class UITowerMenu : MonoBehaviour
     private TowerMenuButton _checkedTowerMenuButton;
     private int _sellCost;
 
-    private void Awake()
+    void Awake()
     {
         this.gameObject.SetActive(false);
         Init();
     }
     void Start()
     {
-        StageManager.Inst.StageEvent += _OnStageEvent;
+        StageManager.Inst.StageEvent += OnStageEvent;
     }
 
     void Update()
@@ -192,7 +192,7 @@ public class UITowerMenu : MonoBehaviour
         Tower = null;
     }
 
-    void _OnStageEvent(Types.StageEventType stageEventType)
+    void OnStageEvent(Types.StageEventType stageEventType)
     {
         if (this.gameObject.activeSelf)
         {

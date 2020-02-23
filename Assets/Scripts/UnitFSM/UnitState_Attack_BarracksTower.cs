@@ -7,7 +7,7 @@ public class UnitState_Attack_BarracksTower : AUnitState
     private float _coolTime = 0.0f;
     private bool _isPlayingAttackAni;
 
-    private void Awake()
+    void Awake()
     {
         _childUnits = GetComponent<ChildUnits>();
     }
@@ -18,11 +18,11 @@ public class UnitState_Attack_BarracksTower : AUnitState
         _unit = unit;
 
         _coolTime = 0.0f;
-        unit.UnitEvent += _OnUnitEventHandler;
+        unit.UnitEvent += OnUnitEventHandler;
     }
     public override void ExitState(Unit unit)
     {
-        unit.UnitEvent -= _OnUnitEventHandler;
+        unit.UnitEvent -= OnUnitEventHandler;
     }
     public override AUnitState UpdateState(Unit unit, AUnitState[] unitStates)
     {
@@ -41,7 +41,7 @@ public class UnitState_Attack_BarracksTower : AUnitState
 
         return null;
     }
-    void _OnUnitEventHandler(Types.UnitEventType unitBodyEventType, Unit unit)
+    void OnUnitEventHandler(Types.UnitEventType unitBodyEventType, Unit unit)
     {
         Debug.Log("UnitEventListener " + unitBodyEventType);
 
@@ -49,8 +49,8 @@ public class UnitState_Attack_BarracksTower : AUnitState
         {
             case Types.UnitEventType.None:
                 break;
-            case Types.UnitEventType.Attack:
-                Attack();
+            case Types.UnitEventType.AttackFire:
+                AttackFire();
                 break;
             case Types.UnitEventType.AttackStart:
                 _isPlayingAttackAni = true;
@@ -68,7 +68,7 @@ public class UnitState_Attack_BarracksTower : AUnitState
                 break;
         }
     }
-    virtual public void Attack()
+    virtual public void AttackFire()
     {
         _childUnits.CreateUnits();
     }

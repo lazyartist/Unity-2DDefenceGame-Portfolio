@@ -43,7 +43,7 @@ public class Projectile_Rain : AProjectile
         }
     }
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         if (AttackData != null)
         {

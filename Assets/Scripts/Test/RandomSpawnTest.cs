@@ -13,13 +13,13 @@ public class RandomSpawnTest : MonoBehaviour {
     public int UnitCountLimit = 999;
     private int _createdUnitCount = 0;
 
-    private void Start()
+    void Start()
     {
         //StartCoroutine(RandomSpawnCoRoutine());
         StartCoroutine(WaypointSpawnCoroutine());
     }
 
-    private void Update()
+    void Update()
     {
         UnitCountText.text = UnitContainer.transform.childCount.ToString();
     }

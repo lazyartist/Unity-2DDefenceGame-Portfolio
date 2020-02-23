@@ -14,7 +14,7 @@ public class UIStageInfo : MonoBehaviour {
     void Start () {
         _stageData = StageManager.Inst.StageData;
         _stageInfo = StageManager.Inst.StageInfo;
-        StageManager.Inst.StageEvent += _OnStageEvent;
+        StageManager.Inst.StageEvent += OnStageEvent;
 
         _UpdateStageInfo();
     }
@@ -26,17 +26,7 @@ public class UIStageInfo : MonoBehaviour {
         WaveText.text = "공격 " + _stageInfo.WaveCount.ToString() + "/" + _stageData.WaveCount.ToString();
     }
 
-    //private void OnApplicationQuit()
-    //{
-    //    StageManager.Inst.StageEvent -= _OnStageEvent;
-    //}
-
-    //private void OnDestroy()
-    //{
-    //    StageManager.Inst.StageEvent -= _OnStageEvent;
-    //}
-
-    public void _OnStageEvent(Types.StageEventType stageEventType)
+    public void OnStageEvent(Types.StageEventType stageEventType)
     {
         switch (stageEventType)
         {

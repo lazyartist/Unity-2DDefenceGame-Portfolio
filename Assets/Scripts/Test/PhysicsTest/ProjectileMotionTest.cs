@@ -12,7 +12,7 @@ public class ProjectileMotionTest : MonoBehaviour
     public float XRange = 10f;
     public float DrawLineResolution = 50;
     
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         // 각도와 속도 그리기
         float radian = Angle * Mathf.Deg2Rad;

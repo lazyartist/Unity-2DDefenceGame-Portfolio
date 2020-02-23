@@ -23,11 +23,6 @@ public class InputManager : SingletonBase<InputManager>
         base.Awake();
     }
 
-    void Start()
-    {
-        //MouseEvent += _OnMouseEvent_Handler;
-    }
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -73,11 +68,6 @@ public class InputManager : SingletonBase<InputManager>
             DispatchEvent(Types.InputEventType.Zoom, new Vector3(scrollWheel, 0f, 0f));
         }
     }
-
-    //private void _OnMouseEvent_Handler(Types.MouseEventType mouseEventType, Vector3 value)
-    //{
-    //    //Debug.Log("MouseEvent " + mouseEventType + ", " + value);
-    //}
 
     public void DispatchEvent(Types.InputEventType inputEventType, Vector3 value)
     {

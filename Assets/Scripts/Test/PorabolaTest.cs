@@ -9,7 +9,7 @@ public class PorabolaTest : MonoBehaviour {
 
     public GameObject Target;
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         return;
         ParabolaAlgorithm porabola = new ParabolaAlgorithm();

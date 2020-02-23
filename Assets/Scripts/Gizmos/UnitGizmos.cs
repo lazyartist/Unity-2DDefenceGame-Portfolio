@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnitGizmos : MonoBehaviour {
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Unit unit = GetComponent<Unit>();
 

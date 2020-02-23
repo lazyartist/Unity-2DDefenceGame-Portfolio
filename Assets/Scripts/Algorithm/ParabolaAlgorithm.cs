@@ -35,7 +35,7 @@ public class ParabolaAlgorithm
         CalcParabolaTrack();
     }
 
-    private void CalcParabolaTrack()
+    void CalcParabolaTrack()
     {
         float endHeight = _endPosition.y - _startPosition.y;
         float height = HeightLimit;

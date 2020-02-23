@@ -43,7 +43,7 @@ public class Projectile_FireDrop : AProjectile
         }
     }
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         if (AttackData != null)
         {

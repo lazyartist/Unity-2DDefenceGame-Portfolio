@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 10
   Speed: 2
-  TargetRange: 2
+  TargetRange: 3.1
   AttackCoolTime: 2
   Gold: 0
   StageHealthDamage: 1

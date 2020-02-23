@@ -13,13 +13,13 @@ public class StageManager : SingletonBase<StageManager> {
         StageInfo = new StageInfo();
     }
 
-    private void Start()
+    void Start()
     {
         StageInfo.Copy(StageData);
         StageInfo.WaveCount = 0;
     }
 
-    private void Update()
+    void Update()
     {
         if (StageInfo.IsDirty)
         {

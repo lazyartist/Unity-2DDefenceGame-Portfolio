@@ -11,16 +11,16 @@ public class UnitAndStageBinder : MonoBehaviour
         Unit = GetComponent<Unit>();
         if (Unit != null)
         {
-            Unit.UnitEvent += _OnUnitEvent;
+            Unit.UnitEvent += OnUnitEvent;
         }
     }
 
-    private void OnApplicationQuit()
+    void OnApplicationQuit()
     {
         CleanUp();
     }
 
-    private void OnDestroy()
+    void OnDestroy()
     {
         CleanUp();
     }
@@ -29,12 +29,12 @@ public class UnitAndStageBinder : MonoBehaviour
     {
         if (Unit != null)
         {
-            Unit.UnitEvent -= _OnUnitEvent;
+            Unit.UnitEvent -= OnUnitEvent;
             Unit = null;
         }
     }
 
-    void _OnUnitEvent(Types.UnitEventType unitEventType, Unit unit)
+    void OnUnitEvent(Types.UnitEventType unitEventType, Unit unit)
     {
         switch (unitEventType)
         {
@@ -44,7 +44,7 @@ public class UnitAndStageBinder : MonoBehaviour
                 break;
             case Types.UnitEventType.AttackEnd:
                 break;
-            case Types.UnitEventType.Attack:
+            case Types.UnitEventType.AttackFire:
                 break;
             case Types.UnitEventType.Die:
                 if (unit.GoalComplete == false)

@@ -12,15 +12,15 @@ public class ReverseAnimation : MonoBehaviour
     void Start()
     {
         Animator = GetComponent<Animator>();
-        _SetSpeed();
+        SetSpeed();
     }
 
     public void OnAniEvent_Start()
     {
         if(_aniPlayDirection == -1f)
         {
-            _ReverseSpeed();
-            _SetSpeed();
+            ReverseSpeed();
+            SetSpeed();
         }
     }
 
@@ -28,17 +28,17 @@ public class ReverseAnimation : MonoBehaviour
     {
         if (_aniPlayDirection == 1f)
         {
-            _ReverseSpeed();
-            _SetSpeed();
+            ReverseSpeed();
+            SetSpeed();
         }
     }
 
-    void _ReverseSpeed()
+    void ReverseSpeed()
     {
         _aniPlayDirection *= -1;
     }
 
-    void _SetSpeed()
+    void SetSpeed()
     {
         Animator.SetFloat("AniPlayDirection", _aniPlayDirection);
     }

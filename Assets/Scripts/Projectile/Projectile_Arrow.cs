@@ -9,11 +9,9 @@ public class Projectile_Arrow : AProjectile
     public float TimeToTopmostHeight = 2f;
 
     private Animator _animator;
-
     private float _elapsedTime;
     private bool _isMoving = false;
     private ParabolaAlgorithm _paralobaAlgorithm;
-
     private GameObject _target;
     private Vector3 _startPosition;
     private Vector3 _prevPosition;
@@ -22,15 +20,10 @@ public class Projectile_Arrow : AProjectile
     void Awake()
     {
         _animator = GetComponent<Animator>();
-
         _paralobaAlgorithm = new ParabolaAlgorithm();
     }
 
-    void Start()
-    {
-    }
-
-    private void Update()
+    void Update()
     {
         if (_isMoving)
         {
@@ -74,7 +67,7 @@ public class Projectile_Arrow : AProjectile
             if (_paralobaAlgorithm.TimeToEndPosition - _elapsedTime < 0.1f)
             {
                 _animator.SetTrigger("Hit");
-                _Attack();
+                Hit();
             }
 
             if (_elapsedTime >= _paralobaAlgorithm.TimeToEndPosition)
@@ -90,10 +83,6 @@ public class Projectile_Arrow : AProjectile
             }
         }
     }
-
-    //private void FixedUpdate()
-    //{
-    //}
 
     override public void Init(AttackData attackData, AttackTargetData attackTargetData, GameObject target, Vector3 position)
     {
@@ -134,7 +123,7 @@ public class Projectile_Arrow : AProjectile
         _isMoving = true;
     }
 
-    void _Attack()
+    void Hit()
     {
         if (_target != null)
         {
@@ -142,7 +131,7 @@ public class Projectile_Arrow : AProjectile
         }
     }
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         if (_isMoving)
         {

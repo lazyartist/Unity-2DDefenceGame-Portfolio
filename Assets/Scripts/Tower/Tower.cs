@@ -18,23 +18,23 @@ public class Tower : MonoBehaviour
     public SpriteRenderer DraftUnitRangeSR;
     public bool IsRallyPointModeOn;
 
-    private void Start()
+    void Start()
     {
         TowerUpgradeData = RootTowerUpgradeData;
         Deselect();
     }
 
-    private void OnApplicationQuit()
+    void OnApplicationQuit()
     {
         DeleteUnit();
     }
 
-    private void OnDestroy()
+    void OnDestroy()
     {
         DeleteUnit();
     }
 
-    private void CleanUp()
+    void CleanUp()
     {
         DeleteUnit();
         TowerUpgradeData = null;
@@ -65,13 +65,13 @@ public class Tower : MonoBehaviour
         Unit.gameObject.SetActive(true);
 
         TowerUpgradeData = towerUpgradeData;
-        _DispatchEvent(Types.TowerEventType.Created);
+        DispatchEvent(Types.TowerEventType.Created);
     }
 
     public void SellUnit()
     {
         DeleteUnit();
-        _DispatchEvent(Types.TowerEventType.Sold);
+        DispatchEvent(Types.TowerEventType.Sold);
         TowerUpgradeData = RootTowerUpgradeData;
     }
     public void DeleteUnit()
@@ -130,7 +130,7 @@ public class Tower : MonoBehaviour
         }
     }
 
-    void _DispatchEvent(Types.TowerEventType towerEventType)
+    void DispatchEvent(Types.TowerEventType towerEventType)
     {
         if(TowerEvent != null)
         {

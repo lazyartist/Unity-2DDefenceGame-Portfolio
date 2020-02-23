@@ -9,16 +9,16 @@ public class TowerAndStageBinder : MonoBehaviour {
         Tower = GetComponent<Tower>();
         if(Tower != null)
         {
-            Tower.TowerEvent += _OnTowerEvent;
+            Tower.TowerEvent += OnTowerEvent;
         }
     }
 
-    private void OnApplicationQuit()
+    void OnApplicationQuit()
     {
         CleanUp();
     }
 
-    private void OnDestroy()
+    void OnDestroy()
     {
         CleanUp();
     }
@@ -27,12 +27,12 @@ public class TowerAndStageBinder : MonoBehaviour {
     {
         if(Tower != null)
         {
-            Tower.TowerEvent -= _OnTowerEvent;
+            Tower.TowerEvent -= OnTowerEvent;
             Tower = null;
         }
     }
 
-    void _OnTowerEvent(Types.TowerEventType towerEventType, Tower tower)
+    void OnTowerEvent(Types.TowerEventType towerEventType, Tower tower)
     {
         switch (towerEventType)
         {

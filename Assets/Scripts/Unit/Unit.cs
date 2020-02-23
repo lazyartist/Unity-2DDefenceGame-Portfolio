@@ -60,12 +60,12 @@ public class Unit : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit()
+    void OnApplicationQuit()
     {
         CleanUpUnit();
     }
 
-    private void OnDestroy()
+    void OnDestroy()
     {
         CleanUpUnit();
     }
@@ -83,7 +83,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    private void CleanUpUnit()
+    void CleanUpUnit()
     {
         if (TargetWaypoint != null)
         {
@@ -119,11 +119,11 @@ public class Unit : MonoBehaviour
             case Types.UnitNotifyType.None:
                 break;
             case Types.UnitNotifyType.Wait:
-                _AddAttackTargetUnit(notifyUnit);
+                AddAttackTargetUnit(notifyUnit);
                 UnitFSM.Transit(Types.UnitFSMType.Wait);
                 break;
             case Types.UnitNotifyType.BeAttackState:
-                _AddAttackTargetUnit(notifyUnit);
+                AddAttackTargetUnit(notifyUnit);
                 UnitFSM.Transit(Types.UnitFSMType.Attack);
                 break;
             case Types.UnitNotifyType.ClearAttackTarget:
@@ -131,7 +131,7 @@ public class Unit : MonoBehaviour
                 {
                     //UnitFSM.Transit(Types.UnitFSMType.Idle);
                     DispatchUnitEvent(Types.UnitEventType.AttackStopped, null);
-                    _RemoveAttackTargetUnit();
+                    RemoveAttackTargetUnit();
                 }
                 break;
             default:
@@ -139,17 +139,17 @@ public class Unit : MonoBehaviour
         }
     }
 
-    private void _AddAttackTargetUnit(Unit unit)
+    void AddAttackTargetUnit(Unit unit)
     {
         if (HasAttackTargetUnit())
         {
-            _RemoveAttackTargetUnit();
+            RemoveAttackTargetUnit();
         }
         AttackTargetUnit = unit;
-        AttackTargetUnit.UnitEvent += _OnUnitEventHandler_AttackTargetUnit;
+        AttackTargetUnit.UnitEvent += OnUnitEventHandler_AttackTargetUnit;
     }
 
-    private void _RemoveAttackTargetUnit()
+    void RemoveAttackTargetUnit()
     {
         if (HasAttackTargetUnit() == false)
         {
@@ -158,11 +158,11 @@ public class Unit : MonoBehaviour
         }
         LastAttackTargetPosition = AttackTargetUnit.GetCenterPosition();
 
-        AttackTargetUnit.UnitEvent -= _OnUnitEventHandler_AttackTargetUnit;
+        AttackTargetUnit.UnitEvent -= OnUnitEventHandler_AttackTargetUnit;
         AttackTargetUnit = null;
     }
 
-    private void _OnUnitEventHandler_AttackTargetUnit(Types.UnitEventType unitEventType, Unit unit)
+    void OnUnitEventHandler_AttackTargetUnit(Types.UnitEventType unitEventType, Unit unit)
     {
         switch (unitEventType)
         {
@@ -172,15 +172,15 @@ public class Unit : MonoBehaviour
                 break;
             case Types.UnitEventType.AttackEnd:
                 break;
-            case Types.UnitEventType.Attack:
+            case Types.UnitEventType.AttackFire:
                 break;
             case Types.UnitEventType.Die:
-                _RemoveAttackTargetUnit();
+                RemoveAttackTargetUnit();
                 break;
             case Types.UnitEventType.DiedComplete:
                 break;
             case Types.UnitEventType.AttackStopped:// 공격대상 유닛이 공격을 멈추고 다른 행동을 한다.
-                _RemoveAttackTargetUnit();
+                RemoveAttackTargetUnit();
                 UnitFSM.Transit(Types.UnitFSMType.Idle);
                 break;
             default:
@@ -237,7 +237,7 @@ public class Unit : MonoBehaviour
 
         if (HasAttackTargetUnit())
         {
-            AttackTargetUnit.UnitEvent -= _OnUnitEventHandler_AttackTargetUnit;
+            AttackTargetUnit.UnitEvent -= OnUnitEventHandler_AttackTargetUnit;
         }
     }
 
@@ -285,7 +285,7 @@ public class Unit : MonoBehaviour
 
         if (draftTargetUnit != null)
         {
-            _AddAttackTargetUnit(draftTargetUnit);
+            AddAttackTargetUnit(draftTargetUnit);
         }
 
         return draftTargetUnit;
@@ -347,11 +347,10 @@ public class Unit : MonoBehaviour
         if (HasAttackTargetUnit() == false) return false;
 
         float distance = Vector3.Distance(transform.position + UnitCenterOffset, AttackTargetUnit.transform.position);
-        Debug.Log("distance " + distance);
         return distance < UnitData.TargetRange;
     }
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         if (HasAttackTargetUnit())
         {

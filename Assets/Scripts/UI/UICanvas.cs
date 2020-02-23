@@ -8,25 +8,10 @@ public class UICanvas : SingletonBase<UICanvas>
     public UITowerMenu UITowerMenu;
     public Text UnitInfoText;
 
-    private void Start()
+    void Start()
     {
-        InputManager.Inst.InputEvent += _OnInputEvent_InputManager;
+        InputManager.Inst.InputEvent += OnInputEvent_InputManager;
     }
-
-    //private void OnApplicationQuit()
-    //{
-    //    _ClearnUp();
-    //}
-
-    //private void OnDestroy()
-    //{
-    //    _ClearnUp();
-    //}
-
-    //void _ClearnUp()
-    //{
-    //    InputManager.Inst.InputEvent -= _OnInputEvent_InputManager;
-    //}
 
     public void ShowTowerMenu(Tower tower, bool isShow)
     {
@@ -44,20 +29,23 @@ public class UICanvas : SingletonBase<UICanvas>
     {
         UnitInfoText.text = unit.ToString();
     }
+
     public void HideUnitInfo()
     {
         UnitInfoText.text = "";
     }
+
     public void ShowInfo(string info)
     {
         UnitInfoText.text = info;
     }
+
     public void HideInfo()
     {
         UnitInfoText.text = "";
     }
 
-    void _OnInputEvent_InputManager(Types.InputEventType inputEventType, Vector3 value)
+    void OnInputEvent_InputManager(Types.InputEventType inputEventType, Vector3 value)
     {
         switch (inputEventType)
         {
@@ -68,17 +56,17 @@ public class UICanvas : SingletonBase<UICanvas>
             case Types.InputEventType.Up:
                 break;
             case Types.InputEventType.Swipe:
-                _UpdatePosition();
+                UpdatePosition();
                 break;
             case Types.InputEventType.Zoom:
-                _HideUI();
+                HideUI();
                 break;
             default:
                 break;
         }
     }
 
-    void _UpdatePosition()
+    void UpdatePosition()
     {
         if (UITowerMenu.gameObject.activeSelf && UITowerMenu.Tower != null)
         {
@@ -86,7 +74,7 @@ public class UICanvas : SingletonBase<UICanvas>
         }
     }
 
-    void _HideUI()
+    void HideUI()
     {
         if (UITowerMenu.gameObject.activeSelf)
         {

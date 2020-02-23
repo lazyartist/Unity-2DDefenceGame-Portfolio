@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaypointGizmos : MonoBehaviour {
     public WaypointGizmosData WaypointGizmosData;
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Gizmos.color = WaypointGizmosData.Color;
         Gizmos.DrawWireSphere(transform.position, WaypointGizmosData.Size);

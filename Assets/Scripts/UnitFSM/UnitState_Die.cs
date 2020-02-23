@@ -33,7 +33,7 @@ public class UnitState_Die : AUnitState
                 break;
             case Types.UnitEventType.AttackEnd:
                 break;
-            case Types.UnitEventType.Attack:
+            case Types.UnitEventType.AttackFire:
                 break;
             case Types.UnitEventType.Die:
                 break;

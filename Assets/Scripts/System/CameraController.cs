@@ -19,13 +19,13 @@ public class CameraController : MonoBehaviour
 
     virtual protected void Start()
     {
-        InputManager.Inst.InputEvent += _OnInputEvent_InputManager;
+        InputManager.Inst.InputEvent += OnInputEvent_InputManager;
         _targetCameraSize = Camera.orthographicSize;
         UpdateValidCameraArea();
         SetCameraPositionInValidArea();
     }
 
-    private void Update()
+    void Update()
     {
         if (Camera.orthographicSize != _targetCameraSize)
         {
@@ -43,7 +43,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private void _OnInputEvent_InputManager(Types.InputEventType inputEventType, Vector3 value)
+    void OnInputEvent_InputManager(Types.InputEventType inputEventType, Vector3 value)
     {
         switch (inputEventType)
         {
@@ -102,7 +102,7 @@ public class CameraController : MonoBehaviour
         Camera.transform.position = cameraPosition;
     }
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(ValidMapAreaCenter, new Vector3(ValidMapAreaSize.x, ValidMapAreaSize.y, 1f));

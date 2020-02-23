@@ -13,12 +13,12 @@ public class Selector_MasterSkill : Selector
         base.Start();
     }
 
-    private void OnApplicationQuit()
+    void OnApplicationQuit()
     {
         UIMasterSkillMenu.MasterSkillEvent -= OnMasterSkillEvent_UIMasterSkillMenu;
     }
 
-    private void OnDestroy()
+    void OnDestroy()
     {
         UIMasterSkillMenu.MasterSkillEvent -= OnMasterSkillEvent_UIMasterSkillMenu;
     }

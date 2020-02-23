@@ -25,7 +25,7 @@ public class SelectorManager : SingletonBase<SelectorManager>
 
     void Start()
     {
-        InputManager.Inst.InputEvent += _OnInputEvent_InputManager;
+        InputManager.Inst.InputEvent += OnInputEvent_InputManager;
     }
 
     //void Update()
@@ -49,7 +49,7 @@ public class SelectorManager : SingletonBase<SelectorManager>
         }
         CurSelector = null;
     }
-    private void _OnInputEvent_InputManager(Types.InputEventType inputEventType, Vector3 value)
+    void OnInputEvent_InputManager(Types.InputEventType inputEventType, Vector3 value)
     {
         switch (inputEventType)
         {

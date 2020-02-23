@@ -8,11 +8,7 @@ public class Projectile_Stone : AProjectile
     public float HeightLimit = 5f;
     public float TimeToTopmostHeight = 2f;
 
-    //public float AttackRange = 5f;
-    //public float AttackPower = 1f;
-
     private Animator _animator;
-
     private float _elapsedTime;
     private bool _isMoving = false;
     private ParabolaAlgorithm _paralobaAlgorithm;
@@ -20,20 +16,10 @@ public class Projectile_Stone : AProjectile
     void Awake()
     {
         _animator = GetComponent<Animator>();
-
         _paralobaAlgorithm = new ParabolaAlgorithm();
     }
 
-    void Start()
-    {
-    }
-
-    private void Update()
-    {
-
-    }
-
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         if (_isMoving)
         {
@@ -42,11 +28,6 @@ public class Projectile_Stone : AProjectile
             if (_elapsedTime >= _paralobaAlgorithm.TimeToEndPosition)
             {
                 _elapsedTime = _paralobaAlgorithm.TimeToEndPosition;
-
-                //_animator.SetTrigger("Explosion");
-
-                //_isMoving = false;
-                //_elapsedTime = 0;
             }
 
             transform.position = _paralobaAlgorithm.GetPosition(_elapsedTime);
@@ -54,7 +35,7 @@ public class Projectile_Stone : AProjectile
             if (_elapsedTime >= _paralobaAlgorithm.TimeToEndPosition)
             {
                 _animator.SetTrigger("Hit");
-
+                Hit();
                 _isMoving = false;
                 _elapsedTime = 0;
             }
@@ -65,7 +46,6 @@ public class Projectile_Stone : AProjectile
     {
         AttackData = attackData;
         AttackTargetData = attackTargetData;
-        //_target = target;
         InitByPosition(position);
     }
 
@@ -99,7 +79,7 @@ public class Projectile_Stone : AProjectile
         _isMoving = true;
     }
 
-    void Attack()
+    void Hit()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, AttackData.AttackRange, AttackTargetData.AttackTargetLayerMask);
         for (int i = 0; i < colliders.Length; i++)
@@ -109,7 +89,7 @@ public class Projectile_Stone : AProjectile
         }
     }
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         if (_isMoving)
         {

@@ -12,7 +12,7 @@ public class WaypointPool : MonoBehaviour {
 
     private int _endIndex = -1;// 항상 마지막 waypoint를 가리킨다.
 
-    private void Awake()
+    void Awake()
     {
         Waypoints = new Waypoint[WaypointCount];
     }
