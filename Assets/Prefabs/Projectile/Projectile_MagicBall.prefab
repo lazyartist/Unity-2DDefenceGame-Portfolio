@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212208374141652012}
   - component: {fileID: 95417413692339288}
   - component: {fileID: 58175275871977962}
-  - component: {fileID: 114756930832801464}
   - component: {fileID: 114556467397831952}
+  - component: {fileID: 114609397983781536}
   m_Layer: 0
   m_Name: Projectile_MagicBall
   m_TagString: Projectile
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1192879168905458}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.34876, y: 1.5807524, z: 0.03674136}
+  m_LocalPosition: {x: 13.651239, y: 3.1007524, z: 0.03674136}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 95417413692339288}
---- !u!114 &114756930832801464
+--- !u!114 &114609397983781536
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,10 +97,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1192879168905458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f952bc8de77a7647b477ebc48b8f7e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 19237bbac0476d94190ae94165e06cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackData: {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
+  AttackData: {fileID: 11400000, guid: 37469bddf7a40834ea01ef29997ccd1e, type: 2}
   AttackTargetData: {fileID: 0}
   HeightLimit: 0.5
   TimeToTopmostHeight: 0.3
@@ -139,14 +139,14 @@ SpriteRenderer:
   m_SortingLayerID: 193212725
   m_SortingLayer: 9
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c3c7af3e47ba37543ac11b1be6d3d897, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.4, y: 0.32}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

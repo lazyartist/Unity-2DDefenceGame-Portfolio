@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Projectile_Arrow : AProjectile
+public class Projectile_MagicBall : AProjectile
 {
     public float HeightLimit = 5f;
     public float TimeToTopmostHeight = 2f;
@@ -63,20 +63,15 @@ public class Projectile_Arrow : AProjectile
 
             _prevPosition = transform.position;
 
-            // 화살이 타겟에 도달한 순간 꽂히게 보이도록 미리 바꿔준다.
-            if (_paralobaAlgorithm.TimeToEndPosition - _elapsedTime < 0.1f)
-            {
-                _animator.SetTrigger("Hit");
-            }
-
             if (_elapsedTime >= _paralobaAlgorithm.TimeToEndPosition)
             {
                 _isMoving = false;
                 _elapsedTime = 0;
 
-                // 화살이 타겟에 꽂혀있도록 맞은 순간 부모를 타겟으로 바꿔준다.
+                // 발사체가 타겟에 꽂혀있도록 맞은 순간 부모를 타겟으로 바꿔준다.
                 if(_target != null)
                 {
+                    _animator.SetTrigger("Hit");
                     Hit();
                     transform.SetParent(_target.transform);
                 }
@@ -118,8 +113,13 @@ public class Projectile_Arrow : AProjectile
         // 위쪽은 포물선 최고점과 가깝고 아래쪽은 최고점과 멀기 때문에 더 먼 거리를 가기 때문이다.
         // 추후 보정해야한다.
         //Debug.Log(_paralobaAlgorithm.TimeToEndPosition);
-
+        _animator.SetTrigger("Charge");
         _elapsedTime = 0;
+        _isMoving = false;
+    }
+
+    void AniEvent_Fire()
+    {
         _isMoving = true;
     }
 
