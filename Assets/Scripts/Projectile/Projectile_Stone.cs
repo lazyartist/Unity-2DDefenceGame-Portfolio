@@ -53,7 +53,7 @@ public class Projectile_Stone : AProjectile
 
             if (_elapsedTime >= _paralobaAlgorithm.TimeToEndPosition)
             {
-                _animator.SetTrigger("Attack");
+                _animator.SetTrigger("Hit");
 
                 _isMoving = false;
                 _elapsedTime = 0;

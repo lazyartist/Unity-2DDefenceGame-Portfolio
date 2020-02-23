@@ -8,9 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7df1314759b241a4eb9f00e55db1509b, type: 3}
-  m_Name: StageData_01
+  m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
+  m_Name: AttackData_MagicTower
   m_EditorClassIdentifier: 
-  Health: 20
-  Gold: 20
-  WaveCount: 10
+  ProjectilePrefab: {fileID: 114756930832801464, guid: c86a17f72d654eb4c83eb366ddde4305,
+    type: 2}
+  Power: 2
+  AttackRange: 1
+  CCData: {fileID: 0}

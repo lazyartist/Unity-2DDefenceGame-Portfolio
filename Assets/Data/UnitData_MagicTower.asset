@@ -8,9 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7df1314759b241a4eb9f00e55db1509b, type: 3}
-  m_Name: StageData_01
+  m_Script: {fileID: 11500000, guid: ae50041b52daecc40b506d48e1bf7928, type: 3}
+  m_Name: UnitData_MagicTower
   m_EditorClassIdentifier: 
-  Health: 20
-  Gold: 20
-  WaveCount: 10
+  Health: 10
+  Speed: 2
+  TargetRange: 2
+  AttackCoolTime: 2
+  Gold: 0
+  StageHealthDamage: 1

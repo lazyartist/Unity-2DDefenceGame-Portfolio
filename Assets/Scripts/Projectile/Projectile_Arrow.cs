@@ -73,7 +73,8 @@ public class Projectile_Arrow : AProjectile
             // 화살이 타겟에 도달한 순간 꽂히게 보이도록 미리 바꿔준다.
             if (_paralobaAlgorithm.TimeToEndPosition - _elapsedTime < 0.1f)
             {
-                _animator.SetTrigger("Attack");
+                _animator.SetTrigger("Hit");
+                _Attack();
             }
 
             if (_elapsedTime >= _paralobaAlgorithm.TimeToEndPosition)
@@ -133,7 +134,7 @@ public class Projectile_Arrow : AProjectile
         _isMoving = true;
     }
 
-    void Attack()
+    void _Attack()
     {
         if (_target != null)
         {
