@@ -7,7 +7,6 @@ public class Projectile_MagicBall : AProjectile
 {
     private Animator _animator;
     private bool _isMoving = false;
-    private GameObject _target;
     private Vector3 _lastTargetPosition;
 
     void Awake()
@@ -19,13 +18,14 @@ public class Projectile_MagicBall : AProjectile
     {
         if (_isMoving)
         {
-            Vector3 targetPosition = _target == null ? _lastTargetPosition : _target.transform.position;
+            // todo 투사체가 날아가는중에 타겟유닛이 죽으면 타게팅 시점의 위치로 이동할듯. _lastTargetPosition을 업데이트 해야한다.
+            Vector3 targetPosition = (_targetUnit == null || _targetUnit.IsDied) ? _lastTargetPosition : _targetUnit.GetCenterPosition();
 
             Vector3 direction = targetPosition - transform.position;
             float distance = direction.magnitude;
             direction.Normalize();
             Vector3 move = direction * (AttackData.ProjectileSpeed * Time.deltaTime);
-            if(move.magnitude >= distance || move.magnitude < 0.01f)
+            if (move.magnitude >= distance || move.magnitude < 0.01f)
             {
                 // 목표지점에 도착
                 transform.position = targetPosition;
@@ -43,23 +43,9 @@ public class Projectile_MagicBall : AProjectile
         }
     }
 
-    override public void Init(AttackData attackData, AttackTargetData attackTargetData, GameObject target, Vector3 position)
+    public override void MoveToTarget()
     {
-        AttackData = attackData;
-        AttackTargetData = attackTargetData;
-        _target = target;
-        InitByPosition(position);
-    }
-
-    override public void InitByTarget(GameObject target)
-    {
-        _target = target;
-        InitByPosition(target.transform.position);
-    }
-
-    override public void InitByPosition(Vector3 position)
-    {
-        _lastTargetPosition = position;
+        _lastTargetPosition = _targetPosition;
         _animator.SetTrigger("Charge");
         _isMoving = false;
     }
@@ -72,10 +58,10 @@ public class Projectile_MagicBall : AProjectile
     void Hit()
     {
         _animator.SetTrigger("Hit");
-        if (_target != null)
+        if (_targetUnit != null)
         {
-            _target.GetComponent<Unit>().TakeDamage(AttackData);
-            transform.SetParent(_target.transform);
+            _targetUnit.GetComponent<Unit>().TakeDamage(AttackData);
+            transform.SetParent(_targetUnit.transform);
         }
     }
 
@@ -83,11 +69,12 @@ public class Projectile_MagicBall : AProjectile
     {
         if (_isMoving)
         {
-            Vector3 targetPosition = _target == null ? _lastTargetPosition : _target.transform.position;
+            Vector3 targetPosition = _targetUnit == null ? _lastTargetPosition : _targetUnit.transform.position;
             Gizmos.DrawLine(targetPosition, transform.position);
         }
 
-        if (AttackData != null) {
+        if (AttackData != null)
+        {
             Gizmos.DrawWireSphere(transform.position, AttackData.AttackRange);
         }
     }

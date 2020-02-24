@@ -42,21 +42,9 @@ public class Projectile_Stone : AProjectile
         }
     }
 
-    override public void Init(AttackData attackData, AttackTargetData attackTargetData, GameObject target, Vector3 position)
+    public override void MoveToTarget()
     {
-        AttackData = attackData;
-        AttackTargetData = attackTargetData;
-        InitByPosition(position);
-    }
-
-    override public void InitByTarget(GameObject target)
-    {
-        InitByPosition(target.transform.position);
-    }
-
-    override public void InitByPosition(Vector3 position)
-    {
-        float distanceY = position.y - transform.position.y;
+        float distanceY = _targetPosition.y - transform.position.y;
 
         float heightLimit = HeightLimit;
         if (distanceY > HeightLimit)
@@ -68,7 +56,7 @@ public class Projectile_Stone : AProjectile
         }
 
 
-        _paralobaAlgorithm.Init(heightLimit, TimeToTopmostHeight, transform.position, position);
+        _paralobaAlgorithm.Init(heightLimit, TimeToTopmostHeight, transform.position, _targetPosition);
 
         // todo 타겟의 위치가 위쪽이면 도달 시간이 빠르고 아래면 느리다.
         // 위쪽은 포물선 최고점과 가깝고 아래쪽은 최고점과 멀기 때문에 더 먼 거리를 가기 때문이다.

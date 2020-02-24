@@ -6,8 +6,16 @@ public abstract class AProjectile : MonoBehaviour
 {
     public AttackData AttackData;
     public AttackTargetData AttackTargetData;
+    protected Unit _targetUnit;
+    protected Vector3 _targetPosition;
 
-    abstract public void Init(AttackData attackData, AttackTargetData attackTargetData, GameObject target, Vector3 position);
-    abstract public void InitByTarget(GameObject target);
-    abstract public void InitByPosition(Vector3 position);
+    virtual public void Init(AttackData attackData, AttackTargetData attackTargetData, Unit targetUnit, Vector3 targetPosition)
+    {
+        AttackData = attackData;
+        AttackTargetData = attackTargetData;
+        _targetUnit = targetUnit;
+        _targetPosition = targetPosition;
+        MoveToTarget();
+    }
+    abstract public void MoveToTarget();
 }

@@ -12,7 +12,6 @@ public class Projectile_Arrow : AProjectile
     private float _elapsedTime;
     private bool _isMoving = false;
     private ParabolaAlgorithm _paralobaAlgorithm;
-    private GameObject _target;
     private Vector3 _startPosition;
     private Vector3 _prevPosition;
     private Vector3 _lastTargetPosition;
@@ -29,7 +28,7 @@ public class Projectile_Arrow : AProjectile
         {
             _elapsedTime += Time.deltaTime;
 
-            Vector3 targetPosition = _target == null ? _lastTargetPosition : _target.transform.position;
+            Vector3 targetPosition = (_targetUnit == null || _targetUnit.IsDied) ? _lastTargetPosition : _targetUnit.GetCenterPosition();
 
             // 화살의 시작위치 + HeightLimit 값 보다 타겟이 더 높이 올라가면 위치값 계산이 안되므로(NaN)
             // 타겟의 현재 위치가 HeightLimit 보다 높아지면 HeightLimit 값을 증가시켜준다.
@@ -47,7 +46,6 @@ public class Projectile_Arrow : AProjectile
 
             // 타겟을 따라가기 위해 매번 포물선을 다시 계산한다.
             _paralobaAlgorithm.Init(HeightLimit + height, TimeToTopmostHeight, _startPosition, targetPosition);
-            //_paralobaAlgorithm.Init(HeightLimit, TimeToTopmostHeight, _startPosition, targetPosition);
 
             if (_elapsedTime >= _paralobaAlgorithm.TimeToEndPosition)
             {
@@ -75,34 +73,20 @@ public class Projectile_Arrow : AProjectile
                 _elapsedTime = 0;
 
                 // 화살이 타겟에 꽂혀있도록 맞는 순간 부모를 타겟으로 바꿔준다.
-                if(_target != null)
+                if(_targetUnit != null)
                 {
                     Hit();
-                    transform.SetParent(_target.transform);
+                    transform.SetParent(_targetUnit.transform);
                 }
             }
         }
     }
 
-    override public void Init(AttackData attackData, AttackTargetData attackTargetData, GameObject target, Vector3 position)
-    {
-        AttackData = attackData;
-        AttackTargetData = attackTargetData;
-        _target = target;
-        InitByPosition(position);
-    }
-
-    override public void InitByTarget(GameObject target)
-    {
-        _target = target;
-        InitByPosition(target.transform.position);
-    }
-
-    override public void InitByPosition(Vector3 position)
+    public override void MoveToTarget()
     {
         _startPosition = transform.position;
         _prevPosition = _startPosition;
-        _lastTargetPosition = position;
+        _lastTargetPosition = _targetPosition;
 
         // 최대 높이보다 더 위에 있는 타겟인 경우 차이만큼 더해서 보정한다.
         // 차이만큼만 더하면 타겟까지 포물선 이동은 하지만 떨어지는 느낌이 없기 때문에
@@ -125,9 +109,9 @@ public class Projectile_Arrow : AProjectile
 
     void Hit()
     {
-        if (_target != null)
+        if (_targetUnit != null)
         {
-            _target.GetComponent<Unit>().TakeDamage(AttackData);
+            _targetUnit.TakeDamage(AttackData);
         }
     }
 

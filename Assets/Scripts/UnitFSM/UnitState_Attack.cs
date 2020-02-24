@@ -115,17 +115,18 @@ public class UnitState_Attack : AUnitState
             AProjectile projectile = Instantiate(_unit.AttackData.ProjectilePrefab, _unit.SpawnPosition.transform.position, Quaternion.identity, _unit.SpawnPosition.transform);
             projectile.AttackData = _unit.AttackData;
             projectile.AttackTargetData = _unit.AttackTargetData;
-            projectile.Init(_unit.AttackData, _unit.AttackTargetData, _unit.IsValidAttackTargetUnit() ? _unit.AttackTargetUnit.gameObject : null, _unit.LastAttackTargetPosition);
+            //projectile.Init(_unit.AttackData, _unit.AttackTargetData, _unit.IsValidAttackTargetUnit() ? _unit.AttackTargetUnit.gameObject : null, _unit.LastAttackTargetPosition);
             // 공격대상이 살아있는 경우
             if (_unit.IsValidAttackTargetUnit())
             {
-                projectile.Init(_unit.AttackData, _unit.AttackTargetData, _unit.AttackTargetUnit.gameObject, _unit.AttackTargetUnit.gameObject.transform.position);
-                projectile.InitByTarget(_unit.AttackTargetUnit.gameObject);
+                projectile.Init(_unit.AttackData, _unit.AttackTargetData, _unit.AttackTargetUnit, _unit.AttackTargetUnit.gameObject.transform.position);
+                //projectile.Init(_unit.AttackData, _unit.AttackTargetData, _unit.AttackTargetUnit.gameObject, _unit.AttackTargetUnit.gameObject.transform.position);
+                //projectile.InitByTarget(_unit.AttackTargetUnit.gameObject);
             }
             else
             {
                 projectile.Init(_unit.AttackData, _unit.AttackTargetData, null, _unit.LastAttackTargetPosition);
-                projectile.InitByPosition(_unit.LastAttackTargetPosition);
+                //projectile.InitByPosition(_unit.LastAttackTargetPosition);
             }
         }
 
