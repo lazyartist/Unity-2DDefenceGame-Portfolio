@@ -296,7 +296,7 @@ public class Unit : MonoBehaviour
         Vector3 direction = position - transform.position;
         float distance = direction.magnitude;
 
-        _velocity = Mathf.Min(distance, UnitData.Speed * Time.deltaTime);
+        _velocity = Mathf.Min(distance, UnitData.MoveSpeed * Time.deltaTime);
         float velocity = _velocity;
 
         // cc

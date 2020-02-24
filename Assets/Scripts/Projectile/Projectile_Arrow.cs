@@ -57,8 +57,8 @@ public class Projectile_Arrow : AProjectile
             transform.position = _paralobaAlgorithm.GetPosition(_elapsedTime);
 
             // Angle
-            Vector3 deference = transform.position - _prevPosition;
-            float rad = Mathf.Atan2(deference.y, deference.x);
+            Vector3 direction = transform.position - _prevPosition;
+            float rad = Mathf.Atan2(direction.y, direction.x);
             transform.rotation = Quaternion.Euler(0f, 0f, rad * Mathf.Rad2Deg);
 
             _prevPosition = transform.position;
@@ -74,7 +74,7 @@ public class Projectile_Arrow : AProjectile
                 _isMoving = false;
                 _elapsedTime = 0;
 
-                // 화살이 타겟에 꽂혀있도록 맞은 순간 부모를 타겟으로 바꿔준다.
+                // 화살이 타겟에 꽂혀있도록 맞는 순간 부모를 타겟으로 바꿔준다.
                 if(_target != null)
                 {
                     Hit();

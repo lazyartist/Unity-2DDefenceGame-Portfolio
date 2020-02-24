@@ -6,7 +6,7 @@ using UnityEngine;
 public class UnitData : ScriptableObject
 {
     public float Health = 10f;
-    public float Speed = 2f;
+    public float MoveSpeed = 2f;
 
     public float TargetRange = 1f;
     public float AttackCoolTime = 2f;
