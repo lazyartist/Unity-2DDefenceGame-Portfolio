@@ -22,6 +22,13 @@ public class UnitGizmos : MonoBehaviour {
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawWireSphere(unit.SpawnPosition.transform.position, 0.05f);
             }
+            // 유닛의 타겟웨이포인트
+            if(unit.TargetWaypoint != null)
+            {
+                Gizmos.color = unit.TeamData.TeamColor;
+                Gizmos.DrawLine(unit.transform.position, unit.TargetWaypoint.GetPosition(unit.TargetWaypointSubIndex));
+                //Gizmos.DrawLine(unit.transform.position, unit.TargetWaypoint.transform.position);
+            }
             // 랠리포인트
             ChildUnits childUnits = unit.GetComponent<ChildUnits>();
             if (childUnits != null)

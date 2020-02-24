@@ -7,12 +7,11 @@ public class WaypointGizmos : MonoBehaviour {
 
     void OnDrawGizmos()
     {
-        Gizmos.color = WaypointGizmosData.Color;
-        Gizmos.DrawWireSphere(transform.position, WaypointGizmosData.Size);
-
         Waypoint wp = GetComponent<Waypoint>();
         if (wp != null && wp.NextWaypoint != null)
         {
+            Gizmos.color = WaypointGizmosData.Color;
+            Gizmos.DrawWireSphere(transform.position, wp.SubPositionRadius);
             Gizmos.DrawLine(transform.position, wp.NextWaypoint.transform.position);
         }
     }

@@ -18,7 +18,8 @@ public class Unit : MonoBehaviour
     public Animator HitEffectAnimator;
 
     public Waypoint TargetWaypoint;
-    public Waypoint WaitWaypoint;
+    public int TargetWaypointSubIndex = 0;
+    public Waypoint WaitWaypoint; // todo rename -> RallyPoint
 
     public Unit AttackTargetUnit { get; private set; }
     public Vector3 LastAttackTargetPosition;
