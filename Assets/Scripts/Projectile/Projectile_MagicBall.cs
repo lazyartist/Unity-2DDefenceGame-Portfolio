@@ -18,8 +18,8 @@ public class Projectile_MagicBall : AProjectile
     {
         if (_isMoving)
         {
-            // todo 투사체가 날아가는중에 타겟유닛이 죽으면 타게팅 시점의 위치로 이동할듯. _lastTargetPosition을 업데이트 해야한다.
             Vector3 targetPosition = (_targetUnit == null || _targetUnit.IsDied) ? _lastTargetPosition : _targetUnit.GetCenterPosition();
+            _lastTargetPosition = targetPosition;
 
             Vector3 direction = targetPosition - transform.position;
             float distance = direction.magnitude;

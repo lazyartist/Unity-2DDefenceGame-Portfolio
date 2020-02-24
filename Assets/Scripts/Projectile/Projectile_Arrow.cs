@@ -29,6 +29,7 @@ public class Projectile_Arrow : AProjectile
             _elapsedTime += Time.deltaTime;
 
             Vector3 targetPosition = (_targetUnit == null || _targetUnit.IsDied) ? _lastTargetPosition : _targetUnit.GetCenterPosition();
+            _lastTargetPosition = targetPosition;
 
             // 화살의 시작위치 + HeightLimit 값 보다 타겟이 더 높이 올라가면 위치값 계산이 안되므로(NaN)
             // 타겟의 현재 위치가 HeightLimit 보다 높아지면 HeightLimit 값을 증가시켜준다.
