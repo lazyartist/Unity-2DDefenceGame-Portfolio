@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Name: UnitData_Catapult
   m_EditorClassIdentifier: 
   Health: 10
-  Speed: 2
+  MoveSpeed: 2
   TargetRange: 3
-  AttackCoolTime: 3
+  AttackCoolTime: 2
+  Gold: 0
+  StageHealthDamage: 1

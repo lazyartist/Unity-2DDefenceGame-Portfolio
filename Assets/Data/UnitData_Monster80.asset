@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: UnitData_Monster80
   m_EditorClassIdentifier: 
   Health: 15
-  Speed: 0.5
+  MoveSpeed: 1
   TargetRange: 1
   AttackCoolTime: 1.2
   Gold: 3
+  StageHealthDamage: 1

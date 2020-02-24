@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitState_Idle_ArcherTower : AUnitState
+public class UnitState_None: AUnitState
 {
     // implements AUnitState
     public override void EnterState(Unit unit)

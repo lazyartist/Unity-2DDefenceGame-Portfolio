@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class UnitState_Attack : AUnitState
 {
-    private float _coolTime = 0.0f;
+    public bool IsPlayAttackAni = true;
+
+    private float _lastAttackFireTime = 0.0f;
     private bool _isPlayingAttackAni;
 
     // implements AUnitState
@@ -18,7 +20,6 @@ public class UnitState_Attack : AUnitState
         {
             _unit = unit;
 
-            _coolTime = 0.0f;
             unit.UnitEvent += OnUnitEventHandler;
             if (unit.AttackData.ProjectilePrefab == null)
             {
@@ -35,7 +36,6 @@ public class UnitState_Attack : AUnitState
     {
         unit.UnitEvent -= OnUnitEventHandler;
         _isPlayingAttackAni = false;
-        _coolTime = 0.0f;
     }
     public override AUnitState UpdateState(Unit unit, AUnitState[] unitStates)
     {
@@ -54,18 +54,24 @@ public class UnitState_Attack : AUnitState
                 return unitStates[(int)Types.UnitFSMType.Idle];
             }
             // 공격대상이 있고 쿨타임이 지났으면 공격
-            else if (_coolTime <= 0.0f)
+            else if (Time.time - _lastAttackFireTime >= unit.UnitData.AttackCoolTime)
             {
                 //Debug.Log("Attack " + unit + " to " + unit.AttackTargetUnit);
                 if (unit.CanChangeDirection)
                 {
                     unit.Toward(unit.AttackTargetUnit.transform.position);
                 }
-                unit.UnitBody.Animator.SetTrigger("Attack");
-                _coolTime = unit.UnitData.AttackCoolTime;
+
+                if (IsPlayAttackAni)
+                {
+                    unit.UnitBody.Animator.SetTrigger("Attack");
+                }
+                else
+                {
+                    AttackFire();
+                }
             }
         }
-        _coolTime -= Time.deltaTime;
 
         return null;
     }
@@ -122,6 +128,8 @@ public class UnitState_Attack : AUnitState
                 projectile.InitByPosition(_unit.LastAttackTargetPosition);
             }
         }
+
+        _lastAttackFireTime = Time.time;
     }
 
     void Hit()

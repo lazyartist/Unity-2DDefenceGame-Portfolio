@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnitState_Idle : AUnitState
 {
-    // implements IUnitState
+    // implements AUnitState
     public override void EnterState(Unit unit)
     {
         unit.UnitBody.Animator.SetTrigger("Idle");

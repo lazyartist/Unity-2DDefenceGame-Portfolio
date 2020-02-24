@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: UnitData_MagicTower
   m_EditorClassIdentifier: 
   Health: 10
-  Speed: 2
+  MoveSpeed: 2
   TargetRange: 3.1
-  AttackCoolTime: 2
+  AttackCoolTime: 1
   Gold: 0
   StageHealthDamage: 1

@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114025742899576568}
   - component: {fileID: 114150701794301852}
   - component: {fileID: 114072999202522946}
+  - component: {fileID: 114441106227714048}
   m_Layer: 8
   m_Name: TowerUnit_Archer
   m_TagString: Unit
@@ -322,7 +323,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1350713528623468}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.6, y: -1.23, z: 0}
+  m_LocalPosition: {x: 7.94, y: 5.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4328103983630976}
@@ -620,6 +621,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
+--- !u!114 &114441106227714048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350713528623468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8149fc6c2e98864f89a0c31608862f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrevUnitState: {fileID: 0}
 --- !u!114 &114473184380942948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -632,7 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitStates:
-  - {fileID: 114484818814319848}
+  - {fileID: 114441106227714048}
   - {fileID: 114228830754148118}
   - {fileID: 114350856978957396}
   - {fileID: 114025742899576568}
@@ -721,6 +734,7 @@ MonoBehaviour:
   IsDied: 0
   TakenCCData: {fileID: 0}
   CanChangeDirection: 1
+  GoalComplete: 0
 --- !u!114 &114967502376588390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -750,6 +764,7 @@ MonoBehaviour:
   IsDied: 0
   TakenCCData: {fileID: 0}
   CanChangeDirection: 0
+  GoalComplete: 0
 --- !u!114 &114990053605017292
 MonoBehaviour:
   m_ObjectHideFlags: 1
