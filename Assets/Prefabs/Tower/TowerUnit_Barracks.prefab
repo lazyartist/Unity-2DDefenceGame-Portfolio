@@ -118,7 +118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1725205614752712
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1718194122817380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.04, y: -1.57, z: 0}
+  m_LocalPosition: {x: 4.22, y: 1.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4508797607411722}
@@ -513,6 +513,7 @@ MonoBehaviour:
   IsDied: 0
   TakenCCData: {fileID: 0}
   CanChangeDirection: 0
+  GoalComplete: 0
 --- !u!212 &212209478913660530
 SpriteRenderer:
   m_ObjectHideFlags: 1

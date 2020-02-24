@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Name: TowerUpgradeData_Root
   m_EditorClassIdentifier: 
   Name: 
-  Cost: 0
+  GoldCost: 0
   IconSprite: {fileID: 0}
+  UnitSprite: {fileID: 0}
   UnitPrefab: {fileID: 0}
   TowerUpgradeDatas:
   - {fileID: 11400000, guid: 6ca387ee5a54906418c867da708db8a9, type: 2}
   - {fileID: 11400000, guid: 8610219a095c11947839d3442122985e, type: 2}
   - {fileID: 11400000, guid: cdd6a0c5aff061343b4cf8949ce1e2b9, type: 2}
+  - {fileID: 11400000, guid: 0976d3e09a1cb9e43a08c6941d440986, type: 2}

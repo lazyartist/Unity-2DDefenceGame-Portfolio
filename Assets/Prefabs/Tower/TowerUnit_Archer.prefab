@@ -598,6 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
+  IsPlayAttackAni: 1
 --- !u!114 &114371486477906474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -621,6 +622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
+  IsPlayAttackAni: 1
 --- !u!114 &114441106227714048
 MonoBehaviour:
   m_ObjectHideFlags: 1
