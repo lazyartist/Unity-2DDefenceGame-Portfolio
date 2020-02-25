@@ -38,24 +38,30 @@ public class StageInfo
         }
     }
 
-    int _waveCount;
-    public int WaveCount
+    int _wavePhaseIndex;
+    public int WavePhaseIndex
     {
         get
         {
-            return _waveCount;
+            return _wavePhaseIndex;
         }
         set
         {
-            _waveCount = value;
+            _wavePhaseIndex = value;
             IsDirty = true;
         }
     }
+
+    public int WavePhaseCount { get; private set; }
 
     public void Copy(StageData stageData)
     {
         Health = stageData.Health;
         Gold = stageData.Gold;
-        //WaveCount = stageData.WaveCount;
+        WavePhaseCount = stageData.WavePhases.Length;
     }
+
+    public int WaveIndex = 0;
+    public bool IsWavePhaseDone = false;
+    public bool IsAllWavePhaseDone = false;
 }

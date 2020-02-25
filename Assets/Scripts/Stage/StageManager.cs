@@ -5,23 +5,15 @@ using UnityEngine;
 public class StageManager : SingletonBase<StageManager>
 {
     public Types.StageEvent StageEvent;
+
     public StageData StageData;
     public StageInfo StageInfo;
-
-    public TeamData EnemyTeamData;
-    public AttackTargetData EnemyAttackTargetData;
 
     public GameObject UnitsContainer;
     public GameObject UnitStartPosition;
     public Waypoint StartWaypoint;
 
-    public WaveData WaveData;
-    public int WaveBundleIndex = 0;
-    WaveBundle _waveBundle;
-    WaveInfo _wave;
-    int _waveIndex = 0;
-    bool _isWaveBundleDone = false;
-    Coroutine co;
+    Coroutine _coroutine_wave;
 
     protected override void Awake()
     {
@@ -32,12 +24,10 @@ public class StageManager : SingletonBase<StageManager>
     void Start()
     {
         StageInfo.Copy(StageData);
-        StageInfo.WaveCount = 0;
+        StageInfo.WavePhaseIndex = 0;
 
         ClearWaveInfo();
-        SetWaveBundle();
-
-        CreateUnitsOfWave();
+        RunWave();
     }
 
     void Update()
@@ -52,38 +42,39 @@ public class StageManager : SingletonBase<StageManager>
         }
     }
 
-    void CreateUnitsOfWave()
+    void RunWave()
     {
-        if (co != null)
+        if (_coroutine_wave != null)
         {
-            StopCoroutine(co);
+            StopCoroutine(_coroutine_wave);
         }
 
         ClearWaveInfo();
-        co = StartCoroutine(Coroutine_CreateUnitsOfWave());
+        _coroutine_wave = StartCoroutine(Coroutine_Wave());
     }
 
-    IEnumerator Coroutine_CreateUnitsOfWave()
+    IEnumerator Coroutine_Wave()
     {
         while (true)
         {
-            WaveInfo wave = _waveBundle.WaveInfos[_waveIndex];
+            Wave wave = StageData.WavePhases[StageInfo.WavePhaseIndex].Waves[StageInfo.WaveIndex];
             int waypointSubIndex = Consts.WaypointSubIndexStart;
             for (int i = 0; i < wave.UnitCount; i++)
             {
                 Unit unit = Instantiate(wave.UnitPrefab, UnitStartPosition.transform.position, Quaternion.identity, UnitsContainer.transform);
-                unit.TeamData = EnemyTeamData;
-                unit.AttackTargetData = EnemyAttackTargetData;
+                unit.TeamData = StageData.EnemyTeamData;
+                unit.AttackTargetData = StageData.EnemyAttackTargetData;
                 unit.TargetWaypoint = StartWaypoint;
                 unit.TargetWaypointSubIndex = waypointSubIndex++;
+                unit.gameObject.SetActive(true);
 
-                yield return new WaitForSeconds(wave.CreateUnitInterval);
+                yield return new WaitForSeconds(Consts.CreateUnitInterval);
             }
 
-            ++_waveIndex;
-            if (_waveBundle.WaveInfos.Length == _waveIndex)
+            ++StageInfo.WaveIndex;
+            if (StageData.WavePhases[StageInfo.WavePhaseIndex].Waves.Length == StageInfo.WaveIndex)
             {
-                _isWaveBundleDone = true;
+                StageInfo.IsWavePhaseDone = true;
             }
 
             if (wave.NextWaveInterval > 0)
@@ -92,8 +83,9 @@ public class StageManager : SingletonBase<StageManager>
                 yield return new WaitForSeconds(wave.NextWaveInterval);
             }
 
-            if (_isWaveBundleDone && TryNextWaveBundle() == false)
+            if (StageInfo.IsWavePhaseDone && TryNextWavePhase() == false)
             {
+                StageInfo.IsAllWavePhaseDone = true;
                 yield break;
             }
         }
@@ -101,32 +93,23 @@ public class StageManager : SingletonBase<StageManager>
 
     void ClearWaveInfo()
     {
-        WaveBundleIndex = 0;
-        _waveIndex = 0;
-        _isWaveBundleDone = false;
+        StageInfo.WavePhaseIndex = 0;
+        StageInfo.WaveIndex = 0;
+        StageInfo.IsWavePhaseDone = false;
+        StageInfo.IsAllWavePhaseDone = false;
     }
 
-    void SetWaveBundle()
+    bool TryNextWavePhase()
     {
-        _waveIndex = 0;
-        _isWaveBundleDone = false;
-
-        _waveBundle = WaveData.WaveBundles[WaveBundleIndex];
-        _wave = _waveBundle.WaveInfos[_waveIndex];
-
-        StageInfo.WaveCount = WaveBundleIndex + 1;
-    }
-
-    bool TryNextWaveBundle()
-    {
-        if (WaveData.WaveBundles.Length <= WaveBundleIndex + 1)
+        if (StageData.WavePhases.Length <= StageInfo.WavePhaseIndex + 1)
         {
             return false;
         }
         else
         {
-            ++WaveBundleIndex;
-            SetWaveBundle();
+            ++StageInfo.WavePhaseIndex;
+            StageInfo.WaveIndex = 0;
+            StageInfo.IsWavePhaseDone = false;
             return true;
         }
     }
