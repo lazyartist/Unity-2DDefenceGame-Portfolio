@@ -6,6 +6,7 @@ static public class Consts {
     // ===== float
     static public float ArriveDistance = 0.01f;
     static public float TowerUnitSellCostRate = 0.8f;
+    static public int WaypointSubIndexStart = 1;
 
     // ===== tag names
     static public string tagUnit = "Unit";

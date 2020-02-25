@@ -54,11 +54,11 @@ public class Unit : MonoBehaviour
     {
         Health = UnitData.Health;
 
-        if (TargetWaypoint == null)
-        {
-            TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
-            TargetWaypoint.transform.position = transform.position;// 현재 위치로 설정
-        }
+        //if (TargetWaypoint == null)
+        //{
+        //    //TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
+        //    //TargetWaypoint.transform.position = transform.position;// 현재 위치로 설정
+        //}
     }
 
     void OnApplicationQuit()
@@ -326,7 +326,7 @@ public class Unit : MonoBehaviour
     {
         if (WaitWaypoint != null)
         {
-            float distance = Vector3.Distance(transform.position, WaitWaypoint.transform.position);
+            float distance = Vector3.Distance(transform.position, WaitWaypoint.GetPosition(TargetWaypointSubIndex));
             bool arrived = distance < Consts.ArriveDistance;
             return arrived;
         }

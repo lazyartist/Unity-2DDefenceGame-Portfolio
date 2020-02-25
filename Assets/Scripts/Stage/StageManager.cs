@@ -70,7 +70,7 @@ public class StageManager : SingletonBase<StageManager>
             }
 
             WaveInfo wave = _curWaveBundle.WaveInfos[_curWaveIndex++];
-            int waypointSubIndex = 0;
+            int waypointSubIndex = Consts.WaypointSubIndexStart;
             for (int i = 0; i < wave.UnitCount; i++)
             {
                 Unit unit = Instantiate(wave.UnitPrefab, UnitStartPosition.transform.position, Quaternion.identity, UnitsContainer.transform);
