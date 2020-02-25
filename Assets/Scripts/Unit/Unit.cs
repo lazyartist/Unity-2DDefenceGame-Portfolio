@@ -37,28 +37,20 @@ public class Unit : MonoBehaviour
 
     protected void Awake()
     {
-        gameObject.layer = Mathf.RoundToInt(Mathf.Log(AttackTargetData.LayerMask.value, 2f));//LayerMask를 LayerIndex로 변환
         gameObject.name += Consts.GetUnitId();
-
         TakenCCData = new CCData();
 
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
         if (boxCollider != null)
         {
-            //UnitCenterOffset = boxCollider.offset;
             UnitSize = boxCollider.size;
         }
     }
 
     protected void Start()
     {
+        gameObject.layer = Mathf.RoundToInt(Mathf.Log(AttackTargetData.LayerMask.value, 2f));//LayerMask를 LayerIndex로 변환
         Health = UnitData.Health;
-
-        //if (TargetWaypoint == null)
-        //{
-        //    //TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
-        //    //TargetWaypoint.transform.position = transform.position;// 현재 위치로 설정
-        //}
     }
 
     void OnApplicationQuit()
@@ -130,7 +122,6 @@ public class Unit : MonoBehaviour
             case Types.UnitNotifyType.ClearAttackTarget:
                 if (HasAttackTargetUnit())
                 {
-                    //UnitFSM.Transit(Types.UnitFSMType.Idle);
                     DispatchUnitEvent(Types.UnitEventType.AttackStopped, null);
                     RemoveAttackTargetUnit();
                 }

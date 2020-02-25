@@ -7,5 +7,5 @@ public class StageData : ScriptableObject
 {
     public int Health = 20;
     public int Gold = 100;
-    public int WaveCount = 10;
+    //public int WaveCount = 10;
 }

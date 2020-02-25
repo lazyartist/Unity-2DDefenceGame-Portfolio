@@ -1429,6 +1429,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1509998011141510, guid: 7158cfee7764e8549b45419b7999fbea, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7158cfee7764e8549b45419b7999fbea, type: 2}
   m_IsPrefabAsset: 0
@@ -6619,6 +6623,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StageData: {fileID: 11400000, guid: 3cb60f2dca5c92343b685023b2fa70d0, type: 2}
+  EnemyTeamData: {fileID: 11400000, guid: d9165ec3e3bbdfd4198bf3e7258b5afd, type: 2}
+  EnemyAttackTargetData: {fileID: 11400000, guid: 82e9e44e536c6c542b27909404acf311,
+    type: 2}
   UnitsContainer: {fileID: 2007183369}
   UnitStartPosition: {fileID: 510379310}
   StartWaypoint: {fileID: 402620384}
@@ -7424,7 +7431,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1751663501147014, guid: 74a9c9d134042dd45bcbcc5660cae4a7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74a9c9d134042dd45bcbcc5660cae4a7, type: 2}

@@ -8,15 +8,19 @@ public class StageManager : SingletonBase<StageManager>
     public StageData StageData;
     public StageInfo StageInfo;
 
+    public TeamData EnemyTeamData;
+    public AttackTargetData EnemyAttackTargetData;
+
     public GameObject UnitsContainer;
     public GameObject UnitStartPosition;
     public Waypoint StartWaypoint;
+
     public WaveData WaveData;
-    WaveBundle _curWaveBundle;
-    int _curWaveBundleIndex = 0;
-    WaveInfo _curWave;
-    int _curWaveIndex = 0;
-    bool _curWaveDone = false;
+    public int WaveBundleIndex = 0;
+    WaveBundle _waveBundle;
+    WaveInfo _wave;
+    int _waveIndex = 0;
+    bool _isWaveBundleDone = false;
     Coroutine co;
 
     protected override void Awake()
@@ -31,7 +35,7 @@ public class StageManager : SingletonBase<StageManager>
         StageInfo.WaveCount = 0;
 
         ClearWaveInfo();
-        NextWave();
+        SetWaveBundle();
 
         CreateUnitsOfWave();
     }
@@ -55,29 +59,31 @@ public class StageManager : SingletonBase<StageManager>
             StopCoroutine(co);
         }
 
+        ClearWaveInfo();
         co = StartCoroutine(Coroutine_CreateUnitsOfWave());
     }
 
     IEnumerator Coroutine_CreateUnitsOfWave()
     {
-        _curWaveIndex = 0;
         while (true)
         {
-            if (_curWaveBundle.WaveInfos.Length <= _curWaveIndex)
-            {
-                Debug.Log("yield return break");
-                yield break;
-            }
-
-            WaveInfo wave = _curWaveBundle.WaveInfos[_curWaveIndex++];
+            WaveInfo wave = _waveBundle.WaveInfos[_waveIndex];
             int waypointSubIndex = Consts.WaypointSubIndexStart;
             for (int i = 0; i < wave.UnitCount; i++)
             {
                 Unit unit = Instantiate(wave.UnitPrefab, UnitStartPosition.transform.position, Quaternion.identity, UnitsContainer.transform);
+                unit.TeamData = EnemyTeamData;
+                unit.AttackTargetData = EnemyAttackTargetData;
                 unit.TargetWaypoint = StartWaypoint;
                 unit.TargetWaypointSubIndex = waypointSubIndex++;
 
                 yield return new WaitForSeconds(wave.CreateUnitInterval);
+            }
+
+            ++_waveIndex;
+            if (_waveBundle.WaveInfos.Length == _waveIndex)
+            {
+                _isWaveBundleDone = true;
             }
 
             if (wave.NextWaveInterval > 0)
@@ -85,23 +91,43 @@ public class StageManager : SingletonBase<StageManager>
                 Debug.Log("wave.NextWaveInterval " + wave.NextWaveInterval);
                 yield return new WaitForSeconds(wave.NextWaveInterval);
             }
-            else
+
+            if (_isWaveBundleDone && TryNextWaveBundle() == false)
             {
-                Debug.Log("yield return null");
-                yield return null;
+                yield break;
             }
         }
     }
 
     void ClearWaveInfo()
     {
-        _curWaveBundleIndex = 0;
-        _curWaveIndex = 0;
+        WaveBundleIndex = 0;
+        _waveIndex = 0;
+        _isWaveBundleDone = false;
     }
 
-    void NextWave()
+    void SetWaveBundle()
     {
-        _curWaveBundle = WaveData.WaveBundles[_curWaveBundleIndex];
-        _curWave = _curWaveBundle.WaveInfos[_curWaveIndex];
+        _waveIndex = 0;
+        _isWaveBundleDone = false;
+
+        _waveBundle = WaveData.WaveBundles[WaveBundleIndex];
+        _wave = _waveBundle.WaveInfos[_waveIndex];
+
+        StageInfo.WaveCount = WaveBundleIndex + 1;
+    }
+
+    bool TryNextWaveBundle()
+    {
+        if (WaveData.WaveBundles.Length <= WaveBundleIndex + 1)
+        {
+            return false;
+        }
+        else
+        {
+            ++WaveBundleIndex;
+            SetWaveBundle();
+            return true;
+        }
     }
 }

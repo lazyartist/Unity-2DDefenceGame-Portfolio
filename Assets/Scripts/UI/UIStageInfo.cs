@@ -23,7 +23,7 @@ public class UIStageInfo : MonoBehaviour {
     {
         HealthText.text = _stageInfo.Health.ToString();
         GoldText.text = _stageInfo.Gold.ToString();
-        WaveText.text = "공격 " + _stageInfo.WaveCount.ToString() + "/" + _stageData.WaveCount.ToString();
+        WaveText.text = "공격 " + _stageInfo.WaveCount.ToString() + "/" + StageManager.Inst.WaveData.WaveBundles.Length;
     }
 
     public void OnStageEvent(Types.StageEventType stageEventType)
