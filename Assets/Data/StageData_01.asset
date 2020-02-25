@@ -33,5 +33,5 @@ MonoBehaviour:
         type: 2}
       UnitCount: 3
       NextWaveInterval: 3
-  Health: 20
+  Health: 1
   Gold: 48

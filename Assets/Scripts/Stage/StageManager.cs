@@ -40,6 +40,17 @@ public class StageManager : SingletonBase<StageManager>
             }
             StageInfo.Clean();
         }
+        
+        if(StageInfo.Health <= 0)
+        {
+                UICanvas.Inst.ShowInfo("Defeat");
+        }else
+        {
+            if (StageInfo.IsAllWavePhaseDone && UnitsContainer.transform.childCount == 0)
+            {
+                UICanvas.Inst.ShowInfo("Clear");
+            }
+        }
     }
 
     void RunWave()
