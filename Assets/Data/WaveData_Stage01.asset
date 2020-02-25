@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5181ac72126d441af6f43759eae89d, type: 3}
+  m_Name: WaveData_Stage01
+  m_EditorClassIdentifier: 
+  WaveBundles:
+  - WaveInfos:
+    - UnitPrefab: {fileID: 114953592987179240, guid: 7158cfee7764e8549b45419b7999fbea,
+        type: 2}
+      UnitCount: 2
+      CreateUnitInterval: 0.5
+      NextWaveInterval: 2
+    - UnitPrefab: {fileID: 114294464561140596, guid: 2c9e07968b0e2714c932312ca5e68ae2,
+        type: 2}
+      UnitCount: 3
+      CreateUnitInterval: 0.2
+      NextWaveInterval: 3

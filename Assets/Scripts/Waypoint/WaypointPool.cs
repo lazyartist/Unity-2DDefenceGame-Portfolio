@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaypointPool : MonoBehaviour {
     public GameObject WaypointPoolContainer;
-    public WaypointGizmosData WaypointGizmosData;
+    public WaypointData WaypointData;
 
     public Waypoint WaypointPrefab;
     public int WaypointCount = 99;
@@ -28,8 +28,9 @@ public class WaypointPool : MonoBehaviour {
 
         if(Waypoints[_endIndex] == null)
         {
-            Waypoints[_endIndex] = GameObject.Instantiate<Waypoint>(WaypointPrefab, WaypointPoolContainer.transform);
-            Waypoints[_endIndex].GetComponent<WaypointGizmos>().WaypointGizmosData = WaypointGizmosData;
+            Waypoint waypoint = Instantiate<Waypoint>(WaypointPrefab, WaypointPoolContainer.transform);
+            waypoint.WaypointData = WaypointData;
+            Waypoints[_endIndex] = waypoint;
         }
         Waypoints[_endIndex].enabled = true;
         //Debug.Log("waypoint get _endIndex " + _endIndex);

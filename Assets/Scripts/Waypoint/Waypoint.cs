@@ -5,16 +5,15 @@ using UnityEngine;
 public class Waypoint : MonoBehaviour{
     public Waypoint NextWaypoint;
     public int OrderNumber;
-    public int SubPositionCount;
-    public float SubPositionRadius = 1f;
+    public WaypointData WaypointData;
 
     public Vector3 GetPosition(int subPositionIndex)
     {
         Vector3 subPosition = Vector3.zero;
-        if(SubPositionCount > subPositionIndex)
+        if(WaypointData.SubPositionCount > subPositionIndex)
         {
             Vector3 direction = Vector3.right;
-            subPosition = Quaternion.Euler(0f, 0f, 30f + 120f * subPositionIndex) * direction * SubPositionRadius;
+            subPosition = Quaternion.Euler(0f, 0f, transform.rotation.eulerAngles.z + 360f / WaypointData.SubPositionCount * subPositionIndex) * direction * WaypointData.SubPositionRadius;
         }
 
         return transform.position + subPosition;

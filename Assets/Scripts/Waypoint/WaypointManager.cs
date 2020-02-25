@@ -33,7 +33,11 @@ public class WaypointManager : SingletonBase<WaypointManager>
             {
                 Waypoint wp = waypointContainer.transform.GetChild(j).GetComponent<Waypoint>();
                 curWaypoint.NextWaypoint = wp;
+                Vector3 direction = curWaypoint.NextWaypoint.transform.position - curWaypoint.transform.position;
+                float rad = Mathf.Atan2(direction.y, direction.x);
+                curWaypoint.transform.rotation = Quaternion.Euler(0f, 0f, rad * Mathf.Rad2Deg);
                 curWaypoint.OrderNumber = j;
+
                 curWaypoint = wp;
             }
         }
