@@ -11,12 +11,13 @@ public class HeroUnitButton : MonoBehaviour/*, IPointerClickHandler*/
     public Toggle Toggle;
 
     bool _enableToggleEvent = true;
-    float _coolTime = 0f;
+    float _heroUnitDiedTime = 0f;
     Coroutine _coroutine_UpdateCoolTime;
 
     void Start()
     {
         Init();
+        StageManager.Inst.StageEvent += OnStageEvent;
     }
 
     public void Init()
@@ -57,7 +58,7 @@ public class HeroUnitButton : MonoBehaviour/*, IPointerClickHandler*/
     public void Reset()
     {
         Toggle.interactable = false;
-        _coolTime = 0f;
+        _heroUnitDiedTime = Time.time;
 
         if (_coroutine_UpdateCoolTime != null)
         {
@@ -71,10 +72,9 @@ public class HeroUnitButton : MonoBehaviour/*, IPointerClickHandler*/
         while (true)
         {
             yield return new WaitForSeconds(Consts.CoolTimeUpdateInterval);
-            _coolTime += Consts.CoolTimeUpdateInterval;
             UpdateIcon();
 
-            if (_coolTime >= StageManager.Inst.StageData.HeroUnitRespawnCoolTime)
+            if (Time.time - _heroUnitDiedTime >= StageManager.Inst.StageData.HeroUnitRespawnCoolTime)
             {
                 Ready();
                 break;
@@ -86,7 +86,7 @@ public class HeroUnitButton : MonoBehaviour/*, IPointerClickHandler*/
 
     void UpdateIcon()
     {
-        Icon.fillAmount = _coolTime / StageManager.Inst.StageData.HeroUnitRespawnCoolTime;
+        Icon.fillAmount = (Time.time - _heroUnitDiedTime) / StageManager.Inst.StageData.HeroUnitRespawnCoolTime;
     }
 
     public void Select(bool isSelect)
@@ -94,6 +94,34 @@ public class HeroUnitButton : MonoBehaviour/*, IPointerClickHandler*/
         _enableToggleEvent = false;
         Toggle.isOn = isSelect;
         _enableToggleEvent = true;
+    }
+
+    public void OnStageEvent(Types.StageEventType stageEventType)
+    {
+        switch (stageEventType)
+        {
+            case Types.StageEventType.None:
+                break;
+            case Types.StageEventType.StageInfoChanged:
+                break;
+            case Types.StageEventType.HeroUnitChanged:
+                UpdateHeroUnit();
+                break;
+            default:
+                break;
+        }
+    }
+
+    void UpdateHeroUnit()
+    {
+        if (StageManager.Inst.StageInfo.HeroUnit == null)
+        {
+            Reset();
+        }
+        else
+        {
+            Ready();
+        }
     }
 }
 

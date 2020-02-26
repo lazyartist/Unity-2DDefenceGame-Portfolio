@@ -31,7 +31,7 @@ static public class Types {
 
     public enum StageEventType
     {
-        None, Changed,
+        None, StageInfoChanged, HeroUnitChanged
     }
 
     public enum TeamType

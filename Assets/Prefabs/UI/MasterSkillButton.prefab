@@ -126,11 +126,7 @@ MonoBehaviour:
   MasterSkillData: {fileID: 0}
   IconBg: {fileID: 114430642257538144}
   Icon: {fileID: 114434331634829588}
-  ButtonFrameSprite: {fileID: 21300000, guid: b5d91480c1103604e9c392fa435f65a4, type: 3}
-  ButtonFrameActivateSprite: {fileID: 21300000, guid: cc36a7d768886fe40bc5b8cb89e5e70d,
-    type: 3}
   Toggle: {fileID: 114509657864272934}
-  CoolTimeInterval: 0.05
 --- !u!114 &114430642257538144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,7 +334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 103, y: -822}
+  m_AnchoredPosition: {x: -1293, y: -244}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224268870860763230
@@ -357,7 +353,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -2.4, y: 2.1}
-  m_SizeDelta: {x: 88, y: 88}
+  m_SizeDelta: {x: 106, y: 106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224693110036491626
 RectTransform:
@@ -375,7 +371,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 130, y: 130}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224702866822316934
 RectTransform:
@@ -412,7 +408,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -2.4, y: 2.1}
-  m_SizeDelta: {x: 88, y: 88}
+  m_SizeDelta: {x: 106, y: 106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224835421670621986
 RectTransform:
@@ -431,5 +427,5 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 130, y: 130}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -37,7 +37,7 @@ public class UIStageInfo : MonoBehaviour {
         {
             case Types.StageEventType.None:
                 break;
-            case Types.StageEventType.Changed:
+            case Types.StageEventType.StageInfoChanged:
                 _UpdateStageInfo();
                 break;
             default:

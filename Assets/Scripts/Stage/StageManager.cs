@@ -36,7 +36,7 @@ public class StageManager : SingletonBase<StageManager>
         {
             if (StageEvent != null)
             {
-                StageEvent(Types.StageEventType.Changed);
+                StageEvent(Types.StageEventType.StageInfoChanged);
             }
             StageInfo.Clean();
         }
@@ -155,6 +155,7 @@ public class StageManager : SingletonBase<StageManager>
                 StageInfo.LastHeroUnitPosition = unit.transform.position;
                 StageInfo.HeroUnitDiedTime = Time.time;
                 StartCoroutine(Coroutine_RespawnHeroUnit());
+                DispatchHeroUnitChanged();
                 break;
             case Types.UnitEventType.DiedComplete:
                 break;
@@ -176,6 +177,12 @@ public class StageManager : SingletonBase<StageManager>
         StageInfo.HeroUnit = Instantiate(StageData.HeroUnitPrefab, StageInfo.LastHeroUnitPosition, Quaternion.identity, UnitsContainer.transform);
         StageInfo.HeroUnit.SetRallyPoint(StageInfo.LastHeroUnitPosition);
         StageInfo.HeroUnit.UnitEvent += OnUnitEvent_HeroUnit;
+        DispatchHeroUnitChanged();
+    }
+
+    void DispatchHeroUnitChanged()
+    {
+        StageEvent(Types.StageEventType.HeroUnitChanged);
     }
     // HeroUnit ===== end
 }

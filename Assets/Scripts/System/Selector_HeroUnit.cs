@@ -10,6 +10,7 @@ public class Selector_HeroUnit : Selector
     {
         base.Start();
         Unit = GetComponent<Unit>();
+        Unit.UnitEvent += OnUnitEvent;
     }
 
     override public Types.SelectResult SelectEnter()
@@ -48,4 +49,30 @@ public class Selector_HeroUnit : Selector
         UICanvas.Inst.HideUnitInfo();
     }
 
+    void OnUnitEvent(Types.UnitEventType unitEventType, Unit unit)
+    {
+        switch (unitEventType)
+        {
+            case Types.UnitEventType.None:
+                break;
+            case Types.UnitEventType.AttackStart:
+                break;
+            case Types.UnitEventType.AttackEnd:
+                break;
+            case Types.UnitEventType.AttackFire:
+                break;
+            case Types.UnitEventType.Die:
+                if (Selected)
+                {
+                    SelectorManager.Inst.UnregisterSelector();
+                }
+                break;
+            case Types.UnitEventType.DiedComplete:
+                break;
+            case Types.UnitEventType.AttackStopped:
+                break;
+            default:
+                break;
+        }
+    }
 }
