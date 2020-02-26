@@ -110,6 +110,7 @@ MonoBehaviour:
   IconImage: {fileID: 114814086828525898}
   CheckedImage: {fileID: 114349840590124216}
   TowerUpgradeData: {fileID: 0}
+  GrayscaleMaterial: {fileID: 0}
   IsChecked: 0
 --- !u!114 &114181099009803238
 MonoBehaviour:
@@ -331,7 +332,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 126, y: -107}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224870590840426384
 RectTransform:
