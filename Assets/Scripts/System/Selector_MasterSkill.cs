@@ -6,6 +6,10 @@ public class Selector_MasterSkill : Selector
 {
     public UIMasterSkillMenu UIMasterSkillMenu;
 
+    Coroutine _coroutine;
+    AttackData _attackData;
+    AttackTargetData _attackTargetData;
+
     override protected void Start()
     {
         UIMasterSkillMenu = GetComponent<UIMasterSkillMenu>();
@@ -43,9 +47,22 @@ public class Selector_MasterSkill : Selector
 
             if (isOnWay)
             {
+
                 UIMasterSkillMenu.SelectedMasterSkillButton.Reset();
-                AProjectile projectile = Instantiate<AProjectile>(UIMasterSkillMenu.SelectedMasterSkillButton.MasterSkillData.AttackData.ProjectilePrefab, position, Quaternion.identity, transform);
-                projectile.Init(UIMasterSkillMenu.SelectedMasterSkillButton.MasterSkillData.AttackData, UIMasterSkillMenu.SelectedMasterSkillButton.MasterSkillData.AttackTargetData, null, position);
+                _attackData = UIMasterSkillMenu.SelectedMasterSkillButton.MasterSkillData.AttackData;
+                _attackTargetData = UIMasterSkillMenu.SelectedMasterSkillButton.MasterSkillData.AttackTargetData;
+                if (_attackData.ProjectileCount <= 1)
+                {
+                    CreateProjectile(position);
+                }
+                else
+                {
+                    if(_coroutine != null)
+                    {
+                        StopCoroutine(_coroutine);
+                    }
+                    _coroutine = StartCoroutine(Coroutine_CreateProjectile(position));
+                }
             }
         }
         else
@@ -59,6 +76,22 @@ public class Selector_MasterSkill : Selector
         return _selectResult;
     }
 
+    void CreateProjectile(Vector3 position)
+    {
+        AProjectile projectile = Instantiate<AProjectile>(_attackData.ProjectilePrefab, position, Quaternion.identity, transform);
+        projectile.Init(_attackData, _attackTargetData, null, position);
+    }
+
+    IEnumerator Coroutine_CreateProjectile(Vector3 position)
+    {
+        for (int i = 0; i < _attackData.ProjectileCount; i++)
+        {
+            Vector3 positionOffset = Random.insideUnitCircle * _attackData.ProjectileSpawnRadius;
+            CreateProjectile(position + positionOffset);
+            yield return new WaitForSeconds(_attackData.ProjectileSpawnInterval);
+        }
+    }
+
     override public void SelectExit()
     {
         UIMasterSkillMenu.Deselect();
@@ -67,6 +100,7 @@ public class Selector_MasterSkill : Selector
 
     override protected void UpdateSelected()
     {
+        // 선택 상태를 따로 구현한다.
         //base.UpdateSelected();
     }
 

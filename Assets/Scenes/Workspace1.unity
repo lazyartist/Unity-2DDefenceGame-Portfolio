@@ -842,6 +842,59 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &221975661
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1809973575}
+    m_Modifications:
+    - target: {fileID: 4973559471368018, guid: 4f7c3e9e93736d641b484b4d02deccd0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973559471368018, guid: 4f7c3e9e93736d641b484b4d02deccd0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973559471368018, guid: 4f7c3e9e93736d641b484b4d02deccd0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973559471368018, guid: 4f7c3e9e93736d641b484b4d02deccd0, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973559471368018, guid: 4f7c3e9e93736d641b484b4d02deccd0, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973559471368018, guid: 4f7c3e9e93736d641b484b4d02deccd0, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973559471368018, guid: 4f7c3e9e93736d641b484b4d02deccd0, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973559471368018, guid: 4f7c3e9e93736d641b484b4d02deccd0, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114230251045030880, guid: 4f7c3e9e93736d641b484b4d02deccd0,
+        type: 2}
+      propertyPath: AttackData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d67792af7c1c3b40a899e84439088eb,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4f7c3e9e93736d641b484b4d02deccd0, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!4 &221975662 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4973559471368018, guid: 4f7c3e9e93736d641b484b4d02deccd0,
+    type: 2}
+  m_PrefabInternal: {fileID: 221975661}
 --- !u!1001 &243260367
 Prefab:
   m_ObjectHideFlags: 0
@@ -1234,7 +1287,7 @@ Transform:
   - {fileID: 624481238}
   - {fileID: 203211693}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &331570567
 GameObject:
@@ -7687,6 +7740,35 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74a9c9d134042dd45bcbcc5660cae4a7, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1809973574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1809973575}
+  m_Layer: 0
+  m_Name: _MasterSkills
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1809973575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1809973574}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 221975662}
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1834218714
 Prefab:
   m_ObjectHideFlags: 0
@@ -8056,7 +8138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MasterSkillDatas:
-  - {fileID: 11400000, guid: eb77f25dd39cb244b9eda63f4a6420e4, type: 2}
+  - {fileID: 11400000, guid: bc2539ad4e356b04baea8dc5632c238d, type: 2}
   - {fileID: 11400000, guid: e879be598d70df74eb9418b574641eba, type: 2}
   - {fileID: 11400000, guid: e879be598d70df74eb9418b574641eba, type: 2}
   MasterSkillButtonPrefab: {fileID: 114338359682588698, guid: 18a26492a25f9994da04e0d7cd7e28a2,

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
+  m_Name: AttackData_LightingStrike
+  m_EditorClassIdentifier: 
+  ProjectilePrefab: {fileID: 114230251045030880, guid: 4f7c3e9e93736d641b484b4d02deccd0,
+    type: 2}
+  ProjectileCount: 8
+  ProjectileSpawnRadius: 1.2
+  ProjectileSpawnInterval: 0.18
+  ProjectileSpeed: 0
+  Power: 10
+  AttackRange: 0.7
+  CCData: {fileID: 11400000, guid: 2abd475d06a3b52439374a14af271a9b, type: 2}
