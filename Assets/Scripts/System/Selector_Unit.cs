@@ -19,7 +19,7 @@ public class Selector_Unit : Selector
         _selectResult.CursorType = Types.CursorType.None;
         _selectResult.SelectResultType = Types.SelectResultType.Select;
         _selectResult.IsFlag = false;
-        _selectResult.IsSpread = true;
+        _selectResult.IsSpreadSelect = true;
 
         UICanvas.Inst.ShowUnitInfo(Unit);
 
@@ -31,7 +31,7 @@ public class Selector_Unit : Selector
         _selectResult.CursorType = Types.CursorType.None;
         _selectResult.SelectResultType = Types.SelectResultType.Deselect;
         _selectResult.IsFlag = false;
-        _selectResult.IsSpread = true;
+        _selectResult.IsSpreadSelect = true;
         return _selectResult;
     }
 

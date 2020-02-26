@@ -19,7 +19,7 @@ public class Selector_Tower : Selector
         _selectResult.CursorType = Types.CursorType.None;
         _selectResult.SelectResultType = Types.SelectResultType.Select;
         _selectResult.IsFlag = false;
-        _selectResult.IsSpread = false;
+        _selectResult.IsSpreadSelect = false;
         return _selectResult;
     }
 
@@ -31,7 +31,7 @@ public class Selector_Tower : Selector
             _selectResult.CursorType = isOnWay ? Types.CursorType.Success : Types.CursorType.Fail;
             _selectResult.SelectResultType = Types.SelectResultType.Deselect;
             _selectResult.IsFlag = isOnWay;
-            _selectResult.IsSpread = false;
+            _selectResult.IsSpreadSelect = false;
 
             if (isOnWay)
             {
@@ -45,7 +45,7 @@ public class Selector_Tower : Selector
             _selectResult.CursorType = Types.CursorType.None;
             _selectResult.SelectResultType = Types.SelectResultType.Deselect;
             _selectResult.IsFlag = false;
-            _selectResult.IsSpread = true;
+            _selectResult.IsSpreadSelect = true;
         }
 
         return _selectResult;

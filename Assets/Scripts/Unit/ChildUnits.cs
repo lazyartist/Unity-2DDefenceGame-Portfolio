@@ -45,17 +45,18 @@ public class ChildUnits : MonoBehaviour
     void SetRallyPoint(Unit unit, int index)
     {
         Vector3 position = Quaternion.Euler(0f, 0f, (360f / (float)MaxUnitCount) * (float)index) * (Vector3.up * RallyPointRadius);
-        if (unit.WaitWaypoint == null)
-        {
-            unit.WaitWaypoint = WaypointManager.Inst.WaypointPool.Get();
-        }
-        if (unit.TargetWaypoint == null)
-        {
-            unit.TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
-        }
-        unit.WaitWaypoint.transform.position = RallyPoint.transform.position + position;
-        unit.TargetWaypoint.transform.position = unit.WaitWaypoint.transform.position;
-        ClearAttackTargetUnit(unit);
+        unit.SetRallyPoint(RallyPoint.transform.position + position);
+        //if (unit.WaitWaypoint == null)
+        //{
+        //    unit.WaitWaypoint = WaypointManager.Inst.WaypointPool.Get();
+        //}
+        //if (unit.TargetWaypoint == null)
+        //{
+        //    unit.TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
+        //}
+        //unit.WaitWaypoint.transform.position = RallyPoint.transform.position + position;
+        //unit.TargetWaypoint.transform.position = unit.WaitWaypoint.transform.position;
+        //ClearAttackTargetUnit(unit);
     }
 
     public void SetRallyPointOfAllUnits()
@@ -70,10 +71,10 @@ public class ChildUnits : MonoBehaviour
         }
     }
 
-    public void ClearAttackTargetUnit(Unit unit)
-    {
-        unit.Notify(Types.UnitNotifyType.ClearAttackTarget, null);
-    }
+    //public void ClearAttackTargetUnit(Unit unit)
+    //{
+    //    unit.Notify(Types.UnitNotifyType.ClearAttackTarget, null);
+    //}
 
     public void ClearAllAttackTargetUnits()
     {
@@ -82,7 +83,8 @@ public class ChildUnits : MonoBehaviour
             Unit unit = Units[i];
             if (unit != null && unit.IsDied == false)
             {
-                ClearAttackTargetUnit(unit);
+                unit.ClearAttackTargetUnit();
+                //ClearAttackTargetUnit(unit);
             }
         }
     }

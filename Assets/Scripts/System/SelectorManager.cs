@@ -49,6 +49,7 @@ public class SelectorManager : SingletonBase<SelectorManager>
         }
         CurSelector = null;
     }
+
     void OnInputEvent_InputManager(Types.InputEventType inputEventType, Vector3 value)
     {
         switch (inputEventType)
@@ -82,14 +83,12 @@ public class SelectorManager : SingletonBase<SelectorManager>
                         }
                     }
 
-                    //if (selectResult.SelectResultType == Types.SelectResultType.None || selectResult.SelectResultType == Types.SelectResultType.Deselect)
-                    if (selectResult.IsSpread)
+                    if (selectResult.IsSpreadSelect)
                     {
                         // 현재 Selector가 다음 Selector에게 이벤트 전파를 해도 된다고 함
                         RaycastHit2D raycastHit = Physics2D.Raycast(clickPosition, Vector3.forward, Camera.main.transform.position.z);
                         if (raycastHit)
                         {
-                            //Selector selector = null;
                             selector = raycastHit.collider.GetComponent<Selector>();
                             if (selector != null)
                             {

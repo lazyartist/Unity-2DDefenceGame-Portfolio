@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class StageInfo
 {
+    public void Copy(StageData stageData)
+    {
+        Health = stageData.Health;
+        Gold = stageData.Gold;
+        WavePhaseCount = stageData.WavePhases.Length;
+        LastHeroUnitPosition = stageData.FirstHeroUnitPosition;
+    }
+
     public bool IsDirty { get; private set; }
     public void Clean()
     {
         IsDirty = false;
     }
 
+    // Player =====
     int _health;
     public int Health
     {
@@ -37,7 +46,9 @@ public class StageInfo
             IsDirty = true;
         }
     }
+    // Player ===== end
 
+    // Wave =====
     int _wavePhaseIndex;
     public int WavePhaseIndex
     {
@@ -53,15 +64,14 @@ public class StageInfo
     }
 
     public int WavePhaseCount { get; private set; }
-
-    public void Copy(StageData stageData)
-    {
-        Health = stageData.Health;
-        Gold = stageData.Gold;
-        WavePhaseCount = stageData.WavePhases.Length;
-    }
-
     public int WaveIndex = 0;
     public bool IsWavePhaseDone = false;
     public bool IsAllWavePhaseDone = false;
+    // Wave ===== end
+
+    // HeroUnit
+    public Unit HeroUnit;
+    public float HeroUnitDiedTime = 0f;
+    public Vector3 LastHeroUnitPosition;
+    // HeroUnit ===== end
 }

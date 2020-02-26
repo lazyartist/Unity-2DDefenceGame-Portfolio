@@ -342,17 +342,28 @@ public class Unit : MonoBehaviour
         return distance < UnitData.TargetRange;
     }
 
-    void OnDrawGizmos()
-    {
-        if (HasAttackTargetUnit())
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position, AttackTargetUnit.transform.position);
-        }
-    }
-
     public Vector3 GetCenterPosition()
     {
         return transform.position + UnitCenterOffset;
+    }
+
+    public void SetRallyPoint(Vector3 position)
+    {
+        if (WaitWaypoint == null)
+        {
+            WaitWaypoint = WaypointManager.Inst.WaypointPool.Get();
+        }
+        if (TargetWaypoint == null)
+        {
+            TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
+        }
+        WaitWaypoint.transform.position = position;
+        TargetWaypoint.transform.position = position;
+        ClearAttackTargetUnit();
+    }
+
+    public void ClearAttackTargetUnit()
+    {
+        Notify(Types.UnitNotifyType.ClearAttackTarget, null);
     }
 }

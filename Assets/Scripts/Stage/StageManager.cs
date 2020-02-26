@@ -28,6 +28,7 @@ public class StageManager : SingletonBase<StageManager>
 
         ClearWaveInfo();
         RunWave();
+        SpawnHeroUnit();
     }
 
     void Update()
@@ -40,11 +41,17 @@ public class StageManager : SingletonBase<StageManager>
             }
             StageInfo.Clean();
         }
-        
-        if(StageInfo.Health <= 0)
+
+        UpdateStageClear();
+    }
+
+    void UpdateStageClear()
+    {
+        if (StageInfo.Health <= 0)
         {
-                UICanvas.Inst.ShowInfo("Defeat");
-        }else
+            UICanvas.Inst.ShowInfo("Defeat");
+        }
+        else
         {
             if (StageInfo.IsAllWavePhaseDone && UnitsContainer.transform.childCount == 0)
             {
@@ -53,6 +60,7 @@ public class StageManager : SingletonBase<StageManager>
         }
     }
 
+    // Wave =====
     void RunWave()
     {
         if (_coroutine_wave != null)
@@ -124,4 +132,51 @@ public class StageManager : SingletonBase<StageManager>
             return true;
         }
     }
+    // Wave ===== end
+
+    // HeroUnit =====
+    void OnUnitEvent_HeroUnit(Types.UnitEventType unitEventType, Unit unit)
+    {
+        switch (unitEventType)
+        {
+            case Types.UnitEventType.None:
+                break;
+            case Types.UnitEventType.AttackStart:
+                break;
+            case Types.UnitEventType.AttackEnd:
+                break;
+            case Types.UnitEventType.AttackFire:
+                break;
+            case Types.UnitEventType.Die:
+                if (StageInfo.HeroUnit != null)
+                {
+                    StageInfo.HeroUnit.UnitEvent -= OnUnitEvent_HeroUnit;
+                    StageInfo.HeroUnit = null;
+                }
+                StageInfo.LastHeroUnitPosition = unit.transform.position;
+                StageInfo.HeroUnitDiedTime = Time.time;
+                StartCoroutine(Coroutine_RespawnHeroUnit());
+                break;
+            case Types.UnitEventType.DiedComplete:
+                break;
+            case Types.UnitEventType.AttackStopped:
+                break;
+            default:
+                break;
+        }
+    }
+
+    IEnumerator Coroutine_RespawnHeroUnit()
+    {
+        yield return new WaitForSeconds(StageData.HeroUnitRespawnCoolTime);
+        SpawnHeroUnit();
+    }
+
+    void SpawnHeroUnit()
+    {
+        StageInfo.HeroUnit = Instantiate(StageData.HeroUnitPrefab, StageInfo.LastHeroUnitPosition, Quaternion.identity, UnitsContainer.transform);
+        StageInfo.HeroUnit.SetRallyPoint(StageInfo.LastHeroUnitPosition);
+        StageInfo.HeroUnit.UnitEvent += OnUnitEvent_HeroUnit;
+    }
+    // HeroUnit ===== end
 }

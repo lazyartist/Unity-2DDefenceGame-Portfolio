@@ -29,6 +29,12 @@ public class UnitGizmos : MonoBehaviour {
                 Gizmos.DrawLine(unit.transform.position, unit.TargetWaypoint.GetPosition(unit.TargetWaypointSubIndex));
                 //Gizmos.DrawLine(unit.transform.position, unit.TargetWaypoint.transform.position);
             }
+            // 유닛의 공격 타겟까지 선 그리기
+            if (unit.HasAttackTargetUnit())
+            {
+                Gizmos.color = unit.TeamData.TeamColor;
+                Gizmos.DrawLine(transform.position, unit.AttackTargetUnit.transform.position);
+            }
             // 랠리포인트
             ChildUnits childUnits = unit.GetComponent<ChildUnits>();
             if (childUnits != null)
@@ -36,6 +42,8 @@ public class UnitGizmos : MonoBehaviour {
                 Gizmos.color = Color.blue;
                 Gizmos.DrawWireSphere(childUnits.RallyPoint.transform.position, 0.05f);
             }
+
+
         }
     }
 }
