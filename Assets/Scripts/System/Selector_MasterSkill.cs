@@ -39,7 +39,7 @@ public class Selector_MasterSkill : Selector
             _selectResult.CursorType = isOnWay ? Types.CursorType.Success : Types.CursorType.Fail;
             _selectResult.SelectResultType = isOnWay ? Types.SelectResultType.Deselect : Types.SelectResultType.None;
             _selectResult.IsFlag = false;
-            _selectResult.IsSpreadSelect = false;
+            _selectResult.IsSpread = false;
 
             if (isOnWay)
             {
@@ -53,7 +53,7 @@ public class Selector_MasterSkill : Selector
             _selectResult.CursorType = Types.CursorType.None;
             _selectResult.SelectResultType = Types.SelectResultType.Deselect;
             _selectResult.IsFlag = false;
-            _selectResult.IsSpreadSelect = false;
+            _selectResult.IsSpread = false;
         }
 
         return _selectResult;

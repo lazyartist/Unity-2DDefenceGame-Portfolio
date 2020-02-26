@@ -83,12 +83,13 @@ public class SelectorManager : SingletonBase<SelectorManager>
                         }
                     }
 
-                    if (selectResult.IsSpreadSelect)
+                    if (selectResult.IsSpread)
                     {
                         // 현재 Selector가 다음 Selector에게 이벤트 전파를 해도 된다고 함
                         RaycastHit2D raycastHit = Physics2D.Raycast(clickPosition, Vector3.forward, Camera.main.transform.position.z);
                         if (raycastHit)
                         {
+                            //Selector selector = null;
                             selector = raycastHit.collider.GetComponent<Selector>();
                             if (selector != null)
                             {

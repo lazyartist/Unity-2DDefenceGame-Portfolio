@@ -9,6 +9,7 @@ static public class Consts
     public static float TowerUnitSellCostRate = 0.8f;
     public static int WaypointSubIndexStart = 1;
     public static float CreateUnitInterval { get { return 0.5f; } internal set { } }
+    public static float CoolTimeUpdateInterval { get { return 0.05f; } internal set { } }
 
     // ===== tag names
     public static string tagUnit = "Unit";

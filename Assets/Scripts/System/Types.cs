@@ -74,14 +74,14 @@ static public class Types {
         public SelectResultType SelectResultType;
         public CursorType CursorType;
         public bool IsFlag; // 커서에 깃발 표시 여부
-        public bool IsSpreadSelect; // 다음 Selector에게 이벤트 전파할지 여부
+        public bool IsSpread; // 다음 Selector에게 이벤트 전파할지 여부
 
         static public SelectResult Create() {
             SelectResult selectResult;
             selectResult.SelectResultType = SelectResultType.None;
             selectResult.CursorType = CursorType.None;
             selectResult.IsFlag = false;
-            selectResult.IsSpreadSelect = true;
+            selectResult.IsSpread = true;
             return selectResult;
         }
     }

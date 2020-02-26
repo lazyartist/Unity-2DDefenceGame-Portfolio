@@ -44,11 +44,6 @@ public class UIMasterSkillMenu : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-
-    }
-
     public void Deselect()
     {
         if(SelectedMasterSkillButton != null)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Selector_Unit : Selector
+public class Selector_Unit_Controllable : Selector
 {
     public Unit Unit;
 
@@ -21,6 +21,10 @@ public class Selector_Unit : Selector
         _selectResult.IsFlag = false;
         _selectResult.IsSpread = true;
 
+        UICanvas.Inst.HeroUnitButton.EnableToggleEvent = false;
+        UICanvas.Inst.HeroUnitButton.Toggle.isOn = true;
+        UICanvas.Inst.HeroUnitButton.EnableToggleEvent = true;
+
         UICanvas.Inst.ShowUnitInfo(Unit);
 
         return _selectResult;
@@ -28,10 +32,14 @@ public class Selector_Unit : Selector
 
     override public Types.SelectResult SelectUpdate(Selector selector, Vector3 position, bool isOnWay)
     {
-        _selectResult.CursorType = Types.CursorType.None;
-        _selectResult.SelectResultType = Types.SelectResultType.Deselect;
-        _selectResult.IsFlag = false;
-        _selectResult.IsSpread = true;
+        if (isOnWay)
+        {
+            Unit.SetRallyPoint(position);
+        }
+        _selectResult.CursorType = isOnWay ? Types.CursorType.Success : Types.CursorType.Fail;
+        _selectResult.SelectResultType = isOnWay ? Types.SelectResultType.Select : Types.SelectResultType.None;
+        _selectResult.IsFlag = true;
+        _selectResult.IsSpread = false;
         return _selectResult;
     }
 
@@ -39,6 +47,11 @@ public class Selector_Unit : Selector
     {
         base.SelectExit();
 
+        UICanvas.Inst.HeroUnitButton.EnableToggleEvent = false;
+        UICanvas.Inst.HeroUnitButton.Toggle.isOn = false;
+        UICanvas.Inst.HeroUnitButton.EnableToggleEvent = true;
+
         UICanvas.Inst.HideUnitInfo();
     }
+
 }

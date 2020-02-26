@@ -36,6 +36,7 @@ MonoBehaviour:
       NextWaveInterval: 3
   HeroUnitPrefab: {fileID: 114795718610798396, guid: 7697cf43afc86c041a6ad830432ab012,
     type: 2}
+  HeroUnitIcon: {fileID: 21300000, guid: 5de772c691609d6478f28a6806c64fe6, type: 3}
   HeroUnitRespawnCoolTime: 5
   FirstHeroUnitPosition: {x: 4.06, y: 3.02, z: 0}
   Health: 1

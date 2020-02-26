@@ -7,6 +7,7 @@ public class UICanvas : SingletonBase<UICanvas>
 {
     public UITowerMenu UITowerMenu;
     public Text UnitInfoText;
+    public HeroUnitButton HeroUnitButton;
 
     void Start()
     {
