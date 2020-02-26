@@ -17,19 +17,19 @@ public class Selector_Tower : Selector
         base.SelectEnter();
         Tower.Select();
         _selectResult.CursorType = Types.CursorType.None;
-        _selectResult.SelectResultType = Types.SelectResultType.Select;
+        _selectResult.SelectResultType = Types.SelectResultType.Register;
         _selectResult.IsFlag = false;
         _selectResult.IsSpread = false;
         return _selectResult;
     }
 
-    override public Types.SelectResult SelectUpdate(Selector selector, Vector3 position, bool isOnWay)
+    override public Types.SelectResult SelectUpdate(Vector3 position, bool isOnWay)
     {
         if (Tower.IsRallyPointModeOn)
         {
             // barracks rallypoint
             _selectResult.CursorType = isOnWay ? Types.CursorType.Success : Types.CursorType.Fail;
-            _selectResult.SelectResultType = Types.SelectResultType.Deselect;
+            _selectResult.SelectResultType = Types.SelectResultType.Unregister;
             _selectResult.IsFlag = isOnWay;
             _selectResult.IsSpread = false;
 
@@ -43,7 +43,7 @@ public class Selector_Tower : Selector
         else
         {
             _selectResult.CursorType = Types.CursorType.None;
-            _selectResult.SelectResultType = Types.SelectResultType.Deselect;
+            _selectResult.SelectResultType = Types.SelectResultType.Unregister;
             _selectResult.IsFlag = false;
             _selectResult.IsSpread = true;
         }

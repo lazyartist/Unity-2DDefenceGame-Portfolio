@@ -9,8 +9,8 @@ public class HeroUnitButton : MonoBehaviour/*, IPointerClickHandler*/
     public Image IconBg;
     public Image Icon;
     public Toggle Toggle;
-    public bool EnableToggleEvent = true;
 
+    bool _enableToggleEvent = true;
     float _coolTime = 0f;
     Coroutine _coroutine_UpdateCoolTime;
 
@@ -24,11 +24,11 @@ public class HeroUnitButton : MonoBehaviour/*, IPointerClickHandler*/
         Toggle.isOn = false;
         Toggle.onValueChanged.AddListener((bool isOn) =>
         {
-            if (EnableToggleEvent == false) return;
+            if (_enableToggleEvent == false) return;
 
-            Selector_Unit_Controllable selector = StageManager.Inst.StageInfo.HeroUnit.GetComponent<Selector_Unit_Controllable>();
             if (Toggle.isOn)
             {
+                Selector_HeroUnit selector = StageManager.Inst.StageInfo.HeroUnit.GetComponent<Selector_HeroUnit>();
                 if (selector != null)
                 {
                     SelectorManager.Inst.RegisterSelector(selector);
@@ -36,10 +36,7 @@ public class HeroUnitButton : MonoBehaviour/*, IPointerClickHandler*/
             }
             else
             {
-                if (SelectorManager.Inst.CurSelector == selector)
-                {
-                    SelectorManager.Inst.UnregisterSelector();
-                }
+                SelectorManager.Inst.UnregisterSelector();
             }
         });
 
@@ -92,10 +89,11 @@ public class HeroUnitButton : MonoBehaviour/*, IPointerClickHandler*/
         Icon.fillAmount = _coolTime / StageManager.Inst.StageData.HeroUnitRespawnCoolTime;
     }
 
-    public void Deselect()
+    public void Select(bool isSelect)
     {
-        Toggle.isOn = false;
-        UICanvas.Inst.HideInfo();
+        _enableToggleEvent = false;
+        Toggle.isOn = isSelect;
+        _enableToggleEvent = true;
     }
 }
 

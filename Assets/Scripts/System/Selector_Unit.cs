@@ -17,7 +17,7 @@ public class Selector_Unit : Selector
         base.SelectEnter();
         //Unit.Select();
         _selectResult.CursorType = Types.CursorType.None;
-        _selectResult.SelectResultType = Types.SelectResultType.Select;
+        _selectResult.SelectResultType = Types.SelectResultType.Register;
         _selectResult.IsFlag = false;
         _selectResult.IsSpread = true;
 
@@ -26,10 +26,10 @@ public class Selector_Unit : Selector
         return _selectResult;
     }
 
-    override public Types.SelectResult SelectUpdate(Selector selector, Vector3 position, bool isOnWay)
+    override public Types.SelectResult SelectUpdate(Vector3 position, bool isOnWay)
     {
         _selectResult.CursorType = Types.CursorType.None;
-        _selectResult.SelectResultType = Types.SelectResultType.Deselect;
+        _selectResult.SelectResultType = Types.SelectResultType.Unregister;
         _selectResult.IsFlag = false;
         _selectResult.IsSpread = true;
         return _selectResult;

@@ -27,7 +27,6 @@ public class StageManager : SingletonBase<StageManager>
         StageInfo.WavePhaseIndex = 0;
 
         ClearWaveInfo();
-        RunWave();
         SpawnHeroUnit();
     }
 
@@ -61,7 +60,7 @@ public class StageManager : SingletonBase<StageManager>
     }
 
     // Wave =====
-    void RunWave()
+    public void RunWave()
     {
         if (_coroutine_wave != null)
         {

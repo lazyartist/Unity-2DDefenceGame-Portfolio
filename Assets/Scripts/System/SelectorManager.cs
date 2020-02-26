@@ -28,17 +28,19 @@ public class SelectorManager : SingletonBase<SelectorManager>
         InputManager.Inst.InputEvent += OnInputEvent_InputManager;
     }
 
-    //void Update()
-    //{
-    //}
-
-    public void RegisterSelector(Selector selector)
+    public void RegisterSelector(Selector newSelector)
     {
-        if (CurSelector != null)
+        if (CurSelector != null && CurSelector != newSelector)
         {
             CurSelector.SelectExit();
         }
-        CurSelector = selector;
+
+        if (CurSelector != newSelector)
+        {
+            Types.SelectResult selectResult = newSelector.SelectEnter();
+            UpdateCursor(selectResult);
+        }
+        CurSelector = newSelector;
     }
 
     public void UnregisterSelector()
@@ -48,6 +50,39 @@ public class SelectorManager : SingletonBase<SelectorManager>
             CurSelector.SelectExit();
         }
         CurSelector = null;
+    }
+
+    void UpdateCursor(Types.SelectResult selectResult)
+    {
+        // cursor
+        CursorAnimator_Success.gameObject.SetActive(false);
+        CursorAnimator_Fail.gameObject.SetActive(false);
+        switch (selectResult.CursorType)
+        {
+            case Types.CursorType.None:
+                break;
+            case Types.CursorType.Success:
+                CursorAnimator_Success.gameObject.SetActive(true);
+                CursorAnimator_Success.SetTrigger("Click");
+                break;
+            case Types.CursorType.Fail:
+                CursorAnimator_Fail.gameObject.SetActive(true);
+                CursorAnimator_Fail.SetTrigger("Click");
+                break;
+            default:
+                break;
+        }
+
+        // flag
+        if (selectResult.IsFlag)
+        {
+            RallyPointAnimator.gameObject.SetActive(true);
+            RallyPointAnimator.SetTrigger("Click");
+        }
+        else
+        {
+            RallyPointAnimator.gameObject.SetActive(false);
+        }
     }
 
     void OnInputEvent_InputManager(Types.InputEventType inputEventType, Vector3 value)
@@ -60,87 +95,51 @@ public class SelectorManager : SingletonBase<SelectorManager>
                 break;
             case Types.InputEventType.Up:
                 {
-                    // 현재 Selector가 있으면 처리의 우선권을 줌
-                    Selector selector = null;
                     Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     clickPosition.z = 0;
                     Vector3 positionOnWaymap = (_waymapSpritePivot + ((clickPosition - MapSpriteRenderer.transform.position) * WaymapSpriteRenderer.sprite.pixelsPerUnit / MapSpriteRenderer.gameObject.transform.localScale.x));
                     Color pixelOnWaymap = WaymapSpriteRenderer.sprite.texture.GetPixel((int)positionOnWaymap.x, (int)positionOnWaymap.y);
                     bool isClickPositionOnWay = pixelOnWaymap == Color.black;
                     Types.SelectResult selectResult = Types.SelectResult.Create();
+                    bool isDirtyCursorPosition = false;
+
+                    // 현재 Selector가 있으면 처리의 우선권을 줌
                     if (CurSelector != null)
                     {
-                        selectResult = CurSelector.SelectUpdate(selector, clickPosition, isClickPositionOnWay);
+                        selectResult = CurSelector.SelectUpdate(clickPosition, isClickPositionOnWay);
                         switch (selectResult.SelectResultType)
                         {
                             case Types.SelectResultType.None:
                                 break;
-                            case Types.SelectResultType.Select:
+                            case Types.SelectResultType.Register:
                                 break;
-                            case Types.SelectResultType.Deselect:
+                            case Types.SelectResultType.Unregister:
                                 UnregisterSelector();
                                 break;
                         }
+                        UpdateCursor(selectResult);
+                        isDirtyCursorPosition = true;
                     }
 
-                    if (selectResult.IsSpread)
+                    // 현재 Selector가 새로운 Selector에게 이벤트 전파를 해도 된다고 함
+                    if (CurSelector == null || selectResult.IsSpread)
                     {
-                        // 현재 Selector가 다음 Selector에게 이벤트 전파를 해도 된다고 함
                         RaycastHit2D raycastHit = Physics2D.Raycast(clickPosition, Vector3.forward, Camera.main.transform.position.z);
                         if (raycastHit)
                         {
-                            //Selector selector = null;
-                            selector = raycastHit.collider.GetComponent<Selector>();
-                            if (selector != null)
+                            Selector newSelector = raycastHit.collider.GetComponent<Selector>();
+                            if (newSelector != null)
                             {
-                                selectResult = selector.SelectEnter();
+                                RegisterSelector(newSelector);
+                                isDirtyCursorPosition = true;
                             }
                         }
                     }
 
-                    // cursor
-                    CursorAnimator_Success.gameObject.SetActive(false);
-                    CursorAnimator_Fail.gameObject.SetActive(false);
-                    switch (selectResult.CursorType)
+                    if (isDirtyCursorPosition)
                     {
-                        case Types.CursorType.None:
-                            break;
-                        case Types.CursorType.Success:
-                            CursorAnimator_Success.gameObject.SetActive(true);
-                            CursorAnimator_Success.SetTrigger("Click");
-                            break;
-                        case Types.CursorType.Fail:
-                            CursorAnimator_Fail.gameObject.SetActive(true);
-                            CursorAnimator_Fail.SetTrigger("Click");
-                            break;
-                        default:
-                            break;
+                        CursorContainer.transform.position = clickPosition;
                     }
-
-                    // flag
-                    if (selectResult.IsFlag)
-                    {
-                        RallyPointAnimator.gameObject.SetActive(true);
-                        RallyPointAnimator.SetTrigger("Click");
-                    }
-                    else
-                    {
-                        RallyPointAnimator.gameObject.SetActive(false);
-                    }
-
-                    switch (selectResult.SelectResultType)
-                    {
-                        case Types.SelectResultType.None:
-                            break;
-                        case Types.SelectResultType.Select:
-                            RegisterSelector(selector);
-                            break;
-                        case Types.SelectResultType.Deselect:
-                            UnregisterSelector();
-                            break;
-                    }
-
-                    CursorContainer.transform.position = clickPosition;
                 }
                 break;
             case Types.InputEventType.Swipe:

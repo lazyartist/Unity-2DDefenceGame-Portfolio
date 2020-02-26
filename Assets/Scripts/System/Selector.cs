@@ -22,7 +22,7 @@ public class Selector : MonoBehaviour {
     }
 
     // 선택 이후 클릭에 대한 처리
-    virtual public Types.SelectResult SelectUpdate(Selector selector, Vector3 position, bool isOnWay)
+    virtual public Types.SelectResult SelectUpdate(Vector3 position, bool isOnWay)
     {
         return _selectResult;
     }

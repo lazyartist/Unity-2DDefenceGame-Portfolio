@@ -66,8 +66,8 @@ static public class Types {
     public enum SelectResultType
     {
         None, // 선택관련 아무런 작업을 하지 않음
-        Select, // 선택
-        Deselect, // 선택 해제
+        Register, // 선택
+        Unregister, // 선택 해제
     }
     public struct SelectResult
     {

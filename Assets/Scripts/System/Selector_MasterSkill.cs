@@ -32,12 +32,12 @@ public class Selector_MasterSkill : Selector
         return _selectResult;
     }
 
-    override public Types.SelectResult SelectUpdate(Selector selector, Vector3 position, bool isOnWay)
+    override public Types.SelectResult SelectUpdate(Vector3 position, bool isOnWay)
     {
         if (UIMasterSkillMenu.SelectedMasterSkillButton != null)
         {
             _selectResult.CursorType = isOnWay ? Types.CursorType.Success : Types.CursorType.Fail;
-            _selectResult.SelectResultType = isOnWay ? Types.SelectResultType.Deselect : Types.SelectResultType.None;
+            _selectResult.SelectResultType = isOnWay ? Types.SelectResultType.Unregister : Types.SelectResultType.None;
             _selectResult.IsFlag = false;
             _selectResult.IsSpread = false;
 
@@ -51,7 +51,7 @@ public class Selector_MasterSkill : Selector
         else
         {
             _selectResult.CursorType = Types.CursorType.None;
-            _selectResult.SelectResultType = Types.SelectResultType.Deselect;
+            _selectResult.SelectResultType = Types.SelectResultType.Unregister;
             _selectResult.IsFlag = false;
             _selectResult.IsSpread = false;
         }

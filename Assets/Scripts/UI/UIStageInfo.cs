@@ -7,6 +7,7 @@ public class UIStageInfo : MonoBehaviour {
     public Text HealthText;
     public Text GoldText;
     public Text WaveText;
+    public Button StartWaveButton;
 
     StageData _stageData;
     StageInfo _stageInfo;
@@ -15,6 +16,10 @@ public class UIStageInfo : MonoBehaviour {
         _stageData = StageManager.Inst.StageData;
         _stageInfo = StageManager.Inst.StageInfo;
         StageManager.Inst.StageEvent += OnStageEvent;
+
+        StartWaveButton.onClick.AddListener(() => {
+            StageManager.Inst.RunWave();
+        });
 
         _UpdateStageInfo();
     }
