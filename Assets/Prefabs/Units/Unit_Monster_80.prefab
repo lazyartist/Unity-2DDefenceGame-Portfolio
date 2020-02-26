@@ -194,6 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4434673878465430}
   - component: {fileID: 212904772809878692}
+  - component: {fileID: 114166979570354748}
   m_Layer: 0
   m_Name: SelectedSR
   m_TagString: Untagged
@@ -252,7 +253,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1509998011141510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.22, y: -3.268, z: 0}
+  m_LocalPosition: {x: 6.56, y: 0.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4337202680079958}
@@ -267,7 +268,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1784763242099570}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.052, y: -0.171, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4740837589922292}
@@ -319,7 +320,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1187537540434280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.037000656, y: 0.20599985, z: 0}
+  m_LocalPosition: {x: -0.037000656, y: 0.2059999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4434673878465430}
@@ -435,6 +436,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114166979570354748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1784763242099570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30acc7d4c9dbf2247b4ba97ab0f096d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitContainer: {fileID: 1187537540434280}
+  BoxCollider2D: {fileID: 61321995051891186}
 --- !u!114 &114320070185498788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -473,6 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
+  IsPlayAttackAni: 1
 --- !u!114 &114617355724301494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -601,6 +616,7 @@ MonoBehaviour:
   UnitFSM: {fileID: 114897432182434272}
   HitEffectAnimator: {fileID: 95593371078398000}
   TargetWaypoint: {fileID: 0}
+  TargetWaypointSubIndex: 0
   WaitWaypoint: {fileID: 0}
   LastAttackTargetPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 0}
@@ -609,6 +625,7 @@ MonoBehaviour:
   IsDied: 0
   TakenCCData: {fileID: 0}
   CanChangeDirection: 1
+  GoalComplete: 0
 --- !u!114 &114995575944795956
 MonoBehaviour:
   m_ObjectHideFlags: 1

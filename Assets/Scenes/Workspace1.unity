@@ -886,10 +886,6 @@ Prefab:
       propertyPath: WaitWaypoint
       value: 
       objectReference: {fileID: 1281463234}
-    - target: {fileID: 1452587065255852, guid: b6c8386ac315cf64fb88841752ced57a, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6c8386ac315cf64fb88841752ced57a, type: 2}
   m_IsPrefabAsset: 0
@@ -1428,14 +1424,6 @@ Prefab:
     - target: {fileID: 4427279533219578, guid: 7158cfee7764e8549b45419b7999fbea, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1509998011141510, guid: 7158cfee7764e8549b45419b7999fbea, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4740837589922292, guid: 7158cfee7764e8549b45419b7999fbea, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.2059999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7158cfee7764e8549b45419b7999fbea, type: 2}
@@ -9516,6 +9504,10 @@ Prefab:
     - target: {fileID: 4161327044439200, guid: 7697cf43afc86c041a6ad830432ab012, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121301548915964, guid: 7697cf43afc86c041a6ad830432ab012, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7697cf43afc86c041a6ad830432ab012, type: 2}
