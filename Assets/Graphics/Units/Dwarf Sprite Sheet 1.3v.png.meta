@@ -1,58 +1,51 @@
 fileFormatVersion: 2
-guid: 0b669140c8f8ca041975ab7cfca7886a
+guid: 3fa785d5a903ff346b438250bd427c6f
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Paladin Sprite Sheet_0
-    21300002: Paladin Sprite Sheet_1
-    21300004: Paladin Sprite Sheet_2
-    21300006: Paladin Sprite Sheet_3
-    21300008: Paladin Sprite Sheet_4
-    21300010: Paladin Sprite Sheet_5
-    21300012: Paladin Sprite Sheet_6
-    21300014: Paladin Sprite Sheet_7
-    21300016: Paladin Sprite Sheet_8
-    21300018: Paladin Sprite Sheet_9
-    21300020: Paladin Sprite Sheet_10
-    21300022: Paladin Sprite Sheet_11
-    21300024: Paladin Sprite Sheet_12
-    21300026: Paladin Sprite Sheet_13
-    21300028: Paladin Sprite Sheet_14
-    21300030: Paladin Sprite Sheet_15
-    21300032: Paladin Sprite Sheet_16
-    21300034: Paladin Sprite Sheet_17
-    21300036: Paladin Sprite Sheet_18
-    21300038: Paladin Sprite Sheet_19
-    21300040: Paladin Sprite Sheet_20
-    21300042: Paladin Sprite Sheet_21
-    21300044: Paladin Sprite Sheet_22
-    21300046: Paladin Sprite Sheet_23
-    21300048: Paladin Sprite Sheet_24
-    21300050: Paladin Sprite Sheet_25
-    21300052: Paladin Sprite Sheet_26
-    21300054: Paladin Sprite Sheet_27
-    21300056: Paladin Sprite Sheet_28
-    21300058: Paladin Sprite Sheet_29
-    21300060: Paladin Sprite Sheet_30
-    21300062: Paladin Sprite Sheet_31
-    21300064: Paladin Sprite Sheet_32
-    21300066: Paladin Sprite Sheet_33
-    21300068: Paladin Sprite Sheet_34
-    21300070: Paladin Sprite Sheet_35
-    21300072: Paladin Sprite Sheet_36
-    21300074: Paladin Sprite Sheet_37
-    21300076: Paladin Sprite Sheet_38
-    21300078: Paladin Sprite Sheet_39
-    21300080: Paladin Sprite Sheet_40
-    21300082: Paladin Sprite Sheet_41
-    21300084: Paladin Sprite Sheet_42
-    21300086: Paladin Sprite Sheet_43
-    21300088: Paladin Sprite Sheet_44
-    21300090: Paladin Sprite Sheet_45
-    21300092: Paladin Sprite Sheet_46
-    21300094: Paladin Sprite Sheet_47
-    21300096: Paladin Sprite Sheet_48
-    21300098: Paladin Sprite Sheet_49
-    21300100: Paladin Sprite Sheet_50
+    21300000: Dwarf Sprite Sheet 1.3v_0
+    21300002: Dwarf Sprite Sheet 1.3v_1
+    21300004: Dwarf Sprite Sheet 1.3v_2
+    21300006: Dwarf Sprite Sheet 1.3v_3
+    21300008: Dwarf Sprite Sheet 1.3v_4
+    21300010: Dwarf Sprite Sheet 1.3v_5
+    21300012: Dwarf Sprite Sheet 1.3v_6
+    21300014: Dwarf Sprite Sheet 1.3v_7
+    21300016: Dwarf Sprite Sheet 1.3v_8
+    21300018: Dwarf Sprite Sheet 1.3v_9
+    21300020: Dwarf Sprite Sheet 1.3v_10
+    21300022: Dwarf Sprite Sheet 1.3v_11
+    21300024: Dwarf Sprite Sheet 1.3v_12
+    21300026: Dwarf Sprite Sheet 1.3v_13
+    21300028: Dwarf Sprite Sheet 1.3v_14
+    21300030: Dwarf Sprite Sheet 1.3v_15
+    21300032: Dwarf Sprite Sheet 1.3v_16
+    21300034: Dwarf Sprite Sheet 1.3v_17
+    21300036: Dwarf Sprite Sheet 1.3v_18
+    21300038: Dwarf Sprite Sheet 1.3v_19
+    21300040: Dwarf Sprite Sheet 1.3v_20
+    21300042: Dwarf Sprite Sheet 1.3v_21
+    21300044: Dwarf Sprite Sheet 1.3v_22
+    21300046: Dwarf Sprite Sheet 1.3v_23
+    21300048: Dwarf Sprite Sheet 1.3v_24
+    21300050: Dwarf Sprite Sheet 1.3v_25
+    21300052: Dwarf Sprite Sheet 1.3v_26
+    21300054: Dwarf Sprite Sheet 1.3v_27
+    21300056: Dwarf Sprite Sheet 1.3v_28
+    21300058: Dwarf Sprite Sheet 1.3v_29
+    21300060: Dwarf Sprite Sheet 1.3v_30
+    21300062: Dwarf Sprite Sheet 1.3v_31
+    21300064: Dwarf Sprite Sheet 1.3v_32
+    21300066: Dwarf Sprite Sheet 1.3v_33
+    21300068: Dwarf Sprite Sheet 1.3v_34
+    21300070: Dwarf Sprite Sheet 1.3v_35
+    21300072: Dwarf Sprite Sheet 1.3v_36
+    21300074: Dwarf Sprite Sheet 1.3v_37
+    21300076: Dwarf Sprite Sheet 1.3v_38
+    21300078: Dwarf Sprite Sheet 1.3v_39
+    21300080: Dwarf Sprite Sheet 1.3v_40
+    21300082: Dwarf Sprite Sheet 1.3v_41
+    21300084: Dwarf Sprite Sheet 1.3v_42
+    21300086: Dwarf Sprite Sheet 1.3v_43
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -146,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_0
+      name: Dwarf Sprite Sheet 1.3v_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 448
+        y: 224
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,19 +153,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bf04f6cd6086c1488a7ab14afc94d14
+      spriteID: 4a76354ddf0b99d44b6b7add52f56834
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_1
+      name: Dwarf Sprite Sheet 1.3v_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 448
+        y: 224
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,19 +173,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3015ba4e31b8b0c4eb22e54671d6f27c
+      spriteID: 6d4c592c5a5a39d4081f7c3c319884bc
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_2
+      name: Dwarf Sprite Sheet 1.3v_2
       rect:
         serializedVersion: 2
         x: 128
-        y: 448
+        y: 224
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,19 +193,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a819955b2066d9340bd6336e4d7a8e38
+      spriteID: 61c066aaefc9b68408a5a8bced35b5d6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_3
+      name: Dwarf Sprite Sheet 1.3v_3
       rect:
         serializedVersion: 2
         x: 192
-        y: 448
+        y: 224
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,99 +213,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a00b75f042cf08442a981a89fb3af171
+      spriteID: 379c3629d58201546b36bbc54d624bda
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 384
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bf8671eaf84d5dc4ab5add244ce899c8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 384
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ea6b6aad7e2e0f6498f446ed2e184dcc
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 384
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 29f5d31a9956eaf4b8a7c1c0d6ea2989
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 384
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3cb1eb79c60545748b68fc5082fd3100
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_8
+      name: Dwarf Sprite Sheet 1.3v_4
       rect:
         serializedVersion: 2
         x: 256
-        y: 384
+        y: 224
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,379 +233,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce8660190523aa54bbb9091a74dadcc9
+      spriteID: 419963e0f6839394698d3741f8d90f77
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_9
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 384
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 72c418e5530e99240893622aff671381
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_10
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 384
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 384c6596a211d8142bfa809fd8d9bc9b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_11
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 384
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b7f08ef39769dea4cbd572e06cb27140
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 320
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1a430832bb5dc6948b440807148eb18c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_13
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 320
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cee64e4a9036807459a9336b90840cde
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_14
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 320
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f2f4fb7e63af7e14eace4d4a0800f135
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_15
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 320
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1741f65b9735ed24da467084296026f6
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_16
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 320
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f0aa09318657031459c1836806d182c4
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_17
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 320
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6efb99d06e9f41942800eb440802b3ba
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_18
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 320
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c34e7d166dd5abb43991c406278fecca
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_19
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 320
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6808c1ac8308af34d87ce9270d1f584a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_20
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db5363e01dbc5454ca897708711d052b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_21
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 256
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ca23e056719f4b14b82f3a391b54182f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_22
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 256
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 607adfea04f7ad840a82e8ceddcdec31
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_23
-      rect:
-        serializedVersion: 2
-        x: 191
-        y: 256
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7f3110ac2507d9a42923286c47cf2f75
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_24
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 256
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 65284859a64ae84468554696dba8050b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_25
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 256
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 80fdc58fa4fc19f4db817004168d2986
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_26
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 256
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fce9097beaabb2f4984b472b4a8d7640
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paladin Sprite Sheet_27
+      name: Dwarf Sprite Sheet 1.3v_5
       rect:
         serializedVersion: 2
         x: 0
         y: 192
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -700,19 +253,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 816d949543d3e4046943fb6a045a316f
+      spriteID: c5716b3eaac375f4f834e6298588cad6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_28
+      name: Dwarf Sprite Sheet 1.3v_6
       rect:
         serializedVersion: 2
         x: 64
         y: 192
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -720,19 +273,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52e40270613da6448a9ac420edf64472
+      spriteID: 195514246be11a3469d7fc4169ea5947
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_29
+      name: Dwarf Sprite Sheet 1.3v_7
       rect:
         serializedVersion: 2
         x: 128
         y: 192
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -740,19 +293,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e69337a87877a804698b6ad1047c8579
+      spriteID: 67448c9ecc8a0ee4d999c63c2838ea7b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_30
+      name: Dwarf Sprite Sheet 1.3v_8
       rect:
         serializedVersion: 2
         x: 192
         y: 192
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -760,19 +313,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a19257d212afad146868eead925d602e
+      spriteID: 60d615b00620e9d4dadade2c8978a8e7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_31
+      name: Dwarf Sprite Sheet 1.3v_9
       rect:
         serializedVersion: 2
         x: 256
         y: 192
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -780,19 +333,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bd73f4a46a5ff54e9c068fa22a185a0
+      spriteID: f12e6afaead462948813304967ab0df5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_32
+      name: Dwarf Sprite Sheet 1.3v_10
       rect:
         serializedVersion: 2
         x: 320
         y: 192
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -800,19 +353,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d1a221bdd102ce4daba6af6c399531e
+      spriteID: 02e139262c9ae6942af1947e842e80c1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_33
+      name: Dwarf Sprite Sheet 1.3v_11
       rect:
         serializedVersion: 2
         x: 384
         y: 192
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -820,19 +373,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2298895e1b8d4148af765df02d17a94
+      spriteID: 066cc89d930486d4cb1c00545305ac23
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_34
+      name: Dwarf Sprite Sheet 1.3v_12
       rect:
         serializedVersion: 2
         x: 448
         y: 192
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -840,19 +393,159 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a75e81db09d38f418b7c5a06dbfb3c8
+      spriteID: 8061b69526f3dd34081ae36659b6b24f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_35
+      name: Dwarf Sprite Sheet 1.3v_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 64
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5299514e51cfc941a722a71a01454f1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dwarf Sprite Sheet 1.3v_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 64
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6116209f4e88fae41bd6118da98ce474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dwarf Sprite Sheet 1.3v_15
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 64
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bff685e5ac1ecc47a0057623d6fcd94
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dwarf Sprite Sheet 1.3v_16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 160
+        width: 64
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 867205953cb636a409f42f5e6b036efd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dwarf Sprite Sheet 1.3v_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 160
+        width: 64
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c0ba98027ae0ab4781b73009b156741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dwarf Sprite Sheet 1.3v_18
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 160
+        width: 64
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 025e46d5f2e6b384a9d1e34844a27f43
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dwarf Sprite Sheet 1.3v_19
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 160
+        width: 64
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44924354cd58b35449205d38863207fb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dwarf Sprite Sheet 1.3v_20
       rect:
         serializedVersion: 2
         x: 0
         y: 128
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -860,19 +553,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18000af9cd1a0784993c47e11c135051
+      spriteID: 02ccfede6bc64ff429e04738d82347b1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_36
+      name: Dwarf Sprite Sheet 1.3v_21
       rect:
         serializedVersion: 2
         x: 64
         y: 128
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -880,19 +573,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be36d071e5a6993468f57d6a0b4bfa3e
+      spriteID: 9fbd3d975dd6dac4cb4d6ed78edaf92f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_37
+      name: Dwarf Sprite Sheet 1.3v_22
       rect:
         serializedVersion: 2
         x: 128
         y: 128
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -900,19 +593,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1be0124a6d4a60a40a1d539b8777c53e
+      spriteID: b85f6bb735427da4e9041ffe783ac01e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_38
+      name: Dwarf Sprite Sheet 1.3v_23
       rect:
         serializedVersion: 2
         x: 192
         y: 128
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -920,19 +613,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14158d1ee975c88438279828ec22bab0
+      spriteID: 1f2aa201bc149a24dbe65b3ba194eb23
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_39
+      name: Dwarf Sprite Sheet 1.3v_24
       rect:
         serializedVersion: 2
         x: 256
         y: 128
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -940,19 +633,79 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 636d843c458fd214c83be0f5eaee9ee0
+      spriteID: 7b0cfead9ead6d44b8fac4785b38a2aa
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_40
+      name: Dwarf Sprite Sheet 1.3v_25
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 128
+        width: 64
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e85d4fc9a369b24d9252015b7c1e998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dwarf Sprite Sheet 1.3v_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 64
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8d717b047d39d346a2344d59aadae57
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dwarf Sprite Sheet 1.3v_27
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 64
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd4f04292f9842b428896073c9083768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dwarf Sprite Sheet 1.3v_28
       rect:
         serializedVersion: 2
         x: 0
         y: 64
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -960,19 +713,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30c973c6e052b6e4f962677a158c4cb0
+      spriteID: 88054437ff509ee49977a0a897726656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_41
+      name: Dwarf Sprite Sheet 1.3v_29
       rect:
         serializedVersion: 2
         x: 64
         y: 64
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -980,19 +733,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51268a9ad411b5f4cadf0472f422ec66
+      spriteID: 6d37401b58716de4aa7a84991c01bcc7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_42
+      name: Dwarf Sprite Sheet 1.3v_30
       rect:
         serializedVersion: 2
         x: 128
         y: 64
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1000,19 +753,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 087d759cb6eb3f649a6091c53ead2ca3
+      spriteID: a1387262ea7c3884e9db90c6ab42cabd
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_43
+      name: Dwarf Sprite Sheet 1.3v_31
       rect:
         serializedVersion: 2
         x: 192
         y: 64
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1020,19 +773,119 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 612a38f04a6161049b07e561899a8d18
+      spriteID: 04603961eb0f99741aa911e63b1f3243
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_44
+      name: Dwarf Sprite Sheet 1.3v_32
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a40c616df163f24aae510e14fe2f45d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dwarf Sprite Sheet 1.3v_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 64
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bee57e24967c5064d8be6e3d3fee4fd8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dwarf Sprite Sheet 1.3v_34
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 64
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37aa0aa6aebd30344b3b7a433b3688f5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dwarf Sprite Sheet 1.3v_35
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 64
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 263ee108891a07b4192bba6a27c67caa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dwarf Sprite Sheet 1.3v_36
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 64
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3142f8c8acedc14194b2184428c5f36
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dwarf Sprite Sheet 1.3v_37
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1040,19 +893,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbb61c0010ab522448b04d2d992669d3
+      spriteID: cdd798f4709380a4eb3cb739f4b9a99a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_45
+      name: Dwarf Sprite Sheet 1.3v_38
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1060,19 +913,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68e181f236978b245bc8ac63667fd747
+      spriteID: f3ba2d31dbff4f14c994aa68695ec321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_46
+      name: Dwarf Sprite Sheet 1.3v_39
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1080,19 +933,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbad847aa77b9f748acff371b0e17da8
+      spriteID: d14e41f0df414d14dafeddfba34a5aa7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_47
+      name: Dwarf Sprite Sheet 1.3v_40
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1100,19 +953,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd106b87f20fb0a45b5fd3c3b8d1088f
+      spriteID: d11cef8485b37544c95b0c07ae86b8e1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_48
+      name: Dwarf Sprite Sheet 1.3v_41
       rect:
         serializedVersion: 2
         x: 256
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1120,19 +973,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 206132de6b16630468f78d54a362ae26
+      spriteID: 382229bc5d2b6624690c23fd268bc3d0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_49
+      name: Dwarf Sprite Sheet 1.3v_42
       rect:
         serializedVersion: 2
         x: 320
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1140,19 +993,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bd3568876059ef4782d05bdec652376
+      spriteID: d426aa5a0ae60c1408c2adb33e8f9b7b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paladin Sprite Sheet_50
+      name: Dwarf Sprite Sheet 1.3v_43
       rect:
         serializedVersion: 2
         x: 384
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1160,7 +1013,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2519dbca2ffbed34e88a29e0b92908af
+      spriteID: 27ac12d801b500a41af55f2be659a383
       vertices: []
       indices: 
       edges: []
@@ -1168,7 +1021,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 694b771950c84304783e17fa02ec2937
+    spriteID: f85353e820b8de74591522ebca6cb656
     vertices: []
     indices: 
     edges: []
