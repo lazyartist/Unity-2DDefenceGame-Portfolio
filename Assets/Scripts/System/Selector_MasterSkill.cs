@@ -7,8 +7,7 @@ public class Selector_MasterSkill : Selector
     public UIMasterSkillMenu UIMasterSkillMenu;
 
     Coroutine _coroutine;
-    AttackData _attackData;
-    AttackTargetData _attackTargetData;
+    MasterSkillData _masterSkillData;
 
     override protected void Start()
     {
@@ -48,19 +47,39 @@ public class Selector_MasterSkill : Selector
             if (isOnWay)
             {
                 UIMasterSkillMenu.SelectedMasterSkillButton.Reset();
-                _attackData = UIMasterSkillMenu.SelectedMasterSkillButton.MasterSkillData.AttackData;
-                _attackTargetData = UIMasterSkillMenu.SelectedMasterSkillButton.MasterSkillData.AttackTargetData;
-                if (_attackData.ProjectileCount <= 1)
+                _masterSkillData = UIMasterSkillMenu.SelectedMasterSkillButton.MasterSkillData;
+                // projectile
+                // Unit이 있을 경우 Unit을 생성
+                if (_masterSkillData.UnitPrefab != null)
                 {
-                    CreateProjectile(targetPosition);
-                }
-                else
-                {
-                    if(_coroutine != null)
+                    if (_masterSkillData.SpawnCount <= 1)
                     {
-                        StopCoroutine(_coroutine);
+                        CreateUnit(targetPosition);
                     }
-                    _coroutine = StartCoroutine(Coroutine_CreateProjectile(targetPosition));
+                    else
+                    {
+                        if (_coroutine != null)
+                        {
+                            StopCoroutine(_coroutine);
+                        }
+                        _coroutine = StartCoroutine(Coroutine_CreateUnit(targetPosition));
+                    }
+                }
+                // Unit이 없을 경우 Projectile 생성
+                else if (_masterSkillData.AttackData != null)
+                {
+                    if (_masterSkillData.SpawnCount <= 1)
+                    {
+                        CreateProjectile(targetPosition);
+                    }
+                    else
+                    {
+                        if (_coroutine != null)
+                        {
+                            StopCoroutine(_coroutine);
+                        }
+                        _coroutine = StartCoroutine(Coroutine_CreateProjectile(targetPosition));
+                    }
                 }
             }
         }
@@ -77,20 +96,45 @@ public class Selector_MasterSkill : Selector
 
     void CreateProjectile(Vector3 targetPosition)
     {
-
-        Vector3 startPosition = targetPosition + _attackData.ProjectileSpawnPositionOffset;
-        Quaternion startAngle = Quaternion.Euler(_attackData.ProjectileSpawnAngle.x, _attackData.ProjectileSpawnAngle.y, _attackData.ProjectileSpawnAngle.z);
-        AProjectile projectile = Instantiate<AProjectile>(_attackData.ProjectilePrefab, startPosition, startAngle, transform);
-        projectile.Init(_attackData, _attackTargetData, null, targetPosition);
+        Vector3 startPosition = targetPosition + _masterSkillData.SpawnPositionOffset;
+        Quaternion startAngle = Quaternion.Euler(_masterSkillData.SpawnAngle.x, _masterSkillData.SpawnAngle.y, _masterSkillData.SpawnAngle.z);
+        AProjectile projectile = Instantiate<AProjectile>(_masterSkillData.AttackData.ProjectilePrefab, startPosition, startAngle, transform);
+        projectile.Init(_masterSkillData.AttackData, _masterSkillData.AttackTargetData, null, targetPosition);
     }
 
     IEnumerator Coroutine_CreateProjectile(Vector3 position)
     {
-        for (int i = 0; i < _attackData.ProjectileCount; i++)
+        for (int i = 0; i < _masterSkillData.SpawnCount; i++)
         {
-            Vector3 positionOffset = Random.insideUnitCircle * _attackData.ProjectileSpawnRadius;
+            // 투사체는 원 안의 랜덤한 위치에 생성
+            Vector3 positionOffset = Random.insideUnitCircle * _masterSkillData.SpawnRadius;
+            positionOffset.y *= 0.7f; // 타원안에 생성
             CreateProjectile(position + positionOffset);
-            yield return new WaitForSeconds(_attackData.ProjectileSpawnInterval);
+            yield return new WaitForSeconds(_masterSkillData.SpawnInterval);
+        }
+    }
+
+    void CreateUnit(Vector3 targetPosition)
+    {
+        Vector3 startPosition = targetPosition + _masterSkillData.SpawnPositionOffset;
+        Quaternion startAngle = Quaternion.Euler(_masterSkillData.SpawnAngle.x, _masterSkillData.SpawnAngle.y, _masterSkillData.SpawnAngle.z);
+        Unit unit = Instantiate<Unit>(_masterSkillData.UnitPrefab, startPosition, startAngle, UIMasterSkillMenu.UnitContainer.transform);
+        unit.AttackData = _masterSkillData.AttackData;
+        unit.AttackTargetData = _masterSkillData.AttackTargetData;
+        unit.SetRallyPoint(startPosition);
+        unit.gameObject.SetActive(true);
+    }
+
+    IEnumerator Coroutine_CreateUnit(Vector3 position)
+    {
+        float startAngle = Random.Range(-30f, 30f);
+        for (int i = 0; i < _masterSkillData.SpawnCount; i++)
+        {
+            // 유닛은 원 둘레에 일정한 각도로 생성, 시작 각도는 램덤
+            Vector3 positionOffset = Quaternion.Euler(0f, 0f, startAngle + (360f / _masterSkillData.SpawnCount) * i) * Vector3.right * _masterSkillData.SpawnRadius;
+            positionOffset.y *= 0.7f; // 타원안에 생성
+            CreateUnit(position + positionOffset);
+            yield return new WaitForSeconds(_masterSkillData.SpawnInterval);
         }
     }
 

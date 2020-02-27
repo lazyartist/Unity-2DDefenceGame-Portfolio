@@ -14,5 +14,11 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 3603d6edc904e6549a6a92ee42f87b61, type: 3}
   CoolTime: 2
   Name: "\uBA54\uD14C\uC624"
+  SpawnCount: 10
+  SpawnRadius: 1.8
+  SpawnInterval: 0.1
+  SpawnPositionOffset: {x: 0, y: 10, z: 0}
+  SpawnAngle: {x: 0, y: 0, z: 270}
   AttackData: {fileID: 11400000, guid: a3fbc896bd926a743ad89c7199cbea0b, type: 2}
   AttackTargetData: {fileID: 11400000, guid: d81539ef5a14e544b8f233a5c6c710ab, type: 2}
+  UnitPrefab: {fileID: 0}

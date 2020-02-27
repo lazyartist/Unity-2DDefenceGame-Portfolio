@@ -26,7 +26,7 @@ public class UnitState_Idle : AUnitState
         {
             // 공격대상을 찾았다
             //Debug.Log("Found AttackTarget " + unit.AttackTargetUnit);
-            if(unit.AttackData.ProjectilePrefab == null)
+            if (unit.AttackData.ProjectilePrefab == null)
             {
                 // 공격대상에게 이동할 동안 대기하도록 통보
                 unit.AttackTargetUnit.Notify(Types.UnitNotifyType.Wait, unit);

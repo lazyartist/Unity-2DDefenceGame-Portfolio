@@ -10,9 +10,11 @@ public class UIMasterSkillMenu : MonoBehaviour
     public MasterSkillData[] MasterSkillDatas;
     public MasterSkillButton MasterSkillButtonPrefab;
     public MasterSkillButton SelectedMasterSkillButton;
-    public MasterSkillButton[] MasterSkillButtons;
-    public HorizontalLayoutGroup HorizontalLayoutGroup;
     public ToggleGroup ToggleGroup;
+    public GameObject UnitContainer;
+    public HorizontalLayoutGroup HorizontalLayoutGroup;
+
+    MasterSkillButton[] MasterSkillButtons;
 
     void Start()
     {
