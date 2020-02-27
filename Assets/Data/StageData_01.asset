@@ -17,20 +17,29 @@ MonoBehaviour:
     type: 2}
   WavePhases:
   - Waves:
-    - UnitPrefab: {fileID: 114672875092321788, guid: f44b1f94d19a36f43be0b1244db60058,
+    - UnitPrefab: {fileID: 114781674197796128, guid: b6c8386ac315cf64fb88841752ced57a,
         type: 2}
-      UnitCount: 2
+      UnitCount: 3
       NextWaveInterval: 1
     - UnitPrefab: {fileID: 114781674197796128, guid: b6c8386ac315cf64fb88841752ced57a,
         type: 2}
-      UnitCount: 2
+      UnitCount: 3
       NextWaveInterval: 2
   - Waves:
     - UnitPrefab: {fileID: 114953592987179240, guid: 7158cfee7764e8549b45419b7999fbea,
         type: 2}
       UnitCount: 3
       NextWaveInterval: 2
-    - UnitPrefab: {fileID: 114294464561140596, guid: 2c9e07968b0e2714c932312ca5e68ae2,
+    - UnitPrefab: {fileID: 114953592987179240, guid: 7158cfee7764e8549b45419b7999fbea,
+        type: 2}
+      UnitCount: 3
+      NextWaveInterval: 3
+  - Waves:
+    - UnitPrefab: {fileID: 114953592987179240, guid: 7158cfee7764e8549b45419b7999fbea,
+        type: 2}
+      UnitCount: 3
+      NextWaveInterval: 2
+    - UnitPrefab: {fileID: 114953592987179240, guid: 7158cfee7764e8549b45419b7999fbea,
         type: 2}
       UnitCount: 3
       NextWaveInterval: 3

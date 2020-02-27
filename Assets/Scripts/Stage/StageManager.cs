@@ -177,6 +177,7 @@ public class StageManager : SingletonBase<StageManager>
         StageInfo.HeroUnit = Instantiate(StageData.HeroUnitPrefab, StageInfo.LastHeroUnitPosition, Quaternion.identity, UnitsContainer.transform);
         StageInfo.HeroUnit.SetRallyPoint(StageInfo.LastHeroUnitPosition);
         StageInfo.HeroUnit.UnitEvent += OnUnitEvent_HeroUnit;
+        StageInfo.HeroUnit.gameObject.SetActive(true);
         DispatchHeroUnitChanged();
     }
 

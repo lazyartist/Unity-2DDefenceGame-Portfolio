@@ -18,6 +18,6 @@ MonoBehaviour:
   ProjectileSpawnInterval: 0
   ProjectileSpawnPositionOffset: {x: 0, y: 0, z: 0}
   ProjectileSpawnAngle: {x: 0, y: 0, z: 0}
-  Power: 10
+  Power: 7
   AttackRange: 1
   CCData: {fileID: 0}
