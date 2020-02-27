@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CCData_", menuName = "SO/Create CCData")]
+[CreateAssetMenu(fileName = "CCData_", menuName = "Create Data/CCData")]
 // todo CC -> Burf
 public class CCData : ScriptableObject {
     public Types.CCType CCType = Types.CCType.None;

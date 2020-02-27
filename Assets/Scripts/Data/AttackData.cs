@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AttackData_", menuName = "SO/Create AttackData")]
+[CreateAssetMenu(fileName = "AttackData_", menuName = "Create Data/AttackData")]
 public class AttackData : ScriptableObject {
     public AProjectile ProjectilePrefab;
+    public float ProjectileSpeed;
+
     public int ProjectileCount;
     public float ProjectileSpawnRadius;
     public float ProjectileSpawnInterval;
-    public float ProjectileSpeed;
+    public Vector3 ProjectileSpawnPositionOffset;
+    public Vector3 ProjectileSpawnAngle;
 
     public float Power = 2f;
     public float AttackRange = 1f;

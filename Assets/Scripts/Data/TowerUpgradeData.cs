@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TowerUpgradeData_", menuName = "SO/Create TowerUpgradeData")]
+[CreateAssetMenu(fileName = "TowerUpgradeData_", menuName = "Create Data/TowerUpgradeData")]
 public class TowerUpgradeData : ScriptableObject
 {
     public string Name;

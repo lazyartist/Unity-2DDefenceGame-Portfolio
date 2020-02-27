@@ -9,15 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
-  m_Name: AttackData_Knight
+  m_Name: AttackData_Fireball
   m_EditorClassIdentifier: 
-  ProjectilePrefab: {fileID: 0}
-  ProjectileSpeed: 0
-  ProjectileCount: 0
-  ProjectileSpawnRadius: 0
-  ProjectileSpawnInterval: 0
-  ProjectileSpawnPositionOffset: {x: 0, y: 0, z: 0}
-  ProjectileSpawnAngle: {x: 0, y: 0, z: 0}
-  Power: 8
-  AttackRange: 1
+  ProjectilePrefab: {fileID: 114843427768341486, guid: 1674cbb2c07b56d44b3e7ab357c8b4af,
+    type: 2}
+  ProjectileSpeed: 7
+  ProjectileCount: 6
+  ProjectileSpawnRadius: 1.2
+  ProjectileSpawnInterval: 0.1
+  ProjectileSpawnPositionOffset: {x: 0, y: 10, z: 0}
+  ProjectileSpawnAngle: {x: 0, y: 0, z: 270}
+  Power: 4
+  AttackRange: 0.4
   CCData: {fileID: 11400000, guid: 2abd475d06a3b52439374a14af271a9b, type: 2}

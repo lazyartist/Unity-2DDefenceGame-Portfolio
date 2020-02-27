@@ -13,10 +13,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 114230251045030880, guid: 4f7c3e9e93736d641b484b4d02deccd0,
     type: 2}
+  ProjectileSpeed: 0
   ProjectileCount: 8
   ProjectileSpawnRadius: 1.2
   ProjectileSpawnInterval: 0.18
-  ProjectileSpeed: 0
-  Power: 10
+  ProjectileSpawnPositionOffset: {x: 0, y: 0, z: 0}
+  ProjectileSpawnAngle: {x: 0, y: 0, z: 0}
+  Power: 5
   AttackRange: 0.7
-  CCData: {fileID: 11400000, guid: 2abd475d06a3b52439374a14af271a9b, type: 2}
+  CCData: {fileID: 11400000, guid: d3199a1a3a76f0e4cb71f12d3be21e97, type: 2}

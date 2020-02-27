@@ -36,7 +36,7 @@ public class Selector_MasterSkill : Selector
         return _selectResult;
     }
 
-    override public Types.SelectResult SelectUpdate(Vector3 position, bool isOnWay)
+    override public Types.SelectResult SelectUpdate(Vector3 targetPosition, bool isOnWay)
     {
         if (UIMasterSkillMenu.SelectedMasterSkillButton != null)
         {
@@ -47,13 +47,12 @@ public class Selector_MasterSkill : Selector
 
             if (isOnWay)
             {
-
                 UIMasterSkillMenu.SelectedMasterSkillButton.Reset();
                 _attackData = UIMasterSkillMenu.SelectedMasterSkillButton.MasterSkillData.AttackData;
                 _attackTargetData = UIMasterSkillMenu.SelectedMasterSkillButton.MasterSkillData.AttackTargetData;
                 if (_attackData.ProjectileCount <= 1)
                 {
-                    CreateProjectile(position);
+                    CreateProjectile(targetPosition);
                 }
                 else
                 {
@@ -61,7 +60,7 @@ public class Selector_MasterSkill : Selector
                     {
                         StopCoroutine(_coroutine);
                     }
-                    _coroutine = StartCoroutine(Coroutine_CreateProjectile(position));
+                    _coroutine = StartCoroutine(Coroutine_CreateProjectile(targetPosition));
                 }
             }
         }
@@ -76,10 +75,14 @@ public class Selector_MasterSkill : Selector
         return _selectResult;
     }
 
-    void CreateProjectile(Vector3 position)
+    void CreateProjectile(Vector3 targetPosition)
     {
-        AProjectile projectile = Instantiate<AProjectile>(_attackData.ProjectilePrefab, position, Quaternion.identity, transform);
-        projectile.Init(_attackData, _attackTargetData, null, position);
+
+        Vector3 startPosition = targetPosition + _attackData.ProjectileSpawnPositionOffset;
+        //Vector3 startAngle = _attackData.ProjectileSpawnAngle;
+        Quaternion startAngle = Quaternion.Euler(_attackData.ProjectileSpawnAngle.x, _attackData.ProjectileSpawnAngle.y, _attackData.ProjectileSpawnAngle.z);
+        AProjectile projectile = Instantiate<AProjectile>(_attackData.ProjectilePrefab, startPosition, startAngle, transform);
+        projectile.Init(_attackData, _attackTargetData, null, targetPosition);
     }
 
     IEnumerator Coroutine_CreateProjectile(Vector3 position)

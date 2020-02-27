@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0340c1ae156027b478b5d86ba88a946b, type: 3}
-  m_Name: MasterSkillData_LightingStrike
+  m_Name: MasterSkillData_Fireball
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 20b89fb6bace9a04c94a02c192b8ee49, type: 3}
+  Icon: {fileID: 21300000, guid: 3603d6edc904e6549a6a92ee42f87b61, type: 3}
   CoolTime: 2
-  Name: "\uBC88\uAC1C \uD68C\uC624\uB9AC"
-  AttackData: {fileID: 11400000, guid: 2d67792af7c1c3b40a899e84439088eb, type: 2}
+  Name: "\uBA54\uD14C\uC624"
+  AttackData: {fileID: 11400000, guid: a3fbc896bd926a743ad89c7199cbea0b, type: 2}
   AttackTargetData: {fileID: 11400000, guid: d81539ef5a14e544b8f233a5c6c710ab, type: 2}

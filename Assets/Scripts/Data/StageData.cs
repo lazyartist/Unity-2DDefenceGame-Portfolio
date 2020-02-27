@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "StageData_", menuName = "SO/Create StageData")]
+[CreateAssetMenu(fileName = "StageData_", menuName = "Create Data/StageData")]
 public class StageData : ScriptableObject
 {
     [Header("Team")]

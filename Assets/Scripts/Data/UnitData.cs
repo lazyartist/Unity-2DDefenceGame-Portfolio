@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "UnitData_", menuName = "SO/Create UnitData")]
+[CreateAssetMenu(fileName = "UnitData_", menuName = "Create Data/UnitData")]
 public class UnitData : ScriptableObject
 {
     public float Health = 10f;
