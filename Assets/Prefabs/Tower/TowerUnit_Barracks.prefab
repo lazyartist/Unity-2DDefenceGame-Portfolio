@@ -118,7 +118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1725205614752712
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,8 +395,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb29365898316b49b8c7ecca3337d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParentUnit: {fileID: 0}
-  ChildUnitPrefab: {fileID: 114781674197796128, guid: b6c8386ac315cf64fb88841752ced57a,
+  ParentUnit: {fileID: 114991902228683878}
+  ChildUnitPrefab: {fileID: 114611179643101524, guid: d720717e6a2f6104882e77ec5fcd3bac,
     type: 2}
   Units: []
   MaxUnitCount: 3
@@ -505,6 +505,7 @@ MonoBehaviour:
   UnitFSM: {fileID: 114561099645385340}
   HitEffectAnimator: {fileID: 0}
   TargetWaypoint: {fileID: 0}
+  TargetWaypointSubIndex: 0
   WaitWaypoint: {fileID: 0}
   LastAttackTargetPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1299584712736648}
