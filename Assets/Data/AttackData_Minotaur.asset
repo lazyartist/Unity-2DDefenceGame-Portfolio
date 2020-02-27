@@ -13,6 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 0}
   ProjectileSpeed: 0
-  Power: 3
+  ProjectileCount: 0
+  ProjectileSpawnRadius: 0
+  ProjectileSpawnInterval: 0
+  ProjectileSpawnPositionOffset: {x: 0, y: 0, z: 0}
+  ProjectileSpawnAngle: {x: 0, y: 0, z: 0}
+  Power: 10
   AttackRange: 1
   CCData: {fileID: 0}

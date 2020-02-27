@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4386457623855722}
   - component: {fileID: 212406984993681620}
   m_Layer: 0
-  m_Name: selection_area
+  m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
