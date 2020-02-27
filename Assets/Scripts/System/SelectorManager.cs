@@ -122,7 +122,7 @@ public class SelectorManager : SingletonBase<SelectorManager>
                     }
 
                     // 현재 Selector가 새로운 Selector에게 이벤트 전파를 해도 된다고 함
-                    if (CurSelector == null || selectResult.IsSpread)
+                    if (selectResult.IsSpread)
                     {
                         RaycastHit2D raycastHit = Physics2D.Raycast(clickPosition, Vector3.forward, Camera.main.transform.position.z);
                         if (raycastHit)
