@@ -5,9 +5,11 @@ using UnityEngine.EventSystems;
 
 public class Projectile_Fireball : AProjectile
 {
-    private Animator _animator;
-    private bool _isMoving = false;
-    private Vector3 _lastTargetPosition;
+    public SpriteRenderer ShadowSR;
+
+    Animator _animator;
+    bool _isMoving = false;
+    Vector3 _lastTargetPosition;
 
     void Awake()
     {
@@ -35,6 +37,8 @@ public class Projectile_Fireball : AProjectile
             else
             {
                 transform.position += move;
+                ShadowSR.transform.position = targetPosition;
+                ShadowSR.transform.rotation = Quaternion.Euler(transform.rotation.x * -1, transform.rotation.y * -1, transform.rotation.z * -1);
 
                 // Angle
                 float rad = Mathf.Atan2(direction.y, direction.x);
@@ -46,23 +50,12 @@ public class Projectile_Fireball : AProjectile
     public override void MoveToTarget()
     {
         _lastTargetPosition = _targetPosition;
-        //_animator.SetTrigger("Charge");
         _isMoving = true;
     }
-
-    //void AniEvent_Fire()
-    //{
-    //    _isMoving = true;
-    //}
 
     void Hit()
     {
         _animator.SetTrigger("Hit");
-        //if (_targetUnit != null)
-        //{
-        //    _targetUnit.GetComponent<Unit>().TakeDamage(AttackData);
-        //    transform.SetParent(_targetUnit.transform);
-        //}
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, AttackData.AttackRange, AttackTargetData.AttackTargetLayerMask);
         for (int i = 0; i < colliders.Length; i++)
         {
