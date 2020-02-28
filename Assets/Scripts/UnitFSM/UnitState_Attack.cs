@@ -12,7 +12,7 @@ public class UnitState_Attack : AUnitState
     // implements AUnitState
     public override void EnterState(Unit unit)
     {
-        if (unit.HasAttackTargetUnit() == false)
+        if (unit.HasEnemyUnit() == false)
         {
             // 다른 유닛의 원거리 공격등으로 공격대상이 이미 죽었다
         }
@@ -24,7 +24,7 @@ public class UnitState_Attack : AUnitState
             if (unit.AttackData.ProjectilePrefab == null)
             {
                 // 근거리 공격 : 공격을 통보하여 Attack 상태로 전환시킴
-                unit.AttackTargetUnit.Notify(Types.UnitNotifyType.BeAttackState, unit);
+                unit.EnemyUnit.Notify(Types.UnitNotifyType.BeAttackState, unit);
             }
             else
             {
@@ -43,23 +43,23 @@ public class UnitState_Attack : AUnitState
         if (_isPlayingAttackAni == false)
         {
             // 공격대상이 없으면 Idle 상태로 전환
-            if (unit.IsValidAttackTargetUnit() == false)
+            if (unit.IsValidEnemyUnit() == false)
             {
                 return unitStates[(int)Types.UnitFSMType.Idle];
             }
-            // 공격대상이 공격 범위를 벗어나면 AttackTargetUnit을 제거하고 Idle 상태로 전환
-            else if (unit.IsValidAttackTargetUnitInRange() == false)
+            // 공격대상이 공격 범위를 벗어나면 EnemyUnit을 제거하고 Idle 상태로 전환
+            else if (unit.IsValidEnemyUnitInRange() == false)
             {
-                unit.Notify(Types.UnitNotifyType.ClearAttackTarget, null);
+                unit.Notify(Types.UnitNotifyType.ClearEnemyUnit, null);
                 return unitStates[(int)Types.UnitFSMType.Idle];
             }
             // 공격대상이 있고 쿨타임이 지났으면 공격
             else if (Time.time - _lastAttackFireTime >= unit.UnitData.AttackCoolTime)
             {
-                //Debug.Log("Attack " + unit + " to " + unit.AttackTargetUnit);
+                //Debug.Log("Attack " + unit + " to " + unit.EnemyUnit);
                 if (unit.CanChangeDirection)
                 {
-                    unit.Toward(unit.AttackTargetUnit.transform.position);
+                    unit.Toward(unit.EnemyUnit.transform.position);
                 }
 
                 if (IsPlayAttackAni)
@@ -114,13 +114,13 @@ public class UnitState_Attack : AUnitState
         {
             AProjectile projectile = Instantiate(_unit.AttackData.ProjectilePrefab, _unit.SpawnPosition.transform.position, Quaternion.identity, _unit.SpawnPosition.transform);
             // 공격대상이 살아있는 경우
-            if (_unit.IsValidAttackTargetUnit())
+            if (_unit.IsValidEnemyUnit())
             {
-                projectile.Init(_unit.TeamData, _unit.AttackData, _unit.AttackTargetUnit, _unit.AttackTargetUnit.gameObject.transform.position);
+                projectile.Init(_unit.TeamData, _unit.AttackData, _unit.EnemyUnit, _unit.EnemyUnit.gameObject.transform.position);
             }
             else
             {
-                projectile.Init(_unit.TeamData, _unit.AttackData, null, _unit.LastAttackTargetPosition);
+                projectile.Init(_unit.TeamData, _unit.AttackData, null, _unit.LastEnemyPosition);
             }
         }
 
@@ -130,9 +130,9 @@ public class UnitState_Attack : AUnitState
     void Hit()
     {
         // 공격이 히트하는 순간 다른 유닛의 공격에 의해 공격대상이 이미 죽었을 수 있다
-        if (_unit.HasAttackTargetUnit())
+        if (_unit.HasEnemyUnit())
         {
-            _unit.AttackTargetUnit.TakeDamage(_unit.AttackData);
+            _unit.EnemyUnit.TakeDamage(_unit.AttackData);
         }
     }
 }

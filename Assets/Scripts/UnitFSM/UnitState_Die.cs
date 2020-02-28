@@ -10,7 +10,7 @@ public class UnitState_Die : AUnitState
         _unit = unit;
 
         unit.UnitBody.Animator.SetTrigger("Die");
-        unit.Notify(Types.UnitNotifyType.ClearAttackTarget, null);
+        unit.Notify(Types.UnitNotifyType.ClearEnemyUnit, null);
         unit.UnitEvent += OnUnitBodyEventHandler;
     }
     public override void ExitState(Unit unit)

@@ -30,10 +30,10 @@ public class UnitGizmos : MonoBehaviour {
                 //Gizmos.DrawLine(unit.transform.position, unit.TargetWaypoint.transform.position);
             }
             // 유닛의 공격 타겟까지 선 그리기
-            if (unit.HasAttackTargetUnit())
+            if (unit.HasEnemyUnit())
             {
                 Gizmos.color = unit.TeamData.TeamColor;
-                Gizmos.DrawLine(transform.position, unit.AttackTargetUnit.transform.position);
+                Gizmos.DrawLine(transform.position, unit.EnemyUnit.transform.position);
             }
             // 랠리포인트
             ChildUnits childUnits = unit.GetComponent<ChildUnits>();

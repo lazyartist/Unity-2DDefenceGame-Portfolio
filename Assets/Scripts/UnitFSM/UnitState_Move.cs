@@ -12,10 +12,10 @@ public class UnitState_Move : AUnitState
     public override void ExitState(Unit unit)
     {
         unit.UnitBody.Animator.SetFloat("Velocity", 0.0f);
-        if (unit.HasAttackTargetUnit())
+        if (unit.HasEnemyUnit())
         {
             // 공격대상을 향하기
-            unit.Toward(unit.AttackTargetUnit.transform.position);
+            unit.Toward(unit.EnemyUnit.transform.position);
         }
     }
     public override AUnitState UpdateState(Unit unit, AUnitState[] unitStates)

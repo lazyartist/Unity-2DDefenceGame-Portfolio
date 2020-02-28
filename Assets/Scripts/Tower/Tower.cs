@@ -82,7 +82,7 @@ public class Tower : MonoBehaviour
             ChildUnits _childUnits = Unit.gameObject.GetComponent<ChildUnits>();
             if(_childUnits != null)
             {
-                _childUnits.ClearAllAttackTargetUnits();
+                _childUnits.ClearAllEnemyUnits();
             }
 
             Destroy(Unit.gameObject);

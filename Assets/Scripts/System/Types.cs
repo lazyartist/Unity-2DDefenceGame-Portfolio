@@ -61,7 +61,7 @@ static public class Types {
 
     public enum UnitNotifyType
     {
-        None, Wait, BeAttackState, ClearAttackTarget
+        None, Wait, BeAttackState, ClearEnemyUnit
     }
 
     public enum CursorType

@@ -20,8 +20,8 @@ public class Unit : MonoBehaviour
     public Waypoint RallyWaypoint;
     public int WaypointSubIndex = 0;
 
-    public Unit AttackTargetUnit { get; private set; }
-    public Vector3 LastAttackTargetPosition;
+    public Unit EnemyUnit { get; private set; }
+    public Vector3 LastEnemyPosition;
     public GameObject SpawnPosition;
 
     public float Velocity = 0f;
@@ -34,7 +34,6 @@ public class Unit : MonoBehaviour
     public CCData TakenCCData;
     public bool CanChangeDirection = true;
     public bool GoalComplete = false;
-
 
     protected void Awake()
     {
@@ -137,18 +136,18 @@ public class Unit : MonoBehaviour
             case Types.UnitNotifyType.None:
                 break;
             case Types.UnitNotifyType.Wait:
-                AddAttackTargetUnit(notifyUnit);
+                AddEnemyUnit(notifyUnit);
                 UnitFSM.Transit(Types.UnitFSMType.Wait);
                 break;
             case Types.UnitNotifyType.BeAttackState:
-                AddAttackTargetUnit(notifyUnit);
+                AddEnemyUnit(notifyUnit);
                 UnitFSM.Transit(Types.UnitFSMType.Attack);
                 break;
-            case Types.UnitNotifyType.ClearAttackTarget:
-                if (HasAttackTargetUnit())
+            case Types.UnitNotifyType.ClearEnemyUnit:
+                if (HasEnemyUnit())
                 {
                     DispatchUnitEvent(Types.UnitEventType.AttackStopped, null);
-                    RemoveAttackTargetUnit();
+                    RemoveEnemyUnit();
                 }
                 break;
             default:
@@ -156,30 +155,30 @@ public class Unit : MonoBehaviour
         }
     }
 
-    void AddAttackTargetUnit(Unit unit)
+    void AddEnemyUnit(Unit unit)
     {
-        if (HasAttackTargetUnit())
+        if (HasEnemyUnit())
         {
-            RemoveAttackTargetUnit();
+            RemoveEnemyUnit();
         }
-        AttackTargetUnit = unit;
-        AttackTargetUnit.UnitEvent += OnUnitEventHandler_AttackTargetUnit;
+        EnemyUnit = unit;
+        EnemyUnit.UnitEvent += OnUnitEventHandler_EnemyUnit;
     }
 
-    void RemoveAttackTargetUnit()
+    void RemoveEnemyUnit()
     {
-        if (HasAttackTargetUnit() == false)
+        if (HasEnemyUnit() == false)
         {
-            Debug.LogAssertion("HasAttackTargetUnit() == false " + this);
+            Debug.LogAssertion("HasEnemyUnit() == false " + this);
             Debug.Break();
         }
-        LastAttackTargetPosition = AttackTargetUnit.GetCenterPosition();
+        LastEnemyPosition = EnemyUnit.GetCenterPosition();
 
-        AttackTargetUnit.UnitEvent -= OnUnitEventHandler_AttackTargetUnit;
-        AttackTargetUnit = null;
+        EnemyUnit.UnitEvent -= OnUnitEventHandler_EnemyUnit;
+        EnemyUnit = null;
     }
 
-    void OnUnitEventHandler_AttackTargetUnit(Types.UnitEventType unitEventType, Unit unit)
+    void OnUnitEventHandler_EnemyUnit(Types.UnitEventType unitEventType, Unit unit)
     {
         switch (unitEventType)
         {
@@ -192,12 +191,12 @@ public class Unit : MonoBehaviour
             case Types.UnitEventType.AttackFire:
                 break;
             case Types.UnitEventType.Die:
-                RemoveAttackTargetUnit();
+                RemoveEnemyUnit();
                 break;
             case Types.UnitEventType.DiedComplete:
                 break;
             case Types.UnitEventType.AttackStopped:// 공격대상 유닛이 공격을 멈추고 다른 행동을 한다.
-                RemoveAttackTargetUnit();
+                RemoveEnemyUnit();
                 UnitFSM.Transit(Types.UnitFSMType.Idle);
                 break;
             default:
@@ -252,18 +251,18 @@ public class Unit : MonoBehaviour
         IsDied = true;
         DispatchUnitEvent(Types.UnitEventType.Die, this);
 
-        if (HasAttackTargetUnit())
+        if (HasEnemyUnit())
         {
-            AttackTargetUnit.UnitEvent -= OnUnitEventHandler_AttackTargetUnit;
+            EnemyUnit.UnitEvent -= OnUnitEventHandler_EnemyUnit;
         }
     }
 
     virtual public Unit TryFindEnemy()
     {
         // 이미 공격목표가 있다
-        if (HasAttackTargetUnit())
+        if (HasEnemyUnit())
         {
-            return AttackTargetUnit;
+            return EnemyUnit;
         }
 
         Vector3 findPosition;
@@ -284,7 +283,7 @@ public class Unit : MonoBehaviour
             Collider2D collider = colliders[i];
             Unit unit = collider.gameObject.GetComponent<Unit>();
             // 사망하거나 전투중이 아닌 유닛만 공격대상으로 한다
-            if (unit.IsDied == false && unit.HasAttackTargetUnit() == false)
+            if (unit.IsDied == false && unit.HasEnemyUnit() == false)
             {
                 if (draftTargetUnit == null)
                 {
@@ -311,7 +310,7 @@ public class Unit : MonoBehaviour
 
         if (draftTargetUnit != null)
         {
-            AddAttackTargetUnit(draftTargetUnit);
+            AddEnemyUnit(draftTargetUnit);
         }
 
         return draftTargetUnit;
@@ -358,21 +357,21 @@ public class Unit : MonoBehaviour
         return false;
     }
 
-    public bool HasAttackTargetUnit()
+    public bool HasEnemyUnit()
     {
-        return AttackTargetUnit != null;
+        return EnemyUnit != null;
     }
 
-    public bool IsValidAttackTargetUnit()
+    public bool IsValidEnemyUnit()
     {
-        return HasAttackTargetUnit() && AttackTargetUnit.IsDied == false;
+        return HasEnemyUnit() && EnemyUnit.IsDied == false;
     }
 
-    public bool IsValidAttackTargetUnitInRange()
+    public bool IsValidEnemyUnitInRange()
     {
-        if (HasAttackTargetUnit() == false) return false;
+        if (HasEnemyUnit() == false) return false;
 
-        float distance = Vector3.Distance(transform.position + UnitCenterOffset, AttackTargetUnit.transform.position);
+        float distance = Vector3.Distance(transform.position + UnitCenterOffset, EnemyUnit.transform.position);
         return distance < UnitData.TargetRange;
     }
 
@@ -393,11 +392,11 @@ public class Unit : MonoBehaviour
         }
         RallyWaypoint.transform.position = position;
         TargetWaypoint.transform.position = position;
-        ClearAttackTargetUnit();
+        ClearEnemyUnit();
     }
 
-    public void ClearAttackTargetUnit()
+    public void ClearEnemyUnit()
     {
-        Notify(Types.UnitNotifyType.ClearAttackTarget, null);
+        Notify(Types.UnitNotifyType.ClearEnemyUnit, null);
     }
 }

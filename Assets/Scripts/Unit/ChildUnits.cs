@@ -60,20 +60,14 @@ public class ChildUnits : MonoBehaviour
         }
     }
 
-    //public void ClearAttackTargetUnit(Unit unit)
-    //{
-    //    unit.Notify(Types.UnitNotifyType.ClearAttackTarget, null);
-    //}
-
-    public void ClearAllAttackTargetUnits()
+    public void ClearAllEnemyUnits()
     {
         for (int i = 0; i < MaxUnitCount; i++)
         {
             Unit unit = Units[i];
             if (unit != null && unit.IsDied == false)
             {
-                unit.ClearAttackTargetUnit();
-                //ClearAttackTargetUnit(unit);
+                unit.ClearEnemyUnit();
             }
         }
     }
