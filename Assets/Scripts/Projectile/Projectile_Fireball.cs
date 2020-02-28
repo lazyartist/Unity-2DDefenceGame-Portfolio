@@ -56,7 +56,7 @@ public class Projectile_Fireball : AProjectile
     void Hit()
     {
         _animator.SetTrigger("Hit");
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, AttackData.AttackRange, AttackTargetData.AttackTargetLayerMask);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, AttackData.AttackRange, _targetLayerMask);
         for (int i = 0; i < colliders.Length; i++)
         {
             Collider2D collider = colliders[i];

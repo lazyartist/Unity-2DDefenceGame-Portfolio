@@ -81,7 +81,6 @@ public class StageManager : SingletonBase<StageManager>
             {
                 Unit unit = Instantiate(wave.UnitPrefab, UnitStartPosition.transform.position, Quaternion.identity, UnitsContainer.transform);
                 unit.TeamData = StageData.EnemyTeamData;
-                unit.AttackTargetData = StageData.EnemyAttackTargetData;
                 unit.TargetWaypoint = StartWaypoint;
                 unit.TargetWaypointSubIndex = waypointSubIndex++;
                 unit.gameObject.SetActive(true);

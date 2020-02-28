@@ -17,7 +17,6 @@ public class MasterSkillData : ScriptableObject {
 
     [Header("Projectile")]
     public AttackData AttackData;
-    public AttackTargetData AttackTargetData;
 
     [Header("Unit")]
     public Unit UnitPrefab;

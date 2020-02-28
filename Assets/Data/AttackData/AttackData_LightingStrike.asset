@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
   m_Name: AttackData_LightingStrike
   m_EditorClassIdentifier: 
+  TargetUnitTypes: 0100000002000000
   ProjectilePrefab: {fileID: 114230251045030880, guid: 4f7c3e9e93736d641b484b4d02deccd0,
     type: 2}
   ProjectileSpeed: 0

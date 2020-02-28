@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
   m_Name: AttackData_Minotaur
   m_EditorClassIdentifier: 
+  TargetUnitTypes: 01000000
   ProjectilePrefab: {fileID: 0}
   ProjectileSpeed: 0
   Power: 8

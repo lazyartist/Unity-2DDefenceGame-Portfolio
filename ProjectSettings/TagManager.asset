@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Enemy
   - Projectile
-  - CupcakeTower
   - Unit
   - Tower
   layers:
@@ -18,27 +17,27 @@ TagManager:
   - UI
   - 
   - 
-  - ATeamUnit
-  - BTeamUnit
-  - ATeamTower
-  - NoTeamUnit
+  - 
+  - 
+  - AGround
+  - AAir
+  - ATower
+  - 
+  - 
+  - BGround
+  - BAir
+  - BTower
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - GoalZone
   - DestroyUnitZone
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 

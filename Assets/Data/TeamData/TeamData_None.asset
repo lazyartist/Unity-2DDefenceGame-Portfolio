@@ -8,12 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ceeb7f0bd3a1ee40bcbff48c8e87ad0, type: 3}
-  m_Name: AttackTargetData_A_Unit
+  m_Script: {fileID: 11500000, guid: 57b989051c7720b498ac084f8d5fecef, type: 3}
+  m_Name: TeamData_None
   m_EditorClassIdentifier: 
-  LayerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  AttackTargetLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
+  TeamType: 0
+  EnemyTeamType: 0
+  TeamColor: {r: 0, g: 0, b: 0, a: 0}

@@ -8,12 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ceeb7f0bd3a1ee40bcbff48c8e87ad0, type: 3}
-  m_Name: AttackTargetData_B_Unit
+  m_Script: {fileID: 11500000, guid: ae50041b52daecc40b506d48e1bf7928, type: 3}
+  m_Name: UnitData_Bat
   m_EditorClassIdentifier: 
-  LayerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  AttackTargetLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
+  UnitType: 2
+  Health: 8
+  MoveSpeed: 1.5
+  TargetRange: 2
+  AttackCoolTime: 0
+  Gold: 0
+  StageHealthDamage: 1

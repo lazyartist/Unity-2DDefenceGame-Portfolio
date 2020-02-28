@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
   m_Name: AttackData_Fireball
   m_EditorClassIdentifier: 
+  TargetUnitTypes: 0100000002000000
   ProjectilePrefab: {fileID: 114843427768341486, guid: 1674cbb2c07b56d44b3e7ab357c8b4af,
     type: 2}
   ProjectileSpeed: 7

@@ -8,7 +8,6 @@ public class Unit : MonoBehaviour
 
     public TeamData TeamData;
     public UnitData UnitData;
-    public AttackTargetData AttackTargetData;
     public AttackData AttackData;
 
     public UnitBody UnitBody;
@@ -47,10 +46,34 @@ public class Unit : MonoBehaviour
         }
     }
 
+    public LayerMask EnemyLayerMask;
     protected void Start()
     {
-        gameObject.layer = Mathf.RoundToInt(Mathf.Log(AttackTargetData.LayerMask.value, 2f));//LayerMask를 LayerIndex로 변환
+        InitLayer();
+        SetEnemyLayerMask(AttackData);
         Health = UnitData.Health;
+    }
+
+    void InitLayer()
+    {
+        if (TeamData.TeamType == Types.TeamType.None || UnitData.UnitType == Types.UnitType.None)
+        {
+            gameObject.layer = 0;
+        }
+        else
+        {
+            gameObject.layer = LayerMask.NameToLayer(TeamData.TeamType.ToString() + UnitData.UnitType.ToString());
+        }
+    }
+
+    void SetEnemyLayerMask(AttackData attackData)
+    {
+        EnemyLayerMask = 0;
+        for (int i = 0; i < AttackData.TargetUnitTypes.Length; i++)
+        {
+            int mask = LayerMask.GetMask(TeamData.EnemyTeamType.ToString() + AttackData.TargetUnitTypes[i].ToString());
+            EnemyLayerMask |= mask;
+        }
     }
 
     void OnApplicationQuit()
@@ -242,7 +265,7 @@ public class Unit : MonoBehaviour
         }
 
         Unit draftTargetUnit = null;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + UnitCenterOffset, UnitData.TargetRange, AttackTargetData.AttackTargetLayerMask);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + UnitCenterOffset, UnitData.TargetRange, EnemyLayerMask);
         if (colliders.Length == 0) return draftTargetUnit;
 
         for (int i = 0; i < colliders.Length; i++)

@@ -8,12 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ceeb7f0bd3a1ee40bcbff48c8e87ad0, type: 3}
-  m_Name: AttackTargetData_A_Tower
+  m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
+  m_Name: AttackData_None
   m_EditorClassIdentifier: 
-  LayerMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  AttackTargetLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
+  ProjectilePrefab: {fileID: 0}
+  ProjectileSpeed: 0
+  Power: 0
+  AttackRange: 2
+  CCData: {fileID: 0}

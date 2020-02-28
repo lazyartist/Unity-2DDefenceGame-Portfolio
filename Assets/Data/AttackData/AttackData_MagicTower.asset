@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
   m_Name: AttackData_MagicTower
   m_EditorClassIdentifier: 
+  TargetUnitTypes: 0100000002000000
   ProjectilePrefab: {fileID: 114609397983781536, guid: c86a17f72d654eb4c83eb366ddde4305,
     type: 2}
   ProjectileSpeed: 5

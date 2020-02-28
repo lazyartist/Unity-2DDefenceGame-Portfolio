@@ -99,7 +99,7 @@ public class Selector_MasterSkill : Selector
         Vector3 startPosition = targetPosition + _masterSkillData.SpawnPositionOffset;
         Quaternion startAngle = Quaternion.Euler(_masterSkillData.SpawnAngle.x, _masterSkillData.SpawnAngle.y, _masterSkillData.SpawnAngle.z);
         AProjectile projectile = Instantiate<AProjectile>(_masterSkillData.AttackData.ProjectilePrefab, startPosition, startAngle, transform);
-        projectile.Init(_masterSkillData.AttackData, _masterSkillData.AttackTargetData, null, targetPosition);
+        projectile.Init(StageManager.Inst.StageData.PlayerTeamData, _masterSkillData.AttackData, null, targetPosition);
     }
 
     IEnumerator Coroutine_CreateProjectile(Vector3 position)
@@ -120,7 +120,6 @@ public class Selector_MasterSkill : Selector
         Quaternion startAngle = Quaternion.Euler(_masterSkillData.SpawnAngle.x, _masterSkillData.SpawnAngle.y, _masterSkillData.SpawnAngle.z);
         Unit unit = Instantiate<Unit>(_masterSkillData.UnitPrefab, startPosition, startAngle, UIMasterSkillMenu.UnitContainer.transform);
         unit.AttackData = _masterSkillData.AttackData;
-        unit.AttackTargetData = _masterSkillData.AttackTargetData;
         unit.SetRallyPoint(startPosition);
         unit.gameObject.SetActive(true);
     }

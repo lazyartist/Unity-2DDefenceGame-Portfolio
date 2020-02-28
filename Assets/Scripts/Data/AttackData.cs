@@ -4,10 +4,10 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "AttackData_", menuName = "Create Data/AttackData")]
 public class AttackData : ScriptableObject {
+    public Types.UnitType[] TargetUnitTypes;
+
     public AProjectile ProjectilePrefab;
     public float ProjectileSpeed;
-
-
 
     public float Power = 2f;
     public float AttackRange = 1f;

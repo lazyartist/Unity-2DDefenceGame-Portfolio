@@ -36,7 +36,12 @@ static public class Types {
 
     public enum TeamType
     {
-        A, B
+        None, A, B
+    }
+
+    public enum UnitType
+    {
+        None, Ground, Air, Tower
     }
 
     public enum CCType // Crowd Control

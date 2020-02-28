@@ -8,7 +8,6 @@ public class StageData : ScriptableObject
     [Header("Team")]
     public TeamData PlayerTeamData;
     public TeamData EnemyTeamData;
-    public AttackTargetData EnemyAttackTargetData;
 
     [Header("Wave")]
     public WavePhase[] WavePhases;
