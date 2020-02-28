@@ -366,7 +366,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.36, y: 0.44}
+  m_Size: {x: 0.4, y: 0.44}
   m_EdgeRadius: 0
 --- !u!95 &95275120941160698
 Animator:
@@ -521,7 +521,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamData: {fileID: 11400000, guid: d9165ec3e3bbdfd4198bf3e7258b5afd, type: 2}
   UnitData: {fileID: 11400000, guid: 663f9bb2eb42d9a4ca5315ce034f3b84, type: 2}
-  AttackTargetData: {fileID: 11400000, guid: 82e9e44e536c6c542b27909404acf311, type: 2}
   AttackData: {fileID: 11400000, guid: 65ef83e79c505de489e05aff8e3f0027, type: 2}
   UnitBody: {fileID: 114495189302223676}
   UnitSize: {x: 0, y: 0}
@@ -529,16 +528,21 @@ MonoBehaviour:
   UnitFSM: {fileID: 114662078880856556}
   HitEffectAnimator: {fileID: 95275120941160698}
   TargetWaypoint: {fileID: 0}
-  TargetWaypointSubIndex: 0
-  WaitWaypoint: {fileID: 0}
-  LastAttackTargetPosition: {x: 0, y: 0, z: 0}
+  RallyWaypoint: {fileID: 0}
+  WaypointSubIndex: 0
+  LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1050077076884868}
+  Velocity: 0
+  MoveDirection: {x: 0, y: 0, z: 0}
   Health: 0
   Speed: 1
   IsDied: 0
   TakenCCData: {fileID: 0}
   CanChangeDirection: 1
   GoalComplete: 0
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &114662078880856556
 MonoBehaviour:
   m_ObjectHideFlags: 1

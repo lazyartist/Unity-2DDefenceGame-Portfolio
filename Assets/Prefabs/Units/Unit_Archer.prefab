@@ -86,7 +86,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1685357474663072
 GameObject:
   m_ObjectHideFlags: 1
@@ -207,7 +207,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503326821611280}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.29, y: -2.201, z: 0}
+  m_LocalPosition: {x: -3.58, y: -1.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4975721955603012}
@@ -273,7 +273,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.308846, y: 0.5}
+  m_Size: {x: 0.4, y: 0.5}
   m_EdgeRadius: 0
 --- !u!95 &95385246583583560
 Animator:
@@ -387,7 +387,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
   UnitData: {fileID: 11400000, guid: aad809a304d44284ea7125cca2837cd3, type: 2}
-  AttackTargetData: {fileID: 11400000, guid: 3e629cc51b0c0634d9ca744dfc66a3a3, type: 2}
   AttackData: {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
   UnitBody: {fileID: 114674158599414336}
   UnitSize: {x: 0, y: 0}
@@ -395,13 +394,21 @@ MonoBehaviour:
   UnitFSM: {fileID: 114271592312121844}
   HitEffectAnimator: {fileID: 0}
   TargetWaypoint: {fileID: 0}
-  WaitWaypoint: {fileID: 0}
-  AttackTargetUnit: {fileID: 0}
-  LastAttackTargetPosition: {x: 0, y: 0, z: 0}
+  RallyWaypoint: {fileID: 0}
+  WaypointSubIndex: 0
+  LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1685357474663072}
+  Velocity: 0
+  MoveDirection: {x: 0, y: 0, z: 0}
   Health: 0
   Speed: 1
+  IsDied: 0
   TakenCCData: {fileID: 0}
+  CanChangeDirection: 1
+  GoalComplete: 0
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &114674158599414336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -440,6 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
+  IsPlayAttackAni: 1
 --- !u!114 &114960341470601430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -485,7 +493,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1233282405
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cbbe5825771048c43a546a294340e383, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -531,7 +539,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1233282405
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 54ecc95b79e0ef84ca8c027ad5075247, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -577,7 +585,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1233282405
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: cbbe5825771048c43a546a294340e383, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

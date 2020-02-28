@@ -120,7 +120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1465897555532546
 GameObject:
   m_ObjectHideFlags: 1
@@ -366,7 +366,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.36, y: 0.44}
+  m_Size: {x: 0.4, y: 0.44}
   m_EdgeRadius: 0
 --- !u!95 &95662858064332388
 Animator:
@@ -377,7 +377,7 @@ Animator:
   m_GameObject: {fileID: 1291857689139256}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 085eaf57a4b42f646804554c9dc0ec70, type: 2}
+  m_Controller: {fileID: 22100000, guid: e23c0a98fdd327346b11519084f6a160, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -453,7 +453,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
   UnitData: {fileID: 11400000, guid: bda59f2bd842e414c8e2835066eb75e2, type: 2}
-  AttackTargetData: {fileID: 11400000, guid: 3e629cc51b0c0634d9ca744dfc66a3a3, type: 2}
   AttackData: {fileID: 11400000, guid: 755b479a4385b63499e7ebdccc13a51f, type: 2}
   UnitBody: {fileID: 114707808215176082}
   UnitSize: {x: 0, y: 0}
@@ -461,16 +460,21 @@ MonoBehaviour:
   UnitFSM: {fileID: 114827054183385052}
   HitEffectAnimator: {fileID: 95866556446321216}
   TargetWaypoint: {fileID: 0}
-  TargetWaypointSubIndex: 0
-  WaitWaypoint: {fileID: 0}
-  LastAttackTargetPosition: {x: 0, y: 0, z: 0}
+  RallyWaypoint: {fileID: 0}
+  WaypointSubIndex: 0
+  LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1465897555532546}
+  Velocity: 0
+  MoveDirection: {x: 0, y: 0, z: 0}
   Health: 0
   Speed: 1
   IsDied: 0
   TakenCCData: {fileID: 0}
   CanChangeDirection: 1
   GoalComplete: 0
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &114639643156150518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -871,4 +875,4 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
