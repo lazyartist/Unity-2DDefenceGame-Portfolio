@@ -22,7 +22,7 @@ public class UnitState_Idle : AUnitState
         }
 
         // 공격대상이 없으면 찾는다
-        if (unit.HasAttackTargetUnit() == false && unit.FindAttackTarget() != null)
+        if (unit.HasAttackTargetUnit() == false && unit.TryFindEnemy() != null)
         {
             // 공격대상을 찾았다
             //Debug.Log("Found AttackTarget " + unit.AttackTargetUnit);
@@ -52,11 +52,11 @@ public class UnitState_Idle : AUnitState
         }
 
         // 대기장소로 이동
-        if (unit.TargetWaypoint == null && unit.WaitWaypoint != null && unit.IsArrivedWaitWaypoint() == false)
+        if (unit.TargetWaypoint == null && unit.RallyWaypoint != null && unit.IsArrivedRallyPoint() == false)
         {
             unit.TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
-            unit.TargetWaypoint.transform.position = unit.WaitWaypoint.transform.position;
-            //Debug.Log("Move WaitWaypoint " + unit.TargetWaypoint);
+            unit.TargetWaypoint.transform.position = unit.RallyWaypoint.transform.position;
+            //Debug.Log("Move RallyPoint " + unit.TargetWaypoint);
             return unitStates[(int)Types.UnitFSMType.Move];
         }
 

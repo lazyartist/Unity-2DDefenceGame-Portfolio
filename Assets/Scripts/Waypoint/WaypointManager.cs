@@ -5,6 +5,7 @@ using UnityEngine;
 public class WaypointManager : SingletonBase<WaypointManager>
 {
     public GameObject[] WaypointContainers;
+    public WaypointData WaypointData;
     public List<Waypoint> StartWaypoints { get; private set; }
     public int PathCount { get; private set; }
     public WaypointPool WaypointPool;
@@ -32,6 +33,7 @@ public class WaypointManager : SingletonBase<WaypointManager>
             for (int j = 1; j < waypointContainer.transform.childCount; j++)
             {
                 Waypoint wp = waypointContainer.transform.GetChild(j).GetComponent<Waypoint>();
+                wp.WaypointData = WaypointData;
                 curWaypoint.NextWaypoint = wp;
                 Vector3 direction = curWaypoint.NextWaypoint.transform.position - curWaypoint.transform.position;
                 float rad = Mathf.Atan2(direction.y, direction.x);

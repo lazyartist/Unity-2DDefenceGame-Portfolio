@@ -26,7 +26,7 @@ public class UnitGizmos : MonoBehaviour {
             if(unit.TargetWaypoint != null)
             {
                 Gizmos.color = unit.TeamData.TeamColor;
-                Gizmos.DrawLine(unit.transform.position, unit.TargetWaypoint.GetPosition(unit.TargetWaypointSubIndex));
+                Gizmos.DrawLine(unit.transform.position, unit.TargetWaypoint.GetPosition(unit.WaypointSubIndex));
                 //Gizmos.DrawLine(unit.transform.position, unit.TargetWaypoint.transform.position);
             }
             // 유닛의 공격 타겟까지 선 그리기

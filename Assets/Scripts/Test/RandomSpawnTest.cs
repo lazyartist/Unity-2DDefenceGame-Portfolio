@@ -47,7 +47,7 @@ public class RandomSpawnTest : MonoBehaviour {
             Unit unit = Instantiate<Unit>(UnitPrefab, StartWaypoint.transform.position, Quaternion.identity, UnitContainer.transform);
             unit.name = unit.name + unitNumber++;
             unit.TargetWaypoint = WaypointManager.Inst.StartWaypoints[Random.Range(0, pathCount)];
-            unit.TargetWaypointSubIndex = subIndex++ % 3;
+            unit.WaypointSubIndex = subIndex++ % 3;
             if (_createdUnitCount >= UnitCountLimit)
             {
                 yield break;

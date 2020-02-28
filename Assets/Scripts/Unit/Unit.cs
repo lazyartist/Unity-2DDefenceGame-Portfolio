@@ -17,8 +17,8 @@ public class Unit : MonoBehaviour
     public Animator HitEffectAnimator;
 
     public Waypoint TargetWaypoint;
-    public int TargetWaypointSubIndex = 0;
-    public Waypoint WaitWaypoint; // todo rename -> RallyPoint
+    public Waypoint RallyWaypoint;
+    public int WaypointSubIndex = 0;
 
     public Unit AttackTargetUnit { get; private set; }
     public Vector3 LastAttackTargetPosition;
@@ -106,10 +106,10 @@ public class Unit : MonoBehaviour
             WaypointManager.Inst.WaypointPool.Release(TargetWaypoint);
             TargetWaypoint = null;
         }
-        if (WaitWaypoint != null)
+        if (RallyWaypoint != null)
         {
-            WaypointManager.Inst.WaypointPool.Release(WaitWaypoint);
-            WaitWaypoint = null;
+            WaypointManager.Inst.WaypointPool.Release(RallyWaypoint);
+            RallyWaypoint = null;
         }
 
         UnitFSM.ClearnUp();
@@ -256,7 +256,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    virtual public Unit FindAttackTarget()
+    virtual public Unit TryFindEnemy()
     {
         // 이미 공격목표가 있다
         if (HasAttackTargetUnit())
@@ -264,8 +264,17 @@ public class Unit : MonoBehaviour
             return AttackTargetUnit;
         }
 
+        Vector3 findPosition;
+        if(RallyWaypoint != null)
+        {
+            // 랠리포인트 중심으로 적을 찾는다
+            findPosition = RallyWaypoint.GetPosition(WaypointSubIndex);
+        } else
+        {
+            findPosition = transform.position + UnitCenterOffset;
+        }
         Unit draftTargetUnit = null;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + UnitCenterOffset, UnitData.TargetRange, EnemyLayerMask);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(findPosition, UnitData.TargetRange, EnemyLayerMask);
         if (colliders.Length == 0) return draftTargetUnit;
 
         for (int i = 0; i < colliders.Length; i++)
@@ -336,11 +345,11 @@ public class Unit : MonoBehaviour
         transform.position = transform.position + (direction.normalized * velocity);
     }
 
-    public bool IsArrivedWaitWaypoint()
+    public bool IsArrivedRallyPoint()
     {
-        if (WaitWaypoint != null)
+        if (RallyWaypoint != null)
         {
-            float distance = Vector3.Distance(transform.position, WaitWaypoint.GetPosition(TargetWaypointSubIndex));
+            float distance = Vector3.Distance(transform.position, RallyWaypoint.GetPosition(WaypointSubIndex));
             bool arrived = distance < Consts.ArriveDistance;
             return arrived;
         }
@@ -372,15 +381,15 @@ public class Unit : MonoBehaviour
 
     public void SetRallyPoint(Vector3 position)
     {
-        if (WaitWaypoint == null)
+        if (RallyWaypoint == null)
         {
-            WaitWaypoint = WaypointManager.Inst.WaypointPool.Get();
+            RallyWaypoint = WaypointManager.Inst.WaypointPool.Get();
         }
         if (TargetWaypoint == null)
         {
             TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
         }
-        WaitWaypoint.transform.position = position;
+        RallyWaypoint.transform.position = position;
         TargetWaypoint.transform.position = position;
         ClearAttackTargetUnit();
     }
