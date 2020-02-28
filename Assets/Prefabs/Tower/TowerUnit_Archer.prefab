@@ -51,7 +51,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1374238682958870
 GameObject:
   m_ObjectHideFlags: 1
@@ -720,23 +720,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
   UnitData: {fileID: 11400000, guid: aad809a304d44284ea7125cca2837cd3, type: 2}
-  AttackTargetData: {fileID: 11400000, guid: d81539ef5a14e544b8f233a5c6c710ab, type: 2}
-  AttackData: {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
+  AttackDatas: []
+  AttackDataIndex: 0
   UnitBody: {fileID: 114674303218684092}
   UnitSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: -0.92, z: 0}
   UnitFSM: {fileID: 114990053605017292}
   HitEffectAnimator: {fileID: 0}
   TargetWaypoint: {fileID: 0}
-  WaitWaypoint: {fileID: 0}
-  LastAttackTargetPosition: {x: 0, y: 0, z: 0}
+  RallyWaypoint: {fileID: 0}
+  WaypointSubIndex: 0
+  LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1083582964749310}
+  Velocity: 0
+  MoveDirection: {x: 0, y: 0, z: 0}
   Health: 0
   Speed: 1
   IsDied: 0
   TakenCCData: {fileID: 0}
   CanChangeDirection: 1
   GoalComplete: 0
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &114967502376588390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -750,23 +756,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
   UnitData: {fileID: 11400000, guid: aad809a304d44284ea7125cca2837cd3, type: 2}
-  AttackTargetData: {fileID: 11400000, guid: d81539ef5a14e544b8f233a5c6c710ab, type: 2}
-  AttackData: {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
+  AttackDatas:
+  - {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
+  AttackDataIndex: 0
   UnitBody: {fileID: 114070676818138844}
   UnitSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: 0.3, z: 0}
   UnitFSM: {fileID: 114473184380942948}
   HitEffectAnimator: {fileID: 0}
   TargetWaypoint: {fileID: 0}
-  WaitWaypoint: {fileID: 0}
-  LastAttackTargetPosition: {x: 0, y: 0, z: 0}
+  RallyWaypoint: {fileID: 0}
+  WaypointSubIndex: 0
+  LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1920152767210224}
+  Velocity: 0
+  MoveDirection: {x: 0, y: 0, z: 0}
   Health: 0
   Speed: 1
   IsDied: 0
   TakenCCData: {fileID: 0}
   CanChangeDirection: 0
   GoalComplete: 0
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &114990053605017292
 MonoBehaviour:
   m_ObjectHideFlags: 1

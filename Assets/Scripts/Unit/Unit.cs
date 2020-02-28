@@ -8,7 +8,8 @@ public class Unit : MonoBehaviour
 
     public TeamData TeamData;
     public UnitData UnitData;
-    public AttackData AttackData;
+    public AttackData[] AttackDatas;
+    public int AttackDataIndex = 0;
 
     public UnitBody UnitBody;
     public Vector2 UnitSize;
@@ -51,7 +52,7 @@ public class Unit : MonoBehaviour
     protected void Start()
     {
         InitLayer();
-        SetEnemyLayerMask(AttackData);
+        SetEnemyLayerMask(GetAttackData());
         Health = UnitData.Health;
     }
 
@@ -70,9 +71,9 @@ public class Unit : MonoBehaviour
     void SetEnemyLayerMask(AttackData attackData)
     {
         EnemyLayerMask = 0;
-        for (int i = 0; i < AttackData.TargetUnitTypes.Length; i++)
+        for (int i = 0; i < GetAttackData().TargetUnitTypes.Length; i++)
         {
-            int mask = LayerMask.GetMask(TeamData.EnemyTeamType.ToString() + AttackData.TargetUnitTypes[i].ToString());
+            int mask = LayerMask.GetMask(TeamData.EnemyTeamType.ToString() + GetAttackData().TargetUnitTypes[i].ToString());
             EnemyLayerMask |= mask;
         }
     }
@@ -266,11 +267,12 @@ public class Unit : MonoBehaviour
         }
 
         Vector3 findPosition;
-        if(RallyWaypoint != null)
+        if (RallyWaypoint != null)
         {
             // 랠리포인트 중심으로 적을 찾는다
             findPosition = RallyWaypoint.GetPosition(WaypointSubIndex);
-        } else
+        }
+        else
         {
             findPosition = transform.position + UnitCenterOffset;
         }
@@ -399,4 +401,15 @@ public class Unit : MonoBehaviour
     {
         Notify(Types.UnitNotifyType.ClearEnemyUnit, null);
     }
+
+    public AttackData GetAttackDataBy(int index)
+    {
+        return AttackDatas[index];
+    }
+
+    public AttackData GetAttackData()
+    {
+        return GetAttackDataBy(AttackDataIndex);
+    }
+
 }

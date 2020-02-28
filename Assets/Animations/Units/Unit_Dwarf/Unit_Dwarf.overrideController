@@ -8,8 +8,6 @@ AnimatorOverrideController:
   m_Name: Unit_Dwarf
   m_Controller: {fileID: 9100000, guid: 2feac87df75f67e47b7a32e4119b89f1, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: b9b0e9eb072ecc5448c81337745866c9, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 2f6b90e66bce59e46b620b8427496009, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 23f072b163f670044bfe54eb30c40c2a, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: c8f1e1303c3e0d24f85c0843191c4b9a, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: de25d8cfe750046488ab7ebca9e7ca8b, type: 2}
@@ -18,3 +16,5 @@ AnimatorOverrideController:
     m_OverrideClip: {fileID: 7400000, guid: d04e9a479987aac4abc25dc6a76bafc3, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 2685c740e6d6db947a32161564316209, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 2de8c82ef07cb6b4c830cca460a7146b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 755a6fd0e61d15649ba34ffc810b3b66, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2f6b90e66bce59e46b620b8427496009, type: 2}

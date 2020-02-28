@@ -248,23 +248,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
   UnitData: {fileID: 11400000, guid: 3a6ff65d8b91f1e429787700e991f1b1, type: 2}
-  AttackTargetData: {fileID: 11400000, guid: d81539ef5a14e544b8f233a5c6c710ab, type: 2}
-  AttackData: {fileID: 11400000, guid: 37469bddf7a40834ea01ef29997ccd1e, type: 2}
+  AttackDatas:
+  - {fileID: 11400000, guid: 37469bddf7a40834ea01ef29997ccd1e, type: 2}
+  AttackDataIndex: 0
   UnitBody: {fileID: 114830043916443620}
   UnitSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: 0.28, z: 0}
   UnitFSM: {fileID: 114811229439697786}
   HitEffectAnimator: {fileID: 0}
   TargetWaypoint: {fileID: 0}
-  WaitWaypoint: {fileID: 0}
-  LastAttackTargetPosition: {x: 0, y: 0, z: 0}
+  RallyWaypoint: {fileID: 0}
+  WaypointSubIndex: 0
+  LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1705086676686350}
+  Velocity: 0
+  MoveDirection: {x: 0, y: 0, z: 0}
   Health: 0
   Speed: 1
   IsDied: 0
   TakenCCData: {fileID: 0}
   CanChangeDirection: 0
   GoalComplete: 0
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &114749761118181656
 MonoBehaviour:
   m_ObjectHideFlags: 1

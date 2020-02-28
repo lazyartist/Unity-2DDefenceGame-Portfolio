@@ -17,7 +17,7 @@ MonoBehaviour:
   - Waves:
     - UnitPrefab: {fileID: 114528930007832794, guid: 30110b692cc8bad4ea9c96b3d4209115,
         type: 2}
-      UnitCount: 3
+      UnitCount: 6
       NextWaveInterval: 1
     - UnitPrefab: {fileID: 114528930007832794, guid: 30110b692cc8bad4ea9c96b3d4209115,
         type: 2}

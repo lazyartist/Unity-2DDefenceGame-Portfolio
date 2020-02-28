@@ -34,7 +34,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1197745602839794
 GameObject:
   m_ObjectHideFlags: 1
@@ -407,23 +407,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
   UnitData: {fileID: 11400000, guid: 8976ce3c529d1ed49bcaa6199d3bcefa, type: 2}
-  AttackTargetData: {fileID: 11400000, guid: d81539ef5a14e544b8f233a5c6c710ab, type: 2}
-  AttackData: {fileID: 11400000, guid: 451ad228f6d86d440aa4310b084c9edb, type: 2}
+  AttackDatas:
+  - {fileID: 11400000, guid: 451ad228f6d86d440aa4310b084c9edb, type: 2}
+  AttackDataIndex: 0
   UnitBody: {fileID: 114226502658106478}
   UnitSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: 0.28, z: 0}
   UnitFSM: {fileID: 114373489412837970}
   HitEffectAnimator: {fileID: 0}
   TargetWaypoint: {fileID: 0}
-  WaitWaypoint: {fileID: 0}
-  LastAttackTargetPosition: {x: 0, y: 0, z: 0}
+  RallyWaypoint: {fileID: 0}
+  WaypointSubIndex: 0
+  LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1248839147899762}
+  Velocity: 0
+  MoveDirection: {x: 0, y: 0, z: 0}
   Health: 0
   Speed: 1
   IsDied: 0
   TakenCCData: {fileID: 0}
   CanChangeDirection: 0
   GoalComplete: 0
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!212 &212008996346684152
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -91,7 +91,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1385464326464000
 GameObject:
   m_ObjectHideFlags: 1
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 114225793579766686}
   - component: {fileID: 114335379935330436}
   - component: {fileID: 114520794805092120}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Unit_Bat
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1635118015957782}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.864, y: 1.943, z: 0}
+  m_LocalPosition: {x: -2.222, y: 1.125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4740661864916436}
@@ -466,24 +466,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamData: {fileID: 11400000, guid: d9165ec3e3bbdfd4198bf3e7258b5afd, type: 2}
   UnitData: {fileID: 11400000, guid: 42143a7ec16d7e14398fc95744f51660, type: 2}
-  AttackTargetData: {fileID: 11400000, guid: 4750839195d37ad458d8e815c92d5461, type: 2}
-  AttackData: {fileID: 11400000, guid: 76cddac568c62e84386a69644f757a3b, type: 2}
+  AttackDatas:
+  - {fileID: 11400000, guid: 76cddac568c62e84386a69644f757a3b, type: 2}
+  AttackDataIndex: 0
   UnitBody: {fileID: 114198710379771014}
   UnitSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: 1.04, z: 0}
   UnitFSM: {fileID: 114536940051813842}
   HitEffectAnimator: {fileID: 95530543519280788}
   TargetWaypoint: {fileID: 0}
-  TargetWaypointSubIndex: 0
-  WaitWaypoint: {fileID: 0}
-  LastAttackTargetPosition: {x: 0, y: 0, z: 0}
+  RallyWaypoint: {fileID: 0}
+  WaypointSubIndex: 0
+  LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1000657275855242}
+  Velocity: 0
+  MoveDirection: {x: 0, y: 0, z: 0}
   Health: 0
   Speed: 1
   IsDied: 0
   TakenCCData: {fileID: 0}
   CanChangeDirection: 1
   GoalComplete: 0
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &114306335680277738
 MonoBehaviour:
   m_ObjectHideFlags: 1

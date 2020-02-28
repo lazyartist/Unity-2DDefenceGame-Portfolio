@@ -10,7 +10,7 @@ public class UnitData : ScriptableObject
     public float MoveSpeed = 2f;
 
     public float TargetRange = 1f;
-    public float AttackCoolTime = 2f;
+    public float AttackCoolTime = 2f;// todo remove
 
     public int Gold;
     public int StageHealthDamage = 1;

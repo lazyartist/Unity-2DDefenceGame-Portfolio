@@ -387,7 +387,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
   UnitData: {fileID: 11400000, guid: aad809a304d44284ea7125cca2837cd3, type: 2}
-  AttackData: {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
+  AttackDatas:
+  - {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
+  AttackDataIndex: 0
   UnitBody: {fileID: 114674158599414336}
   UnitSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: 0.25, z: 0}
