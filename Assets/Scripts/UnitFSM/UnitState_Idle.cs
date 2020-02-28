@@ -30,11 +30,11 @@ public class UnitState_Idle : AUnitState
             {
                 // 공격대상에게 이동할 동안 대기하도록 통보
                 unit.AttackTargetUnit.Notify(Types.UnitNotifyType.Wait, unit);
-                // 근거리 공격 : 공격대상의 앞까지 이동할 waypoint 설정
+                // 근거리 공격 : 적의 앞까지 이동할 waypoint 설정(진행 방향에 대해 앞)
+                float enemyDirection = Mathf.Sign(unit.AttackTargetUnit.MoveDirection.x);
                 unit.TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
                 unit.TargetWaypoint.transform.position = unit.AttackTargetUnit.transform.position
-                    + new Vector3(unit.UnitSize.x * 0.5f, 0.0f, 0.0f)
-                    + new Vector3(unit.AttackTargetUnit.UnitSize.x * 0.5f, 0.0f, 0.0f);
+                    + ((new Vector3(unit.UnitSize.x * 0.5f, 0.0f, 0.0f) + new Vector3(unit.AttackTargetUnit.UnitSize.x * 0.5f, 0.0f, 0.0f)) * enemyDirection);
                 return unitStates[(int)Types.UnitFSMType.Move];
             }
             else

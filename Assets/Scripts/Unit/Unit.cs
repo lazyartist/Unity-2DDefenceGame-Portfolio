@@ -24,6 +24,9 @@ public class Unit : MonoBehaviour
     public Vector3 LastAttackTargetPosition;
     public GameObject SpawnPosition;
 
+    public float Velocity = 0f;
+    public Vector3 MoveDirection;
+
     // todo create UnitStatus
     public float Health = 20;
     public float Speed = 2f;
@@ -32,7 +35,6 @@ public class Unit : MonoBehaviour
     public bool CanChangeDirection = true;
     public bool GoalComplete = false;
 
-    float _velocity = 0f;
 
     protected void Awake()
     {
@@ -317,11 +319,11 @@ public class Unit : MonoBehaviour
 
     virtual public void MoveTo(Vector3 position)
     {
-        Vector3 direction = position - transform.position;
-        float distance = direction.magnitude;
+        MoveDirection = position - transform.position;
+        float distance = MoveDirection.magnitude;
 
-        _velocity = Mathf.Min(distance, UnitData.MoveSpeed * Time.deltaTime);
-        float velocity = _velocity;
+        Velocity = Mathf.Min(distance, UnitData.MoveSpeed * Time.deltaTime);
+        float velocity = Velocity;
 
         // cc
         switch (TakenCCData.CCType)
@@ -342,7 +344,7 @@ public class Unit : MonoBehaviour
         {
             velocity = 0f;
         }
-        transform.position = transform.position + (direction.normalized * velocity);
+        transform.position = transform.position + (MoveDirection.normalized * velocity);
     }
 
     public bool IsArrivedRallyPoint()
