@@ -12,25 +12,26 @@ public class UnitState_Move : AUnitState
     public override void ExitState(Unit unit)
     {
         unit.UnitBody.Animator.SetFloat("Velocity", 0.0f);
+        if (unit.HasAttackTargetUnit())
+        {
+            // 공격대상을 향하기
+            unit.Toward(unit.AttackTargetUnit.transform.position);
+        }
     }
     public override AUnitState UpdateState(Unit unit, AUnitState[] unitStates)
     {
         // 이동
-        //unit.MoveTo(unit.TargetWaypoint.transform.position);
         unit.MoveTo(unit.TargetWaypoint.GetPosition(unit.TargetWaypointSubIndex));
         if (unit.CanChangeDirection)
         {
             unit.Toward(unit.TargetWaypoint.GetPosition(unit.TargetWaypointSubIndex));
-            //unit.Toward(unit.TargetWaypoint.transform.position);
         }
 
         float distance = Vector3.Distance(unit.transform.position, unit.TargetWaypoint.GetPosition(unit.TargetWaypointSubIndex));
-        //float distance = Vector3.Distance(unit.transform.position, unit.TargetWaypoint.transform.position);
         if (distance < 0.01f)
         {
             // 목표지점 도착
             unit.transform.position = unit.TargetWaypoint.GetPosition(unit.TargetWaypointSubIndex);
-            //unit.transform.position = unit.TargetWaypoint.transform.position;
 
             // 다음 waypoint가 있으면 이동
             if (unit.TargetWaypoint.NextWaypoint != null)
