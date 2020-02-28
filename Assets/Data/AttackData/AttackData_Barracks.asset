@@ -11,8 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
   m_Name: AttackData_Barracks
   m_EditorClassIdentifier: 
+  TargetUnitTypes: 
   ProjectilePrefab: {fileID: 0}
   ProjectileSpeed: 0
   Power: 0
   AttackRange: 0
+  IsStartDelayForCoolTime: 0
+  CoolTime: 1.5
   CCData: {fileID: 0}

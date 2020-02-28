@@ -17,5 +17,5 @@ MonoBehaviour:
   Power: 1
   AttackRange: 0.5
   IsStartDelayForCoolTime: 0
-  CoolTime: 0.5
+  CoolTime: 1
   CCData: {fileID: 0}

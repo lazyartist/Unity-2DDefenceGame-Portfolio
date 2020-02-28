@@ -17,4 +17,6 @@ MonoBehaviour:
   ProjectileSpeed: 7
   Power: 4
   AttackRange: 0.4
+  IsStartDelayForCoolTime: 0
+  CoolTime: 1.5
   CCData: {fileID: 11400000, guid: 2abd475d06a3b52439374a14af271a9b, type: 2}
