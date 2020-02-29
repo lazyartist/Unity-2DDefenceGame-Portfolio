@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public static Rect ValidMapAreaRect; // 
+
     public Camera Camera;
     public Vector3 ValidMapAreaCenter;
     public Vector2 ValidMapAreaSize;
@@ -23,6 +25,8 @@ public class CameraController : MonoBehaviour
         _targetCameraSize = Camera.orthographicSize;
         UpdateValidCameraArea();
         SetCameraPositionInValidArea();
+
+        ValidMapAreaRect = new Rect(ValidMapAreaSize.x * 0.5f * -1f, ValidMapAreaSize.y * 0.5f * -1f, ValidMapAreaSize.x, ValidMapAreaSize.y);
     }
 
     void Update()

@@ -105,6 +105,7 @@ public class ChildUnits : MonoBehaviour
             if (Units[i] == null)
             {
                 Unit unit = Instantiate(ChildUnitPrefab, ParentUnit.SpawnPosition.transform.position, Quaternion.identity, ParentUnit.transform);
+                unit.gameObject.SetActive(true);
                 Units[i] = unit;
             }
         }

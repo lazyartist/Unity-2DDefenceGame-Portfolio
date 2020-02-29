@@ -18,7 +18,7 @@ MonoBehaviour:
   Power: 3
   AttackRange: 0
   IsStartDelayForCoolTime: 0
-  CoolTime: 2
+  CoolTime: 1
   CCData: {fileID: 0}
   StartAudioChannelType: 3
   StartAudioName: Projectile/Arrow_Fly

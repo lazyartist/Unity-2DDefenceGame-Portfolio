@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 114791694209124680}
   - component: {fileID: 114074546919725200}
   - component: {fileID: 114999345905812012}
+  - component: {fileID: 114961925386773502}
   m_Layer: 8
   m_Name: TowerUnit_MagicTower
   m_TagString: Unit
@@ -342,6 +343,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
   IsPlayAttackAni: 0
+--- !u!114 &114961925386773502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1751663501147014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71def9f05692e54cbe97177f9a345ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpriteRenderers:
+  - {fileID: 212405430683668494}
+  - {fileID: 212638784735719862}
 --- !u!114 &114999345905812012
 MonoBehaviour:
   m_ObjectHideFlags: 1

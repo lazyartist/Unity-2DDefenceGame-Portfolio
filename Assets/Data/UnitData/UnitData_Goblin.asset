@@ -16,5 +16,5 @@ MonoBehaviour:
   MoveSpeed: 1.2
   TargetRange: 1
   AttackCoolTime: 0.8
-  Gold: 0
+  Gold: 5
   StageHealthDamage: 1

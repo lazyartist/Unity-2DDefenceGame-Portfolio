@@ -44,13 +44,14 @@ GameObject:
   - component: {fileID: 114150701794301852}
   - component: {fileID: 114072999202522946}
   - component: {fileID: 114441106227714048}
+  - component: {fileID: 114594138945018940}
   m_Layer: 8
   m_Name: TowerUnit_Archer
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1374238682958870
 GameObject:
   m_ObjectHideFlags: 1
@@ -654,6 +655,21 @@ MonoBehaviour:
   - {fileID: 114072999202522946}
   CurUnitState: {fileID: 114441106227714048}
   Unit: {fileID: 114967502376588390}
+--- !u!114 &114594138945018940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350713528623468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71def9f05692e54cbe97177f9a345ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpriteRenderers:
+  - {fileID: 212102194415231518}
+  - {fileID: 212918529642050474}
+  - {fileID: 212433931105894070}
 --- !u!114 &114674303218684092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -820,8 +836,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1993133199
-  m_SortingLayer: 8
+  m_SortingLayerID: -1233282405
+  m_SortingLayer: 7
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 4a818ec5c943e9544b8e6c0178a6333e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -866,8 +882,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1993133199
-  m_SortingLayer: 8
+  m_SortingLayerID: -1233282405
+  m_SortingLayer: 7
   m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: 70b9bd384608a144897d6f8c3cce890f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -912,8 +928,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1993133199
-  m_SortingLayer: 8
+  m_SortingLayerID: -1233282405
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 54ecc95b79e0ef84ca8c027ad5075247, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

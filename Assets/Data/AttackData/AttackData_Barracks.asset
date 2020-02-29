@@ -19,3 +19,10 @@ MonoBehaviour:
   IsStartDelayForCoolTime: 0
   CoolTime: 1.5
   CCData: {fileID: 0}
+  StartAudioChannelType: 0
+  StartAudioName: 
+  FireAudioChannelType: 0
+  FireAudioName: 
+  HitAudioChannelType: 0
+  HitAudioName: 
+  AudioVolume: 1

@@ -15,7 +15,7 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 114230251045030880, guid: 4f7c3e9e93736d641b484b4d02deccd0,
     type: 2}
   ProjectileSpeed: 0
-  Power: 5
+  Power: 2
   AttackRange: 0.7
   IsStartDelayForCoolTime: 0
   CoolTime: 1.5

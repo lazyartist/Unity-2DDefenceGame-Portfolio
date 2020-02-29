@@ -29,8 +29,8 @@ TagManager:
   - BTower
   - 
   - 
-  - 
-  - 
+  - Waypoint
+  - RallyPoint
   - 
   - 
   - 
@@ -68,6 +68,9 @@ TagManager:
     locked: 0
   - name: Tower
     uniqueID: 1993133199
+    locked: 0
+  - name: AirUnit
+    uniqueID: 3436910741
     locked: 0
   - name: Projectile
     uniqueID: 193212725

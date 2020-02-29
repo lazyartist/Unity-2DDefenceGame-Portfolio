@@ -115,13 +115,14 @@ GameObject:
   - component: {fileID: 114887758925307890}
   - component: {fileID: 114879771491673998}
   - component: {fileID: 82832215582709060}
+  - component: {fileID: 114275497998574638}
   m_Layer: 8
   m_Name: Unit_Minotaur
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1409187761773582
 GameObject:
   m_ObjectHideFlags: 1
@@ -558,6 +559,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b17c9bdc788b140870764ca6e2e59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114275497998574638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1390012567218568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71def9f05692e54cbe97177f9a345ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Unit: {fileID: 114795718610798396}
+  SpriteRenderers:
+  - {fileID: 212605065159060536}
 --- !u!114 &114402263928888218
 MonoBehaviour:
   m_ObjectHideFlags: 1

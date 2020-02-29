@@ -10,6 +10,7 @@ static public class Consts
     public static int WaypointSubIndexStart = 1;
     public static float CreateUnitInterval { get { return 0.5f; } internal set { } }
     public static float CoolTimeUpdateInterval { get { return 0.05f; } internal set { } }
+    public static float UnitRenderOrderPrecision = 100f;
 
     // ===== tag names
     public static string tagUnit = "Unit";

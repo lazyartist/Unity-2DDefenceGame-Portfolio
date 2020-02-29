@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class UnitAndStageBinder : MonoBehaviour
 {
-    public Unit Unit;
+    Unit _unit;
 
     void Start()
     {
-        Unit = GetComponent<Unit>();
-        if (Unit != null)
+        _unit = GetComponent<Unit>();
+        if (_unit != null)
         {
-            Unit.UnitEvent += OnUnitEvent;
+            _unit.UnitEvent += OnUnitEvent;
         }
     }
 
@@ -27,10 +27,10 @@ public class UnitAndStageBinder : MonoBehaviour
 
     void CleanUp()
     {
-        if (Unit != null)
+        if (_unit != null)
         {
-            Unit.UnitEvent -= OnUnitEvent;
-            Unit = null;
+            _unit.UnitEvent -= OnUnitEvent;
+            _unit = null;
         }
     }
 
