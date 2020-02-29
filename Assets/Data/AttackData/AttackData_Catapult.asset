@@ -20,3 +20,10 @@ MonoBehaviour:
   IsStartDelayForCoolTime: 0
   CoolTime: 2
   CCData: {fileID: 11400000, guid: 2abd475d06a3b52439374a14af271a9b, type: 2}
+  StartAudioChannelType: 0
+  StartAudioName: 
+  FireAudioChannelType: 0
+  FireAudioName: 
+  HitAudioChannelType: 3
+  HitAudioName: Projectile/zapsplat_science_fictyion_explosion_puff_smoke_medium_001_45027
+  AudioVolume: 1

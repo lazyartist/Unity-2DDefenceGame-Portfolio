@@ -23,4 +23,5 @@ public class AttackData : ScriptableObject
     public string FireAudioName;
     public Types.AudioChannelType HitAudioChannelType = Types.AudioChannelType.None;
     public string HitAudioName;
+    public float AudioVolume = 1.0f;
 }

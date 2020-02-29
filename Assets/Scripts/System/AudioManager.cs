@@ -24,20 +24,20 @@ public class AudioManager : SingletonBase<AudioManager>
 
     public void PlayAttackStart(AttackData attackData)
     {
-        Play(attackData.StartAudioChannelType, attackData.StartAudioName);
+        Play(attackData.StartAudioChannelType, attackData.StartAudioName, attackData.AudioVolume);
     }
 
     public void PlayAttackFire(AttackData attackData)
     {
-        Play(attackData.FireAudioChannelType, attackData.FireAudioName);
+        Play(attackData.FireAudioChannelType, attackData.FireAudioName, attackData.AudioVolume);
     }
 
     public void PlayAttackHit(AttackData attackData)
     {
-        Play(attackData.HitAudioChannelType, attackData.HitAudioName);
+        Play(attackData.HitAudioChannelType, attackData.HitAudioName, attackData.AudioVolume);
     }
 
-    public void Play(Types.AudioChannelType audioChannelType, string audioName)
+    public void Play(Types.AudioChannelType audioChannelType, string audioName, float volume = 1.0f)
     {
         if (audioChannelType == Types.AudioChannelType.None)
         {
@@ -54,6 +54,6 @@ public class AudioManager : SingletonBase<AudioManager>
         {
             audioClip = Resources.Load<AudioClip>("Audios/" + audioName);
         }
-        audioSource.PlayOneShot(audioClip);
+        audioSource.PlayOneShot(audioClip, volume);
     }
 }

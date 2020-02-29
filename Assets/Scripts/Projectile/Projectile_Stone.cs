@@ -69,6 +69,7 @@ public class Projectile_Stone : AProjectile
 
     void Hit()
     {
+        AudioManager.Inst.PlayAttackHit(AttackData);
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, AttackData.AttackRange, _targetLayerMask);
         for (int i = 0; i < colliders.Length; i++)
         {

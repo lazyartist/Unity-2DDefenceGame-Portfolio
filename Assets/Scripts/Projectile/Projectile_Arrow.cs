@@ -110,6 +110,7 @@ public class Projectile_Arrow : AProjectile
 
     void Hit()
     {
+        AudioManager.Inst.PlayAttackHit(AttackData);
         if (_targetUnit != null)
         {
             _targetUnit.TakeDamage(AttackData);

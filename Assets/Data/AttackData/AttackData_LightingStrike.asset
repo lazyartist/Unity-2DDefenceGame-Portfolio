@@ -21,8 +21,9 @@ MonoBehaviour:
   CoolTime: 1.5
   CCData: {fileID: 11400000, guid: d3199a1a3a76f0e4cb71f12d3be21e97, type: 2}
   StartAudioChannelType: 3
-  StartAudioName: Battle/Lighting
+  StartAudioName: MasterSkill/LightingStrike
   FireAudioChannelType: 0
   FireAudioName: 
   HitAudioChannelType: 0
   HitAudioName: 
+  AudioVolume: 0.5

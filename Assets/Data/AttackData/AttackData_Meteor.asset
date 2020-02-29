@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
-  m_Name: AttackData_Fireball
+  m_Name: AttackData_Meteor
   m_EditorClassIdentifier: 
   TargetUnitTypes: 0100000002000000
   ProjectilePrefab: {fileID: 114843427768341486, guid: 1674cbb2c07b56d44b3e7ab357c8b4af,
@@ -21,8 +21,9 @@ MonoBehaviour:
   CoolTime: 1.5
   CCData: {fileID: 11400000, guid: 2abd475d06a3b52439374a14af271a9b, type: 2}
   StartAudioChannelType: 3
-  StartAudioName: Boom3
+  StartAudioName: MasterSkill/Meteor_Boom
   FireAudioChannelType: 0
   FireAudioName: 
   HitAudioChannelType: 3
-  HitAudioName: Meteor
+  HitAudioName: MasterSkill/Meteor_Drop
+  AudioVolume: 0.5
