@@ -2,27 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitFSM : MonoBehaviour {
+public class UnitFSM : MonoBehaviour
+{
     public AUnitState[] UnitStates;
     public AUnitState CurUnitState;
     public Unit Unit;
 
-	void Start () {
-        foreach (var item in UnitStates)
+    private void Awake()
+    {
+        foreach (AUnitState aUnitState in UnitStates)
         {
-            item.enabled = CurUnitState == item;
-            // todo UnitState.Init(Unit, UnitStates);
+            aUnitState.enabled = CurUnitState == aUnitState;
+            aUnitState.Init(Unit, UnitStates);
         }
-        CurUnitState.EnterState(Unit);
     }
-	
-	void Update () {
+
+    void Start()
+    {
+        CurUnitState.EnterState();
+    }
+
+    void Update()
+    {
         AUnitState unitState = null;
         if (Unit.IsDied == true)
         {
             // 유닛 사망
             unitState = UnitStates[(int)Types.UnitFSMType.Died];
-        }else if (Unit.TakenCCData.CCType == Types.CCType.Stun && CurUnitState != UnitStates[(int)Types.UnitFSMType.Hurt])
+        }
+        else if (Unit.TakenCCData.CCType == Types.CCType.Stun && CurUnitState != UnitStates[(int)Types.UnitFSMType.Hurt])
         {
             // 데미지 받음
             unitState = UnitStates[(int)Types.UnitFSMType.Hurt];
@@ -30,10 +38,10 @@ public class UnitFSM : MonoBehaviour {
 
         if (unitState == null || unitState == CurUnitState)
         {
-            unitState = CurUnitState.UpdateState(Unit, UnitStates);
+            unitState = CurUnitState.UpdateState();
         }
 
-        if(unitState != null && unitState != CurUnitState)
+        if (unitState != null && unitState != CurUnitState)
         {
             Transit(unitState);
         }
@@ -43,7 +51,7 @@ public class UnitFSM : MonoBehaviour {
     public void Transit(Types.UnitFSMType unitFSMType)
     {
         AUnitState unitState = UnitStates[(int)unitFSMType];
-        if(CurUnitState != unitState)
+        if (CurUnitState != unitState)
         {
             Transit(unitState);
         }
@@ -51,17 +59,16 @@ public class UnitFSM : MonoBehaviour {
 
     void Transit(AUnitState unitState)
     {
-        CurUnitState.ExitState(Unit);
+        CurUnitState.ExitState();
         CurUnitState.enabled = false;
         unitState.PrevUnitState = CurUnitState;
         CurUnitState = unitState;
         CurUnitState.enabled = true;
-        CurUnitState.EnterState(Unit);
-        //CurUnitState.UpdateState(Unit, UnitStates);
+        CurUnitState.EnterState();
     }
 
     public void ClearnUp()
     {
-        CurUnitState.ExitState(Unit);
+        CurUnitState.ExitState();
     }
 }

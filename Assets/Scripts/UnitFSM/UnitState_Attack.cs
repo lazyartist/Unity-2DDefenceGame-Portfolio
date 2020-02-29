@@ -11,13 +11,13 @@ public class UnitState_Attack : AUnitState
     float[] _lastAttackFireTimes = { 0f, 0f, 0f, 0f };
     bool _isPlayingAttackAni;
 
-    // implements AUnitState
-    public override void EnterState(Unit unit)
+    public override void Init(Unit unit, AUnitState[] unitStates)
     {
-        // todo move to Init()
-        for (int i = 0; i < unit.AttackDatas.Length; i++)
+        base.Init(unit, unitStates);
+
+        for (int i = 0; i < _unit.AttackDatas.Length; i++)
         {
-            if (unit.AttackDatas[i].IsStartDelayForCoolTime)
+            if (_unit.AttackDatas[i].IsStartDelayForCoolTime)
             {
                 _lastAttackFireTimes[i] = Time.time;
             }
@@ -26,20 +26,22 @@ public class UnitState_Attack : AUnitState
                 _lastAttackFireTimes[i] = 0f;
             }
         }
+    }
 
-        if (unit.HasEnemyUnit() == false)
+    // implements AUnitState
+    public override void EnterState()
+    {
+        if (_unit.HasEnemyUnit() == false)
         {
             // 다른 유닛의 원거리 공격등으로 공격대상이 이미 죽었다
         }
         else
         {
-            _unit = unit;
-
-            unit.UnitEvent += OnUnitEventHandler;
-            if (unit.GetAttackData().ProjectilePrefab == null)
+            _unit.UnitEvent += OnUnitEventHandler;
+            if (_unit.GetAttackData().ProjectilePrefab == null)
             {
                 // 근거리 공격 : 공격을 통보하여 Attack 상태로 전환시킴
-                unit.EnemyUnit.Notify(Types.UnitNotifyType.BeAttackState, unit);
+                _unit.EnemyUnit.Notify(Types.UnitNotifyType.BeAttackState, _unit);
             }
             else
             {
@@ -47,25 +49,27 @@ public class UnitState_Attack : AUnitState
             }
         }
     }
-    public override void ExitState(Unit unit)
+
+    public override void ExitState()
     {
-        unit.UnitEvent -= OnUnitEventHandler;
+        _unit.UnitEvent -= OnUnitEventHandler;
         _isPlayingAttackAni = false;
     }
-    public override AUnitState UpdateState(Unit unit, AUnitState[] unitStates)
+
+    public override AUnitState UpdateState()
     {
         // 공격 애니가 끝날때까지 기다린다
         if (_isPlayingAttackAni == false)
         {
             // 공격대상이 없으면 Idle 상태로 전환
-            if (unit.IsValidEnemyUnit() == false)
+            if (_unit.IsValidEnemyUnit() == false)
             {
                 return unitStates[(int)Types.UnitFSMType.Idle];
             }
             // 공격대상이 공격 범위를 벗어나면 EnemyUnit을 제거하고 Idle 상태로 전환
-            else if (unit.IsValidEnemyUnitInRange() == false)
+            else if (_unit.IsValidEnemyUnitInRange() == false)
             {
-                unit.Notify(Types.UnitNotifyType.ClearEnemyUnit, null);
+                _unit.Notify(Types.UnitNotifyType.ClearEnemyUnit, null);
                 return unitStates[(int)Types.UnitFSMType.Idle];
             }
             // 공격대상이 있고 쿨타임이 지났으면 공격
@@ -90,17 +94,17 @@ public class UnitState_Attack : AUnitState
 
                 if (biggestElapsedCoolTime > 0)
                 {
-                    unit.AttackDataIndex = attackDataIndex;
+                    _unit.AttackDataIndex = attackDataIndex;
                     //Debug.Log("Attack " + unit + " to " + unit.EnemyUnit);
-                    if (unit.CanChangeDirection)
+                    if (_unit.CanChangeDirection)
                     {
-                        unit.Toward(unit.EnemyUnit.transform.position);
+                        _unit.Toward(_unit.EnemyUnit.transform.position);
                     }
 
                     if (IsPlayAttackAni)
                     {
                         _isPlayingAttackAni = true; // AniEvent 호출 타이밍이 정확하지 않기 때문에 여기서 지정한다.
-                        unit.UnitBody.Animator.SetTrigger(_attackTriggerNames[unit.AttackDataIndex]);
+                        _unit.UnitBody.Animator.SetTrigger(_attackTriggerNames[_unit.AttackDataIndex]);
                         AudioManager.Inst.PlayAttackStart(_unit.GetAttackData());
                     }
                     else
@@ -113,6 +117,7 @@ public class UnitState_Attack : AUnitState
 
         return null;
     }
+
     void OnUnitEventHandler(Types.UnitEventType unitBodyEventType, Unit unit)
     {
         Debug.Log("UnitEventListener " + unitBodyEventType);
@@ -140,6 +145,7 @@ public class UnitState_Attack : AUnitState
                 break;
         }
     }
+
     virtual public void AttackFire()
     {
         AudioManager.Inst.PlayAttackFire(_unit.GetAttackData());

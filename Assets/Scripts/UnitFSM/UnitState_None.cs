@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitState_None: AUnitState
+public class UnitState_None : AUnitState
 {
     // implements AUnitState
-    public override void EnterState(Unit unit)
+    public override void EnterState()
     {
     }
-    public override void ExitState(Unit unit)
+
+    public override void ExitState()
     {
     }
-    public override AUnitState UpdateState(Unit unit, AUnitState[] unitStates)
+
+    public override AUnitState UpdateState()
     {
         return null;
     }

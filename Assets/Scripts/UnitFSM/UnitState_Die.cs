@@ -5,22 +5,23 @@ using UnityEngine;
 public class UnitState_Die : AUnitState
 {
     // implements AUnitState
-    public override void EnterState(Unit unit)
+    public override void EnterState()
     {
-        _unit = unit;
+        _unit.UnitBody.Animator.SetTrigger("Die");
+        _unit.Notify(Types.UnitNotifyType.ClearEnemyUnit, null);
+        _unit.UnitEvent += OnUnitBodyEventHandler;
+    }
 
-        unit.UnitBody.Animator.SetTrigger("Die");
-        unit.Notify(Types.UnitNotifyType.ClearEnemyUnit, null);
-        unit.UnitEvent += OnUnitBodyEventHandler;
-    }
-    public override void ExitState(Unit unit)
+    public override void ExitState()
     {
-        unit.UnitEvent -= OnUnitBodyEventHandler;
+        _unit.UnitEvent -= OnUnitBodyEventHandler;
     }
-    public override AUnitState UpdateState(Unit unit, AUnitState[] unitStates)
+
+    public override AUnitState UpdateState()
     {
         return null;
     }
+
     void OnUnitBodyEventHandler(Types.UnitEventType unitEventType, Unit unit)
     {
         Debug.Log("UnitEventListener " + unitEventType);
@@ -46,6 +47,7 @@ public class UnitState_Die : AUnitState
                 break;
         }
     }
+
     void DiedComplete()
     {
         Destroy(_unit.gameObject);

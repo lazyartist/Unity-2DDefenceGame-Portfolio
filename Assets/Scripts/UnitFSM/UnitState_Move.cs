@@ -5,45 +5,47 @@ using UnityEngine;
 public class UnitState_Move : AUnitState
 {
     // implements AUnitState
-    public override void EnterState(Unit unit)
+    public override void EnterState()
     {
-        unit.UnitBody.Animator.SetFloat("Velocity", 1.0f);
+        _unit.UnitBody.Animator.SetFloat("Velocity", 1.0f);
     }
-    public override void ExitState(Unit unit)
+
+    public override void ExitState()
     {
-        unit.UnitBody.Animator.SetFloat("Velocity", 0.0f);
-        if (unit.HasEnemyUnit())
+        _unit.UnitBody.Animator.SetFloat("Velocity", 0.0f);
+        if (_unit.HasEnemyUnit())
         {
             // 공격대상을 향하기
-            unit.Toward(unit.EnemyUnit.transform.position);
+            _unit.Toward(_unit.EnemyUnit.transform.position);
         }
     }
-    public override AUnitState UpdateState(Unit unit, AUnitState[] unitStates)
+
+    public override AUnitState UpdateState()
     {
         // 이동
-        unit.MoveTo(unit.TargetWaypoint.GetPosition(unit.WaypointSubIndex));
-        if (unit.CanChangeDirection)
+        _unit.MoveTo(_unit.TargetWaypoint.GetPosition(_unit.WaypointSubIndex));
+        if (_unit.CanChangeDirection)
         {
-            unit.Toward(unit.TargetWaypoint.GetPosition(unit.WaypointSubIndex));
+            _unit.Toward(_unit.TargetWaypoint.GetPosition(_unit.WaypointSubIndex));
         }
 
-        float distance = Vector3.Distance(unit.transform.position, unit.TargetWaypoint.GetPosition(unit.WaypointSubIndex));
+        float distance = Vector3.Distance(_unit.transform.position, _unit.TargetWaypoint.GetPosition(_unit.WaypointSubIndex));
         if (distance < 0.01f)
         {
             // 목표지점 도착
-            unit.transform.position = unit.TargetWaypoint.GetPosition(unit.WaypointSubIndex);
+            _unit.transform.position = _unit.TargetWaypoint.GetPosition(_unit.WaypointSubIndex);
 
             // 다음 waypoint가 있으면 이동
-            if (unit.TargetWaypoint.NextWaypoint != null)
+            if (_unit.TargetWaypoint.NextWaypoint != null)
             {
-                unit.TargetWaypoint = unit.TargetWaypoint.NextWaypoint;
+                _unit.TargetWaypoint = _unit.TargetWaypoint.NextWaypoint;
                 return null;
             }
             else
             {
                 // waypoint 해제
-                WaypointManager.Inst.WaypointPool.Release(unit.TargetWaypoint);
-                unit.TargetWaypoint = null;
+                WaypointManager.Inst.WaypointPool.Release(_unit.TargetWaypoint);
+                _unit.TargetWaypoint = null;
                 return unitStates[(int)Types.UnitFSMType.Idle];
             }
         }
