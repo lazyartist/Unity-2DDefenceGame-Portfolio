@@ -35,6 +35,7 @@ public class Unit : MonoBehaviour
     public CCData TakenCCData;
     public bool CanChangeDirection = true;
     public bool GoalComplete = false;
+    public LayerMask EnemyLayerMask;
 
     protected void Awake()
     {
@@ -48,7 +49,6 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public LayerMask EnemyLayerMask;
     protected void Start()
     {
         InitLayer();

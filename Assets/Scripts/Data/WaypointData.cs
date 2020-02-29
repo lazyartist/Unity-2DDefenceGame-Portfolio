@@ -8,4 +8,5 @@ public class WaypointData : ScriptableObject {
     public float SubPositionRadius = 1f;
     public Color GizmoColor;
     public Color[] SubPositionColors;
+    public string LayerName;
 }

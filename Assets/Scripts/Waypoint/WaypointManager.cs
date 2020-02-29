@@ -34,6 +34,7 @@ public class WaypointManager : SingletonBase<WaypointManager>
             {
                 Waypoint wp = waypointContainer.transform.GetChild(j).GetComponent<Waypoint>();
                 wp.WaypointData = WaypointData;
+                wp.gameObject.layer = LayerMask.NameToLayer(WaypointData.LayerName);
                 curWaypoint.NextWaypoint = wp;
                 Vector3 direction = curWaypoint.NextWaypoint.transform.position - curWaypoint.transform.position;
                 float rad = Mathf.Atan2(direction.y, direction.x);
@@ -43,7 +44,6 @@ public class WaypointManager : SingletonBase<WaypointManager>
                 curWaypoint = wp;
             }
         }
-        
     }
 
     //private Waypoint GetWaypoint(int index)

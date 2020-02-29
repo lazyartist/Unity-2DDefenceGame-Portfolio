@@ -118,7 +118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1725205614752712
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,8 +400,10 @@ MonoBehaviour:
     type: 2}
   Units: []
   MaxUnitCount: 3
-  RallyPoint: {fileID: 1088280849392450}
+  RallyPosition: {x: 0, y: 0, z: 0}
   RallyPointRadius: 0.3
+  WaypointDataUsedRallyPosition: {fileID: 11400000, guid: 40a344690774efb44881420777e0fe92,
+    type: 2}
 --- !u!114 &114447239558583854
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -30,6 +30,7 @@ public class WaypointPool : MonoBehaviour {
         {
             Waypoint waypoint = Instantiate<Waypoint>(WaypointPrefab, WaypointPoolContainer.transform);
             waypoint.WaypointData = WaypointData;
+            waypoint.gameObject.layer = LayerMask.NameToLayer(WaypointData.LayerName);
             Waypoints[_endIndex] = waypoint;
         }
         Waypoints[_endIndex].enabled = true;
