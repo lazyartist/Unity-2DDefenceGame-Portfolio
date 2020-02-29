@@ -80,7 +80,7 @@ public class UnitState_Attack : AUnitState
                     float elapsedCoolTime = Time.time - _lastAttackFireTimes[i];
                     if (elapsedCoolTime >= _unit.AttackDatas[i].CoolTime)
                     {
-                        if(elapsedCoolTime > biggestElapsedCoolTime)
+                        if (elapsedCoolTime > biggestElapsedCoolTime)
                         {
                             biggestElapsedCoolTime = elapsedCoolTime;
                             attackDataIndex = i;
@@ -141,6 +141,12 @@ public class UnitState_Attack : AUnitState
     }
     virtual public void AttackFire()
     {
+        // audio
+        if (string.IsNullOrEmpty(_unit.GetAttackData().HitAudioName) == false)
+        {
+            StageManager.Inst.PlaySound(_unit.GetAttackData().HitAudioName);
+        }
+
         // 공격이 발사체가 아닌 경우
         AttackData attackData = _unit.GetAttackData();
         if (attackData.ProjectilePrefab == null)

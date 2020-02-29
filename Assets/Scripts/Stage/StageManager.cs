@@ -14,11 +14,14 @@ public class StageManager : SingletonBase<StageManager>
     public Waypoint StartWaypoint;
 
     Coroutine _coroutine_wave;
+    AudioSource audioSource;
 
     protected override void Awake()
     {
         base.Awake();
+
         StageInfo = new StageInfo();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -185,4 +188,10 @@ public class StageManager : SingletonBase<StageManager>
         StageEvent(Types.StageEventType.HeroUnitChanged);
     }
     // HeroUnit ===== end
+
+    public void PlaySound(string path)
+    {
+        AudioClip hit = Resources.Load<AudioClip>("Sounds/Effects/" + path);
+        audioSource.PlayOneShot(hit);
+    }
 }

@@ -13,6 +13,8 @@ public class AttackData : ScriptableObject {
     public float AttackRange = 1f;
     public bool IsStartDelayForCoolTime = true;
     public float CoolTime = 1.5f;
+    public string FireAudioName;
+    public string HitAudioName;
 
     public CCData CCData;
 }

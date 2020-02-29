@@ -18,4 +18,6 @@ MonoBehaviour:
   AttackRange: 0.5
   IsStartDelayForCoolTime: 0
   CoolTime: 1
+  FireAudioName: 
+  HitAudioName: Hit
   CCData: {fileID: 0}
