@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 212605065159060536}
   - component: {fileID: 95573308222089872}
   - component: {fileID: 114402263928888218}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: UnitBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 114879771491673998}
   - component: {fileID: 82832215582709060}
   - component: {fileID: 114275497998574638}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Unit_Minotaur
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4965961188377898}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4456857517477646}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: UnitBodyContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -570,7 +570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71def9f05692e54cbe97177f9a345ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unit: {fileID: 114795718610798396}
   SpriteRenderers:
   - {fileID: 212605065159060536}
 --- !u!114 &114402263928888218

@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4548706966547100}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 212261335692830310}
   - component: {fileID: 95863117164464370}
   - component: {fileID: 114495189302223676}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: UnitBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4776356530268258}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: UnitBodyContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 114413698250262342}
   - component: {fileID: 114000740797514660}
   - component: {fileID: 114595389890781656}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Unit_Goblin
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -417,7 +417,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71def9f05692e54cbe97177f9a345ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unit: {fileID: 114528930007832794}
   SpriteRenderers:
   - {fileID: 212261335692830310}
 --- !u!114 &114004199582498720

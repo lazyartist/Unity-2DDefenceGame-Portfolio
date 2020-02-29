@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class UnitState_Move : AUnitState
 {
+    UnitRenderOrder _unitRenderOrder;
+    public override void Init(Unit unit, AUnitState[] unitStates)
+    {
+        base.Init(unit, unitStates);
+        _unitRenderOrder = unit.GetComponent<UnitRenderOrder>();
+        _unitRenderOrder.CalcRenderOrder();
+        _unitRenderOrder.enabled = false;
+    }
+
     // implements AUnitState
     public override void EnterState()
     {
         _unit.UnitBody.Animator.SetFloat("Velocity", 1.0f);
+        _unitRenderOrder.enabled = true;
     }
 
     public override void ExitState()
@@ -18,6 +28,7 @@ public class UnitState_Move : AUnitState
             // 공격대상을 향하기
             _unit.Toward(_unit.EnemyUnit.transform.position);
         }
+        _unitRenderOrder.enabled = false;
     }
 
     public override AUnitState UpdateState()

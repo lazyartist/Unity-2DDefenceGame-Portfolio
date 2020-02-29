@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4854220490259166}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4903841272525066}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: UnitBodyContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 212662547130813164}
   - component: {fileID: 95292598114700230}
   - component: {fileID: 114198710379771014}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: UnitBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,8 @@ GameObject:
   - component: {fileID: 114335379935330436}
   - component: {fileID: 114520794805092120}
   - component: {fileID: 114094633366757432}
-  m_Layer: 10
+  - component: {fileID: 114175927681525100}
+  m_Layer: 0
   m_Name: Unit_Bat
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -427,6 +428,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b17c9bdc788b140870764ca6e2e59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114175927681525100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1635118015957782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71def9f05692e54cbe97177f9a345ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpriteRenderers: []
 --- !u!114 &114198710379771014
 MonoBehaviour:
   m_ObjectHideFlags: 1

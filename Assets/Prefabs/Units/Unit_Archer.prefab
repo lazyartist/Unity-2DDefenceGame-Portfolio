@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 212630968892714004}
   - component: {fileID: 95385246583583560}
   - component: {fileID: 114674158599414336}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: UnitBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,13 +80,14 @@ GameObject:
   - component: {fileID: 114776617647403108}
   - component: {fileID: 114511659558347260}
   - component: {fileID: 114145094154538832}
-  m_Layer: 8
+  - component: {fileID: 114990081140116618}
+  m_Layer: 0
   m_Name: Unit_Archer
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1685357474663072
 GameObject:
   m_ObjectHideFlags: 1
@@ -95,7 +96,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4189213911529114}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4263177885565904}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: UnitBodyContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,6 +463,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
+--- !u!114 &114990081140116618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503326821611280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71def9f05692e54cbe97177f9a345ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpriteRenderers: []
 --- !u!212 &212001508616884758
 SpriteRenderer:
   m_ObjectHideFlags: 1

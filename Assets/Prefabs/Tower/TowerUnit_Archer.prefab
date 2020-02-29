@@ -51,7 +51,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1374238682958870
 GameObject:
   m_ObjectHideFlags: 1
@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 114291158123122490}
   - component: {fileID: 114745901335058668}
   - component: {fileID: 114130808932761646}
+  - component: {fileID: 114226677571229774}
   m_Layer: 10
   m_Name: Unit_Archer
   m_TagString: Unit
@@ -323,7 +324,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1350713528623468}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.94, y: 5.38, z: 0}
+  m_LocalPosition: {x: -0.74, y: 5.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4328103983630976}
@@ -539,6 +540,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
+--- !u!114 &114226677571229774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1843265027568148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71def9f05692e54cbe97177f9a345ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpriteRenderers: []
 --- !u!114 &114228830754148118
 MonoBehaviour:
   m_ObjectHideFlags: 1

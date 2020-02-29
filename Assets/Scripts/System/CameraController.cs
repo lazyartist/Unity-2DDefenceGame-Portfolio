@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public static Rect ValidMapAreaRect; // 
+    public static Rect ValidMapAreaRect; // 맵 유효영역
 
     public Camera Camera;
     public Vector3 ValidMapAreaCenter;
@@ -108,7 +108,11 @@ public class CameraController : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        // 카메라 유효영역
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(ValidMapAreaCenter, new Vector3(ValidMapAreaSize.x, ValidMapAreaSize.y, 1f));
+        // 맵 유효영역
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(new Vector3(CameraController.ValidMapAreaRect.xMin, CameraController.ValidMapAreaRect.yMax, 0f), new Vector3(CameraController.ValidMapAreaRect.xMax, CameraController.ValidMapAreaRect.yMin, 0f));
     }
 }

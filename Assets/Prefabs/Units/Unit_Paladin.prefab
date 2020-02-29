@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4506490733761138}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 212332252152345178}
   - component: {fileID: 95971290963611258}
   - component: {fileID: 114310901224387492}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: UnitBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,13 +130,13 @@ GameObject:
   - component: {fileID: 114820887660758118}
   - component: {fileID: 114870303148433092}
   - component: {fileID: 114360826780060132}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Unit_Paladin
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1756682061564052
 GameObject:
   m_ObjectHideFlags: 1
@@ -162,7 +162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4544182852076702}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: UnitBodyContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,7 +506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71def9f05692e54cbe97177f9a345ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unit: {fileID: 114016150554347428}
   SpriteRenderers:
   - {fileID: 212332252152345178}
 --- !u!114 &114470264898288924
