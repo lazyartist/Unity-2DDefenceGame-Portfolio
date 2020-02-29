@@ -99,6 +99,7 @@ public class Selector_MasterSkill : Selector
         Vector3 startPosition = targetPosition + _masterSkillData.SpawnPositionOffset;
         Quaternion startAngle = Quaternion.Euler(_masterSkillData.SpawnAngle.x, _masterSkillData.SpawnAngle.y, _masterSkillData.SpawnAngle.z);
         AProjectile projectile = Instantiate<AProjectile>(_masterSkillData.AttackData.ProjectilePrefab, startPosition, startAngle, transform);
+        projectile.gameObject.SetActive(true);
         projectile.Init(StageManager.Inst.StageData.PlayerTeamData, _masterSkillData.AttackData, null, targetPosition);
     }
 

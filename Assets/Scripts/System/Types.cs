@@ -68,12 +68,14 @@ static public class Types {
     {
         None, Success, Fail
     }
+
     public enum SelectResultType
     {
         None, // 선택관련 아무런 작업을 하지 않음
         Register, // 선택
         Unregister, // 선택 해제
     }
+
     public struct SelectResult
     {
         public SelectResultType SelectResultType;
@@ -91,4 +93,13 @@ static public class Types {
         }
     }
 
+    public enum AudioType
+    {
+        None, Battle, Specify
+    }
+
+    public enum AudioChannelType
+    {
+        None, Default, Effect, Battle
+    }
 }

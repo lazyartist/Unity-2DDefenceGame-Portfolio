@@ -18,6 +18,10 @@ MonoBehaviour:
   AttackRange: 0.5
   IsStartDelayForCoolTime: 0
   CoolTime: 1
-  FireAudioName: 
-  HitAudioName: Hit
   CCData: {fileID: 0}
+  StartAudioChannelType: 0
+  StartAudioName: 
+  FireAudioChannelType: 0
+  FireAudioName: 
+  HitAudioChannelType: 3
+  HitAudioName: Battle/Hit 10 - Sound effects Pack 2

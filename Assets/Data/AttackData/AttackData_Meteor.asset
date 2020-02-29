@@ -9,20 +9,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66521f47860cf224d9c5ff9c0d880e67, type: 3}
-  m_Name: AttackData_LightingStrike
+  m_Name: AttackData_Fireball
   m_EditorClassIdentifier: 
   TargetUnitTypes: 0100000002000000
-  ProjectilePrefab: {fileID: 114230251045030880, guid: 4f7c3e9e93736d641b484b4d02deccd0,
+  ProjectilePrefab: {fileID: 114843427768341486, guid: 1674cbb2c07b56d44b3e7ab357c8b4af,
     type: 2}
-  ProjectileSpeed: 0
-  Power: 5
-  AttackRange: 0.7
+  ProjectileSpeed: 7
+  Power: 4
+  AttackRange: 0.4
   IsStartDelayForCoolTime: 0
   CoolTime: 1.5
-  CCData: {fileID: 11400000, guid: d3199a1a3a76f0e4cb71f12d3be21e97, type: 2}
+  CCData: {fileID: 11400000, guid: 2abd475d06a3b52439374a14af271a9b, type: 2}
   StartAudioChannelType: 3
-  StartAudioName: Battle/Lighting
+  StartAudioName: Boom3
   FireAudioChannelType: 0
   FireAudioName: 
-  HitAudioChannelType: 0
-  HitAudioName: 
+  HitAudioChannelType: 3
+  HitAudioName: Meteor

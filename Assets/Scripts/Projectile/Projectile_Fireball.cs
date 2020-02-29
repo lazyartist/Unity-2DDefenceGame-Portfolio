@@ -49,12 +49,14 @@ public class Projectile_Fireball : AProjectile
 
     public override void MoveToTarget()
     {
+        AudioManager.Inst.PlayAttackStart(AttackData);
         _lastTargetPosition = _targetPosition;
         _isMoving = true;
     }
 
     void Hit()
     {
+        AudioManager.Inst.PlayAttackHit(AttackData);
         _animator.SetTrigger("Hit");
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, AttackData.AttackRange, _targetLayerMask);
         for (int i = 0; i < colliders.Length; i++)

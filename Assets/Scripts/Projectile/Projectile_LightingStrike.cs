@@ -16,6 +16,7 @@ public class Projectile_LightingStrike : AProjectile
     {
         transform.position = _targetPosition;
         _animator.SetTrigger("Hit");
+        AudioManager.Inst.PlayAttackStart(AttackData);
         Hit();
     }
 

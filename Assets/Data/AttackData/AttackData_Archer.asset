@@ -20,3 +20,9 @@ MonoBehaviour:
   IsStartDelayForCoolTime: 0
   CoolTime: 0.3
   CCData: {fileID: 0}
+  AttackStartAudioType: 0
+  AttackStartAudioName: 
+  FireAudioType: 0
+  FireAudioName: 
+  HitAudioType: 0
+  HitAudioName: 

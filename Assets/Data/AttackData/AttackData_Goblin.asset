@@ -14,10 +14,14 @@ MonoBehaviour:
   TargetUnitTypes: 01000000
   ProjectilePrefab: {fileID: 0}
   ProjectileSpeed: 0
-  Power: 2
+  Power: 1
   AttackRange: 1
   IsStartDelayForCoolTime: 0
   CoolTime: 1.5
-  FireAudioName: 
-  HitAudioName: Hit
   CCData: {fileID: 0}
+  StartAudioChannelType: 0
+  StartAudioName: 
+  FireAudioChannelType: 0
+  FireAudioName: 
+  HitAudioChannelType: 0
+  HitAudioName: 

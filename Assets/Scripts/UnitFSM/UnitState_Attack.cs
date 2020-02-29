@@ -101,6 +101,7 @@ public class UnitState_Attack : AUnitState
                     {
                         _isPlayingAttackAni = true; // AniEvent 호출 타이밍이 정확하지 않기 때문에 여기서 지정한다.
                         unit.UnitBody.Animator.SetTrigger(_attackTriggerNames[unit.AttackDataIndex]);
+                        AudioManager.Inst.PlayAttackStart(_unit.GetAttackData());
                     }
                     else
                     {
@@ -141,11 +142,7 @@ public class UnitState_Attack : AUnitState
     }
     virtual public void AttackFire()
     {
-        // audio
-        if (string.IsNullOrEmpty(_unit.GetAttackData().HitAudioName) == false)
-        {
-            StageManager.Inst.PlaySound(_unit.GetAttackData().HitAudioName);
-        }
+        AudioManager.Inst.PlayAttackFire(_unit.GetAttackData());
 
         // 공격이 발사체가 아닌 경우
         AttackData attackData = _unit.GetAttackData();
@@ -176,6 +173,7 @@ public class UnitState_Attack : AUnitState
         // 공격이 히트하는 순간 다른 유닛의 공격에 의해 공격대상이 이미 죽었을 수 있다
         if (_unit.HasEnemyUnit())
         {
+            AudioManager.Inst.PlayAttackHit(_unit.GetAttackData());
             _unit.EnemyUnit.TakeDamage(_unit.GetAttackData());
         }
     }

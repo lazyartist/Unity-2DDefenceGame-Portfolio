@@ -15,9 +15,7 @@ static public class Consts
     public static string tagUnit = "Unit";
     public static string tagTower = "Tower";
 
-    // todo remove
-    // ===== physics layers
-    public static int lmUnit = LayerMask.GetMask("Unit");
+    public static string[] audios = { "Hit", "aa" };
 
     private static int _unitId = 0;
     public static int GetUnitId()
