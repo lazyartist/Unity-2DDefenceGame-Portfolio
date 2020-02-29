@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public class UnitState_Attack_BarracksTower : AUnitState
 {
-    private ChildUnits _childUnits;
-    private float _coolTime = 0.0f;
-    private bool _isPlayingAttackAni;
+    ChildUnits _childUnits;
+    float _coolTime = 0.0f;
+    bool _isPlayingAttackAni;
 
     void Awake()
     {

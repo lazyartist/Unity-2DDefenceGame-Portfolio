@@ -11,7 +11,6 @@ public class StageManager : SingletonBase<StageManager>
 
     public GameObject UnitsContainer;
     public GameObject UnitStartPosition;
-    public Waypoint StartWaypoint;
 
     Coroutine _coroutine_wave;
 
@@ -74,6 +73,8 @@ public class StageManager : SingletonBase<StageManager>
 
     IEnumerator Coroutine_Wave()
     {
+        int startWaypointIndex = Random.Range(0, WaypointManager.Inst.StartWaypoints.Count);
+        Waypoint startWaypoint = WaypointManager.Inst.StartWaypoints[startWaypointIndex];
         while (true)
         {
             Wave wave = StageData.WavePhases[StageInfo.WavePhaseIndex].Waves[StageInfo.WaveIndex];
@@ -82,7 +83,7 @@ public class StageManager : SingletonBase<StageManager>
             {
                 Unit unit = Instantiate(wave.UnitPrefab, UnitStartPosition.transform.position, Quaternion.identity, UnitsContainer.transform);
                 unit.TeamData = StageData.EnemyTeamData;
-                unit.TargetWaypoint = StartWaypoint;
+                unit.TargetWaypoint = startWaypoint;
                 unit.WaypointSubIndex = waypointSubIndex++;
                 unit.gameObject.SetActive(true);
 
