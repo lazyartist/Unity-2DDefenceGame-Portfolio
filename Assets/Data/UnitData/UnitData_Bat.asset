@@ -18,3 +18,4 @@ MonoBehaviour:
   AttackCoolTime: 0
   Gold: 3
   StageHealthDamage: 1
+  UnitSortingLayerType: 1

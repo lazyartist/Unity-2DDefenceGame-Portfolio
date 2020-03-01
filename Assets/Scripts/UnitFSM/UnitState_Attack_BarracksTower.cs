@@ -34,7 +34,8 @@ public class UnitState_Attack_BarracksTower : AUnitState
             {
                 Debug.Log("ChildUnit " + _unit);
                 _unit.UnitBody.Animator.SetTrigger("Attack");
-                _coolTime = _unit.UnitData.AttackCoolTime;
+                _coolTime = _unit.GetAttackData().CoolTime;
+                //_coolTime = _unit.UnitData.AttackCoolTime;
             }
         }
         _coolTime -= Time.deltaTime;

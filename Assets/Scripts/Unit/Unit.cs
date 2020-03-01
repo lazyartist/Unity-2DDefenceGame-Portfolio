@@ -13,7 +13,8 @@ public class Unit : MonoBehaviour
     public int AttackDataIndex = 0;
     // Body
     public UnitBody UnitBody;
-    public Vector2 UnitSize;
+    public Vector2 ColliderOffset;
+    public Vector2 ColliderSize;
     public Vector3 UnitCenterOffset;
     public Animator HitEffectAnimator;
     public UnitFSM UnitFSM;
@@ -48,7 +49,8 @@ public class Unit : MonoBehaviour
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
         if (boxCollider != null)
         {
-            UnitSize = boxCollider.size;
+            ColliderOffset = boxCollider.offset;
+            ColliderSize = boxCollider.size;
         }
     }
 

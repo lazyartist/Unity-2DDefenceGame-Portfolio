@@ -36,7 +36,7 @@ public class UnitState_Idle : AUnitState
                 float enemyDirection = Mathf.Sign(_unit.EnemyUnit.MoveDirection.x);
                 _unit.TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
                 _unit.TargetWaypoint.transform.position = _unit.EnemyUnit.transform.position
-                    + ((new Vector3(_unit.UnitSize.x * 0.5f, 0.0f, 0.0f) + new Vector3(_unit.EnemyUnit.UnitSize.x * 0.5f, 0.0f, 0.0f)) * enemyDirection);
+                    + ((new Vector3(_unit.ColliderSize.x * 0.5f, 0.0f, 0.0f) + new Vector3(_unit.EnemyUnit.ColliderSize.x * 0.5f, 0.0f, 0.0f)) * enemyDirection);
                 return unitStates[(int)Types.UnitFSMType.Move];
             }
             else
