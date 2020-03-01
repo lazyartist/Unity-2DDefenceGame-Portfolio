@@ -78,11 +78,11 @@ public class AStarAlgorithm
                     var disFromCur = Vector3.Distance(curNode.transform.position, node.transform.position);
                     var disToEnd = Vector3.Distance(_endNode.transform.position, node.transform.position);
 
-                    if (node.goal > curNode.goal + disFromCur)
+                    if (node.Goal > curNode.Goal + disFromCur)
                     {
-                        node.goal = curNode.goal + disFromCur;
-                        node.heuristic = disToEnd;
-                        node.fitness = node.goal + node.heuristic;
+                        node.Goal = curNode.Goal + disFromCur;
+                        node.Heuristic = disToEnd;
+                        node.Fitness = node.Goal + node.Heuristic;
 
                         node.SetParent(curNode);
                     }
@@ -96,9 +96,9 @@ public class AStarAlgorithm
                     var disFromCur = Vector3.Distance(curNode.transform.position, node.transform.position);
                     var disToEnd = Vector3.Distance(_endNode.transform.position, node.transform.position);
 
-                    node.goal = curNode.goal + disFromCur;
-                    node.heuristic = disToEnd;
-                    node.fitness = node.goal + node.heuristic;
+                    node.Goal = curNode.Goal + disFromCur;
+                    node.Heuristic = disToEnd;
+                    node.Fitness = node.Goal + node.Heuristic;
 
                     // 부모 설정
                     node.SetParent(curNode);
@@ -124,7 +124,7 @@ public class AStarAlgorithm
             {
                 fitnessNode = node;
             }
-            else if (fitnessNode.fitness > node.fitness)
+            else if (fitnessNode.Fitness > node.Fitness)
             {
                 fitnessNode = node;
             }

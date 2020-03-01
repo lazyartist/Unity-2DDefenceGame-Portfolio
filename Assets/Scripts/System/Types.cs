@@ -108,6 +108,11 @@ static public class Types {
         Unit_Ground, Unit_Air
     }
 
+    public enum PathFindResultType
+    {
+        Success, Fail, EqualStartAndEnd
+    }
+
     [System.Serializable]
     public struct IntTuple2
     {

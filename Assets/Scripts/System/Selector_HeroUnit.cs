@@ -32,8 +32,53 @@ public class Selector_HeroUnit : Selector
     {
         if (isOnWay)
         {
-            Unit.SetRallyPoint(position);
-            PathFindingManager.Inst.GetPathOrNull(Unit.transform.position, position);
+            Types.PathFindResultType pathFindResultType;
+            List<Vector3> path = PathFindingManager.Inst.GetPathOrNull(Unit.transform.position, position, out pathFindResultType);
+            Debug.Log("pathFindResultType " + pathFindResultType);
+            switch (pathFindResultType)
+            {
+                case Types.PathFindResultType.Success:
+                    {
+                        // todo here waypoint 관리 필요
+                        if (Unit.RallyWaypoint == null)
+                        {
+                            Unit.RallyWaypoint = WaypointManager.Inst.WaypointPool.Get();
+                        }
+                        if (Unit.TargetWaypoint == null)
+                        {
+                            Unit.TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
+                        }
+                        Unit.TargetWaypoint.transform.position = Unit.gameObject.transform.position;
+
+                        Waypoint targetPosition = Unit.TargetWaypoint;
+                        for (int i = 0; i < path.Count; i++)
+                        {
+                            Vector3 pos = path[i];
+                            Waypoint nextTargetPosition = WaypointManager.Inst.WaypointPool.Get();
+                            nextTargetPosition.transform.position = pos;
+
+                            nextTargetPosition.NextWaypoint = null;
+                            targetPosition.NextWaypoint = nextTargetPosition;
+                            targetPosition = nextTargetPosition;
+                        }
+                        // 첫 위치는 현재 위치를 넣는다
+                        Unit.TargetWaypoint.NextWaypoint.transform.position = Unit.gameObject.transform.position; ;
+                        // 마지막 위치는 타겟 위치를 넣는다
+                        targetPosition.transform.position = position;
+                        Unit.RallyWaypoint.transform.position = position;
+                        Unit.ClearEnemyUnit();
+                    }
+                    break;
+                case Types.PathFindResultType.Fail:
+                    break;
+                case Types.PathFindResultType.EqualStartAndEnd:
+                    {
+                        Unit.SetRallyPoint(position);
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
         _selectResult.CursorType = isOnWay ? Types.CursorType.Success : Types.CursorType.Fail;
         _selectResult.SelectResultType = isOnWay ? Types.SelectResultType.Unregister : Types.SelectResultType.None;

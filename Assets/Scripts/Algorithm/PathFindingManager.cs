@@ -73,13 +73,22 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
         EndNode = Nodes[EndNodePositionIndex];
     }
 
-    public List<Vector3> GetPathOrNull(Vector3 startPosition, Vector3 endPosition)
+    public List<Vector3> GetPathOrNull(Vector3 startPosition, Vector3 endPosition, out Types.PathFindResultType pathFindResultType)
     {
-        StartNode = FindNode(startPosition);
-        EndNode = FindNode(endPosition);
+        ResetAllNodes();
+
+        StartNode = FindNearestNodeToTargetPosition(startPosition, endPosition);
+        EndNode = FindNearestNodeToTargetPosition(endPosition, startPosition);
+
+        if(StartNode == EndNode)
+        {
+            pathFindResultType = Types.PathFindResultType.EqualStartAndEnd;
+            return null;
+        }
 
         if (StartNode == null || EndNode == null)
         {
+            pathFindResultType = Types.PathFindResultType.Fail;
             return null;
         }
 
@@ -87,6 +96,7 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
         bool isSuccess = _aStarAlgorithm.SearchPath();
         if (isSuccess == false || _aStarAlgorithm.NodePath.Count == 0)
         {
+            pathFindResultType = Types.PathFindResultType.Fail;
             return null;
         }
 
@@ -96,26 +106,37 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
             AStarNode node = _aStarAlgorithm.NodePath[i];
             positionPath.Add(node.transform.position);
         }
+        pathFindResultType = Types.PathFindResultType.Success;
         return positionPath;
     }
 
-    AStarNode FindNode(Vector3 position)
+    void ResetAllNodes()
+    {
+        for (int i = 0; i < Nodes.Count; i++)
+        {
+            AStarNode node = Nodes[i];
+            node.Reset();
+        }
+    }
+
+    AStarNode FindNearestNodeToTargetPosition(Vector3 position, Vector3 targetPosition)
     {
         Collider2D[] colliders = Physics2D.OverlapBoxAll(position, _nodeSearchAreaSize, 0f, AStarNodeLayerMask);
-        AStarNode node = null;
+        AStarNode nearestNodeToTargetPosition = null;
         float minDistance = 999;
         for (int i = 0; i < colliders.Length; i++)
         {
             Collider2D collider = colliders[i];
-            float distance = Vector3.Distance(collider.transform.position, position);
-            if (minDistance > distance)
+            AStarNode node = collider.GetComponent<AStarNode>();
+            float distance = Vector3.Distance(collider.transform.position, targetPosition);
+            if (node.IsBlock == false && minDistance > distance)
             {
                 minDistance = distance;
-                node = collider.GetComponent<AStarNode>();
+                nearestNodeToTargetPosition = node;
             }
         }
 
-        return node;
+        return nearestNodeToTargetPosition;
     }
 
     private void OnDrawGizmos()

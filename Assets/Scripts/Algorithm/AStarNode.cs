@@ -5,20 +5,24 @@ using UnityEngine;
 public class AStarNode : MonoBehaviour
 {
     public AStarNode ParentNode;
-
     public bool IsBlock = false;
 
-    public float fitness; // 적절성 : goal + heuristic
-    public float goal; // 목표 : 시작에서 현재까지 거리
-    public float heuristic; // 추정치 : 종료에서 현재까지  거리
+    public float Fitness; // 적절성 : goal + heuristic
+    public float Goal; // 목표 : 시작에서 현재까지 거리
+    public float Heuristic; // 추정치 : 종료에서 현재까지  거리
 
     Color _color = Color.white;
-    float _angleToParent;
     Vector3 _directionToParent = Vector3.right;
 
     public void SetColor(Color color)
     {
         _color = color;
+    }
+
+    public void Reset()
+    {
+        _color = Color.white;
+        _directionToParent = Vector3.right;
     }
 
     public void SetParent(AStarNode parentNode)

@@ -3975,8 +3975,8 @@ MonoBehaviour:
   AStarNodePrefab: {fileID: 114693494572936130, guid: 7b547c9f8d2d5384f80db2c3483b84be,
     type: 2}
   NodeGridSize:
-    x: 10
-    y: 10
+    x: 30
+    y: 30
   AStarNodeContainer: {fileID: 583123706}
   AStarNodeLayerMask:
     serializedVersion: 2
