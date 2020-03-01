@@ -6,36 +6,36 @@ public class Unit : MonoBehaviour
 {
     public Types.UnitEvent UnitEvent;
 
+    // Data
     public TeamData TeamData;
     public UnitData UnitData;
     public AttackData[] AttackDatas;
     public int AttackDataIndex = 0;
-
+    // Body
     public UnitBody UnitBody;
     public Vector2 UnitSize;
     public Vector3 UnitCenterOffset;
-    public UnitFSM UnitFSM;
     public Animator HitEffectAnimator;
-
+    public UnitFSM UnitFSM;
+    public bool CanChangeDirection = true;
+    // Move
     public Waypoint TargetWaypoint;
     public Waypoint RallyWaypoint;
     public int WaypointSubIndex = 0;
-
+    public Vector3 MoveDirection;
+    // Enemy
     public Unit EnemyUnit { get; private set; }
     public Vector3 LastEnemyPosition;
     public GameObject SpawnPosition;
-
-    public float Velocity = 0f;
-    public Vector3 MoveDirection;
-
+    // Status
     // todo create UnitStatus
     public float Health = 20;
     public float Speed = 2f;
     public bool IsDied = false;
     public CCData TakenCCData;
-    public bool CanChangeDirection = true;
     public bool GoalComplete = false;
-    public LayerMask EnemyLayerMask;
+
+    LayerMask _enemyLayerMask;
 
     protected void Awake()
     {
@@ -70,11 +70,11 @@ public class Unit : MonoBehaviour
 
     void SetEnemyLayerMask(AttackData attackData)
     {
-        EnemyLayerMask = 0;
+        _enemyLayerMask = 0;
         for (int i = 0; i < GetAttackData().TargetUnitTypes.Length; i++)
         {
             int mask = LayerMask.GetMask(TeamData.EnemyTeamType.ToString() + GetAttackData().TargetUnitTypes[i].ToString());
-            EnemyLayerMask |= mask;
+            _enemyLayerMask |= mask;
         }
     }
 
@@ -277,7 +277,7 @@ public class Unit : MonoBehaviour
             findPosition = transform.position + UnitCenterOffset;
         }
         Unit draftTargetUnit = null;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(findPosition, UnitData.TargetRange, EnemyLayerMask);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(findPosition, UnitData.TargetRange, _enemyLayerMask);
         if (colliders.Length == 0) return draftTargetUnit;
 
         for (int i = 0; i < colliders.Length; i++)
@@ -322,9 +322,7 @@ public class Unit : MonoBehaviour
     {
         MoveDirection = position - transform.position;
         float distance = MoveDirection.magnitude;
-
-        Velocity = Mathf.Min(distance, UnitData.MoveSpeed * Time.deltaTime);
-        float velocity = Velocity;
+        float velocity = Mathf.Min(distance, UnitData.MoveSpeed * Time.deltaTime); ;
 
         // cc
         switch (TakenCCData.CCType)
