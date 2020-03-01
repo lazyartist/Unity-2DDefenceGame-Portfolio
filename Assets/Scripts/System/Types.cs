@@ -107,4 +107,10 @@ static public class Types {
     {
         Unit_Ground, Unit_Air
     }
+
+    [System.Serializable]
+    public struct IntTuple2
+    {
+        public int x, y;
+    }
 }

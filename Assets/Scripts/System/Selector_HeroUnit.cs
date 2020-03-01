@@ -33,6 +33,7 @@ public class Selector_HeroUnit : Selector
         if (isOnWay)
         {
             Unit.SetRallyPoint(position);
+            PathFindingManager.Inst.GetPathOrNull(Unit.transform.position, position);
         }
         _selectResult.CursorType = isOnWay ? Types.CursorType.Success : Types.CursorType.Fail;
         _selectResult.SelectResultType = isOnWay ? Types.SelectResultType.Unregister : Types.SelectResultType.None;

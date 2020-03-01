@@ -19,14 +19,17 @@ public class CameraController : MonoBehaviour
     Vector3 _lastCameraPosition;
     Rect _validCameraArea;
 
+    private void Awake()
+    {
+        ValidMapAreaRect = new Rect(ValidMapAreaSize.x * 0.5f * -1f, ValidMapAreaSize.y * 0.5f * -1f, ValidMapAreaSize.x, ValidMapAreaSize.y);
+    }
+
     virtual protected void Start()
     {
         InputManager.Inst.InputEvent += OnInputEvent_InputManager;
         _targetCameraSize = Camera.orthographicSize;
         UpdateValidCameraArea();
         SetCameraPositionInValidArea();
-
-        ValidMapAreaRect = new Rect(ValidMapAreaSize.x * 0.5f * -1f, ValidMapAreaSize.y * 0.5f * -1f, ValidMapAreaSize.x, ValidMapAreaSize.y);
     }
 
     void Update()
@@ -112,7 +115,7 @@ public class CameraController : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireCube(ValidMapAreaCenter, new Vector3(ValidMapAreaSize.x, ValidMapAreaSize.y, 1f));
         // 맵 유효영역
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(new Vector3(CameraController.ValidMapAreaRect.xMin, CameraController.ValidMapAreaRect.yMax, 0f), new Vector3(CameraController.ValidMapAreaRect.xMax, CameraController.ValidMapAreaRect.yMin, 0f));
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawLine(new Vector3(CameraController.ValidMapAreaRect.xMin, CameraController.ValidMapAreaRect.yMax, 0f), new Vector3(CameraController.ValidMapAreaRect.xMax, CameraController.ValidMapAreaRect.yMin, 0f));
     }
 }
