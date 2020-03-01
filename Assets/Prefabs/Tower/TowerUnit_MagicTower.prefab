@@ -85,7 +85,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1757201318050202
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1751663501147014}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.3, z: 0}
+  m_LocalPosition: {x: -0.89, y: -1.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4811587806885784}
@@ -255,24 +255,20 @@ MonoBehaviour:
   UnitBody: {fileID: 114830043916443620}
   UnitSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: 0.28, z: 0}
-  UnitFSM: {fileID: 114811229439697786}
   HitEffectAnimator: {fileID: 0}
+  UnitFSM: {fileID: 114811229439697786}
+  CanChangeDirection: 0
   TargetWaypoint: {fileID: 0}
   RallyWaypoint: {fileID: 0}
   WaypointSubIndex: 0
+  MoveDirection: {x: 0, y: 0, z: 0}
   LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1705086676686350}
-  Velocity: 0
-  MoveDirection: {x: 0, y: 0, z: 0}
   Health: 0
   Speed: 1
   IsDied: 0
   TakenCCData: {fileID: 0}
-  CanChangeDirection: 0
   GoalComplete: 0
-  EnemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &114749761118181656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -401,8 +397,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1993133199
-  m_SortingLayer: 8
+  m_SortingLayerID: -1233282405
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 15a10c8c9ca8ff441b19151332b7c272, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

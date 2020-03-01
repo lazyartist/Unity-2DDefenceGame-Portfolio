@@ -36,11 +36,14 @@ public class Unit : MonoBehaviour
     public bool GoalComplete = false;
 
     LayerMask _enemyLayerMask;
+    UnitRenderOrder unitRenderOrder;
 
     protected void Awake()
     {
         gameObject.name += Consts.GetUnitId();
         TakenCCData = new CCData();
+
+        unitRenderOrder = GetComponent<UnitRenderOrder>();
 
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
         if (boxCollider != null)
@@ -54,6 +57,7 @@ public class Unit : MonoBehaviour
         InitLayer();
         SetEnemyLayerMask(GetAttackData());
         Health = UnitData.Health;
+        unitRenderOrder.Init(UnitData.UnitSortingLayerType.ToString());
     }
 
     void InitLayer()

@@ -13,6 +13,16 @@ public class UnitRenderOrder : MonoBehaviour
         CalcRenderOrder();
     }
 
+    public void Init(string sortingLayerName)
+    {
+        for (int i = 0; i < SpriteRenderers.Length; i++)
+        {
+            SpriteRenderer sp = SpriteRenderers[i];
+            sp.sortingLayerName = sortingLayerName;
+        }
+        CalcRenderOrder();
+    }
+
     public void CalcRenderOrder()
     {
         Vector2 position = new Vector2(transform.position.x + CameraController.ValidMapAreaRect.xMin, transform.position.y + CameraController.ValidMapAreaRect.yMax);

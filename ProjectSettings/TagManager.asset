@@ -54,22 +54,19 @@ TagManager:
   - name: TowerStub
     uniqueID: 3335365791
     locked: 0
-  - name: UnitThumb
+  - name: Unit_Thumb
     uniqueID: 1682758161
     locked: 0
-  - name: UnitShadow
+  - name: Unit_Shadow
     uniqueID: 2544752535
     locked: 0
   - name: Cursor
     uniqueID: 1943578843
     locked: 0
-  - name: Unit
+  - name: Unit_Ground
     uniqueID: 3061684891
     locked: 0
-  - name: Tower
-    uniqueID: 1993133199
-    locked: 0
-  - name: AirUnit
+  - name: Unit_Air
     uniqueID: 3436910741
     locked: 0
   - name: Projectile

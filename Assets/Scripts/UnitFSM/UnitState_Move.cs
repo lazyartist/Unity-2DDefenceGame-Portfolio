@@ -9,7 +9,6 @@ public class UnitState_Move : AUnitState
     {
         base.Init(unit, unitStates);
         _unitRenderOrder = unit.GetComponent<UnitRenderOrder>();
-        _unitRenderOrder.CalcRenderOrder();
         _unitRenderOrder.enabled = false;
     }
 

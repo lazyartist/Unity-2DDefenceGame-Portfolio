@@ -17,7 +17,6 @@ public class StageManager : SingletonBase<StageManager>
     protected override void Awake()
     {
         base.Awake();
-
         StageInfo = new StageInfo();
     }
 

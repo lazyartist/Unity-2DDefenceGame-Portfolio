@@ -102,4 +102,9 @@ static public class Types {
     {
         None, Default, Effect, Battle
     }
+
+    public enum UnitSortingLayerType
+    {
+        Unit_Ground, Unit_Air
+    }
 }

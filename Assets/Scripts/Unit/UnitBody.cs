@@ -14,15 +14,18 @@ public class UnitBody : MonoBehaviour
     {
         Animator = GetComponent<Animator>();
     }
+
     public void AniEvent_AttackStart()
     {
         Debug.Log("AniEvent_AttackStart");
         Unit.DispatchUnitEvent(Types.UnitEventType.AttackStart, Unit);
     }
+
     public void AniEvent_AttackFire()
     {
         Unit.DispatchUnitEvent(Types.UnitEventType.AttackFire, Unit);
     }
+
     public void AniEvent_AttackEnd()
     {
         Debug.Log("AniEvent_AttackEnd");
