@@ -16,6 +16,10 @@ static public class Consts
     public static string tagUnit = "Unit";
     public static string tagTower = "Tower";
 
+    // === map mask
+    public static Color MapMaskColor_Way = Color.green;
+    public static Color MapMaskColor_Block = Color.red;
+
     public static string[] audios = { "Hit", "aa" };
 
     private static int _unitId = 0;

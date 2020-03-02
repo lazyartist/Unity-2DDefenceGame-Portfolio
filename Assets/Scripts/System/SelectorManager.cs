@@ -97,16 +97,14 @@ public class SelectorManager : SingletonBase<SelectorManager>
                 {
                     Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     clickPosition.z = 0;
-                    Vector3 positionOnWaymap = (_waymapSpritePivot + ((clickPosition - MapSpriteRenderer.transform.position) * WaymapSpriteRenderer.sprite.pixelsPerUnit / MapSpriteRenderer.gameObject.transform.localScale.x));
-                    Color pixelOnWaymap = WaymapSpriteRenderer.sprite.texture.GetPixel((int)positionOnWaymap.x, (int)positionOnWaymap.y);
-                    bool isClickPositionOnWay = pixelOnWaymap == Color.black;
+                    bool isClickedOnWay = MapManager.Inst.IsMask(clickPosition, Types.MapMaskChannelType.Way, Consts.MapMaskColor_Way);
                     Types.SelectResult selectResult = Types.SelectResult.Create();
                     bool isDirtyCursorPosition = false;
-
+                    
                     // 현재 Selector가 있으면 처리의 우선권을 줌
                     if (CurSelector != null)
                     {
-                        selectResult = CurSelector.SelectUpdate(clickPosition, isClickPositionOnWay);
+                        selectResult = CurSelector.SelectUpdate(clickPosition, isClickedOnWay);
                         switch (selectResult.SelectResultType)
                         {
                             case Types.SelectResultType.None:

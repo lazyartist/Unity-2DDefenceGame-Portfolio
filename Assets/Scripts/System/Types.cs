@@ -113,6 +113,11 @@ static public class Types {
         Success, Fail, EqualStartAndEnd
     }
 
+    public enum MapMaskChannelType
+    {
+        Block, Way, b, a
+    }
+
     [System.Serializable]
     public struct IntTuple2
     {

@@ -46,6 +46,7 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
         Nodes.Clear();
 
         // Create nodes
+        MapManager mapManager = MapManager.Inst;
         for (int i = 0; i < NodeGridSize.x * NodeGridSize.y; i++)
         {
             int col = (i % NodeGridSize.x);
@@ -58,15 +59,16 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
             node.name = i.ToString();
             Nodes.Add(node);
 
+            node.IsBlock = mapManager.IsMask(node.transform.position, Types.MapMaskChannelType.Block, Consts.MapMaskColor_Block);
             // 블록 노드 찾기
-            for (int j = 0; j < BlockNodePositionIndices.Count; j++)
-            {
-                int BlockNodePositionIndex = BlockNodePositionIndices[j];
-                if (i == BlockNodePositionIndex)
-                {
-                    node.IsBlock = true;
-                }
-            }
+            //for (int j = 0; j < BlockNodePositionIndices.Count; j++)
+            //{
+            //    int BlockNodePositionIndex = BlockNodePositionIndices[j];
+            //    if (i == BlockNodePositionIndex)
+            //    {
+            //        node.IsBlock = true;
+            //    }
+            //}
         }
 
         StartNode = Nodes[StartNodePositionIndex];

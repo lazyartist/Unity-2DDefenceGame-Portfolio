@@ -1427,7 +1427,7 @@ GameObject:
   - component: {fileID: 378351444}
   - component: {fileID: 378351446}
   m_Layer: 0
-  m_Name: Map
+  m_Name: MapSR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2862,6 +2862,48 @@ MonoBehaviour:
   NextWaypoint: {fileID: 0}
   OrderNumber: 0
   WaypointData: {fileID: 11400000, guid: 40a344690774efb44881420777e0fe92, type: 2}
+--- !u!1 &587130502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 587130503}
+  - component: {fileID: 587130504}
+  m_Layer: 0
+  m_Name: MapManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &587130503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 587130502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 766800044}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &587130504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 587130502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb09e88d6515e049b446186498c214a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MapSR: {fileID: 378351444}
+  MapMaskSR: {fileID: 1953397127}
 --- !u!1001 &596239847
 Prefab:
   m_ObjectHideFlags: 0
@@ -3607,6 +3649,7 @@ Transform:
   - {fileID: 151797644}
   - {fileID: 1433862340}
   - {fileID: 809438826}
+  - {fileID: 587130503}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3981,7 +4024,7 @@ MonoBehaviour:
   AStarNodeLayerMask:
     serializedVersion: 2
     m_Bits: 16777216
-  BlockNodePositionIndices: 
+  BlockNodePositionIndices: 90010000ae010000720100005401000036010000cc0100002603000027030000550000005f00000069000000730000007d00000087000000910000009b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   StartNode: {fileID: 0}
   EndNode: {fileID: 0}
   StartNodePositionIndex: 0
@@ -9617,7 +9660,7 @@ GameObject:
   - component: {fileID: 1953397126}
   - component: {fileID: 1953397127}
   m_Layer: 0
-  m_Name: WayMask
+  m_Name: MapMaskSR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
