@@ -25,7 +25,7 @@ public class MapManager : SingletonBase<MapManager>
     public bool IsMask(Vector3 worldPosition, Types.MapMaskChannelType colorChannelType, Color color)
     {
         Color maskColor = GetMaskColor(worldPosition);
-        Debug.Log("maskColor " + maskColor);
+        //Debug.Log("maskColor " + maskColor);
         return maskColor[(int)colorChannelType] == color[(int)colorChannelType];
     }
 
@@ -34,9 +34,4 @@ public class MapManager : SingletonBase<MapManager>
         Vector3 xyOnMapMaskSR = _mapMaskPivot + ((worldPosition - MapMaskSR.transform.position) * (MapMaskSR.sprite.pixelsPerUnit / MapMaskSR.gameObject.transform.localScale.x));
         return MapMaskSR.sprite.texture.GetPixel((int)xyOnMapMaskSR.x, (int)xyOnMapMaskSR.y);
     }
-
-    //public Color GetPixelOnMapMask(int x, int y)
-    //{
-    //    return MapMaskSR.sprite.texture.GetPixel(x, y);
-    //}
 }

@@ -51,25 +51,22 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
         {
             int col = (i % NodeGridSize.x);
             int row = Mathf.FloorToInt(i / NodeGridSize.x);
+            Vector3 position = startPosition + new Vector3(col * _nodeSpace.x, (row * -_nodeSpace.y), 0f); ;
 
-            AStarNode node = Instantiate<AStarNode>(AStarNodePrefab);
-            node.transform.SetParent(AStarNodeContainer.transform);
-            node.transform.position = startPosition + new Vector3(col * _nodeSpace.x, (row * -_nodeSpace.y), 0f);
+            bool isBlock = mapManager.IsMask(position, Types.MapMaskChannelType.Block, Consts.MapMaskColor_Block);
+            if (isBlock)
+            {
+                // Block 노드는 생성하지 않기
+                continue;
+            }
 
+            AStarNode node = Instantiate<AStarNode>(AStarNodePrefab, AStarNodeContainer.transform);
+            node.transform.position = position;
+            node.IsBlock = isBlock;
             node.name = i.ToString();
             Nodes.Add(node);
-
-            node.IsBlock = mapManager.IsMask(node.transform.position, Types.MapMaskChannelType.Block, Consts.MapMaskColor_Block);
-            // 블록 노드 찾기
-            //for (int j = 0; j < BlockNodePositionIndices.Count; j++)
-            //{
-            //    int BlockNodePositionIndex = BlockNodePositionIndices[j];
-            //    if (i == BlockNodePositionIndex)
-            //    {
-            //        node.IsBlock = true;
-            //    }
-            //}
         }
+        Debug.Log("Node Count : " + AStarNodeContainer.transform.childCount);
 
         StartNode = Nodes[StartNodePositionIndex];
         EndNode = Nodes[EndNodePositionIndex];

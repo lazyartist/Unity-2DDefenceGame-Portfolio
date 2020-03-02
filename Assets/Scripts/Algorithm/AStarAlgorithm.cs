@@ -34,10 +34,12 @@ public class AStarAlgorithm
         int i = 0;
         AStarNode curNode = _startNode;
         curNode.ParentNode = null;
-        while (curNode != null && i++ < 100)
+        while (curNode != null)
         {
             curNode = SearchNode(curNode);
+            i++;
         }
+        Debug.Log("AStarAlgorithm Count : " + i);
         return IsSuccess;
     }
 
