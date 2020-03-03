@@ -71,12 +71,19 @@ public class CameraController : MonoBehaviour
                 }
                 break;
             case Types.InputEventType.Zoom:
-                _targetCameraSize = (value.x > 0) ? MinCameraSize : MaxCameraSize;
-                _cameraSizeChangeT = 0f;
+                ChangeTargetSize(value.x);
                 break;
             default:
                 break;
         }
+    }
+
+    void ChangeTargetSize(float value)
+    {
+        //_targetCameraSize += value;
+        //_targetCameraSize = Mathf.Max(MinCameraSize, Mathf.Min(MaxCameraSize, _targetCameraSize));
+        _targetCameraSize = value > 0f ? MaxCameraSize : MinCameraSize;
+        _cameraSizeChangeT = 0f;
     }
 
     void UpdateValidCameraArea()

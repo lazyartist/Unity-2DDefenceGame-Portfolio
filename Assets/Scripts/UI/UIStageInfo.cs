@@ -9,8 +9,6 @@ public class UIStageInfo : MonoBehaviour
     public Text GoldText;
     public Text WaveText;
     public Button StartWaveButton;
-    public Button ZoomButton;
-    public bool IsZoomIn = true;
 
     StageData _stageData;
     StageInfo _stageInfo;
@@ -26,20 +24,7 @@ public class UIStageInfo : MonoBehaviour
             StageManager.Inst.RunWave();
         });
 
-        ZoomButton.onClick.AddListener(() =>
-        {
-            ToggleZoomMap();
-        });
-        //ToggleZoomMap();
-
         UpdateStageInfo();
-    }
-
-    void ToggleZoomMap()
-    {
-        InputManager.Inst.InputEvent(Types.InputEventType.Zoom, new Vector3(IsZoomIn ? 1f : -1f, 0f, 0f));
-        IsZoomIn = !IsZoomIn;
-        ZoomButton.GetComponentInChildren<Text>().text = IsZoomIn ? "지도 확대" : "지도 축소";// todo translate
     }
 
     void UpdateStageInfo()

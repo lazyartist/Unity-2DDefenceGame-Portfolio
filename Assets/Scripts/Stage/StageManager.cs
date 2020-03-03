@@ -8,9 +8,7 @@ public class StageManager : SingletonBase<StageManager>
 
     public StageData StageData;
     public StageInfo StageInfo;
-
     public GameObject UnitsContainer;
-    public GameObject UnitStartPosition;
 
     Coroutine _coroutine_wave;
 
