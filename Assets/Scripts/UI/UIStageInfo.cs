@@ -30,7 +30,7 @@ public class UIStageInfo : MonoBehaviour
         {
             ToggleZoomMap();
         });
-        ToggleZoomMap();
+        //ToggleZoomMap();
 
         UpdateStageInfo();
     }

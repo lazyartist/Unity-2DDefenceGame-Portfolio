@@ -10,16 +10,9 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
     public GameObject AStarNodeContainer;
     public LayerMask AStarNodeLayerMask;
 
-    public List<int> BlockNodePositionIndices;
-
-    public AStarNode StartNode;
-    public AStarNode EndNode;
-
-    public int StartNodePositionIndex;
-    public int EndNodePositionIndex;
-
-    public List<AStarNode> Nodes = new List<AStarNode>();
-
+    List<AStarNode> nodes = new List<AStarNode>();
+    AStarNode _startNode;
+    AStarNode _endNode;
     Vector2 _nodeSpace;
     Vector2 _nodeSearchAreaSize;
     AStarAlgorithm _aStarAlgorithm;
@@ -43,7 +36,7 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
             DestroyImmediate(this.transform.GetChild(i).gameObject);
         }
 
-        Nodes.Clear();
+        nodes.Clear();
 
         // Create nodes
         MapManager mapManager = MapManager.Inst;
@@ -64,34 +57,34 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
             node.transform.position = position;
             node.IsBlock = isBlock;
             node.name = i.ToString();
-            Nodes.Add(node);
+            nodes.Add(node);
         }
         Debug.Log("Node Count : " + AStarNodeContainer.transform.childCount);
 
-        StartNode = Nodes[StartNodePositionIndex];
-        EndNode = Nodes[EndNodePositionIndex];
+        _startNode = nodes[0];
+        _endNode = nodes[nodes.Count - 1];
     }
 
     public List<Vector3> GetPathOrNull(Vector3 startPosition, Vector3 endPosition, out Types.PathFindResultType pathFindResultType)
     {
         ResetAllNodes();
 
-        StartNode = FindNearestNodeToTargetPosition(startPosition, endPosition);
-        EndNode = FindNearestNodeToTargetPosition(endPosition, startPosition);
+        _startNode = FindNearestNodeToTargetPosition(startPosition, endPosition);
+        _endNode = FindNearestNodeToTargetPosition(endPosition, startPosition);
 
-        if(StartNode == EndNode)
+        if (_startNode == _endNode)
         {
             pathFindResultType = Types.PathFindResultType.EqualStartAndEnd;
             return null;
         }
 
-        if (StartNode == null || EndNode == null)
+        if (_startNode == null || _endNode == null)
         {
             pathFindResultType = Types.PathFindResultType.Fail;
             return null;
         }
 
-        _aStarAlgorithm.Init(StartNode, EndNode, _nodeSearchAreaSize, AStarNodeLayerMask);
+        _aStarAlgorithm.Init(_startNode, _endNode, _nodeSearchAreaSize, AStarNodeLayerMask);
         bool isSuccess = _aStarAlgorithm.SearchPath();
         if (isSuccess == false || _aStarAlgorithm.NodePath.Count == 0)
         {
@@ -111,9 +104,9 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
 
     void ResetAllNodes()
     {
-        for (int i = 0; i < Nodes.Count; i++)
+        for (int i = 0; i < nodes.Count; i++)
         {
-            AStarNode node = Nodes[i];
+            AStarNode node = nodes[i];
             node.Reset();
         }
     }
@@ -140,14 +133,14 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
 
     private void OnDrawGizmos()
     {
-        if (StartNode == null)
+        if (_startNode == null)
         {
             return;
         }
 
         Gizmos.color = Color.red;
-        Gizmos.DrawCube(StartNode.transform.position, new Vector3(0.3f, 0.3f, 0.3f));
+        Gizmos.DrawCube(_startNode.transform.position, new Vector3(0.3f, 0.3f, 0.3f));
         Gizmos.color = Color.blue;
-        Gizmos.DrawCube(EndNode.transform.position, new Vector3(0.3f, 0.3f, 0.3f));
+        Gizmos.DrawCube(_endNode.transform.position, new Vector3(0.3f, 0.3f, 0.3f));
     }
 }

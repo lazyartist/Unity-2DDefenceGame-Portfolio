@@ -84,6 +84,6 @@ MonoBehaviour:
     type: 2}
   HeroUnitIcon: {fileID: 21300000, guid: 49172337a63da83488f7f5ecff1e7dfe, type: 3}
   HeroUnitRespawnCoolTime: 5
-  FirstHeroUnitPosition: {x: 4.06, y: 3.02, z: 0}
+  FirstHeroUnitPosition: {x: -0.19, y: -2.6, z: 0}
   Health: 1
   Gold: 48

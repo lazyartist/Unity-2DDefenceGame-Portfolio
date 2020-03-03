@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
 
     public float MaxCameraSize = 5;
     public float MinCameraSize = 3;
+    public float StartCameraSize = 5;
     public float MapPixelPerUnit = 100;
 
     float _targetCameraSize;
@@ -27,7 +28,7 @@ public class CameraController : MonoBehaviour
     virtual protected void Start()
     {
         InputManager.Inst.InputEvent += OnInputEvent_InputManager;
-        _targetCameraSize = Camera.orthographicSize;
+        _targetCameraSize = StartCameraSize;
         UpdateValidCameraArea();
         SetCameraPositionInValidArea();
     }
