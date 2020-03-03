@@ -123,4 +123,8 @@ static public class Types {
     {
         public int x, y;
     }
+
+    public enum InfoType {
+        None, Unit, Tower, MasterSkill, 
+    }
 }

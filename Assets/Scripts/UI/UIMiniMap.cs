@@ -26,6 +26,6 @@ public class UIMiniMap : MonoBehaviour {
 
     void ZoomMap(bool zoomIn)
     {
-        InputManager.Inst.InputEvent(Types.InputEventType.Zoom, new Vector3(zoomIn ? -1f : 1f, 0f, 0f));
+        InputManager.Inst.InputEvent(Types.InputEventType.Zoom, new Vector3(zoomIn ? 1f : -1f, 0f, 0f));
     }
 }

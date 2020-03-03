@@ -67,6 +67,24 @@ public class InputManager : SingletonBase<InputManager>
             float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
             DispatchEvent(Types.InputEventType.Zoom, new Vector3(scrollWheel, 0f, 0f));
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (EventSystem.current.IsPointerOverGameObject(_pointerId)) // true:UI오브젝트 위, false:게임오브젝트 위
+            {
+                //Debug.Log("click on UI");
+                //_isMouseDown = false;
+            }
+            else
+            {
+                Input.simulateMouseWithTouches = true;
+                UIDebug.Inst.AddText("touchCount " + Input.touchCount);
+                //_isMouseDown = true;
+                //_mousePositionDown = Input.mousePosition;
+                //DispatchEvent(Types.InputEventType.Down, _mousePositionDown);
+            }
+            //_isSwiping = false;
+        }
     }
 
     public void DispatchEvent(Types.InputEventType inputEventType, Vector3 value)

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Selector : MonoBehaviour {
     public bool Selected = false;
     public SpriteRenderer SelectedSR;
+    public Types.InfoType InfoType;
     protected Types.SelectResult _selectResult;
 
     virtual protected void Start()

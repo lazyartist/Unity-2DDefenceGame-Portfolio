@@ -45,13 +45,13 @@ public class StageManager : SingletonBase<StageManager>
     {
         if (StageInfo.Health <= 0)
         {
-            UICanvas.Inst.ShowInfo("Defeat");
+            //UICanvas.Inst.ShowInfo("Defeat");
         }
         else
         {
             if (StageInfo.IsAllWavePhaseDone && UnitsContainer.transform.childCount == 0)
             {
-                UICanvas.Inst.ShowInfo("Clear");
+                //UICanvas.Inst.ShowInfo("Clear");
             }
         }
     }

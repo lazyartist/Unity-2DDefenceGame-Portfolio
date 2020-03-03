@@ -23,7 +23,6 @@ public class Selector_HeroUnit : Selector
         _selectResult.IsSpread = true;
 
         UICanvas.Inst.HeroUnitButton.Select(true);
-        UICanvas.Inst.ShowUnitInfo(Unit);
 
         return _selectResult;
     }
@@ -92,7 +91,6 @@ public class Selector_HeroUnit : Selector
         base.SelectExit();
 
         UICanvas.Inst.HeroUnitButton.Select(false);
-        UICanvas.Inst.HideUnitInfo();
     }
 
     void OnUnitEvent(Types.UnitEventType unitEventType, Unit unit)

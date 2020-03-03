@@ -82,7 +82,7 @@ public class CameraController : MonoBehaviour
     {
         //_targetCameraSize += value;
         //_targetCameraSize = Mathf.Max(MinCameraSize, Mathf.Min(MaxCameraSize, _targetCameraSize));
-        _targetCameraSize = value > 0f ? MaxCameraSize : MinCameraSize;
+        _targetCameraSize = value > 0f ? MinCameraSize : MaxCameraSize;
         _cameraSizeChangeT = 0f;
     }
 

@@ -21,8 +21,6 @@ public class Selector_Unit : Selector
         _selectResult.IsFlag = false;
         _selectResult.IsSpread = true;
 
-        UICanvas.Inst.ShowUnitInfo(Unit);
-
         return _selectResult;
     }
 
@@ -38,7 +36,5 @@ public class Selector_Unit : Selector
     override public void SelectExit()
     {
         base.SelectExit();
-
-        UICanvas.Inst.HideUnitInfo();
     }
 }

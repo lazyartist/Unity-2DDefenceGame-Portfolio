@@ -14,38 +14,6 @@ public class UICanvas : SingletonBase<UICanvas>
         InputManager.Inst.InputEvent += OnInputEvent_InputManager;
     }
 
-    public void ShowTowerMenu(Tower tower, bool isShow)
-    {
-        if (isShow)
-        {
-            UITowerMenu.Show(tower);
-        }
-        else
-        {
-            UITowerMenu.Hide();
-        }
-    }
-
-    public void ShowUnitInfo(Unit unit)
-    {
-        UnitInfoText.text = unit.ToString();
-    }
-
-    public void HideUnitInfo()
-    {
-        UnitInfoText.text = "";
-    }
-
-    public void ShowInfo(string info)
-    {
-        UnitInfoText.text = info;
-    }
-
-    public void HideInfo()
-    {
-        UnitInfoText.text = "";
-    }
-
     void OnInputEvent_InputManager(Types.InputEventType inputEventType, Vector3 value)
     {
         switch (inputEventType)
@@ -60,7 +28,7 @@ public class UICanvas : SingletonBase<UICanvas>
                 UpdatePosition();
                 break;
             case Types.InputEventType.Zoom:
-                HideUI();
+                HideTowerMenu();
                 break;
             default:
                 break;
@@ -75,7 +43,19 @@ public class UICanvas : SingletonBase<UICanvas>
         }
     }
 
-    void HideUI()
+    public void ShowTowerMenu(Tower tower, bool isShow)
+    {
+        if (isShow)
+        {
+            UITowerMenu.Show(tower);
+        }
+        else
+        {
+            UITowerMenu.Hide();
+        }
+    }
+
+    void HideTowerMenu()
     {
         if (UITowerMenu.gameObject.activeSelf)
         {

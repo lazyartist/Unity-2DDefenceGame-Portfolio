@@ -32,14 +32,12 @@ public class UIMasterSkillMenu : MonoBehaviour
                 if (isOn)
                 {
                     SelectedMasterSkillButton = masterSkillButton;
-                    UICanvas.Inst.ShowInfo(masterSkillButton.MasterSkillData.Name);
                     MasterSkillEvent(Types.MasterSkillEventType.Selected);
                 }
                 else if (SelectedMasterSkillButton == masterSkillButton)
                 {
                     SelectedMasterSkillButton = null;
                     MasterSkillEvent(Types.MasterSkillEventType.Unselected);
-                    UICanvas.Inst.HideInfo();
                 }
                 Debug.Log(ToggleGroup.ActiveToggles());
             });
@@ -52,6 +50,5 @@ public class UIMasterSkillMenu : MonoBehaviour
         {
             SelectedMasterSkillButton.Toggle.isOn = false;
         }
-        UICanvas.Inst.HideInfo();
     }
 }
