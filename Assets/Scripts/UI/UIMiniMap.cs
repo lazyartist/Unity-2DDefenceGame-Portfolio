@@ -57,6 +57,6 @@ public class UIMiniMap : MonoBehaviour
         MiniMapCameraRectImage.rectTransform.sizeDelta = new Vector2(miniMapCameraRectWidth, miniMapCameraRectHeight);
         MiniMapCameraRectImage.transform.localPosition = _camera.transform.position * _minimapMultifier;
 
-        CameraMagnificationText.text = ((int)(_camera.orthographicSize / _cameraManager.MaxCameraSize * 100f)).ToString() + "%";
+        CameraMagnificationText.text = ((int)(_cameraManager.MinCameraSize / _camera.orthographicSize * 100f)).ToString() + "%";
     }
 }
