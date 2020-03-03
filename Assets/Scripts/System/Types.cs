@@ -8,6 +8,7 @@ static public class Types {
     public delegate void InputEvent(InputEventType inputEventType, Vector3 value);
     public delegate void MasterSkillEvent(MasterSkillEventType masterSkillEventType);
     public delegate void StageEvent(StageEventType stageEventType);
+    public delegate void CameraEvent(CameraEventType cameraEventType);
 
     public enum UnitEventType
     {
@@ -32,6 +33,11 @@ static public class Types {
     public enum StageEventType
     {
         None, StageInfoChanged, HeroUnitChanged
+    }
+
+    public enum CameraEventType
+    {
+        None, CameraSizeChanged,
     }
 
     public enum TeamType

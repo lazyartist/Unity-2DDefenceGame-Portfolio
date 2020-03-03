@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraManager : SingletonBase<CameraManager>
 {
     public static Rect ValidMapAreaRect; // 맵 유효영역
 
+    public Types.CameraEvent CameraEvent;
+
     public Camera Camera;
+    public Camera MinimapCamera;
     public Vector3 ValidMapAreaCenter;
     public Vector2 ValidMapAreaSize;
 
@@ -22,14 +25,21 @@ public class CameraController : MonoBehaviour
     Vector3 _lastCameraPosition;
     Rect _validCameraArea;
 
-    private void Awake()
+    protected void Awake()
     {
+        base.Awake();
+
         _cameraSizeRange = MaxCameraSize - MinCameraSize;
         ValidMapAreaRect = new Rect(ValidMapAreaSize.x * 0.5f * -1f, ValidMapAreaSize.y * 0.5f * -1f, ValidMapAreaSize.x, ValidMapAreaSize.y);
+
+        // 미니맵 카메라를 유효 맵영역에 맞춘다
+        MinimapCamera.orthographicSize = ValidMapAreaRect.height * 0.5f;
+        MinimapCamera.aspect = ValidMapAreaRect.width / ValidMapAreaRect.height;
     }
 
     virtual protected void Start()
     {
+
         InputManager.Inst.InputEvent += OnInputEvent_InputManager;
         _targetCameraSize = StartCameraSize;
         UpdateValidCameraArea();
@@ -51,6 +61,7 @@ public class CameraController : MonoBehaviour
             }
             UpdateValidCameraArea();
             SetCameraPositionInValidArea();
+            DispatchEvent(Types.CameraEventType.CameraSizeChanged);
         }
     }
 
@@ -73,6 +84,7 @@ public class CameraController : MonoBehaviour
                     Camera.transform.position = _lastCameraPosition + swipeDistance;
                     UpdateValidCameraArea();
                     SetCameraPositionInValidArea();
+                    DispatchEvent(Types.CameraEventType.CameraSizeChanged);
                 }
                 break;
             case Types.InputEventType.Zoom:
@@ -139,5 +151,13 @@ public class CameraController : MonoBehaviour
         // 맵 유효영역
         //Gizmos.color = Color.red;
         //Gizmos.DrawLine(new Vector3(CameraController.ValidMapAreaRect.xMin, CameraController.ValidMapAreaRect.yMax, 0f), new Vector3(CameraController.ValidMapAreaRect.xMax, CameraController.ValidMapAreaRect.yMin, 0f));
+    }
+
+    void DispatchEvent(Types.CameraEventType cameraEventType)
+    {
+        if (CameraEvent != null)
+        {
+            CameraEvent(cameraEventType);
+        }
     }
 }

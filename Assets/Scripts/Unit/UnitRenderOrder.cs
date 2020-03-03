@@ -25,7 +25,7 @@ public class UnitRenderOrder : MonoBehaviour
 
     public void CalcRenderOrder()
     {
-        Vector2 position = new Vector2(transform.position.x + CameraController.ValidMapAreaRect.xMin, transform.position.y + CameraController.ValidMapAreaRect.yMax);
+        Vector2 position = new Vector2(transform.position.x + CameraManager.ValidMapAreaRect.xMin, transform.position.y + CameraManager.ValidMapAreaRect.yMax);
         for (int i = 0; i < SpriteRenderers.Length; i++)
         {
             SpriteRenderer sp = SpriteRenderers[i];

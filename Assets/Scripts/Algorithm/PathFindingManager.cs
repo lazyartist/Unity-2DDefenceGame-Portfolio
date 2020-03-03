@@ -25,7 +25,7 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
 
     void Init()
     {
-        Vector2 mapArea = new Vector2(CameraController.ValidMapAreaRect.xMax - CameraController.ValidMapAreaRect.xMin, CameraController.ValidMapAreaRect.yMax - CameraController.ValidMapAreaRect.yMin);
+        Vector2 mapArea = new Vector2(CameraManager.ValidMapAreaRect.xMax - CameraManager.ValidMapAreaRect.xMin, CameraManager.ValidMapAreaRect.yMax - CameraManager.ValidMapAreaRect.yMin);
         _nodeSpace = new Vector2(mapArea.x / NodeGridSize.x, mapArea.y / NodeGridSize.y);
         _nodeSearchAreaSize = _nodeSpace * 2f;
         Vector3 startPosition = new Vector3(mapArea.x * -0.5f + _nodeSpace.x * 0.5f, mapArea.y * 0.5f + _nodeSpace.y * -0.5f, 0f);
