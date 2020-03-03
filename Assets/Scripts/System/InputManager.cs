@@ -7,9 +7,11 @@ public class InputManager : SingletonBase<InputManager>
 {
     public Types.InputEvent InputEvent;
     public float SwipeStartDistanceOver = 2f;
-    private bool _isMouseDown = false;
-    private bool _isSwiping = false;
-    private Vector3 _mousePositionDown;
+
+    bool _isMouseDown = false;
+    bool _isSwiping = false;
+    Vector3 _mousePositionDown;
+    float _prevTouchDistance;
 
     //PC에서는 포인터 아이디가 -1이고 모바일에서는 0이므로 다르게 값을 넣어준다
 #if UNITY_EDITOR || UNITY_STANDALONE || UNITYPLAYER
@@ -25,7 +27,7 @@ public class InputManager : SingletonBase<InputManager>
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Input.touchCount < 2)
         {
             if (EventSystem.current.IsPointerOverGameObject(_pointerId)) // true:UI오브젝트 위, false:게임오브젝트 위
             {
@@ -41,7 +43,7 @@ public class InputManager : SingletonBase<InputManager>
             _isSwiping = false;
         }
 
-        if (_isMouseDown && Input.GetMouseButton(0))
+        if (_isMouseDown && Input.GetMouseButton(0) && Input.touchCount < 2)
         {
             Vector3 mousePositionLast = Input.mousePosition;
             float distance = Vector2.Distance(mousePositionLast, _mousePositionDown);
@@ -52,7 +54,7 @@ public class InputManager : SingletonBase<InputManager>
             }
         }
 
-        if (_isMouseDown && Input.GetMouseButtonUp(0))
+        if (_isMouseDown && Input.GetMouseButtonUp(0) && Input.touchCount < 2)
         {
             if (_isSwiping == false)
             {
@@ -68,22 +70,28 @@ public class InputManager : SingletonBase<InputManager>
             DispatchEvent(Types.InputEventType.Zoom, new Vector3(scrollWheel, 0f, 0f));
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if ((Input.touchCount == 2 && EventSystem.current.IsPointerOverGameObject(_pointerId) == false))
         {
-            if (EventSystem.current.IsPointerOverGameObject(_pointerId)) // true:UI오브젝트 위, false:게임오브젝트 위
+            Touch touch0 = Input.GetTouch(0);
+            Touch touch1 = Input.GetTouch(1);
+            if (touch0.phase == TouchPhase.Began || touch1.phase == TouchPhase.Began)
             {
-                //Debug.Log("click on UI");
-                //_isMouseDown = false;
+                _prevTouchDistance = ((touch1.position + touch0.deltaPosition) - (touch0.position + touch0.deltaPosition)).magnitude;
+
+                if (_isMouseDown)
+                {
+                    // 멀티 터치 시 이전 마우스 다운 상태 해제
+                    DispatchEvent(Types.InputEventType.DownCanceled, Input.mousePosition);
+                    _isSwiping = false;
+                    _isMouseDown = false;
+                }
             }
-            else
+            else if ((Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(1).phase == TouchPhase.Moved))
             {
-                Input.simulateMouseWithTouches = true;
-                UIDebug.Inst.AddText("touchCount " + Input.touchCount);
-                //_isMouseDown = true;
-                //_mousePositionDown = Input.mousePosition;
-                //DispatchEvent(Types.InputEventType.Down, _mousePositionDown);
+                float touchDistance = ((touch1.position + touch0.deltaPosition) - (touch0.position + touch0.deltaPosition)).magnitude;
+                DispatchEvent(Types.InputEventType.ZoomByTouch, new Vector3(_prevTouchDistance - touchDistance, 0f, 0f));
+                _prevTouchDistance = touchDistance;
             }
-            //_isSwiping = false;
         }
     }
 

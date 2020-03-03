@@ -14,14 +14,17 @@ public class CameraController : MonoBehaviour
     public float MinCameraSize = 3;
     public float StartCameraSize = 5;
     public float MapPixelPerUnit = 100;
+    public float ZoomSpeedMultiplierByTouch = 1f;
 
     float _targetCameraSize;
-    float _cameraSizeChangeT;
+    float _cameraSizeRange;
+    float _cameraSizeChangeLerpT;
     Vector3 _lastCameraPosition;
     Rect _validCameraArea;
 
     private void Awake()
     {
+        _cameraSizeRange = MaxCameraSize - MinCameraSize;
         ValidMapAreaRect = new Rect(ValidMapAreaSize.x * 0.5f * -1f, ValidMapAreaSize.y * 0.5f * -1f, ValidMapAreaSize.x, ValidMapAreaSize.y);
     }
 
@@ -37,14 +40,14 @@ public class CameraController : MonoBehaviour
     {
         if (Camera.orthographicSize != _targetCameraSize)
         {
-            Camera.orthographicSize = Mathf.Lerp(Camera.orthographicSize, _targetCameraSize, _cameraSizeChangeT);
+            Camera.orthographicSize = Mathf.Lerp(Camera.orthographicSize, _targetCameraSize, _cameraSizeChangeLerpT);
             if (Mathf.Abs(_targetCameraSize - Camera.orthographicSize) < 0.01)
             {
                 Camera.orthographicSize = _targetCameraSize;
             }
             else
             {
-                _cameraSizeChangeT += 0.05f;
+                _cameraSizeChangeLerpT += 0.05f;
             }
             UpdateValidCameraArea();
             SetCameraPositionInValidArea();
@@ -60,6 +63,8 @@ public class CameraController : MonoBehaviour
             case Types.InputEventType.Down:
                 _lastCameraPosition = Camera.transform.position;
                 break;
+            case Types.InputEventType.DownCanceled:
+                break;
             case Types.InputEventType.Up:
                 break;
             case Types.InputEventType.Swipe:
@@ -73,6 +78,15 @@ public class CameraController : MonoBehaviour
             case Types.InputEventType.Zoom:
                 ChangeTargetSize(value.x);
                 break;
+            case Types.InputEventType.ZoomByTouch:
+                {
+                    float deltaCameraSize = _cameraSizeRange * ZoomSpeedMultiplierByTouch * (value.x / Screen.width);
+                    _targetCameraSize += deltaCameraSize;
+                    _targetCameraSize = Mathf.Max(MinCameraSize, Mathf.Min(MaxCameraSize, _targetCameraSize));
+                    _cameraSizeChangeLerpT = 1f;
+                }
+
+                break;
             default:
                 break;
         }
@@ -83,7 +97,7 @@ public class CameraController : MonoBehaviour
         //_targetCameraSize += value;
         //_targetCameraSize = Mathf.Max(MinCameraSize, Mathf.Min(MaxCameraSize, _targetCameraSize));
         _targetCameraSize = value > 0f ? MinCameraSize : MaxCameraSize;
-        _cameraSizeChangeT = 0f;
+        _cameraSizeChangeLerpT = 0f;
     }
 
     void UpdateValidCameraArea()

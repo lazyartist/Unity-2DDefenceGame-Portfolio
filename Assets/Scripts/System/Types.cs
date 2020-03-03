@@ -21,7 +21,7 @@ static public class Types {
 
     public enum InputEventType
     {
-        None, Down, Up, Swipe, Zoom
+        None, Down, DownCanceled, Up, Swipe, Zoom, ZoomByTouch
     }
 
     public enum MasterSkillEventType
