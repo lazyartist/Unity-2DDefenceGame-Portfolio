@@ -10,7 +10,7 @@ public class InputManager : SingletonBase<InputManager>
 
     bool _isMouseDown = false;
     bool _isSwiping = false;
-    Vector3 _mousePositionDown;
+    Vector3 _mouseDownPosition;
     float _prevTouchDistance;
 
     //PC에서는 포인터 아이디가 -1이고 모바일에서는 0이므로 다르게 값을 넣어준다
@@ -37,20 +37,25 @@ public class InputManager : SingletonBase<InputManager>
             else
             {
                 _isMouseDown = true;
-                _mousePositionDown = Input.mousePosition;
-                DispatchEvent(Types.InputEventType.Down, _mousePositionDown);
+                _mouseDownPosition = Input.mousePosition;
+                DispatchEvent(Types.InputEventType.Down, _mouseDownPosition);
             }
             _isSwiping = false;
         }
 
         if (_isMouseDown && Input.GetMouseButton(0) && Input.touchCount < 2)
         {
-            Vector3 mousePositionLast = Input.mousePosition;
-            float distance = Vector2.Distance(mousePositionLast, _mousePositionDown);
+            Vector3 mousePosition = Input.mousePosition;
+            float distance = Vector2.Distance(mousePosition, _mouseDownPosition);
             if (distance >= SwipeStartDistanceOver)
             {
                 _isSwiping = true;
-                DispatchEvent(Types.InputEventType.Swipe, mousePositionLast - _mousePositionDown);
+                // Screen 좌표를 PixelPerUnit으로 나눈 값과 ScreenToWorldPoint()를 통해 얻은 값에 차이가 있다.
+                // 100px / 100 = 1, ScreenToWorldPoint(100pixel) = 0.7
+                // 따라서 ScreenToWorldPoint를 통해 얻은 값으로 Swipe 해야 한다.
+                Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+                Vector3 worldMouseDownPosition = Camera.main.ScreenToWorldPoint(_mouseDownPosition);
+                DispatchEvent(Types.InputEventType.Swipe, (worldMousePosition - worldMouseDownPosition));
             }
         }
 

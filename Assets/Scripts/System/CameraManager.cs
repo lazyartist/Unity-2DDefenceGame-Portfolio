@@ -80,7 +80,7 @@ public class CameraManager : SingletonBase<CameraManager>
                 break;
             case Types.InputEventType.Swipe:
                 {
-                    Vector3 swipeDistance = (value / MapPixelPerUnit) * (Camera.orthographicSize / MaxCameraSize) * -1;
+                    Vector3 swipeDistance = value * -1f; // 스와이프 방향과 카메라는 반대로 이동해야 화면과 스와이프 방향이 같아진다.
                     Camera.transform.position = _lastCameraPosition + swipeDistance;
                     UpdateValidCameraArea();
                     SetCameraPositionInValidArea();
