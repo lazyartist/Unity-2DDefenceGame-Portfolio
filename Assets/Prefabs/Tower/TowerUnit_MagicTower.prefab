@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 114074546919725200}
   - component: {fileID: 114999345905812012}
   - component: {fileID: 114961925386773502}
+  - component: {fileID: 114004981127754672}
   m_Layer: 8
   m_Name: TowerUnit_MagicTower
   m_TagString: Unit
@@ -188,6 +189,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114004981127754672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1751663501147014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebec3682be064642b16e66f8bc4f1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitMovePointType: 0
+  WayPoint: {fileID: 0}
+  RallyPoint: {x: 0, y: 0, z: 0}
+  IsArrived: 0
+  IsTransitToRallyPointTypeAfterArrived: 0
 --- !u!114 &114036184108926214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,14 +270,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 37469bddf7a40834ea01ef29997ccd1e, type: 2}
   AttackDataIndex: 0
   UnitBody: {fileID: 114830043916443620}
-  UnitSize: {x: 0, y: 0}
+  ColliderOffset: {x: 0, y: 0}
+  ColliderSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: 0.28, z: 0}
   HitEffectAnimator: {fileID: 0}
   UnitFSM: {fileID: 114811229439697786}
   CanChangeDirection: 0
-  TargetWaypoint: {fileID: 0}
-  RallyWaypoint: {fileID: 0}
-  WaypointSubIndex: 0
+  UnitMovePoint: {fileID: 114004981127754672}
   MoveDirection: {x: 0, y: 0, z: 0}
   LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1705086676686350}
@@ -444,7 +460,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1993133199
-  m_SortingLayer: 8
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300002, guid: 15a10c8c9ca8ff441b19151332b7c272, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

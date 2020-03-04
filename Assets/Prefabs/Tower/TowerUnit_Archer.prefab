@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 114072999202522946}
   - component: {fileID: 114441106227714048}
   - component: {fileID: 114594138945018940}
+  - component: {fileID: 114730605492399176}
   m_Layer: 8
   m_Name: TowerUnit_Archer
   m_TagString: Unit
@@ -201,6 +202,7 @@ GameObject:
   - component: {fileID: 114745901335058668}
   - component: {fileID: 114130808932761646}
   - component: {fileID: 114226677571229774}
+  - component: {fileID: 114109244591810406}
   m_Layer: 10
   m_Name: Unit_Archer
   m_TagString: Unit
@@ -504,6 +506,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
+--- !u!114 &114109244591810406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1843265027568148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebec3682be064642b16e66f8bc4f1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitMovePointType: 0
+  WayPoint: {fileID: 0}
+  RallyPoint: {x: 0, y: 0, z: 0}
+  IsArrived: 0
+  IsTransitToRallyPointTypeAfterArrived: 0
 --- !u!114 &114130808932761646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -711,6 +729,22 @@ MonoBehaviour:
   Unit: {fileID: 114965932433491708}
   HpBarBgSR: {fileID: 212980199614305974}
   HpBarGaugeSR: {fileID: 212926226176171904}
+--- !u!114 &114730605492399176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350713528623468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebec3682be064642b16e66f8bc4f1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitMovePointType: 0
+  WayPoint: {fileID: 0}
+  RallyPoint: {x: 0, y: 0, z: 0}
+  IsArrived: 0
+  IsTransitToRallyPointTypeAfterArrived: 0
 --- !u!114 &114745901335058668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -740,26 +774,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
   AttackDataIndex: 0
   UnitBody: {fileID: 114674303218684092}
-  UnitSize: {x: 0, y: 0}
+  ColliderOffset: {x: 0, y: 0}
+  ColliderSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: -0.92, z: 0}
-  UnitFSM: {fileID: 114990053605017292}
   HitEffectAnimator: {fileID: 0}
-  TargetWaypoint: {fileID: 0}
-  RallyWaypoint: {fileID: 0}
-  WaypointSubIndex: 0
+  UnitFSM: {fileID: 114990053605017292}
+  CanChangeDirection: 1
+  UnitMovePoint: {fileID: 114109244591810406}
+  MoveDirection: {x: 0, y: 0, z: 0}
   LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1083582964749310}
-  Velocity: 0
-  MoveDirection: {x: 0, y: 0, z: 0}
   Health: 0
   Speed: 1
   IsDied: 0
   TakenCCData: {fileID: 0}
-  CanChangeDirection: 1
   GoalComplete: 0
-  EnemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &114967502376588390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -777,26 +806,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
   AttackDataIndex: 0
   UnitBody: {fileID: 114070676818138844}
-  UnitSize: {x: 0, y: 0}
+  ColliderOffset: {x: 0, y: 0}
+  ColliderSize: {x: 0, y: 0}
   UnitCenterOffset: {x: 0, y: 0.3, z: 0}
-  UnitFSM: {fileID: 114473184380942948}
   HitEffectAnimator: {fileID: 0}
-  TargetWaypoint: {fileID: 0}
-  RallyWaypoint: {fileID: 0}
-  WaypointSubIndex: 0
+  UnitFSM: {fileID: 114473184380942948}
+  CanChangeDirection: 0
+  UnitMovePoint: {fileID: 114730605492399176}
+  MoveDirection: {x: 0, y: 0, z: 0}
   LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1920152767210224}
-  Velocity: 0
-  MoveDirection: {x: 0, y: 0, z: 0}
   Health: 0
   Speed: 1
   IsDied: 0
   TakenCCData: {fileID: 0}
-  CanChangeDirection: 0
   GoalComplete: 0
-  EnemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &114990053605017292
 MonoBehaviour:
   m_ObjectHideFlags: 1

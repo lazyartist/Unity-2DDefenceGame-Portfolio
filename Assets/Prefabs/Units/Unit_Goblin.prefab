@@ -163,13 +163,14 @@ GameObject:
   - component: {fileID: 114413698250262342}
   - component: {fileID: 114000740797514660}
   - component: {fileID: 114595389890781656}
+  - component: {fileID: 114647064162350122}
   m_Layer: 0
   m_Name: Unit_Goblin
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1993415911473416
 GameObject:
   m_ObjectHideFlags: 1
@@ -510,6 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Selected: 0
   SelectedSR: {fileID: 212112365357231488}
+  InfoType: 0
   Unit: {fileID: 114528930007832794}
 --- !u!114 &114415679644491530
 MonoBehaviour:
@@ -562,6 +564,7 @@ MonoBehaviour:
   HitEffectAnimator: {fileID: 95275120941160698}
   UnitFSM: {fileID: 114662078880856556}
   CanChangeDirection: 1
+  UnitMovePoint: {fileID: 114647064162350122}
   TargetWaypoint: {fileID: 0}
   RallyWaypoint: {fileID: 0}
   WaypointSubIndex: 0
@@ -584,6 +587,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad0960c3d247c54ab7b42b10713537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114647064162350122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1865862191398894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebec3682be064642b16e66f8bc4f1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitMovePointType: 0
+  WayPoint: {fileID: 0}
+  WayPointSubIndex: 0
+  RallyPoint: {x: 0, y: 0, z: 0}
+  IsArrived: 0
 --- !u!114 &114662078880856556
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -81,13 +81,14 @@ GameObject:
   - component: {fileID: 114511659558347260}
   - component: {fileID: 114145094154538832}
   - component: {fileID: 114990081140116618}
+  - component: {fileID: 114729748063696688}
   m_Layer: 0
   m_Name: Unit_Archer
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1678337674023934
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +399,7 @@ MonoBehaviour:
   HitEffectAnimator: {fileID: 0}
   UnitFSM: {fileID: 114271592312121844}
   CanChangeDirection: 1
+  UnitMovePoint: {fileID: 114729748063696688}
   TargetWaypoint: {fileID: 0}
   RallyWaypoint: {fileID: 0}
   WaypointSubIndex: 0
@@ -423,6 +425,22 @@ MonoBehaviour:
   Unit: {fileID: 114672875092321788}
   UnitBodyContainer: {fileID: 4263177885565904}
   Animator: {fileID: 0}
+--- !u!114 &114729748063696688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503326821611280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebec3682be064642b16e66f8bc4f1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitMovePointType: 0
+  WayPoint: {fileID: 0}
+  WayPointSubIndex: 0
+  RallyPoint: {x: 0, y: 0, z: 0}
+  IsArrived: 0
 --- !u!114 &114776617647403108
 MonoBehaviour:
   m_ObjectHideFlags: 1

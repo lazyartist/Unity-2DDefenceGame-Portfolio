@@ -79,10 +79,10 @@ public class StageManager : SingletonBase<StageManager>
             for (int i = 0; i < wave.UnitCount; i++)
             {
                 Unit unit = Instantiate(wave.UnitPrefab, startWaypoint.transform.position, Quaternion.identity, UnitsContainer.transform);
-                unit.TeamData = StageData.EnemyTeamData;
-                unit.TargetWaypoint = startWaypoint;
-                unit.WaypointSubIndex = waypointSubIndex++;
                 unit.gameObject.SetActive(true);
+                unit.TeamData = StageData.EnemyTeamData;
+                unit.UnitMovePoint.SetWayPoint(startWaypoint, waypointSubIndex);
+                //unit.WaypointSubIndex = waypointSubIndex++;
 
                 yield return new WaitForSeconds(Consts.CreateUnitInterval);
             }
@@ -175,9 +175,9 @@ public class StageManager : SingletonBase<StageManager>
     void SpawnHeroUnit()
     {
         StageInfo.HeroUnit = Instantiate(StageData.HeroUnitPrefab, StageInfo.LastHeroUnitPosition, Quaternion.identity, UnitsContainer.transform);
-        StageInfo.HeroUnit.SetRallyPoint(StageInfo.LastHeroUnitPosition);
-        StageInfo.HeroUnit.UnitEvent += OnUnitEvent_HeroUnit;
         StageInfo.HeroUnit.gameObject.SetActive(true);
+        StageInfo.HeroUnit.UnitMovePoint.SetRallyPoint(StageInfo.LastHeroUnitPosition);
+        StageInfo.HeroUnit.UnitEvent += OnUnitEvent_HeroUnit;
         DispatchHeroUnitChanged();
     }
 

@@ -133,4 +133,8 @@ static public class Types {
     public enum InfoType {
         None, Unit, Tower, MasterSkill, 
     }
+
+    public enum UnitMovePointType {
+        RallyPoint, WayPoint, MovePoint
+    }
 }

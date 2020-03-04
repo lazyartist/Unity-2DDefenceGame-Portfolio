@@ -115,7 +115,8 @@ public class ChildUnits : MonoBehaviour
     void SetRallyPoint(Unit unit, int index, float startAngle = 0f)
     {
         Vector3 position = Quaternion.Euler(0f, 0f, startAngle + (360f / (float)MaxUnitCount) * (float)index) * (Vector3.up * RallyPointRadius);
-        unit.SetRallyPoint(RallyPosition + position);
+        unit.UnitMovePoint.SetMovePoint(null, unit.transform.position, RallyPosition + position);
+        unit.UnitMovePoint.RallyPoint = RallyPosition + position; // todo 이동 후 랠리포인트 지정 방법 필요, 메서드 활용
     }
 
     public void SetRallyPointOfAllUnits()

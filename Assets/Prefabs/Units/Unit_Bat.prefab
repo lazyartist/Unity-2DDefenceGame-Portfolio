@@ -163,13 +163,14 @@ GameObject:
   - component: {fileID: 114520794805092120}
   - component: {fileID: 114094633366757432}
   - component: {fileID: 114175927681525100}
+  - component: {fileID: 114472601300566994}
   m_Layer: 0
   m_Name: Unit_Bat
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1892085318627682
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +519,7 @@ MonoBehaviour:
   HitEffectAnimator: {fileID: 95530543519280788}
   UnitFSM: {fileID: 114536940051813842}
   CanChangeDirection: 1
+  UnitMovePoint: {fileID: 114472601300566994}
   TargetWaypoint: {fileID: 0}
   RallyWaypoint: {fileID: 0}
   WaypointSubIndex: 0
@@ -556,6 +558,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
+--- !u!114 &114472601300566994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1635118015957782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebec3682be064642b16e66f8bc4f1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitMovePointType: 0
+  WayPoint: {fileID: 0}
+  WayPointSubIndex: 0
+  RallyPoint: {x: 0, y: 0, z: 0}
+  IsArrived: 0
 --- !u!114 &114520794805092120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -569,6 +587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Selected: 0
   SelectedSR: {fileID: 212515445253561720}
+  InfoType: 0
   Unit: {fileID: 114291473754489126}
 --- !u!114 &114536940051813842
 MonoBehaviour:

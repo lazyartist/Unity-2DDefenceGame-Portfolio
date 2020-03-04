@@ -20,9 +20,8 @@ public class Unit : MonoBehaviour
     public UnitFSM UnitFSM;
     public bool CanChangeDirection = true;
     // Move
-    public Waypoint TargetWaypoint;
-    public Waypoint RallyWaypoint;
-    public int WaypointSubIndex = 0;
+    public UnitMovePoint UnitMovePoint;
+    // todo move end
     public Vector3 MoveDirection;
     // Enemy
     public Unit EnemyUnit { get; private set; }
@@ -52,6 +51,9 @@ public class Unit : MonoBehaviour
             ColliderOffset = boxCollider.offset;
             ColliderSize = boxCollider.size;
         }
+
+        // 초기는 RallyPoint로 설정
+        UnitMovePoint.SetRallyPoint(transform.position);
     }
 
     protected void Start()
@@ -109,17 +111,6 @@ public class Unit : MonoBehaviour
 
     void CleanUpUnit()
     {
-        if (TargetWaypoint != null)
-        {
-            WaypointManager.Inst.WaypointPool.Release(TargetWaypoint);
-            TargetWaypoint = null;
-        }
-        if (RallyWaypoint != null)
-        {
-            WaypointManager.Inst.WaypointPool.Release(RallyWaypoint);
-            RallyWaypoint = null;
-        }
-
         UnitFSM.ClearnUp();
     }
 
@@ -273,15 +264,10 @@ public class Unit : MonoBehaviour
         }
 
         Vector3 findPosition;
-        if (RallyWaypoint != null)
-        {
-            // 랠리포인트 중심으로 적을 찾는다
-            findPosition = RallyWaypoint.GetPosition(WaypointSubIndex);
-        }
-        else
-        {
-            findPosition = transform.position + UnitCenterOffset;
-        }
+        // 랠리포인트 중심으로 적을 찾는다
+        findPosition = UnitMovePoint.RallyPoint;
+        //todo 유닛이 랠리포인트를 벗어나지 않는 범위에서 찾도록 수정, 랠리포인트 범위(반지름이 있어야한다)
+        // todo 랠리포인트 중심으로 적을 찾는다 or 유닛을 기준으로 찾는다.
         Unit draftTargetUnit = null;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(findPosition, UnitData.TargetRange, _enemyLayerMask);
         if (colliders.Length == 0) return draftTargetUnit;
@@ -297,21 +283,12 @@ public class Unit : MonoBehaviour
                 {
                     draftTargetUnit = unit;
                 }
-                else
+                // 가장 목표지점에 가까운 적을 찾는다.
+                // todo 적 찾기 정책
+                else if (draftTargetUnit.UnitMovePoint.UnitMovePointType == Types.UnitMovePointType.WayPoint
+                    && draftTargetUnit.UnitMovePoint.WayPoint.OrderNumber < unit.UnitMovePoint.WayPoint.OrderNumber)
                 {
-                    if (unit.TargetWaypoint == null)
-                    {
-                        //
-                    }
-                    else if (draftTargetUnit.TargetWaypoint == null)
-                    {
-                        draftTargetUnit = unit;
-                    }
-                    // 가장 목표지점에 가까운 적을 찾는다.
-                    else if (draftTargetUnit.TargetWaypoint.OrderNumber < unit.TargetWaypoint.OrderNumber)
-                    {
-                        draftTargetUnit = unit;
-                    }
+                    draftTargetUnit = unit;
                 }
             }
         }
@@ -352,17 +329,6 @@ public class Unit : MonoBehaviour
         transform.position = transform.position + (MoveDirection.normalized * velocity);
     }
 
-    public bool IsArrivedRallyPoint()
-    {
-        if (RallyWaypoint != null)
-        {
-            float distance = Vector3.Distance(transform.position, RallyWaypoint.GetPosition(WaypointSubIndex));
-            bool arrived = distance < Consts.ArriveDistance;
-            return arrived;
-        }
-        return false;
-    }
-
     public bool HasEnemyUnit()
     {
         return EnemyUnit != null;
@@ -384,21 +350,6 @@ public class Unit : MonoBehaviour
     public Vector3 GetCenterPosition()
     {
         return transform.position + UnitCenterOffset;
-    }
-
-    public void SetRallyPoint(Vector3 position)
-    {
-        if (RallyWaypoint == null)
-        {
-            RallyWaypoint = WaypointManager.Inst.WaypointPool.Get();
-        }
-        if (TargetWaypoint == null)
-        {
-            TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
-        }
-        RallyWaypoint.transform.position = position;
-        TargetWaypoint.transform.position = position;
-        ClearEnemyUnit();
     }
 
     public void ClearEnemyUnit()

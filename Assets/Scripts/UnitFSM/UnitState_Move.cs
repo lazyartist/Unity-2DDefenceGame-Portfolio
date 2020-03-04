@@ -33,29 +33,26 @@ public class UnitState_Move : AUnitState
     public override AUnitState UpdateState()
     {
         // 이동
-        _unit.MoveTo(_unit.TargetWaypoint.GetPosition(_unit.WaypointSubIndex));
+        Vector3 targetPosition = _unit.UnitMovePoint.GetPosition();
+        _unit.MoveTo(targetPosition);
         if (_unit.CanChangeDirection)
         {
-            _unit.Toward(_unit.TargetWaypoint.GetPosition(_unit.WaypointSubIndex));
+            _unit.Toward(targetPosition);
         }
 
-        float distance = Vector3.Distance(_unit.transform.position, _unit.TargetWaypoint.GetPosition(_unit.WaypointSubIndex));
-        if (distance < 0.01f)
+        if (_unit.UnitMovePoint.IsArrivedPosition(_unit.transform.position))
         {
             // 목표지점 도착
-            _unit.transform.position = _unit.TargetWaypoint.GetPosition(_unit.WaypointSubIndex);
-
-            // 다음 waypoint가 있으면 이동
-            if (_unit.TargetWaypoint.NextWaypoint != null)
+            _unit.transform.position = targetPosition;
+            // 다음 목표지점으로 변경
+            if (_unit.UnitMovePoint.TryNextPosition())
             {
-                _unit.TargetWaypoint = _unit.TargetWaypoint.NextWaypoint;
+                // 새로운 목표지점이 있다. Move 상태 계속 유지
                 return null;
             }
             else
             {
-                // waypoint 해제
-                WaypointManager.Inst.WaypointPool.Release(_unit.TargetWaypoint);
-                _unit.TargetWaypoint = null;
+                // 새로운 목표지점이 없다. Idle 상태로 전환
                 return unitStates[(int)Types.UnitFSMType.Idle];
             }
         }

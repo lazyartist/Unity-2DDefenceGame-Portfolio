@@ -38,7 +38,7 @@ public class AStarNode : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = IsBlock ? Color.black : _color;
-        Gizmos.DrawCube(transform.position, new Vector3(0.5f, 0.5f, 0.5f));
+        Gizmos.DrawCube(transform.position, new Vector3(0.3f, 0.3f, 0.3f));
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + _directionToParent);
     }

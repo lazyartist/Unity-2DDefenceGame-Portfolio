@@ -118,9 +118,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4161327044439200}
+  - component: {fileID: 50267956447860402}
   - component: {fileID: 114255535589207524}
   - component: {fileID: 114795718610798396}
-  - component: {fileID: 50267956447860402}
   - component: {fileID: 61071104442262254}
   - component: {fileID: 114251905374477166}
   - component: {fileID: 114928013201981842}
@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 114887758925307890}
   - component: {fileID: 114879771491673998}
   - component: {fileID: 114275497998574638}
+  - component: {fileID: 114121242828198476}
   m_Layer: 0
   m_Name: Unit_Minotaur
   m_TagString: Unit
@@ -405,6 +406,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114121242828198476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1390012567218568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebec3682be064642b16e66f8bc4f1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitMovePointType: 0
+  WayPoint: {fileID: 0}
+  WayPointSubIndex: 0
+  RallyPoint: {x: 0, y: 0, z: 0}
+  MovePointIndex: 0
 --- !u!114 &114163440841428376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -539,6 +556,7 @@ MonoBehaviour:
   HitEffectAnimator: {fileID: 95804874095596780}
   UnitFSM: {fileID: 114251905374477166}
   CanChangeDirection: 1
+  UnitMovePoint: {fileID: 114121242828198476}
   TargetWaypoint: {fileID: 0}
   RallyWaypoint: {fileID: 0}
   WaypointSubIndex: 0
@@ -576,6 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Selected: 0
   SelectedSR: {fileID: 212836839080241356}
+  InfoType: 0
   Unit: {fileID: 114795718610798396}
 --- !u!114 &114887758925307890
 MonoBehaviour:

@@ -5,12 +5,12 @@ using UnityEngine;
 static public class Consts
 {
     // ===== float
-    public static float ArriveDistance = 0.01f;
     public static float TowerUnitSellCostRate = 0.8f;
     public static int WaypointSubIndexStart = 1;
     public static float CreateUnitInterval { get { return 0.5f; } internal set { } }
     public static float CoolTimeUpdateInterval { get { return 0.05f; } internal set { } }
     public static float UnitRenderOrderPrecision = 100f;
+    public static float MoveArrivedDistance = 0.01f;
 
     // ===== tag names
     public static string tagUnit = "Unit";

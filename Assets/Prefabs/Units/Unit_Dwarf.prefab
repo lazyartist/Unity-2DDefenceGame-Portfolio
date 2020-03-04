@@ -66,13 +66,14 @@ GameObject:
   - component: {fileID: 114810329365369830}
   - component: {fileID: 114685651843404092}
   - component: {fileID: 114474333203263112}
+  - component: {fileID: 114116973425713332}
   m_Layer: 0
   m_Name: Unit_Dwarf
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1400612557840572
 GameObject:
   m_ObjectHideFlags: 1
@@ -443,6 +444,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
   IsPlayAttackAni: 1
+--- !u!114 &114116973425713332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1294310506979898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebec3682be064642b16e66f8bc4f1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitMovePointType: 0
+  WayPoint: {fileID: 0}
+  WayPointSubIndex: 0
+  RallyPoint: {x: 0, y: 0, z: 0}
+  IsArrived: 0
 --- !u!114 &114294899750063256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -493,6 +510,7 @@ MonoBehaviour:
   HitEffectAnimator: {fileID: 95866556446321216}
   UnitFSM: {fileID: 114827054183385052}
   CanChangeDirection: 1
+  UnitMovePoint: {fileID: 114116973425713332}
   TargetWaypoint: {fileID: 0}
   RallyWaypoint: {fileID: 0}
   WaypointSubIndex: 0
@@ -517,6 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Selected: 0
   SelectedSR: {fileID: 212439688688493572}
+  InfoType: 0
   Unit: {fileID: 114611179643101524}
 --- !u!114 &114707808215176082
 MonoBehaviour:

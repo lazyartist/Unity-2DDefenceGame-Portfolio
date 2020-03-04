@@ -16,10 +16,9 @@ public class UnitState_Idle : AUnitState
 
     public override AUnitState UpdateState()
     {
-        // 이동
-        if (_unit.TargetWaypoint != null)
+        // 목표지점에 도착하지 않았으면 이동
+        if (_unit.UnitMovePoint.IsArrived == false)
         {
-            //Debug.Log("Move Waypoint " + unit.TargetWaypoint);
             return unitStates[(int)Types.UnitFSMType.Move];
         }
 
@@ -27,16 +26,15 @@ public class UnitState_Idle : AUnitState
         if (_unit.HasEnemyUnit() == false && _unit.TryFindEnemy() != null)
         {
             // 공격대상을 찾았다
-            //Debug.Log("Found Enemy " + unit.EnemyUnit);
             if (_unit.GetAttackData().ProjectilePrefab == null)
             {
                 // 공격대상에게 이동할 동안 대기하도록 통보
                 _unit.EnemyUnit.Notify(Types.UnitNotifyType.Wait, _unit);
                 // 근거리 공격 : 적의 앞까지 이동할 waypoint 설정(진행 방향에 대해 앞)
                 float enemyDirection = Mathf.Sign(_unit.EnemyUnit.MoveDirection.x);
-                _unit.TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
-                _unit.TargetWaypoint.transform.position = _unit.EnemyUnit.transform.position
+                Vector3 targetPosition = _unit.EnemyUnit.transform.position
                     + ((new Vector3(_unit.ColliderSize.x * 0.5f, 0.0f, 0.0f) + new Vector3(_unit.EnemyUnit.ColliderSize.x * 0.5f, 0.0f, 0.0f)) * enemyDirection);
+                _unit.UnitMovePoint.SetMovePoint(null, _unit.transform.position, targetPosition);
                 return unitStates[(int)Types.UnitFSMType.Move];
             }
             else
@@ -49,16 +47,13 @@ public class UnitState_Idle : AUnitState
         //공격대상이 있다
         if (_unit.HasEnemyUnit())
         {
-            //Debug.LogAssertion("Idle : unit.EnemyUnit != null " + unit);
             return unitStates[(int)Types.UnitFSMType.Attack];
         }
 
-        // 대기장소로 이동
-        if (_unit.TargetWaypoint == null && _unit.RallyWaypoint != null && _unit.IsArrivedRallyPoint() == false)
+        // 적이 없으면 랠리포인트로 이동
+        if (_unit.UnitMovePoint.IsArrived && _unit.UnitMovePoint.IsArrivedRallyPoint(_unit.transform.position) == false)
         {
-            _unit.TargetWaypoint = WaypointManager.Inst.WaypointPool.Get();
-            _unit.TargetWaypoint.transform.position = _unit.RallyWaypoint.transform.position;
-            //Debug.Log("Move RallyPoint " + unit.TargetWaypoint);
+            _unit.UnitMovePoint.SetMovePoint(null, _unit.transform.position, _unit.UnitMovePoint.RallyPoint);
             return unitStates[(int)Types.UnitFSMType.Move];
         }
 

@@ -139,8 +139,8 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
         }
 
         Gizmos.color = Color.red;
-        Gizmos.DrawCube(_startNode.transform.position, new Vector3(0.3f, 0.3f, 0.3f));
+        Gizmos.DrawCube(_startNode.transform.position, new Vector3(0.6f, 0.6f, 0.6f));
         Gizmos.color = Color.blue;
-        Gizmos.DrawCube(_endNode.transform.position, new Vector3(0.3f, 0.3f, 0.3f));
+        Gizmos.DrawCube(_endNode.transform.position, new Vector3(0.6f, 0.6f, 0.6f));
     }
 }

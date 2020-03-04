@@ -4,26 +4,30 @@ using UnityEngine;
 
 public class RallyPoint : MonoBehaviour
 {
-    public Waypoint NextWaypoint;
-    public int OrderNumber;
-    public WaypointData WaypointData;
-    
-    public Vector3 GetPosition(int subPositionIndex)
-    {
-        if (subPositionIndex == 0)
-        {
-            return transform.position;
-        }
-        else
-        {
-            Vector3 subPosition = Vector3.zero;
-            if (WaypointData.SubPositionCount > subPositionIndex)
-            {
-                Vector3 direction = Vector3.right;
-                subPosition = Quaternion.Euler(0f, 0f, transform.rotation.eulerAngles.z + 360f / WaypointData.SubPositionCount * subPositionIndex) * direction * WaypointData.SubPositionRadius;
-            }
+    public Vector3 CurPosition;
+    public bool IsArrived;
 
-            return transform.position + subPosition;
-        }
+    int _positionIndex;
+    List<Vector3> _positions;
+    
+    public Vector3 GetPosition()
+    {
+        return _positions[_positionIndex];
     }
+
+    public Vector3 NextPosition()
+    {
+        CurPosition = _positions[++_positionIndex];
+        return CurPosition;
+    }
+
+    public void ResetPositions()
+    {
+        _positionIndex = 0;
+    }
+    
+    //public bool Arrive()
+    //{
+    //    --_positionIndex;
+    //}
 }
