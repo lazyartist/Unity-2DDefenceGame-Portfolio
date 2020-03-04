@@ -12,7 +12,7 @@ public class UIMiniMap : MonoBehaviour
 
     CameraManager _cameraManager;
     Camera _camera;
-    float _minimapMultifier;
+    float _minimapSizeMultifier;
 
     void Start()
     {
@@ -24,7 +24,7 @@ public class UIMiniMap : MonoBehaviour
         float miniMapCameraHeight = CameraManager.Inst.MinimapCamera.orthographicSize * 2f;
         float miniMapCameraWidth = miniMapCameraHeight * CameraManager.Inst.MinimapCamera.aspect;
         MinimapRawImage.rectTransform.sizeDelta = new Vector2(MinimapRawImage.rectTransform.rect.width, MinimapRawImage.rectTransform.rect.width * miniMapCameraHeight / miniMapCameraWidth);
-        _minimapMultifier = MinimapRawImage.rectTransform.rect.height / _cameraManager.ValidMapAreaSize.y;
+        _minimapSizeMultifier = MinimapRawImage.rectTransform.rect.height / _cameraManager.ValidMapAreaSize.y;
     }
 
     void Update()
@@ -52,10 +52,10 @@ public class UIMiniMap : MonoBehaviour
 
     void UpdateCamera()
     {
-        float miniMapCameraRectWidth = _camera.orthographicSize * 2f * _camera.aspect * _minimapMultifier;
-        float miniMapCameraRectHeight = _camera.orthographicSize * 2f * _minimapMultifier;
-        MiniMapCameraRectImage.rectTransform.sizeDelta = new Vector2(miniMapCameraRectWidth, miniMapCameraRectHeight);
-        MiniMapCameraRectImage.transform.localPosition = _camera.transform.position * _minimapMultifier;
+        Vector2 minimapCameraRectSize = new Vector2(_camera.orthographicSize * 2f * _camera.aspect * _minimapSizeMultifier, _camera.orthographicSize * 2f * _minimapSizeMultifier);
+        MiniMapCameraRectImage.rectTransform.sizeDelta = minimapCameraRectSize;
+        Vector3 minimapAxis = new Vector3(MinimapRawImage.rectTransform.rect.width - minimapCameraRectSize.x, MinimapRawImage.rectTransform.rect.height - minimapCameraRectSize.y, 0f) * 0.5f;
+        MiniMapCameraRectImage.transform.localPosition = minimapAxis + _camera.transform.position * _minimapSizeMultifier;
 
         CameraMagnificationText.text = ((int)(_cameraManager.MinCameraSize / _camera.orthographicSize * 100f)).ToString() + "%";
     }
