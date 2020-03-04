@@ -19,7 +19,7 @@ public class UIInfoBar : MonoBehaviour
         if (SelectorManager.Inst.CurSelector == null)
         {
             _selector = null;
-            UIContainer.SetActive(false);
+            InfoText.text = "";
         }
         else if (SelectorManager.Inst.CurSelector == _selector)
         {
@@ -53,7 +53,6 @@ public class UIInfoBar : MonoBehaviour
                 default:
                     break;
             }
-            UIContainer.SetActive(true);
         }
     }
 }
