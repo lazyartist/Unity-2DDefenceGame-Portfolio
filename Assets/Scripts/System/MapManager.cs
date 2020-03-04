@@ -8,6 +8,7 @@ public class MapManager : SingletonBase<MapManager>
 {
     public SpriteRenderer MapSR;
     public SpriteRenderer MapMaskSR;
+    public SpriteRenderer MapHighLightSR;
     public Material DefaultMaterial;
     public Material GrayscaleAndHighLightMaterial;
 
