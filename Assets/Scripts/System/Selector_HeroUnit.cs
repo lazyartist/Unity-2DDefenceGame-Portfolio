@@ -23,6 +23,7 @@ public class Selector_HeroUnit : Selector
         _selectResult.IsSpread = true;
 
         UICanvas.Inst.HeroUnitButton.Select(true);
+        MapManager.Inst.SetHighLightWay(true);
 
         return _selectResult;
     }
@@ -91,6 +92,7 @@ public class Selector_HeroUnit : Selector
         base.SelectExit();
 
         UICanvas.Inst.HeroUnitButton.Select(false);
+        MapManager.Inst.SetHighLightWay(false);
     }
 
     void OnUnitEvent(Types.UnitEventType unitEventType, Unit unit)

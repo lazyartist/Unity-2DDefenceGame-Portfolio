@@ -1,10 +1,10 @@
-﻿Shader "2D/GrayscaleImageEffectShader"
+﻿Shader "2D/GrayscaleAndHighLightShader"
 {
 	Properties
 	{
 		_MainTex("Texture", 2D) = "white" {}
-		_Intensity("Intensity", Range(0,1)) = 0.5
-		_IsGrayscale("IsGrayscale", Range(0,1)) = 0.0
+		_HighLightTex("Texture", 2D) = "white" {}
+		_HighLightChannel("HighLight Channel Index", int) = 0
 	}
 
 		SubShader
@@ -41,12 +41,19 @@
 				}
 
 				sampler2D _MainTex;
-				float _Intensity;
+				sampler2D _HighLightTex;
+				int _HighLightChannel;
 
 				fixed4 frag(v2f i) : SV_Target
 				{
 					fixed4 col = tex2D(_MainTex, i.uv);
-					col.rgb = (col.r + col.g + col.b) / 3 * _Intensity;
+					fixed4 colMask = tex2D(_HighLightTex, i.uv);
+					float mask = colMask[_HighLightChannel];
+					float gray = (col.r + col.g + col.b) / 3;
+					float4 diffCol = col - gray;
+					col.r = gray + diffCol.r * mask;
+					col.g = gray + diffCol.g * mask;
+					col.b = gray + diffCol.b * mask;
 					return col;
 				}
 				ENDCG

@@ -8,6 +8,8 @@ public class MapManager : SingletonBase<MapManager>
 {
     public SpriteRenderer MapSR;
     public SpriteRenderer MapMaskSR;
+    public Material DefaultMaterial;
+    public Material GrayscaleAndHighLightMaterial;
 
     Vector3 _mapMaskPivot;
 
@@ -33,5 +35,10 @@ public class MapManager : SingletonBase<MapManager>
     {
         Vector3 xyOnMapMaskSR = _mapMaskPivot + ((worldPosition - MapMaskSR.transform.position) * (MapMaskSR.sprite.pixelsPerUnit / MapMaskSR.gameObject.transform.localScale.x));
         return MapMaskSR.sprite.texture.GetPixel((int)xyOnMapMaskSR.x, (int)xyOnMapMaskSR.y);
+    }
+
+    public void SetHighLightWay(bool isSet)
+    {
+        MapSR.material = isSet ? GrayscaleAndHighLightMaterial : DefaultMaterial;
     }
 }

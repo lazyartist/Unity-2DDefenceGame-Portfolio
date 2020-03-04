@@ -1156,7 +1156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &221943934
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2338,6 +2338,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MapSR: {fileID: 378351444}
   MapMaskSR: {fileID: 1953397127}
+  DefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  GrayscaleAndHighLightMaterial: {fileID: 2100000, guid: 6ebca31f14aed0b48b28c5c2a2d934e1,
+    type: 2}
 --- !u!1001 &604652314
 Prefab:
   m_ObjectHideFlags: 0
@@ -4757,10 +4760,10 @@ RectTransform:
   m_Father: {fileID: 1731512067}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 30.5, y: -34.5}
+  m_SizeDelta: {x: 61, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1127451819
 MonoBehaviour:
@@ -6552,7 +6555,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 69}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1731512068
 MonoBehaviour:
@@ -6898,7 +6901,7 @@ MonoBehaviour:
   MinimapRawImage: {fileID: 1560731522}
   MiniMapCameraRectImage: {fileID: 618805989}
   CameraMagnificationText: {fileID: 662937000}
-  MiniMapCameraRectMoveSpeedMultipier: 0.5
+  MiniMapCameraRectMoveSpeedMultipier: 1
 --- !u!1001 &1808117632
 Prefab:
   m_ObjectHideFlags: 0
@@ -7892,7 +7895,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 20.48, y: 20.48}
+  m_Size: {x: 30.719997, y: 25.599998}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
