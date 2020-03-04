@@ -32,6 +32,7 @@ public class Selector_MasterSkill : Selector
         _selectResult.CursorType = Types.CursorType.None;
         _selectResult.IsFlag = false;
         _selectResult.SelectResultType = Types.SelectResultType.None;
+        MapManager.Inst.SetHighLightWay(true);
         return _selectResult;
     }
 
@@ -143,6 +144,7 @@ public class Selector_MasterSkill : Selector
     {
         UIMasterSkillMenu.Deselect();
         base.SelectExit();
+        MapManager.Inst.SetHighLightWay(false);
     }
 
     override protected void UpdateSelected()
