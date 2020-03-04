@@ -66,6 +66,7 @@ public class StageManager : SingletonBase<StageManager>
 
         ClearWaveInfo();
         _coroutine_wave = StartCoroutine(Coroutine_Wave());
+        StageInfo.IsWaveStarted = true;
     }
 
     IEnumerator Coroutine_Wave()
@@ -101,6 +102,7 @@ public class StageManager : SingletonBase<StageManager>
             if (StageInfo.IsWavePhaseDone && TryNextWavePhase() == false)
             {
                 StageInfo.IsAllWavePhaseDone = true;
+                StageInfo.IsWaveStarted = false;
                 yield break;
             }
         }
@@ -112,6 +114,7 @@ public class StageManager : SingletonBase<StageManager>
         StageInfo.WaveIndex = 0;
         StageInfo.IsWavePhaseDone = false;
         StageInfo.IsAllWavePhaseDone = false;
+        StageInfo.IsWaveStarted = false;
     }
 
     bool TryNextWavePhase()

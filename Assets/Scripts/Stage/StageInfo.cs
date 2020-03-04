@@ -65,6 +65,7 @@ public class StageInfo
 
     public int WavePhaseCount { get; private set; }
     public int WaveIndex = 0;
+    public bool IsWaveStarted = false;
     public bool IsWavePhaseDone = false;
     public bool IsAllWavePhaseDone = false;
     // Wave ===== end
