@@ -14,8 +14,7 @@ MonoBehaviour:
   UnitType: 3
   Health: 10
   MoveSpeed: 2
-  TargetRange: 3
-  AttackCoolTime: 0.3
+  TargetRange: 4
   Gold: 0
   StageHealthDamage: 1
   UnitSortingLayerType: 0
