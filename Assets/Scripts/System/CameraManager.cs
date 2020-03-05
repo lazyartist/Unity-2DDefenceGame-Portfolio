@@ -33,6 +33,7 @@ public class CameraManager : SingletonBase<CameraManager>
         ValidMapAreaRect = new Rect(ValidMapAreaSize.x * 0.5f * -1f, ValidMapAreaSize.y * 0.5f * -1f, ValidMapAreaSize.x, ValidMapAreaSize.y);
 
         // 미니맵 카메라를 유효 맵영역에 맞춘다
+        MinimapCamera.transform.position = ValidMapAreaCenter;
         MinimapCamera.orthographicSize = ValidMapAreaRect.height * 0.5f;
         MinimapCamera.aspect = ValidMapAreaRect.width / ValidMapAreaRect.height;
     }

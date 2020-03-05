@@ -65,19 +65,19 @@ public class UIMiniMap : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             case Types.CameraEventType.None:
                 break;
             case Types.CameraEventType.CameraSizeChanged:
-                UpdateCamera();
+                UpdateCameraRect();
                 break;
             default:
                 break;
         }
     }
 
-    void UpdateCamera()
+    void UpdateCameraRect()
     {
         Vector2 minimapCameraRectSize = new Vector2(_camera.orthographicSize * 2f * _camera.aspect * _miniMapSizeMultifier, _camera.orthographicSize * 2f * _miniMapSizeMultifier);
         MiniMapCameraRectImage.rectTransform.sizeDelta = minimapCameraRectSize;
         Vector3 _minimapAxis = new Vector3(MinimapRawImage.rectTransform.rect.width - minimapCameraRectSize.x, MinimapRawImage.rectTransform.rect.height - minimapCameraRectSize.y, 0f) * 0.5f;
-        MiniMapCameraRectImage.transform.localPosition = _minimapAxis + _camera.transform.position * _miniMapSizeMultifier;
+        MiniMapCameraRectImage.transform.localPosition = _minimapAxis + (_camera.transform.position - _cameraManager.ValidMapAreaCenter) * _miniMapSizeMultifier;
 
         CameraMagnificationText.text = ((int)(_cameraManager.MinCameraSize / _camera.orthographicSize * 100f)).ToString() + "%";
     }

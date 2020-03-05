@@ -11,6 +11,8 @@ static public class Consts
     public static float CoolTimeUpdateInterval { get { return 0.05f; } internal set { } }
     public static float UnitRenderOrderPrecision = 100f;
     public static float MoveArrivedDistance = 0.01f;
+    public static float PixelPerUnit = 100f;
+    public static float ColorNearlyEqual = 0.5f;
 
     // ===== tag names
     public static string tagUnit = "Unit";

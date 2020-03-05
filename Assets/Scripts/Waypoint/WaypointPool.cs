@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// deprecated
 public class WaypointPool : MonoBehaviour {
     public GameObject WaypointPoolContainer;
     public WaypointData WaypointData;

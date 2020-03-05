@@ -1767,7 +1767,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 30.719997, y: 25.599998}
+    oldSize: {x: 30.719997, y: 30.719997}
     newSize: {x: 20.48, y: 20.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5904,7 +5904,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1281065272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -19.63}
+  m_LocalPosition: {x: 0, y: -2, z: -19.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8634,7 +8634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1953397126
 Transform:
   m_ObjectHideFlags: 0
@@ -8643,7 +8643,7 @@ Transform:
   m_GameObject: {fileID: 1953397125}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 24, y: 24, z: 1}
   m_Children: []
   m_Father: {fileID: 1313488962}
   m_RootOrder: 1
@@ -8741,8 +8741,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 710217402}
   MinimapCamera: {fileID: 1281065274}
-  ValidMapAreaCenter: {x: 0, y: 0, z: 0}
-  ValidMapAreaSize: {x: 28, y: 23}
+  ValidMapAreaCenter: {x: 0, y: -2, z: 0}
+  ValidMapAreaSize: {x: 28, y: 26}
   MaxCameraSize: 7
   MinCameraSize: 4
   StartCameraSize: 7

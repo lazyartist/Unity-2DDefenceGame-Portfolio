@@ -12,7 +12,9 @@ public class MapManager : SingletonBase<MapManager>
     public Material DefaultMaterial;
     public Material GrayscaleAndHighLightMaterial;
 
-    Vector3 _mapMaskPivot;
+    Vector3 _mapLocalAxis; // unit
+    Vector3 _uvMapPivot; // normalized
+    Vector3 _mapSize; // unit
 
     private void Awake()
     {
@@ -22,20 +24,26 @@ public class MapManager : SingletonBase<MapManager>
 
     public void Init()
     {
-        _mapMaskPivot = new Vector3(MapMaskSR.sprite.pivot.x, MapMaskSR.sprite.pivot.y, 0f);
+        // MapSR.sprite.rect : pixel
+        // MapSR.size : unit
+        _mapSize = new Vector3(MapSR.sprite.rect.width / MapSR.sprite.pixelsPerUnit, MapSR.sprite.rect.height / MapSR.sprite.pixelsPerUnit, 0f);
+        _uvMapPivot = new Vector3(MapSR.sprite.pivot.x / MapSR.sprite.rect.width  /*pixel*/, MapSR.sprite.pivot.y / MapSR.sprite.rect.height, 0f);
+        _mapLocalAxis = new Vector3(_mapSize.x * _uvMapPivot.x, _mapSize.y * _uvMapPivot.y, 0f);
     }
 
     public bool IsMask(Vector3 worldPosition, Types.MapMaskChannelType colorChannelType, Color color)
     {
         Color maskColor = GetMaskColor(worldPosition);
         //Debug.Log("maskColor " + maskColor);
-        return maskColor[(int)colorChannelType] == color[(int)colorChannelType];
+        return color[(int)colorChannelType] - maskColor[(int)colorChannelType] < Consts.ColorNearlyEqual;
     }
 
     public Color GetMaskColor(Vector3 worldPosition)
     {
-        Vector3 xyOnMapMaskSR = _mapMaskPivot + ((worldPosition - MapMaskSR.transform.position) * (MapMaskSR.sprite.pixelsPerUnit / MapMaskSR.gameObject.transform.localScale.x));
-        return MapMaskSR.sprite.texture.GetPixel((int)xyOnMapMaskSR.x, (int)xyOnMapMaskSR.y);
+        Vector3 xy = worldPosition + _mapLocalAxis;
+        Vector3 uv = new Vector3(xy.x / _mapSize.x, xy.y / _mapSize.y, 0f); ;
+        Color pixel = MapMaskSR.sprite.texture.GetPixelBilinear(uv.x, uv.y);
+        return pixel;
     }
 
     public void SetHighLightWay(bool isSet)
