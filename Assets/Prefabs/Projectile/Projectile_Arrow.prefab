@@ -87,8 +87,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f952bc8de77a7647b477ebc48b8f7e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TeamData: {fileID: 0}
   AttackData: {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
   HeightLimit: 0.5
+  HeightLimitMultiflier: 3
   TimeToTopmostHeight: 0.3
 --- !u!212 &212756071531049022
 SpriteRenderer:
@@ -123,7 +125,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 193212725
-  m_SortingLayer: 6
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0edf3bcdbc67f0b47a03e6a0b64369e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

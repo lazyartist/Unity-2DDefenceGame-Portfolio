@@ -16,7 +16,14 @@ public abstract class AProjectile : MonoBehaviour
         TeamData = teamData;
         AttackData = attackData;
         _targetUnit = targetUnit;
-        _targetPosition = targetPosition;
+        if(_targetUnit == null)
+        {
+            _targetPosition = targetPosition;
+        }
+        else
+        {
+            _targetPosition = _targetUnit.GetCenterPosition();
+        }
 
         _targetLayerMask = 0;
         for (int i = 0; i < AttackData.TargetUnitTypes.Length; i++)

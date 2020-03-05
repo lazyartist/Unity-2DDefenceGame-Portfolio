@@ -160,13 +160,14 @@ public class UnitState_Attack : AUnitState
         else
         {
             AProjectile projectile = Instantiate(attackData.ProjectilePrefab, _unit.SpawnPosition.transform.position, Quaternion.identity, _unit.SpawnPosition.transform);
-            // 공격대상이 살아있는 경우
             if (_unit.IsValidEnemyUnit())
             {
+                // 공격대상이 살아있는 경우
                 projectile.Init(_unit.TeamData, attackData, _unit.EnemyUnit, _unit.EnemyUnit.gameObject.transform.position);
             }
             else
             {
+                // 공격대상이 죽은 경우 - 공격 애니가 재생중이기 때문에 발사해야 한다.
                 projectile.Init(_unit.TeamData, attackData, null, _unit.LastEnemyPosition);
             }
         }

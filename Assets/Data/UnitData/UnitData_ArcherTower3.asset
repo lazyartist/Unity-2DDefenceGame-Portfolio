@@ -14,7 +14,7 @@ MonoBehaviour:
   UnitType: 3
   Health: 1
   MoveSpeed: 1
-  TargetRange: 4.5
+  TargetRange: 4
   Gold: 0
   StageHealthDamage: 0
   UnitTargetRangeCenterType: 1

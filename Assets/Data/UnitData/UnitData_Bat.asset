@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitType: 2
   Health: 8
-  MoveSpeed: 1.5
+  MoveSpeed: 0.6
   TargetRange: 0
   Gold: 3
   StageHealthDamage: 1

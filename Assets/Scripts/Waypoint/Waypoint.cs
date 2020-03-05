@@ -7,6 +7,15 @@ public class Waypoint : MonoBehaviour
     public Waypoint NextWaypoint;
     public int OrderNumber;
     public WaypointData WaypointData;
+    public float DistanceToNextWayPoint;
+    public float DirectionToNextWayPoint;
+
+    public void SetNextWayPoint(Waypoint nextWaypoint)
+    {
+        NextWaypoint = nextWaypoint;
+
+        DistanceToNextWayPoint = Vector3.Distance(transform.position, NextWaypoint.transform.position);
+    }
     
     public Vector3 GetPosition(int subPositionIndex)
     {

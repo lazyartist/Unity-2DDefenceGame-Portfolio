@@ -22,6 +22,7 @@ public class Unit : MonoBehaviour
     // Move
     public UnitMovePoint UnitMovePoint;
     // todo move end
+    public float Velocity { get; private set; }
     public Vector3 MoveDirection;
     // Enemy
     public Unit EnemyUnit { get; private set; }
@@ -337,7 +338,7 @@ public class Unit : MonoBehaviour
     {
         MoveDirection = position - transform.position;
         float distance = MoveDirection.magnitude;
-        float velocity = Mathf.Min(distance, UnitData.MoveSpeed * Time.deltaTime); ;
+        Velocity = Mathf.Min(distance, UnitData.MoveSpeed * Time.deltaTime);
 
         // cc
         switch (TakenCCData.CCType)
@@ -345,20 +346,20 @@ public class Unit : MonoBehaviour
             case Types.CCType.None:
                 break;
             case Types.CCType.Stun:
-                velocity = 0f;
+                Velocity = 0f;
                 break;
             case Types.CCType.Slow:
-                velocity *= TakenCCData.CCValue;
+                Velocity *= TakenCCData.CCValue;
                 break;
             default:
                 break;
         }
 
-        if (velocity < 0)
+        if (Velocity < 0)
         {
-            velocity = 0f;
+            Velocity = 0f;
         }
-        transform.position = transform.position + (MoveDirection.normalized * velocity);
+        transform.position = transform.position + (MoveDirection.normalized * Velocity);
     }
 
     public bool HasEnemyUnit()

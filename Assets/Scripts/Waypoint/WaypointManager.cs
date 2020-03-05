@@ -35,7 +35,7 @@ public class WaypointManager : SingletonBase<WaypointManager>
                 Waypoint wp = waypointContainer.transform.GetChild(j).GetComponent<Waypoint>();
                 wp.WaypointData = WaypointData;
                 wp.gameObject.layer = LayerMask.NameToLayer(WaypointData.LayerName);
-                curWaypoint.NextWaypoint = wp;
+                curWaypoint.SetNextWayPoint(wp);
                 Vector3 direction = curWaypoint.NextWaypoint.transform.position - curWaypoint.transform.position;
                 float rad = Mathf.Atan2(direction.y, direction.x);
                 curWaypoint.transform.rotation = Quaternion.Euler(0f, 0f, rad * Mathf.Rad2Deg);
