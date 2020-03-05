@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 public class UnitState_Attack_BarracksTower : AUnitState
 {
-    ChildUnits _childUnits;
+    ChildUnitCreator _childUnitCreator;
     float _coolTime = 0.0f;
     bool _isPlayingAttackAni;
 
     void Awake()
     {
-        _childUnits = GetComponent<ChildUnits>();
+        _childUnitCreator = GetComponent<ChildUnitCreator>();
     }
 
     // implements AUnitState
@@ -30,7 +30,7 @@ public class UnitState_Attack_BarracksTower : AUnitState
         // 공격 애니가 끝날때까지 기다린다
         if (_isPlayingAttackAni == false)
         {
-            if (_coolTime <= 0.0f && _childUnits.ExistNullUnit())
+            if (_coolTime <= 0.0f && _childUnitCreator.ExistNullUnit())
             {
                 Debug.Log("ChildUnit " + _unit);
                 _unit.UnitBody.Animator.SetTrigger("Attack");
@@ -73,6 +73,6 @@ public class UnitState_Attack_BarracksTower : AUnitState
 
     virtual public void AttackFire()
     {
-        _childUnits.CreateUnits();
+        _childUnitCreator.CreateUnits();
     }
 }

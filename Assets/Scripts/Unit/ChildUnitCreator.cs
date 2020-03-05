@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChildUnits : MonoBehaviour
+public class ChildUnitCreator : MonoBehaviour
 {
     public Unit ParentUnit;
     public Unit ChildUnitPrefab;
-    public Unit[] Units;
     public int MaxUnitCount;
-    public Vector3 RallyPosition = Vector3.right;
+    public Vector3 RallyPointInLocal = Vector3.right;
     public float RallyPointRadius = 0.3f;
-    public WaypointData WaypointDataUsedRallyPosition;
+    public WaypointData WaypointDataUsedRallyPosition; // 가까운 WayPoint를 찾기 위한 데이터
+    public bool IsSetRallyPointToNearlyWayPoint;
+    public Unit[] Units;
 
-    LayerMask rallyPointLayerMask;
+    LayerMask _wayPointLayerMask;
 
     void Awake()
     {
@@ -22,18 +23,21 @@ public class ChildUnits : MonoBehaviour
 
     private void Start()
     {
-        RallyPosition = this.transform.position + Vector3.right;
-        rallyPointLayerMask = LayerMask.GetMask(WaypointDataUsedRallyPosition.LayerName);
 
-        float radiusScale = 1.0f;
-        // RallyPosition의 첫 검색은 부모 유닛의 공격범위에 있는 Waypoint 중 가장 뒤에 있는 Waypoint로 지정
-        if (TryFindRallyPosition(radiusScale, true) == false)
+        if (IsSetRallyPointToNearlyWayPoint)
         {
-            // 랠리 포지션을 유닛의 공격범위에서 찾고 못찾았으면 범위를 늘려서 다시 찾고 가장 가까운 Waypoint를 지정
-            while (TryFindRallyPosition(radiusScale, false) == false)
+            _wayPointLayerMask = LayerMask.GetMask(WaypointDataUsedRallyPosition.LayerName);
+
+            float radiusScale = 1.0f;
+            // RallyPosition의 첫 검색은 부모 유닛의 공격범위에 있는 Waypoint 중 가장 뒤에 있는 Waypoint로 지정
+            if (TryFindRallyPosition(radiusScale, true) == false)
             {
-                radiusScale += 0.2f;
-                if (radiusScale > 5f) break;
+                // 랠리 포지션을 유닛의 공격범위에서 찾고 못찾았으면 범위를 늘려서 다시 찾고 가장 가까운 Waypoint를 지정
+                while (TryFindRallyPosition(radiusScale, false) == false)
+                {
+                    radiusScale += 0.2f;
+                    if (radiusScale > 5f) break;
+                }
             }
         }
     }
@@ -45,7 +49,7 @@ public class ChildUnits : MonoBehaviour
         float minDistance = 999f;
         if (parentUnit != null)
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(parentUnit.transform.position, parentUnit.UnitData.TargetRange * radiusScale, rallyPointLayerMask);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(parentUnit.transform.position, parentUnit.UnitData.TargetRange * radiusScale, _wayPointLayerMask);
             for (int i = 0; i < colliders.Length; i++)
             {
                 Collider2D collider = colliders[i];
@@ -78,7 +82,7 @@ public class ChildUnits : MonoBehaviour
 
             if (rallyPoint != null)
             {
-                RallyPosition = rallyPoint.transform.position;
+                RallyPointInLocal = rallyPoint.transform.position - transform.position;
             }
         }
 
@@ -112,13 +116,6 @@ public class ChildUnits : MonoBehaviour
         SetRallyPointOfAllUnits();
     }
 
-    void SetRallyPoint(Unit unit, int index, float startAngle = 0f)
-    {
-        Vector3 position = Quaternion.Euler(0f, 0f, startAngle + (360f / (float)MaxUnitCount) * (float)index) * (Vector3.up * RallyPointRadius);
-        unit.UnitMovePoint.SetMovePoint(null, unit.transform.position, RallyPosition + position);
-        unit.UnitMovePoint.RallyPoint = RallyPosition + position; // todo 이동 후 랠리포인트 지정 방법 필요, 메서드 활용
-    }
-
     public void SetRallyPointOfAllUnits()
     {
         float startAngle = Random.Range(0f, (360f / (float)MaxUnitCount));
@@ -132,6 +129,15 @@ public class ChildUnits : MonoBehaviour
         }
     }
 
+    void SetRallyPoint(Unit unit, int index, float startAngle = 0f)
+    {
+        Vector3 localPosition = Quaternion.Euler(0f, 0f, startAngle + (360f / (float)MaxUnitCount) * (float)index) * (Vector3.up * RallyPointRadius);
+        Vector3 startPosition = unit.transform.position;
+        Vector3 endPosition = transform.position + RallyPointInLocal + localPosition;
+        unit.UnitMovePoint.SetMovePoint(null, startPosition, endPosition);
+        unit.UnitMovePoint.RallyPoint = endPosition; // todo 이동 후 랠리포인트 지정 방법 필요, 메서드 활용
+    }
+
     public void ClearAllEnemyUnits()
     {
         for (int i = 0; i < MaxUnitCount; i++)
@@ -142,5 +148,12 @@ public class ChildUnits : MonoBehaviour
                 unit.ClearEnemyUnit();
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position + RallyPointInLocal, 0.2f);
+        Gizmos.DrawIcon(transform.position + RallyPointInLocal, "RallyPoint_Flag.png");
     }
 }

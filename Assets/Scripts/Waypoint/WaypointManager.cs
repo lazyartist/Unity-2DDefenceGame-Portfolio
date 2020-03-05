@@ -8,7 +8,7 @@ public class WaypointManager : SingletonBase<WaypointManager>
     public WaypointData WaypointData;
     public List<Waypoint> StartWaypoints { get; private set; }
     public int PathCount { get; private set; }
-    public WaypointPool WaypointPool;
+    //public WaypointPool WaypointPool;
 
     protected override void Awake()
     {

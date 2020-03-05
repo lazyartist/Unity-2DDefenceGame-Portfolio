@@ -29,11 +29,11 @@ public class UnitGizmos : MonoBehaviour
                 Gizmos.DrawLine(transform.position, unit.EnemyUnit.transform.position);
             }
             // 랠리포인트
-            ChildUnits childUnits = unit.GetComponent<ChildUnits>();
-            if (childUnits != null)
+            ChildUnitCreator childUnitCreator = unit.GetComponent<ChildUnitCreator>();
+            if (childUnitCreator != null)
             {
                 Gizmos.color = Color.blue;
-                Gizmos.DrawWireSphere(childUnits.RallyPosition, 0.05f);
+                Gizmos.DrawWireSphere(childUnitCreator.transform.position + childUnitCreator.RallyPointInLocal, 0.05f);
             }
         }
     }

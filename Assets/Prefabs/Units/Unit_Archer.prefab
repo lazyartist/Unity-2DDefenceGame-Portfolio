@@ -80,8 +80,8 @@ GameObject:
   - component: {fileID: 114776617647403108}
   - component: {fileID: 114511659558347260}
   - component: {fileID: 114145094154538832}
-  - component: {fileID: 114990081140116618}
   - component: {fileID: 114729748063696688}
+  - component: {fileID: 114817695641088798}
   m_Layer: 0
   m_Name: Unit_Archer
   m_TagString: Unit
@@ -400,9 +400,6 @@ MonoBehaviour:
   UnitFSM: {fileID: 114271592312121844}
   CanChangeDirection: 1
   UnitMovePoint: {fileID: 114729748063696688}
-  TargetWaypoint: {fileID: 0}
-  RallyWaypoint: {fileID: 0}
-  WaypointSubIndex: 0
   MoveDirection: {x: 0, y: 0, z: 0}
   LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1685357474663072}
@@ -425,6 +422,7 @@ MonoBehaviour:
   Unit: {fileID: 114672875092321788}
   UnitBodyContainer: {fileID: 4263177885565904}
   Animator: {fileID: 0}
+  UnitSR: {fileID: 212630968892714004}
 --- !u!114 &114729748063696688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -438,7 +436,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitMovePointType: 0
   WayPoint: {fileID: 0}
-  WayPointSubIndex: 0
   RallyPoint: {x: 0, y: 0, z: 0}
   IsArrived: 0
 --- !u!114 &114776617647403108
@@ -453,6 +450,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
+--- !u!114 &114817695641088798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503326821611280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eec7c3297dfc2a46b48df8f0fcd6fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114860774512875928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -478,21 +486,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
---- !u!114 &114990081140116618
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1503326821611280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b71def9f05692e54cbe97177f9a345ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpriteRenderers:
-  - {fileID: 212714748793889236}
-  - {fileID: 212985191036786134}
-  - {fileID: 212630968892714004}
 --- !u!212 &212630968892714004
 SpriteRenderer:
   m_ObjectHideFlags: 1

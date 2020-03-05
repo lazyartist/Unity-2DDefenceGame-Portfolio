@@ -146,8 +146,8 @@ public class UITowerMenu : MonoBehaviour
             SellTowerMenuButton.gameObject.SetActive(true);
 
             // RallyPoint button
-            ChildUnits childUnits = tower.Unit.GetComponent<ChildUnits>();
-            if (childUnits != null)
+            ChildUnitCreator childUnitCreator = tower.Unit.GetComponent<ChildUnitCreator>();
+            if (childUnitCreator != null)
             {
                 RallyPointMenuButton.Check(false);
                 RallyPointMenuButton.gameObject.SetActive(true);

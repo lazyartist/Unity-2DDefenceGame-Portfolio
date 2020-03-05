@@ -9,6 +9,7 @@ public class UnitBody : MonoBehaviour
     public Transform UnitBodyContainer;
     [HideInInspector]
     public Animator Animator;
+    public SpriteRenderer UnitSR;
 
     void Awake()
     {

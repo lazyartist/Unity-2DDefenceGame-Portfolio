@@ -416,12 +416,13 @@ MonoBehaviour:
   ParentUnit: {fileID: 114991902228683878}
   ChildUnitPrefab: {fileID: 114611179643101524, guid: d720717e6a2f6104882e77ec5fcd3bac,
     type: 2}
-  Units: []
   MaxUnitCount: 3
   RallyPosition: {x: 0, y: 0, z: 0}
   RallyPointRadius: 0.3
   WaypointDataUsedRallyPosition: {fileID: 11400000, guid: 40a344690774efb44881420777e0fe92,
     type: 2}
+  IsRallyPointOnWay: 1
+  IsAutoCreateUnits: 0
 --- !u!114 &114447239558583854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -507,7 +508,6 @@ MonoBehaviour:
   WayPoint: {fileID: 0}
   RallyPoint: {x: 0, y: 0, z: 0}
   IsArrived: 0
-  IsTransitToRallyPointTypeAfterArrived: 0
 --- !u!114 &114792745593350560
 MonoBehaviour:
   m_ObjectHideFlags: 1

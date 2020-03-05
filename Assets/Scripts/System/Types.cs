@@ -135,6 +135,6 @@ static public class Types {
     }
 
     public enum UnitMovePointType {
-        RallyPoint, WayPoint, MovePoint
+        RallyPoint /*todo remove RallyPoint*/, MovePoint, WayPoint
     }
 }

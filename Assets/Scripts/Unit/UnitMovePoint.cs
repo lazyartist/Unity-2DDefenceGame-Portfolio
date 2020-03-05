@@ -53,6 +53,7 @@ public class UnitMovePoint : MonoBehaviour
         }
     }
 
+    // todo remove SetRallyPoint, RallyPoint라는 타입을 제거하고 이동이 끝난뒤에 RallyPoint로 이동하는걸 기본 움직임으로 정의한다.
     public void SetRallyPoint(Vector3 position)
     {
         SetUnitMovePointType(Types.UnitMovePointType.RallyPoint);

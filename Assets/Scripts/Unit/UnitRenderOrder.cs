@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitRenderOrder : MonoBehaviour
+public class UnitRenderOrder : MonoBehaviour, IUnitRenderOrder
 {
     public SpriteRenderer[] SpriteRenderers;
     Unit _unit;
@@ -10,7 +10,7 @@ public class UnitRenderOrder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CalcRenderOrder();
+        //CalcRenderOrder();
     }
 
     public void Init(string sortingLayerName)
