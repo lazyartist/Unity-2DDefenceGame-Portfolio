@@ -35,7 +35,7 @@ public class Unit : MonoBehaviour
     public CCData TakenCCData;
     public bool GoalComplete = false;
 
-    LayerMask _enemyLayerMask;
+    LayerMask[] _enemyLayerMasks;
     IUnitRenderOrder unitRenderOrder;
 
     protected void Awake()
@@ -79,11 +79,13 @@ public class Unit : MonoBehaviour
 
     void SetEnemyLayerMask(AttackData attackData)
     {
-        _enemyLayerMask = 0;
-        for (int i = 0; i < GetAttackData().TargetUnitTypes.Length; i++)
+        Types.UnitType[] targetUnitTypes = GetAttackData().TargetUnitTypes;
+        _enemyLayerMasks = new LayerMask[targetUnitTypes.Length];
+        for (int i = 0; i < targetUnitTypes.Length; i++)
         {
-            int mask = LayerMask.GetMask(TeamData.EnemyTeamType.ToString() + GetAttackData().TargetUnitTypes[i].ToString());
-            _enemyLayerMask |= mask;
+            // 저장 순서가 공격 대상 우선 순위이다.
+            int mask = LayerMask.GetMask(TeamData.EnemyTeamType.ToString() + targetUnitTypes[i].ToString());
+            _enemyLayerMasks[i] = mask;
         }
     }
 
@@ -256,7 +258,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    virtual public Unit TryFindEnemy()
+    virtual public Unit TryFindEnemyOrNull()
     {
         // 이미 공격목표가 있다
         if (HasEnemyUnit())
@@ -277,12 +279,31 @@ public class Unit : MonoBehaviour
             default:
                 break;
         }
-        //todo 유닛이 랠리포인트를 벗어나지 않는 범위에서 찾도록 수정, 랠리포인트 범위(반지름이 있어야한다)
-        // todo 랠리포인트 중심으로 적을 찾는다 or 유닛을 기준으로 찾는다.
-        Unit draftTargetUnit = null;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(findPosition, UnitCenter.UnitData.TargetRange, _enemyLayerMask);
-        if (colliders.Length == 0) return draftTargetUnit;
 
+        Unit enemyUnit = null;
+        for (int i = 0; i < _enemyLayerMasks.Length; i++)
+        {
+            enemyUnit = FindEnemyOrNull(findPosition, _enemyLayerMasks[i]);
+            if(enemyUnit != null)
+            {
+                break;
+            }
+        }
+
+        if (enemyUnit != null)
+        {
+            AddEnemyUnit(enemyUnit);
+        }
+
+        return enemyUnit;
+    }
+
+    Unit FindEnemyOrNull(Vector3 findPosition , LayerMask layerMask)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(findPosition, UnitCenter.UnitData.TargetRange, layerMask);
+        if (colliders.Length == 0) return null;
+
+        Unit draftTargetUnit = null;
         for (int i = 0; i < colliders.Length; i++)
         {
             Collider2D collider = colliders[i];
