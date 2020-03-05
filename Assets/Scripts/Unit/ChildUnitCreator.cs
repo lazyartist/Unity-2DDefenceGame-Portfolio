@@ -7,7 +7,8 @@ public class ChildUnitCreator : MonoBehaviour
     public Unit ParentUnit;
     public Unit ChildUnitPrefab;
     public int MaxUnitCount;
-    public Vector3 RallyPointInLocal = Vector3.right;
+    public Vector3 CenterRallyPointInLocal = Vector3.right; // 이 랠리포인트 주변으로 유닛 배치
+    public Vector3[] IndividualRallyPointInLocals; // 유닛별 랠리포인트 사용
     public float RallyPointRadius = 0.3f;
     public WaypointData WaypointDataUsedRallyPosition; // 가까운 WayPoint를 찾기 위한 데이터
     public bool IsSetRallyPointToNearlyWayPoint;
@@ -23,7 +24,6 @@ public class ChildUnitCreator : MonoBehaviour
 
     private void Start()
     {
-
         if (IsSetRallyPointToNearlyWayPoint)
         {
             _wayPointLayerMask = LayerMask.GetMask(WaypointDataUsedRallyPosition.LayerName);
@@ -82,7 +82,7 @@ public class ChildUnitCreator : MonoBehaviour
 
             if (rallyPoint != null)
             {
-                RallyPointInLocal = rallyPoint.transform.position - transform.position;
+                CenterRallyPointInLocal = rallyPoint.transform.position - transform.position;
             }
         }
 
@@ -113,10 +113,18 @@ public class ChildUnitCreator : MonoBehaviour
                 Units[i] = unit;
             }
         }
-        SetRallyPointOfAllUnits();
+
+        if (IndividualRallyPointInLocals.Length == 0)
+        {
+            SetCenterRallyPointToAllUnits();
+        }
+        else
+        {
+            SetIndividualRallyPointToAllUnits();
+        }
     }
 
-    public void SetRallyPointOfAllUnits()
+    public void SetCenterRallyPointToAllUnits()
     {
         float startAngle = Random.Range(0f, (360f / (float)MaxUnitCount));
         for (int i = 0; i < MaxUnitCount; i++)
@@ -124,18 +132,38 @@ public class ChildUnitCreator : MonoBehaviour
             Unit unit = Units[i];
             if (unit != null && unit.IsDied == false)
             {
-                SetRallyPoint(unit, i, startAngle);
+                SetCenterRallyPoint(unit, i, startAngle);
             }
         }
     }
 
-    void SetRallyPoint(Unit unit, int index, float startAngle = 0f)
+    void SetCenterRallyPoint(Unit unit, int index, float startAngle = 0f)
     {
         Vector3 localPosition = Quaternion.Euler(0f, 0f, startAngle + (360f / (float)MaxUnitCount) * (float)index) * (Vector3.up * RallyPointRadius);
         Vector3 startPosition = unit.transform.position;
-        Vector3 endPosition = transform.position + RallyPointInLocal + localPosition;
+        Vector3 endPosition = transform.position + CenterRallyPointInLocal + localPosition;
         unit.UnitMovePoint.SetMovePoint(null, startPosition, endPosition);
         unit.UnitMovePoint.RallyPoint = endPosition; // todo 이동 후 랠리포인트 지정 방법 필요, 메서드 활용
+    }
+
+    public void SetIndividualRallyPointToAllUnits()
+    {
+        for (int i = 0; i < MaxUnitCount; i++)
+        {
+            Unit unit = Units[i];
+            if (unit != null && unit.IsDied == false)
+            {
+                SetIndividualRallyPoint(unit, IndividualRallyPointInLocals[i]);
+            }
+        }
+    }
+
+    void SetIndividualRallyPoint(Unit unit, Vector3 rallyPoint)
+    {
+        Vector3 startPosition = unit.transform.position;
+        Vector3 endPosition = transform.position + rallyPoint;
+        unit.UnitMovePoint.SetMovePoint(null, startPosition, endPosition);
+        unit.UnitMovePoint.RallyPoint = endPosition;
     }
 
     public void ClearAllEnemyUnits()
@@ -153,7 +181,13 @@ public class ChildUnitCreator : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position + RallyPointInLocal, 0.2f);
-        Gizmos.DrawIcon(transform.position + RallyPointInLocal, "RallyPoint_Flag.png");
+        Gizmos.DrawWireSphere(transform.position + CenterRallyPointInLocal, 0.1f);
+        Gizmos.DrawIcon(transform.position + CenterRallyPointInLocal, "RallyPoint_Flag.png");
+        for (int i = 0; i < IndividualRallyPointInLocals.Length; i++)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position + IndividualRallyPointInLocals[i], 0.1f);
+            Gizmos.DrawIcon(transform.position + IndividualRallyPointInLocals[i], "RallyPoint_Flag");
+        }
     }
 }

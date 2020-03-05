@@ -9,13 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d149be9e4232900469acae6391720fd5, type: 3}
-  m_Name: TowerUpgradeData_Archer
+  m_Name: TowerUpgradeData_Archer3
   m_EditorClassIdentifier: 
-  Name: "\uAD81\uC218\uD0C0\uC6CC"
-  GoldCost: 8
+  Name: "\uAD81\uC218\uD0C0\uC6CC3"
+  GoldCost: 18
   IconSprite: {fileID: 21300000, guid: 03989841ef2e11b4db0e7b4fd83594d8, type: 3}
   UnitSprite: {fileID: 21300000, guid: 789934d25b4e0244a896b1806bbe35cc, type: 3}
-  UnitPrefab: {fileID: 114967502376588390, guid: 16db18843942b9643a02eb38cf03fd37,
+  UnitPrefab: {fileID: 114674793594176356, guid: 01ba7444251777f4c8dee27931829e9c,
     type: 2}
-  TowerUpgradeDatas:
-  - {fileID: 11400000, guid: 117c5586ce971ee4c9969873efa576a3, type: 2}
+  TowerUpgradeDatas: []

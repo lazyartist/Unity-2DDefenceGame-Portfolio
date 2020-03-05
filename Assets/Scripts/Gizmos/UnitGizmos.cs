@@ -33,7 +33,7 @@ public class UnitGizmos : MonoBehaviour
             if (childUnitCreator != null)
             {
                 Gizmos.color = Color.blue;
-                Gizmos.DrawWireSphere(childUnitCreator.transform.position + childUnitCreator.RallyPointInLocal, 0.05f);
+                Gizmos.DrawWireSphere(childUnitCreator.transform.position + childUnitCreator.CenterRallyPointInLocal, 0.05f);
             }
         }
     }
