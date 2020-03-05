@@ -15,7 +15,7 @@ public class Unit : MonoBehaviour
     public UnitBody UnitBody;
     public Vector2 ColliderOffset;
     public Vector2 ColliderSize;
-    public Vector3 UnitCenterOffset;
+    public UnitCenter UnitCenter; // 유닛의 중심 || 공격 범위의 중심, 외부에서 넣어줄 수도 있다.
     public Animator HitEffectAnimator;
     public UnitFSM UnitFSM;
     public bool CanChangeDirection = true;
@@ -42,6 +42,7 @@ public class Unit : MonoBehaviour
     {
         gameObject.name += Consts.GetUnitId();
         TakenCCData = new CCData();
+        UnitCenter.UnitData = UnitData;
 
         unitRenderOrder = GetComponent<IUnitRenderOrder>();
 
@@ -263,13 +264,23 @@ public class Unit : MonoBehaviour
             return EnemyUnit;
         }
 
-        Vector3 findPosition;
+        Vector3 findPosition = Vector3.zero;
         // 랠리포인트 중심으로 적을 찾는다
-        findPosition = UnitMovePoint.RallyPoint;
+        switch (UnitData.UnitTargetRangeCenterType)
+        {
+            case Types.UnitTargetRangeCenterType.RallyPoint:
+                findPosition = UnitMovePoint.RallyPoint;
+                break;
+            case Types.UnitTargetRangeCenterType.UnitCenter:
+                findPosition = UnitCenter.transform.position;
+                break;
+            default:
+                break;
+        }
         //todo 유닛이 랠리포인트를 벗어나지 않는 범위에서 찾도록 수정, 랠리포인트 범위(반지름이 있어야한다)
         // todo 랠리포인트 중심으로 적을 찾는다 or 유닛을 기준으로 찾는다.
         Unit draftTargetUnit = null;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(findPosition, UnitData.TargetRange, _enemyLayerMask);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(findPosition, UnitCenter.UnitData.TargetRange, _enemyLayerMask);
         if (colliders.Length == 0) return draftTargetUnit;
 
         for (int i = 0; i < colliders.Length; i++)
@@ -343,13 +354,15 @@ public class Unit : MonoBehaviour
     {
         if (HasEnemyUnit() == false) return false;
 
-        float distance = Vector3.Distance(transform.position + UnitCenterOffset, EnemyUnit.transform.position);
-        return distance < UnitData.TargetRange;
+        float distance = Vector3.Distance(UnitCenter.transform.position, EnemyUnit.transform.position);
+        //float distance = Vector3.Distance(transform.position + UnitCenterOffset, EnemyUnit.transform.position);
+        return distance < UnitCenter.UnitData.TargetRange;
+        //return distance < UnitData.TargetRange;
     }
 
     public Vector3 GetCenterPosition()
     {
-        return transform.position + UnitCenterOffset;
+        return UnitCenter.transform.position;
     }
 
     public void ClearEnemyUnit()
@@ -366,5 +379,4 @@ public class Unit : MonoBehaviour
     {
         return GetAttackDataBy(AttackDataIndex);
     }
-
 }

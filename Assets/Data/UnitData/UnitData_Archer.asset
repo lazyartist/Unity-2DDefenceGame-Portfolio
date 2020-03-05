@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Name: UnitData_Archer
   m_EditorClassIdentifier: 
   UnitType: 3
-  Health: 10
-  MoveSpeed: 2
-  TargetRange: 4
+  Health: 1
+  MoveSpeed: 1
+  TargetRange: 0
   Gold: 0
-  StageHealthDamage: 1
+  StageHealthDamage: 0
+  UnitTargetRangeCenterType: 1
   UnitSortingLayerType: 0

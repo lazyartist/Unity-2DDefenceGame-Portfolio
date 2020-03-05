@@ -36,7 +36,23 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!1 &1132687199493268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4776655711759778}
+  - component: {fileID: 114434269478536484}
+  m_Layer: 8
+  m_Name: UnitCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1197745602839794
 GameObject:
   m_ObjectHideFlags: 1
@@ -199,9 +215,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1066699228891314}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8, y: 2.88, z: 0}
+  m_LocalPosition: {x: -11.339998, y: 5.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4776655711759778}
   - {fileID: 4720871648990962}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -231,6 +248,19 @@ Transform:
   m_Children:
   - {fileID: 4599774306521008}
   - {fileID: 4043044997469936}
+  m_Father: {fileID: 4629088960922680}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4776655711759778
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1132687199493268}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.28, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
   m_Father: {fileID: 4629088960922680}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -292,6 +322,7 @@ MonoBehaviour:
   Unit: {fileID: 114983846545771790}
   UnitBodyContainer: {fileID: 4720871648990962}
   Animator: {fileID: 0}
+  UnitSR: {fileID: 0}
 --- !u!114 &114231036250034452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -352,6 +383,18 @@ MonoBehaviour:
   - {fileID: 114335121371275444}
   CurUnitState: {fileID: 114640927806167560}
   Unit: {fileID: 114983846545771790}
+--- !u!114 &114434269478536484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1132687199493268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc1a4120e8c03d46bfc9001379522cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitData: {fileID: 0}
 --- !u!114 &114484382263081272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,7 +410,6 @@ MonoBehaviour:
   WayPoint: {fileID: 0}
   RallyPoint: {x: 0, y: 0, z: 0}
   IsArrived: 0
-  IsTransitToRallyPointTypeAfterArrived: 0
 --- !u!114 &114632463446472822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -447,6 +489,7 @@ MonoBehaviour:
   UnitBody: {fileID: 114226502658106478}
   ColliderOffset: {x: 0, y: 0}
   ColliderSize: {x: 0, y: 0}
+  UnitCenter: {fileID: 114434269478536484}
   UnitCenterOffset: {x: 0, y: 0.28, z: 0}
   HitEffectAnimator: {fileID: 0}
   UnitFSM: {fileID: 114373489412837970}

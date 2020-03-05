@@ -48,11 +48,11 @@ TagManager:
   - name: Bg
     uniqueID: 3597775775
     locked: 0
-  - name: Selection
-    uniqueID: 1027460859
-    locked: 0
   - name: TowerStub
     uniqueID: 3335365791
+    locked: 0
+  - name: Selection
+    uniqueID: 1027460859
     locked: 0
   - name: Unit_Thumb
     uniqueID: 1682758161

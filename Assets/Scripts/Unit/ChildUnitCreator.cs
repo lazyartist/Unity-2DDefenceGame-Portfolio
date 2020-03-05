@@ -5,6 +5,7 @@ using UnityEngine;
 public class ChildUnitCreator : MonoBehaviour
 {
     public Unit ParentUnit;
+    public bool IsUseParentUnitCenter;
     public Unit ChildUnitPrefab;
     public int MaxUnitCount;
     public Vector3 CenterRallyPointInLocal = Vector3.right; // 이 랠리포인트 주변으로 유닛 배치
@@ -110,6 +111,10 @@ public class ChildUnitCreator : MonoBehaviour
             {
                 Unit unit = Instantiate(ChildUnitPrefab, ParentUnit.SpawnPosition.transform.position, Quaternion.identity, ParentUnit.transform);
                 unit.gameObject.SetActive(true);
+                if (IsUseParentUnitCenter)
+                {
+                    unit.UnitCenter = ParentUnit.UnitCenter;
+                }
                 Units[i] = unit;
             }
         }

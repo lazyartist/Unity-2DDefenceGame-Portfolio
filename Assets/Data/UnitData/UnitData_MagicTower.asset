@@ -15,6 +15,7 @@ MonoBehaviour:
   Health: 10
   MoveSpeed: 2
   TargetRange: 3.1
-  AttackCoolTime: 1
   Gold: 0
   StageHealthDamage: 1
+  UnitTargetRangeCenterType: 1
+  UnitSortingLayerType: 0

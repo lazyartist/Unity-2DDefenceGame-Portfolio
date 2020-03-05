@@ -23,7 +23,7 @@ public class UnitState_Idle : AUnitState
         }
 
         // 공격대상이 없으면 찾는다
-        if (_unit.HasEnemyUnit() == false && _unit.TryFindEnemy() != null)
+        if (_unit.TryFindEnemy() != null)
         {
             // 공격대상을 찾았다
             if (_unit.GetAttackData().ProjectilePrefab == null)

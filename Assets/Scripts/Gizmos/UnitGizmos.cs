@@ -15,7 +15,14 @@ public class UnitGizmos : MonoBehaviour
             Gizmos.DrawWireSphere(transform.position, 0.05f);
             // 유닛 공격 타겟 범위
             Gizmos.color = unit.TeamData.TeamColor;
-            Gizmos.DrawWireSphere(transform.position + unit.UnitCenterOffset, unit.UnitData.TargetRange);
+            if (unit.UnitCenter != null && unit.UnitCenter.UnitData != null)
+            {
+                Gizmos.DrawWireSphere(unit.UnitCenter.transform.position, unit.UnitCenter.UnitData.TargetRange);
+            }
+            else
+            {
+                Gizmos.DrawWireSphere(unit.UnitCenter.transform.position, unit.UnitData.TargetRange);
+            }
             // 투사체 생성 지점
             if (unit.SpawnPosition != null)
             {

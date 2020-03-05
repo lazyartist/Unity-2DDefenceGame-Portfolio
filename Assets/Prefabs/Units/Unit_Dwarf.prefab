@@ -11,6 +11,22 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1294310506979898}
   m_IsPrefabAsset: 1
+--- !u!1 &1163321868073774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4168729295717846}
+  - component: {fileID: 114247176013743382}
+  m_Layer: 8
+  m_Name: UnitCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1252867894788334
 GameObject:
   m_ObjectHideFlags: 1
@@ -73,7 +89,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1400612557840572
 GameObject:
   m_ObjectHideFlags: 1
@@ -219,9 +235,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1294310506979898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.15, y: 1.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4168729295717846}
   - {fileID: 4333191695502406}
   - {fileID: 4420203179928838}
   m_Father: {fileID: 0}
@@ -238,6 +255,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4333191695502406}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4168729295717846
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1163321868073774}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.14, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4038156060244670}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4264163478840104
@@ -266,7 +296,7 @@ Transform:
   - {fileID: 4087962648199332}
   - {fileID: 4794390047144958}
   m_Father: {fileID: 4038156060244670}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4418159809680788
 Transform:
@@ -297,7 +327,7 @@ Transform:
   - {fileID: 4022745916032364}
   - {fileID: 4264163478840104}
   m_Father: {fileID: 4038156060244670}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4511930315500582
 Transform:
@@ -457,9 +487,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitMovePointType: 0
   WayPoint: {fileID: 0}
-  WayPointSubIndex: 0
   RallyPoint: {x: 0, y: 0, z: 0}
   IsArrived: 0
+--- !u!114 &114247176013743382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1163321868073774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc1a4120e8c03d46bfc9001379522cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitData: {fileID: 0}
 --- !u!114 &114294899750063256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -506,14 +547,12 @@ MonoBehaviour:
   UnitBody: {fileID: 114707808215176082}
   ColliderOffset: {x: 0, y: 0}
   ColliderSize: {x: 0, y: 0}
+  UnitCenter: {fileID: 114247176013743382}
   UnitCenterOffset: {x: 0, y: 0.14, z: 0}
   HitEffectAnimator: {fileID: 95866556446321216}
   UnitFSM: {fileID: 114827054183385052}
   CanChangeDirection: 1
   UnitMovePoint: {fileID: 114116973425713332}
-  TargetWaypoint: {fileID: 0}
-  RallyWaypoint: {fileID: 0}
-  WaypointSubIndex: 0
   MoveDirection: {x: 0, y: 0, z: 0}
   LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1465897555532546}
@@ -551,6 +590,7 @@ MonoBehaviour:
   Unit: {fileID: 114611179643101524}
   UnitBodyContainer: {fileID: 4420203179928838}
   Animator: {fileID: 0}
+  UnitSR: {fileID: 0}
 --- !u!114 &114808761547571370
 MonoBehaviour:
   m_ObjectHideFlags: 1

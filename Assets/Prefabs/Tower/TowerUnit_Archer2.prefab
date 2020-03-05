@@ -11,6 +11,22 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1649567556702122}
   m_IsPrefabAsset: 1
+--- !u!1 &1009230735840284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4097820711622578}
+  - component: {fileID: 114479582750215706}
+  m_Layer: 8
+  m_Name: UnitCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1219116662704846
 GameObject:
   m_ObjectHideFlags: 1
@@ -130,6 +146,19 @@ Transform:
   m_Father: {fileID: 4980853529855078}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4097820711622578
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009230735840284}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4973277481712252}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4864626054298034
 Transform:
   m_ObjectHideFlags: 1
@@ -150,11 +179,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1649567556702122}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8.73, y: 1.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4864626054298034}
   - {fileID: 4021274832394428}
+  - {fileID: 4097820711622578}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -234,13 +264,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
-  UnitData: {fileID: 11400000, guid: aad809a304d44284ea7125cca2837cd3, type: 2}
+  UnitData: {fileID: 11400000, guid: 152b7e6a5e70a8b45b9d94d425745a23, type: 2}
   AttackDatas:
   - {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
   AttackDataIndex: 0
   UnitBody: {fileID: 114187573452753246}
   ColliderOffset: {x: 0, y: 0}
   ColliderSize: {x: 0, y: 0}
+  UnitCenter: {fileID: 114479582750215706}
   UnitCenterOffset: {x: 0, y: 0.3, z: 0}
   HitEffectAnimator: {fileID: 0}
   UnitFSM: {fileID: 114674556697720780}
@@ -335,6 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ParentUnit: {fileID: 114020502159223494}
+  IsUseParentUnitCenter: 1
   ChildUnitPrefab: {fileID: 114672875092321788, guid: f44b1f94d19a36f43be0b1244db60058,
     type: 2}
   MaxUnitCount: 2
@@ -359,6 +391,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrevUnitState: {fileID: 0}
+--- !u!114 &114479582750215706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009230735840284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc1a4120e8c03d46bfc9001379522cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitData: {fileID: 0}
 --- !u!114 &114664718411126866
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,5 +13,6 @@ public class UnitData : ScriptableObject
     public int Gold;
     public int StageHealthDamage = 1;
 
+    public Types.UnitTargetRangeCenterType UnitTargetRangeCenterType;
     public Types.UnitSortingLayerType UnitSortingLayerType;
 }

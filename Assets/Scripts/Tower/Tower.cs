@@ -47,7 +47,10 @@ public class Tower : MonoBehaviour
         UnitThumbSR.enabled = true;
         UnitThumbSR.sprite = towerUpgradeData.UnitSprite;
 
-        ShowRange(DraftUnitRangeSR, UnitContainer.transform.position, towerUpgradeData.UnitPrefab);
+        // 현재 유닛이 생성되지 않은 상태이기 때문에 유닛의 UnitCenter 좌표를 얻을 수 없다.
+        // 따라서 UnitCenter의 로컬좌표를 UnitContainer의 좌표에 더해서 rangeCenterPosition을 구함.
+        Vector3 rangeCenterPosition = UnitContainer.transform.position + (towerUpgradeData.UnitPrefab.UnitCenter.transform.position - towerUpgradeData.UnitPrefab.transform.position);
+        ShowRange(DraftUnitRangeSR, rangeCenterPosition, towerUpgradeData.UnitPrefab.UnitData);
     }
 
     public void CreateUnit(int index)
@@ -56,12 +59,8 @@ public class Tower : MonoBehaviour
 
         TowerUpgradeData towerUpgradeData = TowerUpgradeData.TowerUpgradeDatas[index];
         Unit = Instantiate(towerUpgradeData.UnitPrefab, UnitContainer.transform);
-        //Rigidbody2D rigidbody2D = Unit.GetComponent<Rigidbody2D>();
-        //if(rigidbody2D != null)
-        //{
-        //    rigidbody2D.simulated = false;
-        //}
         Unit.transform.localPosition = Vector3.zero;
+        Unit.UnitMovePoint.RallyPoint = Unit.transform.position;
         Unit.gameObject.SetActive(true);
 
         TowerUpgradeData = towerUpgradeData;
@@ -80,7 +79,7 @@ public class Tower : MonoBehaviour
         if (Unit != null)
         {
             ChildUnitCreator _childUnitCreator = Unit.gameObject.GetComponent<ChildUnitCreator>();
-            if(_childUnitCreator != null)
+            if (_childUnitCreator != null)
             {
                 _childUnitCreator.ClearAllEnemyUnits();
             }
@@ -95,7 +94,7 @@ public class Tower : MonoBehaviour
         UICanvas.Inst.ShowTowerMenu(this, true);
         if (Unit != null)
         {
-            ShowRange(UnitRangeSR, Unit.transform.position, Unit);
+            ShowRange(UnitRangeSR, Unit.UnitCenter.transform.position, Unit.UnitData);
         }
     }
 
@@ -109,10 +108,10 @@ public class Tower : MonoBehaviour
         UICanvas.Inst.ShowTowerMenu(this, false);
     }
 
-    public void ShowRange(SpriteRenderer rangeSR, Vector3 unitPosition, Unit unit)
+    public void ShowRange(SpriteRenderer rangeSR, Vector3 position, UnitData unitData)
     {
-        rangeSR.transform.position = unitPosition + unit.UnitCenterOffset;
-        rangeSR.transform.localScale = new Vector3(unit.UnitData.TargetRange * 2f, unit.UnitData.TargetRange * 2f, 1);
+        rangeSR.transform.position = position;
+        rangeSR.transform.localScale = new Vector3(unitData.TargetRange * 2f, unitData.TargetRange * 2f, 1);
         rangeSR.enabled = true;
     }
 
@@ -126,13 +125,13 @@ public class Tower : MonoBehaviour
         UnitRangeSR.enabled = isOn;
         if (isOn == true && Unit != null)
         {
-            ShowRange(UnitRangeSR, Unit.transform.position, Unit);
+            ShowRange(UnitRangeSR, Unit.UnitCenter.transform.position, Unit.UnitData);
         }
     }
 
     void DispatchEvent(Types.TowerEventType towerEventType)
     {
-        if(TowerEvent != null)
+        if (TowerEvent != null)
         {
             TowerEvent(towerEventType, this);
         }

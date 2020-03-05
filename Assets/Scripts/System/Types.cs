@@ -135,6 +135,11 @@ static public class Types {
     }
 
     public enum UnitMovePointType {
-        RallyPoint /*todo remove RallyPoint*/, MovePoint, WayPoint
+        RallyPoint, MovePoint, WayPoint
+    }
+
+    public enum UnitTargetRangeCenterType
+    {
+        RallyPoint, UnitCenter
     }
 }
