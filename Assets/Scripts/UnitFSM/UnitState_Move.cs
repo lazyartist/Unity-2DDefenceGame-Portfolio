@@ -25,6 +25,8 @@ public class UnitState_Move : AUnitState
             // 공격대상을 향하기
             _unit.Toward(_unit.EnemyUnit.transform.position);
         }
+        // 자신의 위치로 이동하므로써 Velocity를 0으로 만든다.
+        _unit.MoveTo(_unit.transform.position);
     }
 
     public override AUnitState UpdateState()

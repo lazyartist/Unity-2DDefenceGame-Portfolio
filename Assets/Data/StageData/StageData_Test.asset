@@ -15,14 +15,9 @@ MonoBehaviour:
   EnemyTeamData: {fileID: 11400000, guid: d9165ec3e3bbdfd4198bf3e7258b5afd, type: 2}
   WavePhases:
   - Waves:
-    - UnitPrefab: {fileID: 114528930007832794, guid: 30110b692cc8bad4ea9c96b3d4209115,
+    - UnitPrefab: {fileID: 114016150554347428, guid: 92bea04fa6610b540863c7ef3edfe108,
         type: 2}
-      UnitCount: 3
-      NextWaveInterval: 0.5
-      WayPointContainerIndex: 1
-    - UnitPrefab: {fileID: 114291473754489126, guid: f2931adb5f3318845871e932c4afab2f,
-        type: 2}
-      UnitCount: 3
+      UnitCount: 1
       NextWaveInterval: 0.5
       WayPointContainerIndex: 1
   HeroUnitPrefab: {fileID: 114795718610798396, guid: 7697cf43afc86c041a6ad830432ab012,
