@@ -6510,7 +6510,7 @@ Prefab:
     - target: {fileID: 224559090448009270, guid: 3a61656293ccb9449aa9e57d17f32d08,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 48.950012
+      value: 48.94995
       objectReference: {fileID: 0}
     - target: {fileID: 224559090448009270, guid: 3a61656293ccb9449aa9e57d17f32d08,
         type: 2}
@@ -7041,7 +7041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5bcfd5278b8a542b4d46b989aa84d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StageData: {fileID: 11400000, guid: 3cb60f2dca5c92343b685023b2fa70d0, type: 2}
+  StageData: {fileID: 11400000, guid: d5203c08a3717834c8b98230a5fb0f1d, type: 2}
   UnitsContainer: {fileID: 2007183369}
 --- !u!4 &1654529991
 Transform:
@@ -8278,7 +8278,7 @@ Prefab:
     - target: {fileID: 224559090448009270, guid: 3a61656293ccb9449aa9e57d17f32d08,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 48.950012
+      value: 48.94995
       objectReference: {fileID: 0}
     - target: {fileID: 224559090448009270, guid: 3a61656293ccb9449aa9e57d17f32d08,
         type: 2}

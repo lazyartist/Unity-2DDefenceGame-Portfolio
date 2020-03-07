@@ -45,7 +45,7 @@ public class Projectile_MagicBall : AProjectile
 
     public override void MoveToTarget()
     {
-        _lastTargetPosition = _targetPosition;
+        _lastTargetPosition = _targetCenterPosition;
         _animator.SetTrigger("Charge");
         _isMoving = false;
     }

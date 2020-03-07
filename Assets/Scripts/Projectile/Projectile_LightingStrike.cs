@@ -14,7 +14,7 @@ public class Projectile_LightingStrike : AProjectile
 
     public override void MoveToTarget()
     {
-        transform.position = _targetPosition;
+        transform.position = _targetCenterPosition;
         _animator.SetTrigger("Hit");
         AudioManager.Inst.PlayAttackStart(AttackData);
         Hit();

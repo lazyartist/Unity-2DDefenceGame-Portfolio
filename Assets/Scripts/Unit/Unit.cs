@@ -164,6 +164,7 @@ public class Unit : MonoBehaviour
             RemoveEnemyUnit();
         }
         EnemyUnit = unit;
+        LastEnemyPosition = EnemyUnit.transform.position;
         EnemyUnit.UnitEvent += OnUnitEventHandler_EnemyUnit;
     }
 
@@ -174,7 +175,8 @@ public class Unit : MonoBehaviour
             Debug.LogAssertion("HasEnemyUnit() == false " + this);
             Debug.Break();
         }
-        LastEnemyPosition = EnemyUnit.GetCenterPosition();
+        LastEnemyPosition = EnemyUnit.transform.position;
+        //LastEnemyPosition = EnemyUnit.GetCenterPosition();
 
         EnemyUnit.UnitEvent -= OnUnitEventHandler_EnemyUnit;
         EnemyUnit = null;
@@ -261,8 +263,8 @@ public class Unit : MonoBehaviour
 
     virtual public Unit TryFindEnemyOrNull()
     {
-        // 이미 공격목표가 있다
-        if (HasEnemyUnit())
+        // 이미 공격목표가 있다면 반환
+        if (HasEnemyUnit() && EnemyUnit.IsDied == false)
         {
             return EnemyUnit;
         }

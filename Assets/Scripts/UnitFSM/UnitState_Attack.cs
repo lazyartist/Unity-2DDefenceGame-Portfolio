@@ -167,8 +167,10 @@ public class UnitState_Attack : AUnitState
             }
             else
             {
+                // 공격대상이 죽은 경우 - 적을 다시 검색한다.
+                _unit.TryFindEnemyOrNull();
                 // 공격대상이 죽은 경우 - 공격 애니가 재생중이기 때문에 발사해야 한다.
-                projectile.Init(_unit.TeamData, attackData, null, _unit.LastEnemyPosition);
+                projectile.Init(_unit.TeamData, attackData, _unit.EnemyUnit/*TryFindEnemyOrNull()가 실패한 경우 null*/, _unit.LastEnemyPosition);
             }
         }
 

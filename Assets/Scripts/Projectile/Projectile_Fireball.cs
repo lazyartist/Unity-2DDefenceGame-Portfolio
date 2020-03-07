@@ -50,7 +50,7 @@ public class Projectile_Fireball : AProjectile
     public override void MoveToTarget()
     {
         AudioManager.Inst.PlayAttackStart(AttackData);
-        _lastTargetPosition = _targetPosition;
+        _lastTargetPosition = _targetCenterPosition;
         _isMoving = true;
     }
 

@@ -90,7 +90,7 @@ MonoBehaviour:
   TeamData: {fileID: 0}
   AttackData: {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
   HeightLimit: 0.5
-  HeightLimitMultiflier: 3
+  HeightLimitMultiflier: 1.1
   TimeToTopmostHeight: 0.3
 --- !u!212 &212756071531049022
 SpriteRenderer:

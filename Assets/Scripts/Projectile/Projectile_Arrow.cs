@@ -28,10 +28,6 @@ public class Projectile_Arrow : AProjectile
         if (_isMoving)
         {
             _elapsedTime += Time.deltaTime;
-            if (_elapsedTime >= _paralobaAlgorithm.TimeToEndPosition)
-            {
-                _elapsedTime = _paralobaAlgorithm.TimeToEndPosition;
-            }
 
             Vector3 position = _paralobaAlgorithm.GetPosition(_elapsedTime);
             transform.position = position;
@@ -51,14 +47,20 @@ public class Projectile_Arrow : AProjectile
 
             if (_elapsedTime >= _paralobaAlgorithm.TimeToEndPosition)
             {
-                _isMoving = false;
-                _elapsedTime = 0;
 
                 // 화살이 타겟에 꽂혀있도록 맞는 순간 부모를 타겟으로 바꿔준다.
-                if(_targetUnit != null)
+                if (_targetUnit != null && _targetUnit.IsDied == false)
                 {
+                    _isMoving = false;
+                    _elapsedTime = 0;
+                    transform.SetParent(_targetUnit.UnitBody.transform);
+                    transform.position = _targetUnit.GetCenterPosition();
                     Hit();
-                    transform.SetParent(_targetUnit.transform);
+                }
+                else if (transform.position.y <= _targetBottomPosition.y)
+                {
+                    _isMoving = false;
+                    _elapsedTime = 0;
                 }
             }
         }
@@ -73,7 +75,7 @@ public class Projectile_Arrow : AProjectile
         // 화살의 시작위치 + HeightLimit 값 보다 타겟이 더 높이 올라가면 위치값 계산이 안되므로(NaN)
         // 타겟의 현재 위치가 HeightLimit 보다 높아지면 HeightLimit 값을 증가시켜준다.
         // 움직임이 어색해질 수 있지만 타겟이 느리다면 눈치채기 어렵다.
-        float distanceY = _targetPosition.y - _startPosition.y;
+        float distanceY = _targetCenterPosition.y - _startPosition.y;
         float height = 0f;
         if (distanceY > HeightLimit)
         {
@@ -84,16 +86,16 @@ public class Projectile_Arrow : AProjectile
         }
 
         // 현재 위치를 기준으로 궤도를 계산한다.
-        _paralobaAlgorithm.Init(HeightLimit + height, TimeToTopmostHeight, _startPosition, _targetPosition);
+        _paralobaAlgorithm.Init(HeightLimit + height, TimeToTopmostHeight, _startPosition, _targetCenterPosition);
         // 공격대상이 있다면 맞는 저점을 예측하여 발사한다.
         if (_targetUnit != null)
         {
             float moveSpeed = _targetUnit.UnitData.MoveSpeed;
             float distance = moveSpeed * _paralobaAlgorithm.TimeToEndPosition;
-            Vector3 guessedLastPosition = _targetPosition + (_targetUnit.MoveDirection.normalized * distance);
+            Vector3 guessedLastCenterPosition = _targetCenterPosition + (_targetUnit.MoveDirection.normalized * distance);
 
             // 높이 보정
-            distanceY = guessedLastPosition.y - _startPosition.y;
+            distanceY = guessedLastCenterPosition.y - _startPosition.y;
             height = 0f;
             if (distanceY > HeightLimit)
             {
@@ -101,7 +103,9 @@ public class Projectile_Arrow : AProjectile
             }
 
             // 예측한 마지막 위치로 다시 계산한다.
-            _paralobaAlgorithm.Init(HeightLimit + height, TimeToTopmostHeight, _startPosition, guessedLastPosition);
+            _targetBottomPosition = guessedLastCenterPosition + (_targetBottomPosition - _targetCenterPosition);
+            _targetCenterPosition = guessedLastCenterPosition;
+            _paralobaAlgorithm.Init(HeightLimit + height, TimeToTopmostHeight, _startPosition, guessedLastCenterPosition);
 
             // todo 현재 목표까지의 거리와 맞은 지점까지의 거리의 차에 따라 시간을 조절한다.
         }
@@ -138,7 +142,8 @@ public class Projectile_Arrow : AProjectile
             }
         }
 
-        if(AttackData != null) {
+        if (AttackData != null)
+        {
             Gizmos.DrawWireSphere(transform.position, AttackData.AttackRange);
         }
     }

@@ -8,7 +8,8 @@ public abstract class AProjectile : MonoBehaviour
     public AttackData AttackData;
 
     protected Unit _targetUnit;
-    protected Vector3 _targetPosition;
+    protected Vector3 _targetCenterPosition;
+    protected Vector3 _targetBottomPosition;
     protected LayerMask _targetLayerMask;
 
     virtual public void Init(TeamData teamData, AttackData attackData, Unit targetUnit, Vector3 targetPosition)
@@ -18,11 +19,13 @@ public abstract class AProjectile : MonoBehaviour
         _targetUnit = targetUnit;
         if(_targetUnit == null)
         {
-            _targetPosition = targetPosition;
+            _targetCenterPosition = targetPosition;
+            _targetBottomPosition = targetPosition;
         }
         else
         {
-            _targetPosition = _targetUnit.GetCenterPosition();
+            _targetCenterPosition = _targetUnit.GetCenterPosition();
+            _targetBottomPosition = _targetUnit.transform.position;
         }
 
         _targetLayerMask = 0;
