@@ -17,6 +17,7 @@ public class UnitState_Idle_ArcherTower : AUnitState
         {
             unitRenderOrder.SpriteRenderers[i + 1] = childUnitCreator.Units[i].UnitBody.UnitSR;
         }
+        unitRenderOrder.CalcRenderOrder();
     }
 
     public override void ExitState()
@@ -25,8 +26,6 @@ public class UnitState_Idle_ArcherTower : AUnitState
 
     public override AUnitState UpdateState()
     {
-        UnitRenderOrder unitRenderOrder = GetComponent<UnitRenderOrder>();
-        unitRenderOrder.CalcRenderOrder();
         return null;
     }
 }
