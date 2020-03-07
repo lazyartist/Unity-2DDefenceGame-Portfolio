@@ -322,7 +322,7 @@ MonoBehaviour:
   Unit: {fileID: 114983846545771790}
   UnitBodyContainer: {fileID: 4720871648990962}
   Animator: {fileID: 0}
-  UnitSR: {fileID: 0}
+  UnitSR: {fileID: 212008996346684152}
 --- !u!114 &114231036250034452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -490,7 +490,6 @@ MonoBehaviour:
   ColliderOffset: {x: 0, y: 0}
   ColliderSize: {x: 0, y: 0}
   UnitCenter: {fileID: 114434269478536484}
-  UnitCenterOffset: {x: 0, y: 0.28, z: 0}
   HitEffectAnimator: {fileID: 0}
   UnitFSM: {fileID: 114373489412837970}
   CanChangeDirection: 0

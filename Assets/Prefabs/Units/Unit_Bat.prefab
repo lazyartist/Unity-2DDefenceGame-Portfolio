@@ -488,7 +488,7 @@ MonoBehaviour:
   Unit: {fileID: 114291473754489126}
   UnitBodyContainer: {fileID: 4903841272525066}
   Animator: {fileID: 0}
-  UnitSR: {fileID: 0}
+  UnitSR: {fileID: 212662547130813164}
 --- !u!114 &114199642792488140
 MonoBehaviour:
   m_ObjectHideFlags: 1

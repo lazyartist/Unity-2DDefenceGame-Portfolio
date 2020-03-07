@@ -550,7 +550,7 @@ MonoBehaviour:
   Unit: {fileID: 114795718610798396}
   UnitBodyContainer: {fileID: 4456857517477646}
   Animator: {fileID: 95573308222089872}
-  UnitSR: {fileID: 0}
+  UnitSR: {fileID: 212605065159060536}
 --- !u!114 &114729864793004050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -595,7 +595,6 @@ MonoBehaviour:
   ColliderOffset: {x: 0, y: 0}
   ColliderSize: {x: 0, y: 0}
   UnitCenter: {fileID: 114262478376172418}
-  UnitCenterOffset: {x: 0, y: 0.25, z: 0}
   HitEffectAnimator: {fileID: 95804874095596780}
   UnitFSM: {fileID: 114251905374477166}
   CanChangeDirection: 1
@@ -937,7 +936,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1027460859
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 65a4b649de9233a4da176b26af146fa6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

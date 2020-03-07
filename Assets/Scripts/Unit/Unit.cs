@@ -254,6 +254,8 @@ public class Unit : MonoBehaviour
         gameObject.layer = 0; // 타겟으로 검색되지 않도록 LayerMask 초기화
         IsDied = true;
         DispatchUnitEvent(Types.UnitEventType.Die, this);
+        // 사망 시 sortingLayer를 Ground로 바꿔준다.
+        UnitBody.UnitSR.sortingLayerName = Types.UnitSortingLayerType.Unit_Ground.ToString();
 
         if (HasEnemyUnit())
         {

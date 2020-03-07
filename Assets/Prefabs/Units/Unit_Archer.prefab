@@ -426,7 +426,6 @@ MonoBehaviour:
   ColliderOffset: {x: 0, y: 0}
   ColliderSize: {x: 0, y: 0}
   UnitCenter: {fileID: 114898018253472554}
-  UnitCenterOffset: {x: 0, y: 0.25, z: 0}
   HitEffectAnimator: {fileID: 0}
   UnitFSM: {fileID: 114271592312121844}
   CanChangeDirection: 1
