@@ -31,9 +31,8 @@ public class Unit : MonoBehaviour
     // Status
     // todo create UnitStatus
     public float Health = 20;
-    public float Speed = 2f;
-    public bool IsDied = false;
     public CCData TakenCCData;
+    public bool IsDied = false;
     public bool GoalComplete = false;
 
     LayerMask[] _enemyLayerMasks;
@@ -60,10 +59,7 @@ public class Unit : MonoBehaviour
 
     protected void Start()
     {
-        InitLayer();
-        SetEnemyLayerMask(GetAttackData());
-        Health = UnitData.Health;
-        unitRenderOrder.Init(UnitData.UnitSortingLayerType.ToString());
+        Init();
     }
 
     void InitLayer()
@@ -88,6 +84,17 @@ public class Unit : MonoBehaviour
             int mask = LayerMask.GetMask(TeamData.EnemyTeamType.ToString() + targetUnitTypes[i].ToString());
             _enemyLayerMasks[i] = mask;
         }
+    }
+
+    public void Init()
+    {
+        IsDied = false;
+        GoalComplete = false;
+        Health = UnitData.Health;
+        InitLayer();
+        SetEnemyLayerMask(GetAttackData());
+        unitRenderOrder.Init(UnitData.UnitSortingLayerType.ToString());
+        UnitFSM.Reset();
     }
 
     void OnApplicationQuit()
@@ -261,6 +268,11 @@ public class Unit : MonoBehaviour
         {
             EnemyUnit.UnitEvent -= OnUnitEventHandler_EnemyUnit;
         }
+    }
+
+    public void DiedComplete()
+    {
+        UnitPoolManager.Inst.Release(this);
     }
 
     virtual public Unit TryFindEnemyOrNull()

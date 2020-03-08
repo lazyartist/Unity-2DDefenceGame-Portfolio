@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 114160141691601468}
   - component: {fileID: 114487987973782972}
   m_Layer: 8
-  m_Name: TowerUnit_Archer3
+  m_Name: Unit_ArcherTower3
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -358,20 +358,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ParentUnit: {fileID: 114674793594176356}
-  IsUseParentUnitCenter: 1
   ChildUnitPrefab: {fileID: 114672875092321788, guid: f44b1f94d19a36f43be0b1244db60058,
     type: 2}
-  MaxUnitCount: 3
+  Units: []
   CenterRallyPointInLocal: {x: 0, y: 0, z: 0}
   IndividualRallyPointInLocals:
   - {x: 0, y: 1.5, z: 0}
   - {x: -0.25, y: 1.2, z: 0}
   - {x: 0.25, y: 1.2, z: 0}
-  RallyPointRadius: 0
   WaypointDataUsedRallyPosition: {fileID: 11400000, guid: 40a344690774efb44881420777e0fe92,
     type: 2}
+  IsUseParentUnitCenter: 1
   IsSetRallyPointToNearlyWayPoint: 0
-  Units: []
+  MaxUnitCount: 3
+  RallyPointRadius: 0
 --- !u!114 &114493050423989186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -446,6 +446,7 @@ MonoBehaviour:
   - {fileID: 114079707260308196}
   - {fileID: 114493050423989186}
   - {fileID: 114195388181354612}
+  FirstUnitState: {fileID: 114335919656571876}
   CurUnitState: {fileID: 114335919656571876}
   Unit: {fileID: 114674793594176356}
 --- !u!114 &114913971712294294

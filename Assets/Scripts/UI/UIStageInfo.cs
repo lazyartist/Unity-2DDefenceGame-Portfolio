@@ -31,27 +31,32 @@ public class UIStageInfo : MonoBehaviour
 
         FastForwardButton.onClick.AddListener(() =>
         {
-            Time.timeScale += 1.0f;
-            if(Time.timeScale > _stageData.MaxTimeScale)
+            StageManager.Inst.StageInfo.TimeScale += 1.0f;
+            if (StageManager.Inst.StageInfo.TimeScale > _stageData.MaxTimeScale)
             {
-                Time.timeScale = 1.0f;
+                StageManager.Inst.StageInfo.TimeScale = _stageData.StartTimeScale;
             }
-            UpdateStageInfo();
+            Time.timeScale += StageManager.Inst.StageInfo.TimeScale;
         });
 
         PauseButton.onClick.AddListener(() =>
         {
             _isPaused = !_isPaused;
-            Time.timeScale = _isPaused ? 0f : 1f;
+            Time.timeScale = _isPaused ? 0f : StageManager.Inst.StageInfo.TimeScale;
         });
 
-        UpdateStageInfo();
+        UpdatePlayerInfo();
+        UpdateWaveInfo();
     }
 
-    void UpdateStageInfo()
+    void UpdatePlayerInfo()
     {
         HealthText.text = _stageInfo.Health.ToString();
         GoldText.text = _stageInfo.Gold.ToString();
+    }
+
+    void UpdateWaveInfo()
+    {
         WaveText.text = (_stageInfo.WavePhaseIndex + 1).ToString() + "/" + StageManager.Inst.StageInfo.WavePhaseCount.ToString();
         TimeScaleText.text = "x" + Time.timeScale.ToString();
         StartWaveButton.gameObject.SetActive(!StageManager.Inst.StageInfo.IsWaveStarted);
@@ -63,8 +68,13 @@ public class UIStageInfo : MonoBehaviour
         {
             case Types.StageEventType.None:
                 break;
-            case Types.StageEventType.StageInfoChanged:
-                UpdateStageInfo();
+            case Types.StageEventType.PlayerInfoChanged:
+                UpdatePlayerInfo();
+                break;
+            case Types.StageEventType.WaveInfoChanged:
+                UpdateWaveInfo();
+                break;
+            case Types.StageEventType.HeroUnitChanged:
                 break;
             default:
                 break;

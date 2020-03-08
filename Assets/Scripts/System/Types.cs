@@ -32,7 +32,7 @@ static public class Types {
 
     public enum StageEventType
     {
-        None, StageInfoChanged, HeroUnitChanged
+        None, PlayerInfoChanged, WaveInfoChanged, HeroUnitChanged
     }
 
     public enum CameraEventType

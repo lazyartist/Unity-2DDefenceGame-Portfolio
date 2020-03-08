@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 114729748063696688}
   - component: {fileID: 114817695641088798}
   m_Layer: 0
-  m_Name: Unit_Archer
+  m_Name: Unit_ArcherInTower
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -355,6 +355,7 @@ MonoBehaviour:
   - {fileID: 114776617647403108}
   - {fileID: 114511659558347260}
   - {fileID: 114145094154538832}
+  FirstUnitState: {fileID: 114960341470601430}
   CurUnitState: {fileID: 114960341470601430}
   Unit: {fileID: 114672875092321788}
 --- !u!114 &114448421632617110

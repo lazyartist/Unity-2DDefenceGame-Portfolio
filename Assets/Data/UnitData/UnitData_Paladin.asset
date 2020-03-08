@@ -11,10 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae50041b52daecc40b506d48e1bf7928, type: 3}
   m_Name: UnitData_Paladin
   m_EditorClassIdentifier: 
-  UnitType: 1
+  UnitTypeName: Paladin
+  UnitPlaceType: 1
   Health: 30
   MoveSpeed: 2
   TargetRange: 1
-  AttackCoolTime: 1.1
   Gold: 0
   StageHealthDamage: 1
+  UnitTargetRangeCenterType: 0
+  UnitSortingLayerType: 0

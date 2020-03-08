@@ -102,7 +102,7 @@ public class HeroUnitButton : MonoBehaviour/*, IPointerClickHandler*/
         {
             case Types.StageEventType.None:
                 break;
-            case Types.StageEventType.StageInfoChanged:
+            case Types.StageEventType.PlayerInfoChanged:
                 break;
             case Types.StageEventType.HeroUnitChanged:
                 UpdateHeroUnit();

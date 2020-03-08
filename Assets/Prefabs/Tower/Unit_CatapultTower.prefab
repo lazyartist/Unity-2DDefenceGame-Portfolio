@@ -31,7 +31,7 @@ GameObject:
   - component: {fileID: 114231036250034452}
   - component: {fileID: 114484382263081272}
   m_Layer: 8
-  m_Name: TowerUnit_Catapult
+  m_Name: Unit_CatapultTower
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -381,6 +381,7 @@ MonoBehaviour:
   - {fileID: 114709766724336926}
   - {fileID: 114632463446472822}
   - {fileID: 114335121371275444}
+  FirstUnitState: {fileID: 114640927806167560}
   CurUnitState: {fileID: 114640927806167560}
   Unit: {fileID: 114983846545771790}
 --- !u!114 &114434269478536484

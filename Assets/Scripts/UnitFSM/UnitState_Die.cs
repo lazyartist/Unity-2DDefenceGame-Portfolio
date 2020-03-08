@@ -50,6 +50,7 @@ public class UnitState_Die : AUnitState
 
     void DiedComplete()
     {
-        Destroy(_unit.gameObject);
+        _unit.DiedComplete();
+        //Destroy(_unit.gameObject);
     }
 }

@@ -200,7 +200,7 @@ public class UITowerMenu : MonoBehaviour
             {
                 case Types.StageEventType.None:
                     break;
-                case Types.StageEventType.StageInfoChanged:
+                case Types.StageEventType.PlayerInfoChanged:
                     UpdateCanBuyOfAllTowerMenuButtons();
                     break;
                 default:

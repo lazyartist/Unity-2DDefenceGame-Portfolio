@@ -10,12 +10,14 @@ public class StageInfo
         Gold = stageData.Gold;
         WavePhaseCount = stageData.WavePhases.Length;
         LastHeroUnitPosition = stageData.FirstHeroUnitPosition;
+        TimeScale = stageData.StartTimeScale;
     }
 
-    public bool IsDirty { get; private set; }
+    public bool IsPlayerDirty { get; private set; }
     public void Clean()
     {
-        IsDirty = false;
+        IsPlayerDirty = false;
+        IsWaveDirty = false;
     }
 
     // Player =====
@@ -29,7 +31,7 @@ public class StageInfo
         set
         {
             _health = value;
-            IsDirty = true;
+            IsPlayerDirty = true;
         }
     }
 
@@ -43,27 +45,15 @@ public class StageInfo
         set
         {
             _gold = value;
-            IsDirty = true;
+            IsPlayerDirty = true;
         }
     }
     // Player ===== end
 
     // Wave =====
-    int _wavePhaseIndex;
-    public int WavePhaseIndex
-    {
-        get
-        {
-            return _wavePhaseIndex;
-        }
-        set
-        {
-            _wavePhaseIndex = value;
-            IsDirty = true;
-        }
-    }
-
-    public int WavePhaseCount { get; private set; }
+    public bool IsWaveDirty;
+    public int WavePhaseIndex;
+    public int WavePhaseCount;
     public int WaveIndex = 0;
     public bool IsWaveStarted = false;
     public bool IsWavePhaseDone = false;
@@ -75,4 +65,20 @@ public class StageInfo
     public float HeroUnitDiedTime = 0f;
     public Vector3 LastHeroUnitPosition;
     // HeroUnit ===== end
+
+    // TimeScale =====
+    float _timeScale;
+    public float TimeScale
+    {
+        get
+        {
+            return _timeScale;
+        }
+        set
+        {
+            _timeScale = value;
+            IsPlayerDirty = true;
+        }
+    }
+    // TimeScale ===== end
 }

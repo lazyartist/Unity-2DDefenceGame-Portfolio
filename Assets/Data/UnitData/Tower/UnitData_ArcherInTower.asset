@@ -9,9 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae50041b52daecc40b506d48e1bf7928, type: 3}
-  m_Name: UnitData_Archer
+  m_Name: UnitData_ArcherInTower
   m_EditorClassIdentifier: 
-  UnitType: 3
+  UnitTypeName: ArcherInTower
+  UnitPlaceType: 3
   Health: 1
   MoveSpeed: 1
   TargetRange: 0

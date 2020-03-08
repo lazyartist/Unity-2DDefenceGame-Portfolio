@@ -5,11 +5,13 @@ using UnityEngine;
 public class UnitFSM : MonoBehaviour
 {
     public AUnitState[] UnitStates;
+    public AUnitState FirstUnitState;
     public AUnitState CurUnitState;
     public Unit Unit;
 
     private void Awake()
     {
+        //CurUnitState = FirstUnitState;
         foreach (AUnitState aUnitState in UnitStates)
         {
             aUnitState.enabled = CurUnitState == aUnitState;
@@ -45,6 +47,11 @@ public class UnitFSM : MonoBehaviour
         {
             Transit(unitState);
         }
+    }
+
+    public void Reset()
+    {
+        CurUnitState = FirstUnitState;
     }
 
     // 상태 전환

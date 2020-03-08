@@ -17,7 +17,7 @@ MonoBehaviour:
   - Waves:
     - UnitPrefab: {fileID: 114291473754489126, guid: f2931adb5f3318845871e932c4afab2f,
         type: 2}
-      UnitCount: 20
+      UnitCount: 3
       NextWaveInterval: 0.5
       WayPointContainerIndex: 1
   HeroUnitPrefab: {fileID: 114795718610798396, guid: 7697cf43afc86c041a6ad830432ab012,
@@ -27,3 +27,5 @@ MonoBehaviour:
   FirstHeroUnitPosition: {x: 4, y: -2, z: 0}
   Health: 20
   Gold: 100
+  StartTimeScale: 10
+  MaxTimeScale: 10

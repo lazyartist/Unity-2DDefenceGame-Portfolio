@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae50041b52daecc40b506d48e1bf7928, type: 3}
   m_Name: UnitData_Goblin
   m_EditorClassIdentifier: 
-  UnitType: 1
+  UnitTypeName: Goblin
+  UnitPlaceType: 1
   Health: 10
   MoveSpeed: 0.5
   TargetRange: 1

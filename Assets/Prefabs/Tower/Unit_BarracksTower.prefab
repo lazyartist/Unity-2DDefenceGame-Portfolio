@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 114010493175306470}
   - component: {fileID: 114779543916945716}
   m_Layer: 8
-  m_Name: TowerUnit_Barracks
+  m_Name: Unit_BarracksTower
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -509,6 +509,7 @@ MonoBehaviour:
   - {fileID: 114792745593350560}
   - {fileID: 114485995525816242}
   - {fileID: 114060179040907994}
+  FirstUnitState: {fileID: 114627217347556148}
   CurUnitState: {fileID: 114627217347556148}
   Unit: {fileID: 114991902228683878}
 --- !u!114 &114627217347556148

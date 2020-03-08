@@ -15,28 +15,38 @@ public class StageManager : SingletonBase<StageManager>
     protected override void Awake()
     {
         base.Awake();
+
         StageInfo = new StageInfo();
+        StageInfo.Copy(StageData);
+        StageInfo.WavePhaseIndex = 0;
+
+        Time.timeScale = StageInfo.TimeScale;
+
+        ClearWaveInfo();
     }
 
     void Start()
     {
-        StageInfo.Copy(StageData);
-        StageInfo.WavePhaseIndex = 0;
-
-        ClearWaveInfo();
+        
         SpawnHeroUnit();
     }
 
     void Update()
     {
-        if (StageInfo.IsDirty)
+        if (StageEvent != null)
         {
-            if (StageEvent != null)
+            if (StageInfo.IsPlayerDirty)
             {
-                StageEvent(Types.StageEventType.StageInfoChanged);
+                StageEvent(Types.StageEventType.PlayerInfoChanged);
+            }
+
+            if (StageInfo.IsWaveDirty)
+            {
+                StageEvent(Types.StageEventType.WaveInfoChanged);
             }
             StageInfo.Clean();
         }
+
 
         UpdateStageClear();
     }
@@ -78,11 +88,12 @@ public class StageManager : SingletonBase<StageManager>
             int waypointSubIndex = Consts.WaypointSubIndexStart;
             for (int i = 0; i < wave.UnitCount; i++)
             {
-                Unit unit = Instantiate(wave.UnitPrefab, startWaypoint.transform.position, Quaternion.identity, UnitsContainer.transform);
+                Unit unit = UnitPoolManager.Inst.Get(wave.UnitPrefab.UnitData.UnitTypeName, wave.UnitPrefab);
+                unit.transform.SetParent(UnitsContainer.transform);
+                unit.transform.position = startWaypoint.transform.position;
                 unit.gameObject.SetActive(true);
                 unit.TeamData = StageData.EnemyTeamData;
                 unit.UnitMovePoint.SetWayPoint(startWaypoint, waypointSubIndex);
-                //unit.WaypointSubIndex = waypointSubIndex++;
 
                 yield return new WaitForSeconds(Consts.CreateUnitInterval);
             }
@@ -92,6 +103,7 @@ public class StageManager : SingletonBase<StageManager>
             {
                 StageInfo.IsWavePhaseDone = true;
             }
+            StageInfo.IsWaveDirty = true;
 
             if (wave.NextWaveInterval > 0)
             {
@@ -103,6 +115,7 @@ public class StageManager : SingletonBase<StageManager>
             {
                 StageInfo.IsAllWavePhaseDone = true;
                 StageInfo.IsWaveStarted = false;
+                StageInfo.IsWaveDirty = true;
                 yield break;
             }
         }

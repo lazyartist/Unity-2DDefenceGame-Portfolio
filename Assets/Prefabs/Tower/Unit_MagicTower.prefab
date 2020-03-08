@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 114961925386773502}
   - component: {fileID: 114004981127754672}
   m_Layer: 8
-  m_Name: TowerUnit_MagicTower
+  m_Name: Unit_MagicTower
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -355,6 +355,7 @@ MonoBehaviour:
   - {fileID: 114791694209124680}
   - {fileID: 114074546919725200}
   - {fileID: 114999345905812012}
+  FirstUnitState: {fileID: 114036184108926214}
   CurUnitState: {fileID: 114036184108926214}
   Unit: {fileID: 114610455710854234}
 --- !u!114 &114830043916443620
