@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Selector_Tower : Selector
 {
-    public Tower Tower;
+    public TowerBuilder Tower;
 
     override protected void Start()
     {
-        Tower = GetComponent<Tower>();
+        Tower = GetComponent<TowerBuilder>();
         base.Start();
     }
 

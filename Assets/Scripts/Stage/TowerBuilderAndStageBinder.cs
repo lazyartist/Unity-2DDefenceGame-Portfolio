@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerAndStageBinder : MonoBehaviour {
-    public Tower Tower;
+public class TowerBuilderAndStageBinder : MonoBehaviour {
+    public TowerBuilder TowerBuilder;
 
 	void Start () {
-        Tower = GetComponent<Tower>();
-        if(Tower != null)
+        TowerBuilder = GetComponent<TowerBuilder>();
+        if(TowerBuilder != null)
         {
-            Tower.TowerEvent += OnTowerEvent;
+            TowerBuilder.TowerEvent += OnTowerEvent;
         }
     }
 
@@ -25,14 +25,14 @@ public class TowerAndStageBinder : MonoBehaviour {
 
     void CleanUp()
     {
-        if(Tower != null)
+        if(TowerBuilder != null)
         {
-            Tower.TowerEvent -= OnTowerEvent;
-            Tower = null;
+            TowerBuilder.TowerEvent -= OnTowerEvent;
+            TowerBuilder = null;
         }
     }
 
-    void OnTowerEvent(Types.TowerEventType towerEventType, Tower tower)
+    void OnTowerEvent(Types.TowerEventType towerEventType, TowerBuilder tower)
     {
         switch (towerEventType)
         {

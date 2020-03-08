@@ -43,7 +43,7 @@ public class UICanvas : SingletonBase<UICanvas>
         }
     }
 
-    public void ShowTowerMenu(Tower tower, bool isShow)
+    public void ShowTowerMenu(TowerBuilder tower, bool isShow)
     {
         if (isShow)
         {

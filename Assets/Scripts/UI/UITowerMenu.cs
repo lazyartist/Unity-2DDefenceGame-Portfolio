@@ -10,7 +10,7 @@ public class UITowerMenu : MonoBehaviour
     public float TowerMenuButtonRadius;
     public TowerMenuButton TowerMenuButtonPrefab;
 
-    public Tower Tower;
+    public TowerBuilder Tower;
     public TowerUpgradeData TowerUpgradeData;
     public TowerMenuButton[] TowerMenuButtons;
     public TowerMenuButton SellTowerMenuButton;
@@ -89,7 +89,7 @@ public class UITowerMenu : MonoBehaviour
         }
     }
 
-    public void Show(Tower tower)
+    public void Show(TowerBuilder tower)
     {
         gameObject.SetActive(true);
         _checkedTowerMenuButton = null;

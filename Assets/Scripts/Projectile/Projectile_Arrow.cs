@@ -20,7 +20,7 @@ public class Projectile_Arrow : AProjectile
     {
         _animator = GetComponent<Animator>();
         _paralobaAlgorithm = new ParabolaAlgorithm();
-        name += Consts.GetUnitId();
+        name += Consts.GetUnitNumber();
     }
 
     void Update()

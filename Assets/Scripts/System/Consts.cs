@@ -24,9 +24,9 @@ static public class Consts
 
     public static string[] audios = { "Hit", "aa" };
 
-    private static int _unitId = 0;
-    public static int GetUnitId()
+    private static int _unitNumber = 0;
+    public static int GetUnitNumber()
     {
-        return ++_unitId;
+        return ++_unitNumber;
     }
 }

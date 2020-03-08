@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "UnitData_", menuName = "Create Data/UnitData")]
 public class UnitData : ScriptableObject
 {
-    public Types.UnitType UnitType;
+    public string UnitTypeName;
+    public Types.UnitPlaceType UnitPlaceType;
 
     public float Health = 10f;
     public float MoveSpeed = 2f;

@@ -40,7 +40,7 @@ public class UIInfoBar : MonoBehaviour
                     break;
                 case Types.InfoType.Tower:
                     {
-                        Tower tower = _selector.GetComponent<Tower>();
+                        TowerBuilder tower = _selector.GetComponent<TowerBuilder>();
                         InfoText.text = tower.ToString();
                     }
                     break;

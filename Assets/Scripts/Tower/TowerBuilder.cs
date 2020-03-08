@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class Tower : MonoBehaviour
+public class TowerBuilder : MonoBehaviour
 {
     public Types.TowerEvent TowerEvent;
 

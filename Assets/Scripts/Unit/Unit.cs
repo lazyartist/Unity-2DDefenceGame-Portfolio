@@ -41,7 +41,7 @@ public class Unit : MonoBehaviour
 
     protected void Awake()
     {
-        gameObject.name += Consts.GetUnitId();
+        gameObject.name += Consts.GetUnitNumber();
         TakenCCData = new CCData();
         UnitCenter.UnitData = UnitData;
 
@@ -68,19 +68,19 @@ public class Unit : MonoBehaviour
 
     void InitLayer()
     {
-        if (TeamData.TeamType == Types.TeamType.None || UnitData.UnitType == Types.UnitType.None)
+        if (TeamData.TeamType == Types.TeamType.None || UnitData.UnitPlaceType == Types.UnitPlaceType.None)
         {
             gameObject.layer = 0;
         }
         else
         {
-            gameObject.layer = LayerMask.NameToLayer(TeamData.TeamType.ToString() + UnitData.UnitType.ToString());
+            gameObject.layer = LayerMask.NameToLayer(TeamData.TeamType.ToString() + UnitData.UnitPlaceType.ToString());
         }
     }
 
     void SetEnemyLayerMask(AttackData attackData)
     {
-        Types.UnitType[] targetUnitTypes = GetAttackData().TargetUnitTypes;
+        Types.UnitPlaceType[] targetUnitTypes = GetAttackData().TargetUnitTypes;
         _enemyLayerMasks = new LayerMask[targetUnitTypes.Length];
         for (int i = 0; i < targetUnitTypes.Length; i++)
         {

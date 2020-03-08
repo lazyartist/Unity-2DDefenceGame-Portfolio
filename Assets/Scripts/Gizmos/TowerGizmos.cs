@@ -6,7 +6,7 @@ public class TowerGizmos : MonoBehaviour {
 
     void OnDrawGizmos()
     {
-        Tower tower = GetComponent<Tower>();
+        TowerBuilder tower = GetComponent<TowerBuilder>();
 
         if(tower != null)
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AttackData_", menuName = "Create Data/AttackData")]
 public class AttackData : ScriptableObject
 {
-    public Types.UnitType[] TargetUnitTypes;
+    public Types.UnitPlaceType[] TargetUnitTypes;
 
     public AProjectile ProjectilePrefab;
     public float ProjectileSpeed;
