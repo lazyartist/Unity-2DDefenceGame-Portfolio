@@ -9,7 +9,9 @@ public class UIStageInfo : MonoBehaviour
     public Text GoldText;
     public Text WaveText;
     public Button StartWaveButton;
+    public Button FastForwardButton;
     public Button PauseButton;
+    public Text TimeScaleText;
 
     StageData _stageData;
     StageInfo _stageInfo;
@@ -27,6 +29,16 @@ public class UIStageInfo : MonoBehaviour
             StartWaveButton.gameObject.SetActive(!StageManager.Inst.StageInfo.IsWaveStarted);
         });
 
+        FastForwardButton.onClick.AddListener(() =>
+        {
+            Time.timeScale += 1.0f;
+            if(Time.timeScale > _stageData.MaxTimeScale)
+            {
+                Time.timeScale = 1.0f;
+            }
+            UpdateStageInfo();
+        });
+
         PauseButton.onClick.AddListener(() =>
         {
             _isPaused = !_isPaused;
@@ -40,7 +52,8 @@ public class UIStageInfo : MonoBehaviour
     {
         HealthText.text = _stageInfo.Health.ToString();
         GoldText.text = _stageInfo.Gold.ToString();
-        WaveText.text = (_stageInfo.WavePhaseIndex + 1).ToString() + "/" + StageManager.Inst.StageInfo.WavePhaseCount.ToString();// todo translate
+        WaveText.text = (_stageInfo.WavePhaseIndex + 1).ToString() + "/" + StageManager.Inst.StageInfo.WavePhaseCount.ToString();
+        TimeScaleText.text = "x" + Time.timeScale.ToString();
         StartWaveButton.gameObject.SetActive(!StageManager.Inst.StageInfo.IsWaveStarted);
     }
 

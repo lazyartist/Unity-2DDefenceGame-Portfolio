@@ -21,4 +21,5 @@ public class StageData : ScriptableObject
     [Header("Player")]
     public int Health = 20;
     public int Gold = 100;
+    public float MaxTimeScale = 4.0f;
 }
