@@ -5,6 +5,7 @@ using UnityEngine;
 public class GoalZone : MonoBehaviour
 {
     public BoxCollider2D BoxCollider2D;
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         Unit unit = collision.GetComponent<Unit>();
