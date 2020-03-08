@@ -444,17 +444,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ParentUnit: {fileID: 114991902228683878}
-  IsUseParentUnitCenter: 0
   ChildUnitPrefab: {fileID: 114611179643101524, guid: d720717e6a2f6104882e77ec5fcd3bac,
     type: 2}
-  MaxUnitCount: 3
+  Units: []
   CenterRallyPointInLocal: {x: 1, y: 0, z: 0}
   IndividualRallyPointInLocals: []
-  RallyPointRadius: 0.3
   WaypointDataUsedRallyPosition: {fileID: 11400000, guid: 40a344690774efb44881420777e0fe92,
     type: 2}
-  IsSetRallyPointToNearlyWayPoint: 0
-  Units: []
+  IsUseParentUnitCenter: 0
+  IsSetRallyPointToNearlyWayPoint: 1
+  MaxUnitCount: 3
+  RallyPointRadius: 0.3
 --- !u!114 &114430714192687134
 MonoBehaviour:
   m_ObjectHideFlags: 1

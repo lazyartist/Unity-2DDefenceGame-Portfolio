@@ -5,15 +5,15 @@ using UnityEngine;
 public class ChildUnitCreator : MonoBehaviour
 {
     public Unit ParentUnit;
-    public bool IsUseParentUnitCenter;
     public Unit ChildUnitPrefab;
-    public int MaxUnitCount;
-    public Vector3 CenterRallyPointInLocal = Vector3.right; // 이 랠리포인트 주변으로 유닛 배치
-    public Vector3[] IndividualRallyPointInLocals; // 유닛별 랠리포인트 사용
-    public float RallyPointRadius = 0.3f;
-    public WaypointData WaypointDataUsedRallyPosition; // 가까운 WayPoint를 찾기 위한 데이터
-    public bool IsSetRallyPointToNearlyWayPoint;
     public Unit[] Units;
+    public Vector3 CenterRallyPointInLocal = Vector3.right; // 이 랠리포인트 주변으로 유닛 배치
+    public Vector3[] IndividualRallyPointInLocals; // 유닛별 랠리포인트
+    public WaypointData WaypointDataUsedRallyPosition; // 가까운 WayPoint를 찾기 위한 데이터
+    public bool IsUseParentUnitCenter; // 부모 유닛의 센터를 자식 유닛이 공유(자식유닛이 부모유닛의 공격범위를 사용할 경우)
+    public bool IsSetRallyPointToNearlyWayPoint; // 가까운 WayPoint를 RallyPoint로 사요할지 여부
+    public int MaxUnitCount;
+    public float RallyPointRadius = 0.3f;
 
     LayerMask _wayPointLayerMask;
 
@@ -83,6 +83,7 @@ public class ChildUnitCreator : MonoBehaviour
 
             if (rallyPoint != null)
             {
+                //CenterRallyPointInLocal = transform.position - rallyPoint.transform.position;
                 CenterRallyPointInLocal = rallyPoint.transform.position - transform.position;
             }
         }
