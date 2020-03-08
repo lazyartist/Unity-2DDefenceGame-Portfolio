@@ -36,7 +36,8 @@ public class UIStageInfo : MonoBehaviour
             {
                 StageManager.Inst.StageInfo.TimeScale = _stageData.StartTimeScale;
             }
-            Time.timeScale += StageManager.Inst.StageInfo.TimeScale;
+            Time.timeScale = StageManager.Inst.StageInfo.TimeScale;
+            UpdateWaveInfo();
         });
 
         PauseButton.onClick.AddListener(() =>

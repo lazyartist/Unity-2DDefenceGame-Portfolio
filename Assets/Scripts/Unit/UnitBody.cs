@@ -11,9 +11,18 @@ public class UnitBody : MonoBehaviour
     public Animator Animator;
     public SpriteRenderer UnitSR;
 
+    Vector3 _firstLocalPosition;
+
     void Awake()
     {
         Animator = GetComponent<Animator>();
+
+        _firstLocalPosition = transform.localPosition;
+    }
+
+    public void Reset()
+    {
+        transform.localPosition = _firstLocalPosition;
     }
 
     public void AniEvent_AttackStart()

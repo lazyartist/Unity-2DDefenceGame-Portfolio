@@ -95,6 +95,7 @@ public class Unit : MonoBehaviour
         SetEnemyLayerMask(GetAttackData());
         unitRenderOrder.Init(UnitData.UnitSortingLayerType.ToString());
         UnitFSM.Reset();
+        UnitBody.Reset();
     }
 
     void OnApplicationQuit()

@@ -28,4 +28,4 @@ MonoBehaviour:
   Health: 20
   Gold: 100
   StartTimeScale: 10
-  MaxTimeScale: 10
+  MaxTimeScale: 50
