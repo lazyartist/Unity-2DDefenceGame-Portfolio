@@ -42,7 +42,6 @@ public class UnitPoolManager : SingletonBase<UnitPoolManager>
         }
 
         Debug.Log("UnitPool Get " + units.Count);
-        unit.Init();
         return unit;
     }
 
