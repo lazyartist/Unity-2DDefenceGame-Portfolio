@@ -28,23 +28,23 @@ public class UnitBody : MonoBehaviour
     public void AniEvent_AttackStart()
     {
         Debug.Log("AniEvent_AttackStart");
-        Unit.DispatchUnitEvent(Types.UnitEventType.AttackStart, Unit);
+        Unit.DispatchUnitEvent(Types.UnitEventType.AttackStart);
     }
 
     public void AniEvent_AttackFire()
     {
-        Unit.DispatchUnitEvent(Types.UnitEventType.AttackFire, Unit);
+        Unit.DispatchUnitEvent(Types.UnitEventType.AttackFire);
     }
 
     public void AniEvent_AttackEnd()
     {
         Debug.Log("AniEvent_AttackEnd");
-        Unit.DispatchUnitEvent(Types.UnitEventType.AttackEnd, Unit);
+        Unit.DispatchUnitEvent(Types.UnitEventType.AttackEnd);
     }
 
     public void DiedComplete()
     {
-        Unit.DispatchUnitEvent(Types.UnitEventType.DiedComplete, Unit);
+        Unit.DispatchUnitEvent(Types.UnitEventType.DiedComplete);
     }
 
     public void Toward(Vector3 direction)

@@ -7199,7 +7199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5bcfd5278b8a542b4d46b989aa84d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StageData: {fileID: 11400000, guid: aaaccf81f03bdbe4489ab4c258302f2b, type: 2}
+  StageData: {fileID: 11400000, guid: 3cb60f2dca5c92343b685023b2fa70d0, type: 2}
   UnitsContainer: {fileID: 2007183369}
 --- !u!4 &1654529991
 Transform:

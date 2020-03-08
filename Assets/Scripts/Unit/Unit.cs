@@ -96,6 +96,7 @@ public class Unit : MonoBehaviour
         unitRenderOrder.Init(UnitData.UnitSortingLayerType.ToString());
         UnitFSM.Reset();
         UnitBody.Reset();
+        DispatchUnitEvent(Types.UnitEventType.Live);
     }
 
     void OnApplicationQuit()
@@ -126,7 +127,7 @@ public class Unit : MonoBehaviour
         UnitFSM.ClearnUp();
     }
 
-    public void DispatchUnitEvent(Types.UnitEventType unitEventType, Unit unit)
+    public void DispatchUnitEvent(Types.UnitEventType unitEventType)
     {
         if (UnitEvent == null)
         {
@@ -135,7 +136,7 @@ public class Unit : MonoBehaviour
         }
         else
         {
-            UnitEvent(unitEventType, unit);
+            UnitEvent(unitEventType, this);
         }
     }
 
@@ -156,7 +157,7 @@ public class Unit : MonoBehaviour
             case Types.UnitNotifyType.ClearEnemyUnit:
                 if (HasEnemyUnit())
                 {
-                    DispatchUnitEvent(Types.UnitEventType.AttackStopped, null);
+                    DispatchUnitEvent(Types.UnitEventType.AttackStopped);
                     RemoveEnemyUnit();
                 }
                 break;
@@ -261,7 +262,7 @@ public class Unit : MonoBehaviour
     {
         gameObject.layer = 0; // 타겟으로 검색되지 않도록 LayerMask 초기화
         IsDied = true;
-        DispatchUnitEvent(Types.UnitEventType.Die, this);
+        DispatchUnitEvent(Types.UnitEventType.Die);
         // 사망 시 sortingLayer를 Ground로 바꿔준다.
         UnitBody.UnitSR.sortingLayerName = Types.UnitSortingLayerType.Unit_Ground.ToString();
 

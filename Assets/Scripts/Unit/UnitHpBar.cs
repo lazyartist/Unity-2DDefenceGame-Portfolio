@@ -12,14 +12,18 @@ public class UnitHpBar : MonoBehaviour
 
     void Start()
     {
-        HpBarGaugeSR.color = Unit.TeamData.TeamColor;
         Unit.UnitEvent += OnUnitEvent;
+        Init();
+    }
 
-        _hpBarWidth = Unit.ColliderSize.x;
+    void Init()
+    {
+        HpBarGaugeSR.color = Unit.TeamData.TeamColor;
         HpBarBgSR.transform.localScale = new Vector3(_hpBarWidth, 1f, 1f);
         HpBarGaugeSR.transform.localScale = new Vector3(_hpBarWidth, 1f, 1f);
-
+        _hpBarWidth = Unit.ColliderSize.x;
         this.transform.localPosition = new Vector3(_hpBarWidth * -0.5f, Unit.ColliderOffset.y + Unit.ColliderSize.y * 0.5f + 0.1f, 0f);
+        this.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -39,6 +43,9 @@ public class UnitHpBar : MonoBehaviour
         switch (unitEventType)
         {
             case Types.UnitEventType.None:
+                break;
+            case Types.UnitEventType.Live:
+                Init();
                 break;
             case Types.UnitEventType.AttackStart:
                 break;

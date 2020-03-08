@@ -106,4 +106,6 @@ MonoBehaviour:
   HeroUnitRespawnCoolTime: 5
   FirstHeroUnitPosition: {x: -0.19, y: -2.6, z: 0}
   Health: 1
-  Gold: 48
+  Gold: 50
+  StartTimeScale: 1
+  MaxTimeScale: 4
