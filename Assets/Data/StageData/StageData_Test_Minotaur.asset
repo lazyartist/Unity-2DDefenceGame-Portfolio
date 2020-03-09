@@ -27,5 +27,5 @@ MonoBehaviour:
   FirstHeroUnitPosition: {x: 1.03, y: -2, z: 0}
   Health: 20
   Gold: 100
-  StartTimeScale: 4
-  MaxTimeScale: 20
+  StartTimeScale: 1
+  MaxTimeScale: 5

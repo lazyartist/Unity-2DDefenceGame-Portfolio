@@ -36,8 +36,8 @@ public class Selector_Tower : Selector
             if (isOnWay)
             {
                 ChildUnitCreator childUnitCreator = Tower.Unit.GetComponent<ChildUnitCreator>();
-                childUnitCreator.CenterRallyPointInLocal = position - Tower.Unit.transform.position;
-                childUnitCreator.SetCenterRallyPointToAllUnits();
+                childUnitCreator.RallyPointInLocal = position - Tower.Unit.transform.position;
+                childUnitCreator.SetRallyPointToAllUnits();
             }
         }
         else

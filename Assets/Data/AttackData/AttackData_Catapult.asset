@@ -18,7 +18,7 @@ MonoBehaviour:
   Power: 1
   AttackRange: 1
   IsStartDelayForCoolTime: 0
-  CoolTime: 2
+  CoolTime: 5
   CCData: {fileID: 11400000, guid: 2abd475d06a3b52439374a14af271a9b, type: 2}
   StartAudioChannelType: 0
   StartAudioName: 

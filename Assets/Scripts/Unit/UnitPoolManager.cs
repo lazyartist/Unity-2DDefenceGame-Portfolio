@@ -6,62 +6,88 @@ public class UnitPoolManager : SingletonBase<UnitPoolManager>
 {
     public GameObject UnitPoolContainer;
 
-    Dictionary<string, HashSet<Unit>> _unitsPool;
+    Dictionary<string, HashSet<Unit>> _activeUnitsPool;
+    Dictionary<string, HashSet<Unit>> _deactiveUnitsPool;
 
     protected override void Awake()
     {
         base.Awake();
 
-        _unitsPool = new Dictionary<string, HashSet<Unit>>();
+        _activeUnitsPool = new Dictionary<string, HashSet<Unit>>();
+        _deactiveUnitsPool = new Dictionary<string, HashSet<Unit>>();
     }
 
 
     public Unit Get(string unitTypeName, Unit unitPrefab)
     {
-        HashSet<Unit> units = null;
-        if (_unitsPool.ContainsKey(unitTypeName))
+        HashSet<Unit> deactiveUnits = null;
+        if (_deactiveUnitsPool.ContainsKey(unitTypeName))
         {
-            units = _unitsPool[unitTypeName];
+            deactiveUnits = _deactiveUnitsPool[unitTypeName];
         }
         else
         {
-            units = new HashSet<Unit>();
-            _unitsPool.Add(unitTypeName, units);
+            deactiveUnits = new HashSet<Unit>();
+            _deactiveUnitsPool.Add(unitTypeName, deactiveUnits);
         }
 
         Unit unit = null;
-        IEnumerator<Unit> iter = units.GetEnumerator();
+        IEnumerator<Unit> iter = deactiveUnits.GetEnumerator();
         if (iter.MoveNext())
         {
+            // remove deactiveUnitsPool
             unit = iter.Current;
-            units.Remove(unit);
+            deactiveUnits.Remove(unit);
         }
         else
         {
             unit = Instantiate<Unit>(unitPrefab);
         }
 
-        Debug.Log("UnitPool Get " + units.Count);
+        // add activeUnitsPool
+        HashSet<Unit> activeUnits = null;
+        if (_activeUnitsPool.ContainsKey(unitTypeName))
+        {
+            activeUnits = _activeUnitsPool[unitTypeName];
+        }
+        else
+        {
+            activeUnits = new HashSet<Unit>();
+            _activeUnitsPool.Add(unitTypeName, activeUnits);
+        }
+        activeUnits.Add(unit);
+
+        Debug.Log("UnitPool Get " + unitTypeName + " " + activeUnits.Count + "/" + deactiveUnits.Count);
         return unit;
     }
 
     public void Release(Unit unit)
     {
-        HashSet<Unit> units = null;
-        if (_unitsPool.ContainsKey(unit.UnitData.UnitTypeName))
+        HashSet<Unit> activeUnits = null;
+        if (_activeUnitsPool.ContainsKey(unit.UnitData.UnitTypeName))
         {
-            units = _unitsPool[unit.UnitData.UnitTypeName];
+            activeUnits = _activeUnitsPool[unit.UnitData.UnitTypeName];
         }
         else
         {
-            Debug.LogAssertion("no units in unitsPool!!");
+            Debug.LogAssertion("no units in activeUnitsPool!!");
         }
+        activeUnits.Remove(unit);
 
+        HashSet<Unit> deactiveUnits = null;
+        if (_deactiveUnitsPool.ContainsKey(unit.UnitData.UnitTypeName))
+        {
+            deactiveUnits = _deactiveUnitsPool[unit.UnitData.UnitTypeName];
+        }
+        else
+        {
+            Debug.LogAssertion("no units in deactiveUnitsPool!!");
+        }
         unit.transform.SetParent(UnitPoolContainer.transform);
         unit.gameObject.SetActive(false);
-        units.Add(unit);
+        deactiveUnits.Add(unit);
 
-        Debug.Log("UnitPool Release " + units.Count);
+        Debug.Log("UnitPool Release " + unit.UnitData.UnitTypeName + " " + activeUnits.Count + "/" + deactiveUnits.Count);
     }
 
     //public Unit Get(string unitTypeName, Unit unitPrefab)

@@ -354,8 +354,10 @@ MonoBehaviour:
   ChildUnitPrefab: {fileID: 114672875092321788, guid: f44b1f94d19a36f43be0b1244db60058,
     type: 2}
   Units: []
-  CenterRallyPointInLocal: {x: 0, y: 0, z: 0}
-  IndividualRallyPointInLocals:
+  UnitDiedTimes: []
+  DiedUnitIndex: 0
+  RallyPointInLocal: {x: 1, y: 0, z: 0}
+  IndividualRallyPointsInLocal:
   - {x: 0, y: 1.3, z: 0}
   WaypointDataUsedRallyPosition: {fileID: 11400000, guid: 40a344690774efb44881420777e0fe92,
     type: 2}
@@ -442,9 +444,8 @@ MonoBehaviour:
   LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1920152767210224}
   Health: 0
-  Speed: 1
-  IsDied: 0
   TakenCCData: {fileID: 0}
+  IsDied: 0
   GoalComplete: 0
 --- !u!114 &114967545797970790
 MonoBehaviour:

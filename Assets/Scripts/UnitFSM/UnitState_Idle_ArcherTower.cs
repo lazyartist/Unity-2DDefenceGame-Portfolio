@@ -10,7 +10,7 @@ public class UnitState_Idle_ArcherTower : AUnitState
         _unit.UnitBody.Animator.SetTrigger("Idle");
 
         ChildUnitCreator childUnitCreator = GetComponent<ChildUnitCreator>();
-        childUnitCreator.CreateUnits();
+        childUnitCreator.CreateAllUnits();
 
         UnitRenderOrder unitRenderOrder = GetComponent<UnitRenderOrder>();
         for (int i = 0; i < childUnitCreator.Units.Length; i++)

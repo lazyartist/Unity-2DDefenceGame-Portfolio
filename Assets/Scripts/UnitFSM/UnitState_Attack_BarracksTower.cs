@@ -4,7 +4,6 @@ using UnityEngine;
 public class UnitState_Attack_BarracksTower : AUnitState
 {
     ChildUnitCreator _childUnitCreator;
-    float _coolTime = 0.0f;
     bool _isPlayingAttackAni;
 
     void Awake()
@@ -15,7 +14,6 @@ public class UnitState_Attack_BarracksTower : AUnitState
     // implements AUnitState
     public override void EnterState()
     {
-        _coolTime = 0.0f;
         _unit.UnitEvent += OnUnitEventHandler;
     }
 
@@ -26,19 +24,15 @@ public class UnitState_Attack_BarracksTower : AUnitState
 
     public override AUnitState UpdateState()
     {
-        // todo 유닛 개별 쿨타임으로  생성, 미리 생성하고 코루틴으로 나중에 활성화한다.
         // 공격 애니가 끝날때까지 기다린다
         if (_isPlayingAttackAni == false)
         {
-            if (_coolTime <= 0.0f && _childUnitCreator.ExistNullUnit())
+            // 사망 유닛의 쿨타임이 지났다면 생성 시작
+            if (_childUnitCreator.ShortestCoolTimeDiedUnitIndex != -1 && (Time.time - _childUnitCreator.UnitDiedTimes[_childUnitCreator.ShortestCoolTimeDiedUnitIndex]) > _unit.GetAttackData().CoolTime)
             {
-                Debug.Log("ChildUnit " + _unit);
                 _unit.UnitBody.Animator.SetTrigger("Attack");
-                _coolTime = _unit.GetAttackData().CoolTime;
-                //_coolTime = _unit.UnitData.AttackCoolTime;
             }
         }
-        _coolTime -= Time.deltaTime;
 
         return null;
     }
@@ -73,6 +67,19 @@ public class UnitState_Attack_BarracksTower : AUnitState
 
     virtual public void AttackFire()
     {
-        _childUnitCreator.CreateUnits();
+        // 쿨타임이 지난 모든 유닛을 생성
+        _childUnitCreator.CreateAllUnits(_unit.GetAttackData().CoolTime);
+        //for (int i = 0; i < _childUnitCreator.MaxUnitCount; i++)
+        //{
+        //    if(_childUnitCreator.DiedUnitIndex == -1)
+        //    {
+        //        break;
+        //    }
+
+        //    if ((Time.time - _childUnitCreator.UnitDiedTimes[_childUnitCreator.DiedUnitIndex]) > _unit.GetAttackData().CoolTime)
+        //    {
+        //        _childUnitCreator.CreateUnits(_childUnitCreator.DiedUnitIndex);
+        //    }
+        //}
     }
 }
