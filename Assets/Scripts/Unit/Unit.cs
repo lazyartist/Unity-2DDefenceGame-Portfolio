@@ -220,6 +220,8 @@ public class Unit : MonoBehaviour
     virtual public void Toward(Vector3 position)
     {
         Vector3 direction = position - transform.position;
+        if (direction.x == 0f) return;
+
         UnitBody.Toward(direction);
     }
 
