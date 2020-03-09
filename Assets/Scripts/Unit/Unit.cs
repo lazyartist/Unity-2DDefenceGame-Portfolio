@@ -275,6 +275,7 @@ public class Unit : MonoBehaviour
     public void DiedComplete()
     {
         UnitPoolManager.Inst.Release(this);
+        UnitBody.Reset();
     }
 
     virtual public Unit TryFindEnemyOrNull()
