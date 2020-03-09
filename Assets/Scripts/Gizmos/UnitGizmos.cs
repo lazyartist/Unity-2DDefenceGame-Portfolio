@@ -17,11 +17,13 @@ public class UnitGizmos : MonoBehaviour
             Gizmos.color = unit.TeamData.TeamColor;
             if (unit.UnitCenter != null && unit.UnitCenter.UnitData != null)
             {
-                Gizmos.DrawWireSphere(unit.UnitCenter.transform.position, unit.UnitCenter.UnitData.TargetRange);
+                Gizmos.DrawWireSphere(unit.UnitCenter.transform.position, unit.UnitCenter.UnitData.ShortTargetRange);
+                Gizmos.DrawWireSphere(unit.UnitCenter.transform.position, unit.UnitCenter.UnitData.LongTargetRange);
             }
             else
             {
-                Gizmos.DrawWireSphere(unit.UnitCenter.transform.position, unit.UnitData.TargetRange);
+                Gizmos.DrawWireSphere(unit.UnitCenter.transform.position, unit.UnitData.ShortTargetRange);
+                Gizmos.DrawWireSphere(unit.UnitCenter.transform.position, unit.UnitData.LongTargetRange);
             }
             // 투사체 생성 지점
             if (unit.SpawnPosition != null)

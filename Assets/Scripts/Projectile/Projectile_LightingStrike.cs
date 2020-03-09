@@ -5,13 +5,6 @@ using UnityEngine.EventSystems;
 
 public class Projectile_LightingStrike : AProjectile
 {
-    private Animator _animator;
-
-    void Awake()
-    {
-        _animator = GetComponent<Animator>();
-    }
-
     public override void MoveToTarget()
     {
         transform.position = _targetCenterPosition;

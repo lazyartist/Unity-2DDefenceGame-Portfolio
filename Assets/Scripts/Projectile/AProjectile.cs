@@ -7,13 +7,20 @@ public abstract class AProjectile : MonoBehaviour
     public TeamData TeamData;
     public AttackData AttackData;
 
+    protected Animator _animator;
     protected Unit _targetUnit;
     protected Vector3 _targetCenterPosition;
     protected Vector3 _targetBottomPosition;
     protected LayerMask _targetLayerMask;
 
+    virtual protected void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
     virtual public void Init(TeamData teamData, AttackData attackData, Unit targetUnit, Vector3 targetPosition)
     {
+        _animator = GetComponent<Animator>();
         TeamData = teamData;
         AttackData = attackData;
         _targetUnit = targetUnit;

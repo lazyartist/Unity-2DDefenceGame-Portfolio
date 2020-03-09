@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,9 @@ public class Unit : MonoBehaviour
     // Data
     public TeamData TeamData;
     public UnitData UnitData;
-    public AttackData[] AttackDatas;
+    public AttackData[] ShortAttackDatas;
+    //public AttackData[] LongAttackDatas;
+    //public AttackData[] AttackDatas;
     public int AttackDataIndex = 0;
     // Body
     public UnitBody UnitBody;
@@ -34,8 +37,9 @@ public class Unit : MonoBehaviour
     public CCData TakenCCData;
     public bool IsDied = false;
     public bool GoalComplete = false;
+    public Types.UnitTargetRangeType UnitTargetRangeType;
 
-    LayerMask[] _enemyLayerMasks;
+    LayerMask[] _enemyLayerMasks = new LayerMask[(int)Types.UnitPlaceType.Count];
     IUnitRenderOrder unitRenderOrder;
 
     protected void Awake()
@@ -64,7 +68,8 @@ public class Unit : MonoBehaviour
 
     void InitLayer()
     {
-        if (TeamData.TeamType == Types.TeamType.None || UnitData.UnitPlaceType == Types.UnitPlaceType.None)
+        if (TeamData.TeamType == Types.TeamType.None)
+        //if (TeamData.TeamType == Types.TeamType.None || UnitData.UnitPlaceType == Types.UnitPlaceType.None)
         {
             gameObject.layer = 0;
         }
@@ -74,6 +79,7 @@ public class Unit : MonoBehaviour
         }
     }
 
+    // todo deprecated
     void SetEnemyLayerMask(AttackData attackData)
     {
         Types.UnitPlaceType[] targetUnitTypes = GetAttackData().TargetUnitTypes;
@@ -86,13 +92,29 @@ public class Unit : MonoBehaviour
         }
     }
 
+    void SetEnemyLayerMask()
+    {
+        for (int i = 0; i < _enemyLayerMasks.Length; i++)
+        {
+            int mask = LayerMask.GetMask(TeamData.EnemyTeamType.ToString() + Enum.Parse(typeof(Types.UnitPlaceType), i.ToString()));
+            _enemyLayerMasks[i] = mask;
+        }
+    }
+
+    LayerMask GetLayerMask(Types.TeamType teamType, Types.UnitPlaceType unitPlaceType)
+    {
+        int mask = LayerMask.GetMask(teamType.ToString() + unitPlaceType.ToString());
+        return mask;
+    }
+
     public void Init()
     {
         IsDied = false;
         GoalComplete = false;
         Health = UnitData.Health;
         InitLayer();
-        SetEnemyLayerMask(GetAttackData());
+        SetEnemyLayerMask();
+        //SetEnemyLayerMask(GetAttackData());
         unitRenderOrder.Init(UnitData.UnitSortingLayerType.ToString());
         UnitFSM.Reset();
         UnitBody.Reset();
@@ -280,6 +302,24 @@ public class Unit : MonoBehaviour
         UnitBody.Reset();
     }
 
+    public AttackData GetRandomAttackData()
+    //public AttackData GetRandomAttackData(Types.UnitTargetRangeType unitTargetRangeType)
+    {
+        AttackDataList attackDataList = UnitData.AttackDatasLists[(int)UnitTargetRangeType];
+        //AttackDataList attackDataList = UnitData.AttackDatasLists[(int)unitTargetRangeType];
+        int index = UnityEngine.Random.Range(0, attackDataList.AttackDataListElements.Length);
+        AttackDataListElement attackDataListElement = attackDataList.AttackDataListElements[index];
+        return attackDataListElement.AttackData;
+
+        //float maxWeight = 0f;
+        //for (int i = 0; i < attackDataList.AttackDataListElements.Length; i++)
+        //{
+        //    AttackDataListElement attackDataListElement = attackDataList.AttackDataListElements[i];
+        //    maxWeight += attackDataListElement.Weight;
+        //}
+
+    }
+
     virtual public Unit TryFindEnemyOrNull()
     {
         // 이미 공격목표가 있다면 반환
@@ -289,13 +329,14 @@ public class Unit : MonoBehaviour
         }
 
         Vector3 findPosition = Vector3.zero;
-        // 랠리포인트 중심으로 적을 찾는다
         switch (UnitData.UnitTargetRangeCenterType)
         {
             case Types.UnitTargetRangeCenterType.RallyPoint:
+                // 랠리포인트 중심으로 적을 찾는다
                 findPosition = UnitMovePoint.RallyPoint;
                 break;
             case Types.UnitTargetRangeCenterType.UnitCenter:
+                // UnitCenter를 기준으로 적을 찾는다.
                 findPosition = UnitCenter.transform.position;
                 break;
             default:
@@ -303,26 +344,63 @@ public class Unit : MonoBehaviour
         }
 
         Unit enemyUnit = null;
-        for (int i = 0; i < _enemyLayerMasks.Length; i++)
+        // 근거리 타겟을 먼저 찾는다.
+        if (UnitData.ShortTargetRange > 0f)
         {
-            enemyUnit = FindEnemyOrNull(findPosition, _enemyLayerMasks[i]);
-            if(enemyUnit != null)
+            enemyUnit = FindEnemyOrNull(findPosition, _enemyLayerMasks[(int)Types.UnitPlaceType.Ground], UnitData.ShortTargetRange);
+            if (enemyUnit != null)
             {
-                break;
+                UnitTargetRangeType = Types.UnitTargetRangeType.Short;
+                AddEnemyUnit(enemyUnit);
+                return enemyUnit;
             }
         }
 
-        if (enemyUnit != null)
+
+        // 원거리 타겟중 공중유닛을 먼저 찾는다.
+        if (UnitData.LongTargetRange > 0f)
         {
-            AddEnemyUnit(enemyUnit);
+            enemyUnit = FindEnemyOrNull(findPosition, _enemyLayerMasks[(int)Types.UnitPlaceType.Air], UnitData.LongTargetRange);
+            if (enemyUnit != null)
+            {
+                UnitTargetRangeType = Types.UnitTargetRangeType.Long;
+                AddEnemyUnit(enemyUnit);
+                return enemyUnit;
+            }
+
+            // 원거리 타겟중 지상유닛을 찾는다.
+            enemyUnit = FindEnemyOrNull(findPosition, _enemyLayerMasks[(int)Types.UnitPlaceType.Ground], UnitData.LongTargetRange);
+            if (enemyUnit != null)
+            {
+                UnitTargetRangeType = Types.UnitTargetRangeType.Long;
+                return enemyUnit;
+            }
         }
 
-        return enemyUnit;
+
+        UnitTargetRangeType = Types.UnitTargetRangeType.Short;
+        return null;
+
+        //for (int i = 0; i < _enemyLayerMasks.Length; i++)
+        //{
+        //    enemyUnit = FindEnemyOrNull(findPosition, _enemyLayerMasks[i], targetRange);
+        //    if (enemyUnit != null)
+        //    {
+        //        break;
+        //    }
+        //}
+
+        //if (enemyUnit != null)
+        //{
+        //    AddEnemyUnit(enemyUnit);
+        //}
+
+        //return enemyUnit;
     }
 
-    Unit FindEnemyOrNull(Vector3 findPosition , LayerMask layerMask)
+    Unit FindEnemyOrNull(Vector3 findPosition, LayerMask layerMask, float targetRange)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(findPosition, UnitCenter.UnitData.TargetRange, layerMask);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(findPosition, targetRange, layerMask);
         if (colliders.Length == 0) return null;
 
         Unit draftTargetUnit = null;
@@ -399,7 +477,8 @@ public class Unit : MonoBehaviour
 
         float distance = Vector3.Distance(UnitCenter.transform.position, EnemyUnit.transform.position);
         //float distance = Vector3.Distance(transform.position + UnitCenterOffset, EnemyUnit.transform.position);
-        return distance < UnitCenter.UnitData.TargetRange;
+        float targetRange = UnitCenter.UnitData.TargetRanges[(int)UnitTargetRangeType];
+        return distance < targetRange;
         //return distance < UnitData.TargetRange;
     }
 
@@ -413,13 +492,27 @@ public class Unit : MonoBehaviour
         Notify(Types.UnitNotifyType.ClearEnemyUnit, null);
     }
 
-    public AttackData GetAttackDataBy(int index)
-    {
-        return AttackDatas[index];
-    }
+    //public AttackData GetAttackDataBy(int index)
+    //{
+    //    return UnitData.AttackDatasLists[(int)UnitTargetRangeType].AttackDataListElements[index].AttackData;
+    //}
 
     public AttackData GetAttackData()
     {
-        return GetAttackDataBy(AttackDataIndex);
+        return GetRandomAttackData();
+        //return GetAttackDataBy(AttackDataIndex);
     }
+
+    //public AttackData GetAttackDataBy(Types.UnitTargetRangeType unitTargetRangeType, int index)
+    //{
+    //    switch (unitTargetRangeType)
+    //    {
+    //        case Types.UnitTargetRangeType.Short:
+    //            return ShortAttackDatas[index];
+    //        case Types.UnitTargetRangeType.Long:
+    //            return LongAttackDatas[index];
+    //        default:
+    //            return ShortAttackDatas[index];
+    //    }
+    //}
 }

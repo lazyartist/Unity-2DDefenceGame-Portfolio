@@ -7,14 +7,8 @@ public class Projectile_Fireball : AProjectile
 {
     public SpriteRenderer ShadowSR;
 
-    Animator _animator;
     bool _isMoving = false;
     Vector3 _lastTargetPosition;
-
-    void Awake()
-    {
-        _animator = GetComponent<Animator>();
-    }
 
     void Update()
     {

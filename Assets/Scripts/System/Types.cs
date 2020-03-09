@@ -47,7 +47,7 @@ static public class Types {
 
     public enum UnitPlaceType
     {
-        None, Ground, Air, Tower
+        Air, Ground, Tower, Count
     }
 
     public enum CCType // Crowd Control
@@ -136,6 +136,11 @@ static public class Types {
 
     public enum UnitMovePointType {
         RallyPoint, MovePoint, WayPoint
+    }
+
+    public enum UnitTargetRangeType
+    {
+        Short, Long, Count
     }
 
     public enum UnitTargetRangeCenterType

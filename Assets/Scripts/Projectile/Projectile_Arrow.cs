@@ -9,16 +9,16 @@ public class Projectile_Arrow : AProjectile
     public float HeightLimitMultiflier = 2f;
     public float TimeToTopmostHeight = 2f;
 
-    private Animator _animator;
     private float _elapsedTime;
     private bool _isMoving = false;
     private ParabolaAlgorithm _paralobaAlgorithm;
     private Vector3 _startPosition;
     private Vector3 _prevPosition;
 
-    void Awake()
+    protected override void Awake()
     {
-        _animator = GetComponent<Animator>();
+        base.Awake();
+
         _paralobaAlgorithm = new ParabolaAlgorithm();
         name += Consts.GetUnitNumber();
     }

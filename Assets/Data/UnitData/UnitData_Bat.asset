@@ -13,10 +13,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitTypeName: Bat
   UnitPlaceType: 2
-  Health: 8
-  MoveSpeed: 0.6
-  TargetRange: 0
-  Gold: 3
-  StageHealthDamage: 1
   UnitTargetRangeCenterType: 1
   UnitSortingLayerType: 1
+  AttackDatasLists: []
+  ShortTargetRange: 1
+  LongTargetRange: 1
+  Health: 8
+  MoveSpeed: 0.6
+  Gold: 3
+  StageHealthDamage: 1

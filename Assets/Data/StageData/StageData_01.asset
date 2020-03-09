@@ -100,7 +100,7 @@ MonoBehaviour:
       UnitCount: 1
       NextWaveInterval: 2
       WayPointContainerIndex: 1
-  HeroUnitPrefab: {fileID: 114795718610798396, guid: 7697cf43afc86c041a6ad830432ab012,
+  HeroUnitPrefab: {fileID: 114673100649960536, guid: f7f0910329677ff49ac7bda7365c80dc,
     type: 2}
   HeroUnitIcon: {fileID: 21300000, guid: 49172337a63da83488f7f5ecff1e7dfe, type: 3}
   HeroUnitRespawnCoolTime: 5

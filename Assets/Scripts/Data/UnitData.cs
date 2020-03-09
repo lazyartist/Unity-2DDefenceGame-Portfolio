@@ -6,14 +6,23 @@ using UnityEngine;
 public class UnitData : ScriptableObject
 {
     public string UnitTypeName;
-    public Types.UnitPlaceType UnitPlaceType;
 
+    [Header("Types")]
+    public Types.UnitPlaceType UnitPlaceType;
+    public Types.UnitTargetRangeCenterType UnitTargetRangeCenterType;
+    public Types.UnitSortingLayerType UnitSortingLayerType; // for sprite render
+
+    [Header("AttackDatas[Short, Long]")]
+    public AttackDataList[] AttackDatasLists;
+    public float []TargetRanges;
+    public float ShortTargetRange = 1f; // deprecated
+    public float LongTargetRange = 1f; // deprecated
+    public float AttackCoolTime = 1f;
+
+    [Header("Status")]
     public float Health = 10f;
     public float MoveSpeed = 2f;
-    public float TargetRange = 1f;
     public int Gold;
     public int StageHealthDamage = 1;
 
-    public Types.UnitTargetRangeCenterType UnitTargetRangeCenterType;
-    public Types.UnitSortingLayerType UnitSortingLayerType;
 }

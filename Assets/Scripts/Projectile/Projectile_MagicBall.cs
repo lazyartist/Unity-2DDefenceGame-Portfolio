@@ -5,14 +5,8 @@ using UnityEngine.EventSystems;
 
 public class Projectile_MagicBall : AProjectile
 {
-    private Animator _animator;
     private bool _isMoving = false;
     private Vector3 _lastTargetPosition;
-
-    void Awake()
-    {
-        _animator = GetComponent<Animator>();
-    }
 
     void Update()
     {
