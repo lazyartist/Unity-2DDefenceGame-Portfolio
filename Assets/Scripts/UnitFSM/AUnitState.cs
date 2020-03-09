@@ -5,6 +5,7 @@ using UnityEngine;
 // Abstract UnitState
 public abstract class AUnitState : MonoBehaviour
 {
+    public Types.UnitFSMType UnitFSMType;
     public AUnitState PrevUnitState;
 
     protected Unit _unit;

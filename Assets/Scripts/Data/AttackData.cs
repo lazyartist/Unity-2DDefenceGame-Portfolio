@@ -17,11 +17,11 @@ public class AttackData : ScriptableObject
     public CCData CCData;
 
     [Header("Audio")]
-    public Types.AudioChannelType StartAudioChannelType = Types.AudioChannelType.None;
+    //public Types.AudioChannelType StartAudioChannelType = Types.AudioChannelType.None;
     public string StartAudioName;
-    public Types.AudioChannelType FireAudioChannelType = Types.AudioChannelType.None;
+    //public Types.AudioChannelType FireAudioChannelType = Types.AudioChannelType.None;
     public string FireAudioName;
-    public Types.AudioChannelType HitAudioChannelType = Types.AudioChannelType.None;
+    //public Types.AudioChannelType HitAudioChannelType = Types.AudioChannelType.None;
     public string HitAudioName;
     public float AudioVolume = 1.0f;
 }

@@ -106,7 +106,7 @@ static public class Types {
 
     public enum AudioChannelType
     {
-        None, Default, Effect, Battle
+        None, Bgm, Effect
     }
 
     public enum UnitSortingLayerType

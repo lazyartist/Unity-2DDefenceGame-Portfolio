@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,14 +8,17 @@ public class UnitFSM : MonoBehaviour
     public AUnitState[] UnitStates;
     public AUnitState FirstUnitState;
     public AUnitState CurUnitState;
+    //public Types.UnitFSMType CurUnitFSMType;
     public Unit Unit;
 
     private void Awake()
     {
-        //CurUnitState = FirstUnitState;
-        foreach (AUnitState aUnitState in UnitStates)
+        for (int i = 0; i < UnitStates.Length; i++)
         {
+            AUnitState aUnitState = UnitStates[i];
             aUnitState.enabled = CurUnitState == aUnitState;
+            aUnitState.UnitFSMType = (Types.UnitFSMType)i;
+            //aUnitState.CurUnitFSMType = (Types.UnitFSMType)Enum.Parse(typeof(Types.UnitFSMType), i.ToString());
             aUnitState.Init(Unit, UnitStates);
         }
     }
@@ -69,6 +73,7 @@ public class UnitFSM : MonoBehaviour
         CurUnitState.ExitState();
         CurUnitState.enabled = false;
         unitState.PrevUnitState = CurUnitState;
+
         CurUnitState = unitState;
         CurUnitState.enabled = true;
         CurUnitState.EnterState();

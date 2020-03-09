@@ -21,7 +21,8 @@ MonoBehaviour:
   CCData: {fileID: 0}
   StartAudioChannelType: 0
   StartAudioName: 
-  FireAudioChannelType: 3
-  FireAudioName: Battle/Knife_Slice
+  FireAudioChannelType: 0
+  FireAudioName: 
   HitAudioChannelType: 0
   HitAudioName: 
+  AudioVolume: 1

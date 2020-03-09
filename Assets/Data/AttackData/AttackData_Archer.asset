@@ -20,10 +20,7 @@ MonoBehaviour:
   IsStartDelayForCoolTime: 0
   CoolTime: 0.3
   CCData: {fileID: 0}
-  StartAudioChannelType: 3
-  StartAudioName: Projectile/Arrow_Fly
-  FireAudioChannelType: 0
-  FireAudioName: 
-  HitAudioChannelType: 0
+  StartAudioName: 
+  FireAudioName: Projectile/Arrow_Fly
   HitAudioName: 
   AudioVolume: 0.2

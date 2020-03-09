@@ -6,14 +6,14 @@ public class UnitPoolManager : SingletonBase<UnitPoolManager>
 {
     public GameObject UnitPoolContainer;
 
-    Dictionary<string, HashSet<Unit>> _activeUnitsPool;
+    public Dictionary<string, HashSet<Unit>> ActiveUnitsPool;
     Dictionary<string, HashSet<Unit>> _deactiveUnitsPool;
 
     protected override void Awake()
     {
         base.Awake();
 
-        _activeUnitsPool = new Dictionary<string, HashSet<Unit>>();
+        ActiveUnitsPool = new Dictionary<string, HashSet<Unit>>();
         _deactiveUnitsPool = new Dictionary<string, HashSet<Unit>>();
     }
 
@@ -46,14 +46,14 @@ public class UnitPoolManager : SingletonBase<UnitPoolManager>
 
         // add activeUnitsPool
         HashSet<Unit> activeUnits = null;
-        if (_activeUnitsPool.ContainsKey(unitTypeName))
+        if (ActiveUnitsPool.ContainsKey(unitTypeName))
         {
-            activeUnits = _activeUnitsPool[unitTypeName];
+            activeUnits = ActiveUnitsPool[unitTypeName];
         }
         else
         {
             activeUnits = new HashSet<Unit>();
-            _activeUnitsPool.Add(unitTypeName, activeUnits);
+            ActiveUnitsPool.Add(unitTypeName, activeUnits);
         }
         activeUnits.Add(unit);
 
@@ -64,9 +64,9 @@ public class UnitPoolManager : SingletonBase<UnitPoolManager>
     public void Release(Unit unit)
     {
         HashSet<Unit> activeUnits = null;
-        if (_activeUnitsPool.ContainsKey(unit.UnitData.UnitTypeName))
+        if (ActiveUnitsPool.ContainsKey(unit.UnitData.UnitTypeName))
         {
-            activeUnits = _activeUnitsPool[unit.UnitData.UnitTypeName];
+            activeUnits = ActiveUnitsPool[unit.UnitData.UnitTypeName];
         }
         else
         {

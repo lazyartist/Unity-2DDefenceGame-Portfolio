@@ -19,9 +19,7 @@ MonoBehaviour:
   IsStartDelayForCoolTime: 0
   CoolTime: 1
   CCData: {fileID: 0}
-  StartAudioChannelType: 0
   StartAudioName: 
-  FireAudioChannelType: 0
   FireAudioName: 
-  HitAudioChannelType: 3
-  HitAudioName: Battle/Hit 10 - Sound effects Pack 2
+  HitAudioName: 
+  AudioVolume: 1
