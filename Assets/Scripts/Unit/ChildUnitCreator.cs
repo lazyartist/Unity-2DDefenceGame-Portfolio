@@ -110,7 +110,11 @@ public class ChildUnitCreator : MonoBehaviour
         {
             if (Units[i] == null)
             {
-                Unit unit = Instantiate(ChildUnitPrefab, ParentUnit.SpawnPosition.transform.position, Quaternion.identity, ParentUnit.transform);
+                Unit unit = UnitPoolManager.Inst.Get(ChildUnitPrefab.UnitData.UnitTypeName, ChildUnitPrefab);
+                unit.transform.position = ParentUnit.SpawnPosition.transform.position;
+                unit.transform.SetParent(ParentUnit.transform);
+                unit.Init();
+                unit.UnitEvent += OnUnitEvent;
                 unit.gameObject.SetActive(true);
                 if (IsUseParentUnitCenter)
                 {
@@ -184,7 +188,43 @@ public class ChildUnitCreator : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    void OnUnitEvent(Types.UnitEventType unitEventType, Unit unit)
+    {
+        switch (unitEventType)
+        {
+            case Types.UnitEventType.None:
+                break;
+            case Types.UnitEventType.Live:
+                break;
+            case Types.UnitEventType.AttackStart:
+                break;
+            case Types.UnitEventType.AttackEnd:
+                break;
+            case Types.UnitEventType.AttackFire:
+                break;
+            case Types.UnitEventType.Die:
+                {
+                    unit.UnitEvent -= OnUnitEvent;
+                    for (int i = 0; i < Units.Length; i++)
+                    {
+                        if (Units[i] == unit)
+                        {
+                            Units[i] = null;
+                        }
+                    }
+                }
+
+                break;
+            case Types.UnitEventType.DiedComplete:
+                break;
+            case Types.UnitEventType.AttackStopped:
+                break;
+            default:
+                break;
+        }
+    }
+
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position + CenterRallyPointInLocal, 0.1f);
