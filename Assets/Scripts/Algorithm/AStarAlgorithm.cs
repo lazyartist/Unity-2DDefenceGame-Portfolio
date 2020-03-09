@@ -77,8 +77,8 @@ public class AStarAlgorithm
                 {
                     // 누적 경로 비용을 현재 노드를 부모라 가정하고 다시 계산해서
                     // 비용이 더 낮다면 부모를 현재 노드로 변경하고 비용을 전부 갱신
-                    var disFromCur = Vector3.Distance(curNode.transform.position, node.transform.position);
-                    var disToEnd = Vector3.Distance(_endNode.transform.position, node.transform.position);
+                    var disFromCur = (curNode.transform.position- node.transform.position).sqrMagnitude;
+                    var disToEnd = (_endNode.transform.position-node.transform.position).sqrMagnitude;
 
                     if (node.Goal > curNode.Goal + disFromCur)
                     {
@@ -95,8 +95,8 @@ public class AStarAlgorithm
                 // 처음 발견한 노드라면 
                 {
                     // 비용 계산
-                    var disFromCur = Vector3.Distance(curNode.transform.position, node.transform.position);
-                    var disToEnd = Vector3.Distance(_endNode.transform.position, node.transform.position);
+                    var disFromCur = (curNode.transform.position - node.transform.position).sqrMagnitude;
+                    var disToEnd = (_endNode.transform.position - node.transform.position).sqrMagnitude;
 
                     node.Goal = curNode.Goal + disFromCur;
                     node.Heuristic = disToEnd;

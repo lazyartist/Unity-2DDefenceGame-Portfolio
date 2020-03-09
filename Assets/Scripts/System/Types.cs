@@ -116,7 +116,7 @@ static public class Types {
 
     public enum PathFindResultType
     {
-        Success, Fail, EqualStartAndEnd
+        Success, Fail, EqualStartAndEnd, TooShort
     }
 
     public enum MapMaskChannelType

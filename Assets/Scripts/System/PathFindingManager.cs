@@ -9,13 +9,17 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
     public Types.IntTuple2 NodeGridSize; // x, y
     public GameObject AStarNodeContainer;
     public LayerMask AStarNodeLayerMask;
+    public float NodeDistanceSqr { get; private set; }
 
     List<AStarNode> nodes = new List<AStarNode>();
     AStarNode _startNode;
     AStarNode _endNode;
-    Vector2 _nodeSpace;
+    Vector2 _nodeSpaceRect;
     Vector2 _nodeSearchAreaSize;
     AStarAlgorithm _aStarAlgorithm;
+
+    Vector3 _startPosition;
+    Vector3 _endPosition;
 
     private void Start()
     {
@@ -26,9 +30,10 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
     void Init()
     {
         Vector2 mapArea = new Vector2(CameraManager.ValidMapAreaRect.xMax - CameraManager.ValidMapAreaRect.xMin, CameraManager.ValidMapAreaRect.yMax - CameraManager.ValidMapAreaRect.yMin);
-        _nodeSpace = new Vector2(mapArea.x / NodeGridSize.x, mapArea.y / NodeGridSize.y);
-        _nodeSearchAreaSize = _nodeSpace * 2f;
-        Vector3 startPosition = new Vector3(mapArea.x * -0.5f + _nodeSpace.x * 0.5f, mapArea.y * 0.5f + _nodeSpace.y * -0.5f, 0f);
+        _nodeSpaceRect = new Vector2(mapArea.x / NodeGridSize.x, mapArea.y / NodeGridSize.y);
+        NodeDistanceSqr = _nodeSpaceRect.sqrMagnitude * 2f;
+        _nodeSearchAreaSize = _nodeSpaceRect * 2f;
+        Vector3 startPosition = new Vector3(mapArea.x * -0.5f + _nodeSpaceRect.x * 0.5f, mapArea.y * 0.5f + _nodeSpaceRect.y * -0.5f, 0f);
 
         // remove all children
         for (int i = this.transform.childCount - 1; i >= 0; i--)
@@ -44,7 +49,7 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
         {
             int col = (i % NodeGridSize.x);
             int row = Mathf.FloorToInt(i / NodeGridSize.x);
-            Vector3 position = startPosition + new Vector3(col * _nodeSpace.x, (row * -_nodeSpace.y), 0f); ;
+            Vector3 position = startPosition + new Vector3(col * _nodeSpaceRect.x, (row * -_nodeSpaceRect.y), 0f); ;
 
             bool isBlock = mapManager.IsMask(position, Types.MapMaskChannelType.Block, Consts.MapMaskColor_Block);
             if (isBlock)
@@ -67,7 +72,16 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
 
     public List<Vector3> GetPathOrNull(Vector3 startPosition, Vector3 endPosition, out Types.PathFindResultType pathFindResultType)
     {
+        _startPosition = startPosition;
+        _endPosition = endPosition;
+
         ResetAllNodes();
+
+        if ((endPosition - startPosition).sqrMagnitude < NodeDistanceSqr)
+        {
+            pathFindResultType = Types.PathFindResultType.TooShort;
+            return null;
+        }
 
         _startNode = FindNearestNodeToTargetPosition(startPosition, endPosition);
         _endNode = FindNearestNodeToTargetPosition(endPosition, startPosition);
@@ -111,19 +125,21 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
         }
     }
 
-    AStarNode FindNearestNodeToTargetPosition(Vector3 position, Vector3 targetPosition)
+    AStarNode FindNearestNodeToTargetPosition(Vector3 startPosition, Vector3 targetPosition)
     {
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(position, _nodeSearchAreaSize, 0f, AStarNodeLayerMask);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(startPosition, _nodeSearchAreaSize, 0f, AStarNodeLayerMask);
         AStarNode nearestNodeToTargetPosition = null;
-        float minDistance = 999;
+        float minSqrDistance = float.PositiveInfinity;
         for (int i = 0; i < colliders.Length; i++)
         {
             Collider2D collider = colliders[i];
             AStarNode node = collider.GetComponent<AStarNode>();
-            float distance = Vector3.Distance(collider.transform.position, targetPosition);
-            if (node.IsBlock == false && minDistance > distance)
+            float sqrDistanceToStart = (collider.transform.position - startPosition).sqrMagnitude;
+            float sqrDistanceToEnd = (collider.transform.position - targetPosition).sqrMagnitude;
+            float sqrDistance = sqrDistanceToStart + sqrDistanceToEnd;
+            if (node.IsBlock == false && minSqrDistance > sqrDistance)
             {
-                minDistance = distance;
+                minSqrDistance = sqrDistance;
                 nearestNodeToTargetPosition = node;
             }
         }
@@ -142,5 +158,8 @@ public class PathFindingManager : SingletonBase<PathFindingManager>
         Gizmos.DrawCube(_startNode.transform.position, new Vector3(0.6f, 0.6f, 0.6f));
         Gizmos.color = Color.blue;
         Gizmos.DrawCube(_endNode.transform.position, new Vector3(0.6f, 0.6f, 0.6f));
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(_startPosition, 0.6f);
+        Gizmos.DrawWireSphere(_endPosition, 0.6f);
     }
 }

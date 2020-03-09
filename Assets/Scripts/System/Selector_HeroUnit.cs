@@ -49,9 +49,8 @@ public class Selector_HeroUnit : Selector
                 case Types.PathFindResultType.Fail:
                     break;
                 case Types.PathFindResultType.EqualStartAndEnd:
-                    {
-                        Unit.UnitMovePoint.SetRallyPoint(position);
-                    }
+                    break;
+                case Types.PathFindResultType.TooShort:
                     break;
                 default:
                     break;
