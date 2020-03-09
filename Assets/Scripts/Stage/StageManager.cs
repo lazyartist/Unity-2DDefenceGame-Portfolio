@@ -166,7 +166,7 @@ public class StageManager : SingletonBase<StageManager>
                     StageInfo.HeroUnit.UnitEvent -= OnUnitEvent_HeroUnit;
                     StageInfo.HeroUnit = null;
                 }
-                StageInfo.LastHeroUnitPosition = unit.transform.position;
+                StageInfo.LastHeroRallyPoint = unit.UnitMovePoint.RallyPoint;
                 StageInfo.HeroUnitDiedTime = Time.time;
                 StartCoroutine(Coroutine_RespawnHeroUnit());
                 DispatchHeroUnitChanged();
@@ -190,9 +190,9 @@ public class StageManager : SingletonBase<StageManager>
     {
         StageInfo.HeroUnit = UnitPoolManager.Inst.Get(StageData.HeroUnitPrefab.UnitData.UnitTypeName, StageData.HeroUnitPrefab);
         StageInfo.HeroUnit.gameObject.SetActive(true);
-        StageInfo.HeroUnit.transform.position = StageInfo.LastHeroUnitPosition;
         StageInfo.HeroUnit.transform.SetParent(UnitsContainer.transform);
-        StageInfo.HeroUnit.UnitMovePoint.SetRallyPoint(StageInfo.LastHeroUnitPosition);
+        StageInfo.HeroUnit.transform.position = StageInfo.LastHeroRallyPoint;
+        StageInfo.HeroUnit.UnitMovePoint.SetRallyPoint(StageInfo.LastHeroRallyPoint);
         StageInfo.HeroUnit.UnitEvent += OnUnitEvent_HeroUnit;
         StageInfo.HeroUnit.TeamData = StageData.PlayerTeamData;
         StageInfo.HeroUnit.Init();

@@ -10,7 +10,7 @@ public class StageManagerGizmos : MonoBehaviour
         if(sp != null)
         {
             Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(sp.StageData.FirstHeroUnitPosition, 0.05f);
+            Gizmos.DrawWireSphere(sp.StageData.FirstHeroRallyPoint, 0.05f);
         }
     }
 }

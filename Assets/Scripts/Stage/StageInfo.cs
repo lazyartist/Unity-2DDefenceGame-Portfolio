@@ -9,7 +9,7 @@ public class StageInfo
         Health = stageData.Health;
         Gold = stageData.Gold;
         WavePhaseCount = stageData.WavePhases.Length;
-        LastHeroUnitPosition = stageData.FirstHeroUnitPosition;
+        LastHeroRallyPoint = stageData.FirstHeroRallyPoint;
         TimeScale = stageData.StartTimeScale;
     }
 
@@ -63,7 +63,7 @@ public class StageInfo
     // HeroUnit
     public Unit HeroUnit;
     public float HeroUnitDiedTime = 0f;
-    public Vector3 LastHeroUnitPosition;
+    public Vector3 LastHeroRallyPoint;
     // HeroUnit ===== end
 
     // TimeScale =====

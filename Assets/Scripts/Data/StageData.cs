@@ -16,7 +16,7 @@ public class StageData : ScriptableObject
     public Unit HeroUnitPrefab;
     public Sprite HeroUnitIcon;
     public float HeroUnitRespawnCoolTime;
-    public Vector3 FirstHeroUnitPosition;
+    public Vector3 FirstHeroRallyPoint;
 
     [Header("Player")]
     public int Health = 20;
