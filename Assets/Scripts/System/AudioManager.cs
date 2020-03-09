@@ -33,7 +33,7 @@ public class AudioManager : SingletonBase<AudioManager>
 
     void UpdateBattingAudio()
     {
-        // 모든 공격에 각각 소리가 나면 시끄럽기 때문에 하나의 유닛이라도 공격중이면 전투 사운드를 재생
+        // 모든 공격에 각각 소리가 나면 시끄럽기 때문에 하나의 유닛이라도 공격중이면 전투 사운드를 재생(근거리 공격만 해당)
         if (IsExistAttackingUnit())
         {
             if (BattleAudioSources.isPlaying == false)
@@ -73,7 +73,7 @@ public class AudioManager : SingletonBase<AudioManager>
             var units = item.Value;
             foreach (var unit in units)
             {
-                if (unit.HasEnemyUnit() && unit.UnitFSM.CurUnitState.UnitFSMType == Types.UnitFSMType.Attack)
+                if (unit.HasEnemyUnit() && unit.UnitFSM.CurUnitState.UnitFSMType == Types.UnitFSMType.Attack && unit.GetAttackData().ProjectilePrefab == null)
                 {
                     return true;
                 }
