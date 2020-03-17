@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Name: AttackData_Archangel1
   m_EditorClassIdentifier: 
   TargetUnitTypes: 0200000001000000
+  AttackAniName: Attack1
   ProjectilePrefab: {fileID: 114609397983781536, guid: c86a17f72d654eb4c83eb366ddde4305,
     type: 2}
   ProjectileSpeed: 5
-  Power: 2
+  Power: 1
   AttackRange: 2
   IsStartDelayForCoolTime: 0
   CoolTime: 2

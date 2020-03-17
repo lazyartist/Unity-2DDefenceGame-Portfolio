@@ -6,9 +6,10 @@ using UnityEngine.EventSystems;
 
 public class AudioManager : SingletonBase<AudioManager>
 {
-    public AudioSource BattleAudioSources;
+    public AudioSource BattleAudioSource;
     public string[] BattleAudioNames;
-    public float MaxBattleAudioVolume;
+    public float BattleAudioDelay = 1f;
+    public float BattleAudioVolumeMultiplier = 1f;
 
     Dictionary<string, AudioClip> _audioClips;
     AudioSource[] _audioSources;
@@ -36,17 +37,17 @@ public class AudioManager : SingletonBase<AudioManager>
         // 모든 공격에 각각 소리가 나면 시끄럽기 때문에 하나의 유닛이라도 공격중이면 전투 사운드를 재생(근거리 공격만 해당)
         if (IsExistAttackingUnit())
         {
-            if (BattleAudioSources.isPlaying == false)
+            if (BattleAudioSource.isPlaying == false)
             {
                 int index = UnityEngine.Random.Range(0, BattleAudioNames.Length);
                 string battleAudioName = BattleAudioNames[index];
-                BattleAudioSources.clip = GetAudioClip(battleAudioName);
-                BattleAudioSources.Play();
+                BattleAudioSource.clip = GetAudioClip(battleAudioName);
+                BattleAudioSource.PlayDelayed(BattleAudioDelay);
             }
         }
         else
         {
-            BattleAudioSources.Stop();
+            BattleAudioSource.Stop();
         }
     }
 

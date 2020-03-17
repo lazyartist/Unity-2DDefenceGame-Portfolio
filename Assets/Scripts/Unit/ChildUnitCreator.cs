@@ -61,7 +61,7 @@ public class ChildUnitCreator : MonoBehaviour
         float minDistance = 999f;
         if (parentUnit != null)
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(parentUnit.transform.position, parentUnit.UnitData.ShortTargetRange * radiusScale, _wayPointLayerMask);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(parentUnit.transform.position, parentUnit.GetCurTargetRange()* radiusScale, _wayPointLayerMask);
             for (int i = 0; i < colliders.Length; i++)
             {
                 Collider2D collider = colliders[i];

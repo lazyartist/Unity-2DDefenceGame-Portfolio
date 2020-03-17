@@ -123,7 +123,6 @@ public class Selector_MasterSkill : Selector
         Unit unit = Instantiate<Unit>(_masterSkillData.UnitPrefab, startPosition, startAngle, UIMasterSkillMenu.UnitContainer.transform);
         unit.gameObject.SetActive(true);
         unit.ShortAttackDatas[0] = _masterSkillData.AttackData;
-        unit.AttackDataIndex = 0;
         unit.UnitMovePoint.SetRallyPoint(startPosition);
     }
 

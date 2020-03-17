@@ -6481,12 +6481,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ee646b8b90c484fb54ffceb53934f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BattleAudioSources: {fileID: 1433862342}
+  BattleAudioSource: {fileID: 1433862342}
   BattleAudioNames:
   - Battling/Battling0
   - Battling/Battling1
   - Battling/Battling2
-  MaxBattleAudioVolume: 0
+  BattleAudioDelay: 0.3
+  BattleAudioVolumeMultiplier: 1
 --- !u!82 &1433862342
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8239,6 +8240,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1350713528623468, guid: 16db18843942b9643a02eb38cf03fd37, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16db18843942b9643a02eb38cf03fd37, type: 2}
   m_IsPrefabAsset: 0
@@ -9074,9 +9079,9 @@ MonoBehaviour:
   MinimapCamera: {fileID: 1281065274}
   ValidMapAreaCenter: {x: 0, y: -2, z: 0}
   ValidMapAreaSize: {x: 28, y: 26}
-  MaxCameraSize: 7
+  MaxCameraSize: 6.5
   MinCameraSize: 3
-  StartCameraSize: 7
+  StartCameraSize: 6.5
   MapPixelPerUnit: 100
   ZoomSpeedMultiplierByTouch: 4
 --- !u!1001 &1974747792

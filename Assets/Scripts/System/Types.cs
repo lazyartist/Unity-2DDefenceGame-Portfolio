@@ -42,7 +42,7 @@ static public class Types {
 
     public enum TeamType
     {
-        None, A, B
+        None, A, B, Count
     }
 
     public enum UnitPlaceType

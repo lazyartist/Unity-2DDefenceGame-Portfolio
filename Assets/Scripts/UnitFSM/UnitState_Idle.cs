@@ -25,33 +25,13 @@ public class UnitState_Idle : AUnitState
         // 공격대상이 없으면 찾는다
         if (_unit.HasEnemyUnit() == false)
         {
-            //Vector3 findPosition = Vector3.zero;
-            //// 랠리포인트 중심으로 적을 찾는다
-            //switch (_unit.UnitData.UnitTargetRangeCenterType)
-            //{
-            //    case Types.UnitTargetRangeCenterType.RallyPoint:
-            //        findPosition = _unit.UnitMovePoint.RallyPoint;
-            //        break;
-            //    case Types.UnitTargetRangeCenterType.UnitCenter:
-            //        findPosition = _unit.UnitCenter.transform.position;
-            //        break;
-            //    default:
-            //        break;
-            //}
-
-            if (_unit.HasEnemyUnit() == false && _unit.TryFindEnemyOrNull() != null)
+            if (_unit.HasEnemyUnit() == false && _unit.TryFindEnemy())
             {
                 switch (_unit.UnitTargetRangeType)
                 {
                     case Types.UnitTargetRangeType.Short: // 근거리 공격
                         {
-                            // 공격대상에게 이동할 동안 대기하도록 통보
-                            _unit.EnemyUnit.Notify(Types.UnitNotifyType.Wait, _unit);
-                            // 적의 앞까지 이동
-                            float enemyDirection = Mathf.Sign(_unit.EnemyUnit.MoveDirection.x);
-                            Vector3 targetPosition = _unit.EnemyUnit.transform.position
-                                + ((new Vector3(_unit.ColliderSize.x * 0.5f, 0.0f, 0.0f) + new Vector3(_unit.EnemyUnit.ColliderSize.x * 0.5f, 0.0f, 0.0f)) * enemyDirection);
-                            _unit.UnitMovePoint.SetMovePoint(null, _unit.transform.position, targetPosition);
+                            _unit.GoToEnemy();
                             return unitStates[(int)Types.UnitFSMType.Move];
                         }
                     case Types.UnitTargetRangeType.Long: // 원거리 공격
@@ -59,32 +39,11 @@ public class UnitState_Idle : AUnitState
                             // 즉시 공격
                             return unitStates[(int)Types.UnitFSMType.Attack];
                         }
-                        break;
                     //case Types.UnitTargetRangeType.Count:
                         //break;
                     default:
                         break;
                 }
-
-                //AttackData attackData = _unit.GetRandomAttackData();
-                //// 공격대상을 찾았다
-                //if (attackData.ProjectilePrefab == null)
-                ////if (_unit.GetAttackData().ProjectilePrefab == null)
-                //{
-                //    // 공격대상에게 이동할 동안 대기하도록 통보
-                //    _unit.EnemyUnit.Notify(Types.UnitNotifyType.Wait, _unit);
-                //    // 근거리 공격 : 적의 앞까지 이동할 waypoint 설정(진행 방향에 대해 앞)
-                //    float enemyDirection = Mathf.Sign(_unit.EnemyUnit.MoveDirection.x);
-                //    Vector3 targetPosition = _unit.EnemyUnit.transform.position
-                //        + ((new Vector3(_unit.ColliderSize.x * 0.5f, 0.0f, 0.0f) + new Vector3(_unit.EnemyUnit.ColliderSize.x * 0.5f, 0.0f, 0.0f)) * enemyDirection);
-                //    _unit.UnitMovePoint.SetMovePoint(null, _unit.transform.position, targetPosition);
-                //    return unitStates[(int)Types.UnitFSMType.Move];
-                //}
-                //else
-                //{
-                //    // 원거리 공격 : 즉시 공격
-                //    return unitStates[(int)Types.UnitFSMType.Attack];
-                //}
             }
         }
 

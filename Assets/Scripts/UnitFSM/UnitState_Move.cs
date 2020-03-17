@@ -45,7 +45,7 @@ public class UnitState_Move : AUnitState
             // 목표지점 도착
             _unit.transform.position = targetPosition;
             // 다음 목표지점으로 변경
-            if (_unit.UnitMovePoint.TryNextPosition())
+            if (_unit.UnitMovePoint.TrySetNextPosition())
             {
                 // 새로운 목표지점이 있다. Move 상태 계속 유지
                 return null;

@@ -27,5 +27,5 @@ MonoBehaviour:
   FirstHeroRallyPoint: {x: 9.77, y: -2.13, z: 0}
   Health: 20
   Gold: 100
-  StartTimeScale: 3
+  StartTimeScale: 1
   MaxTimeScale: 5

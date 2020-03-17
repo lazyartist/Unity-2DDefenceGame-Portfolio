@@ -25,7 +25,7 @@ public class SingletonBase<T> : MonoBehaviour where T: MonoBehaviour
         if (_inst == null)
         {
             _inst = this.GetComponent<T>();
-            Debug.Log("SingletonBase Awake " + _inst);
+            Debug.Log("SingletonBase Awake " + _inst + " " + Time.time);
         } 
         else
         {

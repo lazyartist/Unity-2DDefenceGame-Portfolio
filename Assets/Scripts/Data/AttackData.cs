@@ -7,6 +7,7 @@ using UnityEngine;
 public class AttackData : ScriptableObject
 {
     public Types.UnitPlaceType[] TargetUnitTypes;
+    public string AttackAniName = "Attack0";
 
     public AProjectile ProjectilePrefab;
     public float ProjectileSpeed;

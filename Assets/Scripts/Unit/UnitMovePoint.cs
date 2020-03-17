@@ -103,7 +103,7 @@ public class UnitMovePoint : MonoBehaviour
         return IsArrivedPosition(position, RallyPoint);
     }
 
-    public bool TryNextPosition()
+    public bool TrySetNextPosition()
     {
         bool success = false;
         switch (UnitMovePointType)

@@ -1,9 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 static public class Consts
 {
+    static Consts()
+    {
+        Debug.Log("Consts " +Time.time );
+        InitEnemyLayerMask();
+    }
+
     // ===== float
     public static float TowerUnitSellCostRate = 0.8f;
     public static int WaypointSubIndexStart = 1;
@@ -22,8 +29,31 @@ static public class Consts
     public static Color MapMaskColor_Way = Color.green;
     public static Color MapMaskColor_Block = Color.red;
 
-    public static string[] audios = { "Hit", "aa" };
+    // === layer mask
+    static Dictionary<Types.TeamType, List<LayerMask>> _enemyLayerMasks;
+    public static LayerMask GetEnemyLayerMask(Types.TeamType teamType, Types.UnitPlaceType unitPlaceType)
+    {
+        return _enemyLayerMasks[teamType][(int)unitPlaceType];
+    }
+    static void InitEnemyLayerMask()
+    {
+        _enemyLayerMasks = new Dictionary<Types.TeamType, List<LayerMask>>();
+        for (int i = 0; i < (int)Types.TeamType.Count; i++)
+        {
+            Types.TeamType teamType = (Types.TeamType)Enum.Parse(typeof(Types.TeamType), i.ToString());
+            string teamTypeAsString = teamType.ToString();
+            List<LayerMask> layerMasks = new List<LayerMask>();
+            for (int ii = 0; ii < (int)Types.UnitPlaceType.Count; ii++)
+            {
+                string maskName = teamTypeAsString + Enum.Parse(typeof(Types.UnitPlaceType), ii.ToString()).ToString();
+                int mask = LayerMask.GetMask(maskName);
+                layerMasks.Add(mask);
+            }
+            _enemyLayerMasks.Add(teamType, layerMasks);
+        }
+    }
 
+    // === Unit Number
     private static int _unitNumber = 0;
     public static int GetUnitNumber()
     {

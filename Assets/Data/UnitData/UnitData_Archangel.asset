@@ -16,17 +16,14 @@ MonoBehaviour:
   UnitTargetRangeCenterType: 0
   UnitSortingLayerType: 0
   AttackDatasLists:
-  - AttackDataListElements:
+  - TargetRange: 2
+    AttackDataListElements:
     - AttackData: {fileID: 11400000, guid: d781c5c8e49f6774d9fb5422dfd00a98, type: 2}
       Weight: 1
-  - AttackDataListElements:
+  - TargetRange: 4
+    AttackDataListElements:
     - AttackData: {fileID: 11400000, guid: 67a92872bf13f684fa8e4b3131159716, type: 2}
       Weight: 1
-  TargetRanges:
-  - 1
-  - 2
-  ShortTargetRange: 1
-  LongTargetRange: 4
   AttackCoolTime: 1
   Health: 10
   MoveSpeed: 2

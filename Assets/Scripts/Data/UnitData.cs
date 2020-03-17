@@ -14,9 +14,6 @@ public class UnitData : ScriptableObject
 
     [Header("AttackDatas[Short, Long]")]
     public AttackDataList[] AttackDatasLists;
-    public float []TargetRanges;
-    public float ShortTargetRange = 1f; // deprecated
-    public float LongTargetRange = 1f; // deprecated
     public float AttackCoolTime = 1f;
 
     [Header("Status")]

@@ -6,8 +6,6 @@ public class UnitState_Attack : AUnitState
 {
     public bool IsPlayAttackAni = true;
 
-    static string[] _attackTriggerNames = { "Attack0", "Attack1", "Attack2", "Attack3" };
-
     float _lastAttackFireTime;
     AttackData _attackData;
 
@@ -17,15 +15,6 @@ public class UnitState_Attack : AUnitState
     public override void Init(Unit unit, AUnitState[] unitStates)
     {
         base.Init(unit, unitStates);
-
-        //if (_unit.GetAttackData().IsStartDelayForCoolTime)
-        //{
-        //    _lastAttackFireTime = Time.time;
-        //}
-        //else
-        //{
-        //    _lastAttackFireTime = 0f;
-        //}
 
         for (int i = 0; i < _unit.ShortAttackDatas.Length; i++)
         {
@@ -65,6 +54,7 @@ public class UnitState_Attack : AUnitState
     public override void ExitState()
     {
         _unit.UnitEvent -= OnUnitEventHandler;
+        _unit.ClearEnemyUnit();
         _isPlayingAttackAni = false;
     }
 
@@ -84,6 +74,11 @@ public class UnitState_Attack : AUnitState
                 _unit.Notify(Types.UnitNotifyType.ClearEnemyUnit, null);
                 return unitStates[(int)Types.UnitFSMType.Idle];
             }
+            // 현재 공격이 원거리 공격이면 근거리 적이 있는지 검사
+            else if(_unit.UnitTargetRangeType == Types.UnitTargetRangeType.Long && _unit.TryFindShortRangeEnemy())
+            {
+                return unitStates[(int)Types.UnitFSMType.Idle];
+            }
             // 공격대상이 있고 쿨타임이 지났으면 공격
             else
             {
@@ -91,7 +86,6 @@ public class UnitState_Attack : AUnitState
                 if (elapsedCoolTime >= _unit.UnitData.AttackCoolTime)
                 {
                     _attackData = _unit.GetAttackData();
-                    //_unit.AttackDataIndex = attackDataIndex;
                     //Debug.Log("Attack " + unit + " to " + unit.EnemyUnit);
                     if (_unit.CanChangeDirection)
                     {
@@ -101,7 +95,7 @@ public class UnitState_Attack : AUnitState
                     if (IsPlayAttackAni)
                     {
                         _isPlayingAttackAni = true; // AniEvent 호출 타이밍이 정확하지 않기 때문에 여기서 지정한다.
-                        _unit.UnitBody.Animator.SetTrigger(_attackTriggerNames[_unit.AttackDataIndex]);
+                        _unit.UnitBody.Animator.SetTrigger(_attackData.AttackAniName);
                         AudioManager.Inst.PlayAttackStart(_attackData);
                     }
                     else
@@ -109,44 +103,6 @@ public class UnitState_Attack : AUnitState
                         AttackFire();
                     }
                 }
-
-                //float biggestElapsedCoolTime = 0f;
-                //int attackDataIndex = 0;
-                //// 쿨타임이 지나서 공격가능한 공격 인덱스 검색
-                //for (int i = 0; i < _unit.ShortAttackDatas.Length; i++)
-                //{
-                //    // 쿨타임이 가장 오래된 공격부터 실행
-                //    float elapsedCoolTime = Time.time - _lastAttackFireTimes[i];
-                //    if (elapsedCoolTime >= _unit.ShortAttackDatas[i].CoolTime)
-                //    {
-                //        if (elapsedCoolTime > biggestElapsedCoolTime)
-                //        {
-                //            biggestElapsedCoolTime = elapsedCoolTime;
-                //            attackDataIndex = i;
-                //        }
-                //    }
-                //}
-
-                //if (biggestElapsedCoolTime > 0)
-                //{
-                //    _unit.AttackDataIndex = attackDataIndex;
-                //    //Debug.Log("Attack " + unit + " to " + unit.EnemyUnit);
-                //    if (_unit.CanChangeDirection)
-                //    {
-                //        _unit.Toward(_unit.EnemyUnit.transform.position);
-                //    }
-
-                //    if (IsPlayAttackAni)
-                //    {
-                //        _isPlayingAttackAni = true; // AniEvent 호출 타이밍이 정확하지 않기 때문에 여기서 지정한다.
-                //        _unit.UnitBody.Animator.SetTrigger(_attackTriggerNames[_unit.AttackDataIndex]);
-                //        AudioManager.Inst.PlayAttackStart(_unit.GetAttackData());
-                //    }
-                //    else
-                //    {
-                //        AttackFire();
-                //    }
-                //}
             }
         }
 
@@ -211,7 +167,6 @@ public class UnitState_Attack : AUnitState
         }
 
         _lastAttackFireTime = Time.time;
-        //_lastAttackFireTimes[_unit.AttackDataIndex] = Time.time;
     }
 
     void Hit()
