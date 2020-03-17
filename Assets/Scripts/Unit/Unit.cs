@@ -71,6 +71,7 @@ public class Unit : MonoBehaviour
         }
         else
         {
+            // 
             gameObject.layer = LayerMask.NameToLayer(TeamData.TeamType.ToString() + UnitData.UnitPlaceType.ToString());
         }
     }
@@ -81,6 +82,7 @@ public class Unit : MonoBehaviour
         return mask;
     }
 
+    // todo 여러 번 불리지 않게 수정
     public void Init()
     {
         IsDied = false;
@@ -335,7 +337,7 @@ public class Unit : MonoBehaviour
         Unit enemyUnit = null;
         if (targetRange > 0f)
         {
-            enemyUnit = GetEnemyOrNull(findPosition, Consts.GetEnemyLayerMask(TeamData.EnemyTeamType, Types.UnitPlaceType.Ground), targetRange);
+            enemyUnit = GetEnemyOrNull(findPosition, Consts.GetUnitLayerMask(TeamData.EnemyTeamType, Types.UnitPlaceType.Ground), targetRange);
             if (enemyUnit != null)
             {
                 AddEnemyUnit(enemyUnit);
@@ -354,11 +356,11 @@ public class Unit : MonoBehaviour
         if (targetRange > 0f)
         {
             // 원거리 타겟중 공중유닛을 먼저 찾는다.
-            enemyUnit = GetEnemyOrNull(findPosition, Consts.GetEnemyLayerMask(TeamData.EnemyTeamType, Types.UnitPlaceType.Air), targetRange);
+            enemyUnit = GetEnemyOrNull(findPosition, Consts.GetUnitLayerMask(TeamData.EnemyTeamType, Types.UnitPlaceType.Air), targetRange);
             if (enemyUnit == null)
             {
                 // 원거리 타겟중 지상유닛을 찾는다.
-                enemyUnit = GetEnemyOrNull(findPosition, Consts.GetEnemyLayerMask(TeamData.EnemyTeamType, Types.UnitPlaceType.Ground), targetRange);
+                enemyUnit = GetEnemyOrNull(findPosition, Consts.GetUnitLayerMask(TeamData.EnemyTeamType, Types.UnitPlaceType.Ground), targetRange);
             }
 
             if (enemyUnit != null)
@@ -482,7 +484,7 @@ public class Unit : MonoBehaviour
         AttackDataListElement attackDataListElement = attackDataList.AttackDataListElements[index];
         return attackDataListElement.AttackData;
     }
-    
+
     void SetUnitTargetRangeType(Types.UnitTargetRangeType unitTargetRangeType)
     {
         UnitTargetRangeType = unitTargetRangeType;

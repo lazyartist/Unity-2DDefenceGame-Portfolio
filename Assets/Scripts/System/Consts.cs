@@ -8,7 +8,7 @@ static public class Consts
     static Consts()
     {
         Debug.Log("Consts " +Time.time );
-        InitEnemyLayerMask();
+        InitUnitLayerMask();
     }
 
     // ===== float
@@ -29,15 +29,15 @@ static public class Consts
     public static Color MapMaskColor_Way = Color.green;
     public static Color MapMaskColor_Block = Color.red;
 
-    // === layer mask
-    static Dictionary<Types.TeamType, List<LayerMask>> _enemyLayerMasks;
-    public static LayerMask GetEnemyLayerMask(Types.TeamType teamType, Types.UnitPlaceType unitPlaceType)
+    // === unit layer mask
+    static Dictionary<Types.TeamType, List<LayerMask>> _unitLayerMasks;
+    public static LayerMask GetUnitLayerMask(Types.TeamType teamType, Types.UnitPlaceType unitPlaceType)
     {
-        return _enemyLayerMasks[teamType][(int)unitPlaceType];
+        return _unitLayerMasks[teamType][(int)unitPlaceType];
     }
-    static void InitEnemyLayerMask()
+    static void InitUnitLayerMask()
     {
-        _enemyLayerMasks = new Dictionary<Types.TeamType, List<LayerMask>>();
+        _unitLayerMasks = new Dictionary<Types.TeamType, List<LayerMask>>();
         for (int i = 0; i < (int)Types.TeamType.Count; i++)
         {
             Types.TeamType teamType = (Types.TeamType)Enum.Parse(typeof(Types.TeamType), i.ToString());
@@ -49,7 +49,7 @@ static public class Consts
                 int mask = LayerMask.GetMask(maskName);
                 layerMasks.Add(mask);
             }
-            _enemyLayerMasks.Add(teamType, layerMasks);
+            _unitLayerMasks.Add(teamType, layerMasks);
         }
     }
 

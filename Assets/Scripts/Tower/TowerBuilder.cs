@@ -50,7 +50,7 @@ public class TowerBuilder : MonoBehaviour
         // 현재 유닛이 생성되지 않은 상태이기 때문에 유닛의 UnitCenter 좌표를 얻을 수 없다.
         // 따라서 UnitCenter의 로컬좌표를 UnitContainer의 좌표에 더해서 rangeCenterPosition을 구함.
         Vector3 rangeCenterPosition = UnitContainer.transform.position + (towerUpgradeData.UnitPrefab.UnitCenter.transform.position - towerUpgradeData.UnitPrefab.transform.position);
-        ShowRange(DraftUnitRangeSR, rangeCenterPosition, towerUpgradeData.UnitPrefab.UnitData);
+        ShowRange(towerUpgradeData.UnitPrefab, DraftUnitRangeSR, rangeCenterPosition);
     }
 
     public void CreateUnit(int index)
@@ -94,7 +94,7 @@ public class TowerBuilder : MonoBehaviour
         UICanvas.Inst.ShowTowerMenu(this, true);
         if (Unit != null)
         {
-            ShowRange(UnitRangeSR, Unit.UnitCenter.transform.position, Unit.UnitData);
+            ShowRange(Unit, UnitRangeSR, Unit.UnitCenter.transform.position);
         }
     }
 
@@ -108,10 +108,10 @@ public class TowerBuilder : MonoBehaviour
         UICanvas.Inst.ShowTowerMenu(this, false);
     }
 
-    public void ShowRange(SpriteRenderer rangeSR, Vector3 position, UnitData unitData)
+    public void ShowRange(Unit unit, SpriteRenderer rangeSR, Vector3 position)
     {
         rangeSR.transform.position = position;
-        rangeSR.transform.localScale = new Vector3(Unit.GetCurTargetRange() * 2f, Unit.GetCurTargetRange() * 2f, 1);
+        rangeSR.transform.localScale = new Vector3(unit.GetCurTargetRange() * 2f, unit.GetCurTargetRange() * 2f, 1);
         rangeSR.enabled = true;
     }
 
@@ -125,7 +125,7 @@ public class TowerBuilder : MonoBehaviour
         UnitRangeSR.enabled = isOn;
         if (isOn == true && Unit != null)
         {
-            ShowRange(UnitRangeSR, Unit.UnitCenter.transform.position, Unit.UnitData);
+            ShowRange(Unit, UnitRangeSR, Unit.UnitCenter.transform.position);
         }
     }
 

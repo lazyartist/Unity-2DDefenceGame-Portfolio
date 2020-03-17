@@ -13,10 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitTypeName: Dwarf
   UnitPlaceType: 1
-  Health: 10
-  MoveSpeed: 1.5
-  TargetRange: 1
-  Gold: 0
-  StageHealthDamage: 1
   UnitTargetRangeCenterType: 0
   UnitSortingLayerType: 0
+  AttackDatasLists:
+  - TargetRange: 1
+    AttackDataListElements:
+    - AttackData: {fileID: 11400000, guid: 755b479a4385b63499e7ebdccc13a51f, type: 2}
+      Weight: 0
+  AttackCoolTime: 1
+  Health: 10
+  MoveSpeed: 1.5
+  Gold: 0
+  StageHealthDamage: 1

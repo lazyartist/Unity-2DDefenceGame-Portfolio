@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Name: UnitData_BarracksTower
   m_EditorClassIdentifier: 
   UnitTypeName: BarracksTower
-  UnitPlaceType: 3
-  Health: 10
-  MoveSpeed: 2
-  TargetRange: 2.3
-  Gold: 0
-  StageHealthDamage: 1
+  UnitPlaceType: 2
   UnitTargetRangeCenterType: 1
   UnitSortingLayerType: 0
+  AttackDatasLists:
+  - TargetRange: 0
+    AttackDataListElements:
+    - AttackData: {fileID: 11400000, guid: 741041b14276d454693bf3b3c21b5689, type: 2}
+      Weight: 0
+  AttackCoolTime: 1
+  Health: 10
+  MoveSpeed: 2
+  Gold: 0
+  StageHealthDamage: 1
