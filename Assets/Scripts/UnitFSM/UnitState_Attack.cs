@@ -55,14 +55,26 @@ public class UnitState_Attack : AUnitState
             {
                 return unitStates[(int)Types.UnitFSMType.Idle];
             }
-            // 공격대상이 공격 범위를 벗어나면 EnemyUnit을 제거하고 Idle 상태로 전환
+            // 공격대상이 공격 범위를 벗어나면
             else if (_unit.IsValidEnemyUnitInRange() == false)
             {
+                // EnemyUnit을 제거
                 _unit.Notify(Types.UnitNotifyType.ClearEnemyUnit, null);
-                return unitStates[(int)Types.UnitFSMType.Idle];
+                if (_unit.TryFindEnemy())
+                {
+                    // 새로운 적을 찾았다면 Attack 상태 유지
+                    //Debug.Log("new enemy");
+                    return null;
+                }
+                else
+                {
+                    // 새로운 적을 못찾았으면 Idle 상태로 전환
+                    //Debug.Log("no enemy");
+                    return unitStates[(int)Types.UnitFSMType.Idle];
+                }
             }
             // 현재 공격이 원거리 공격이면 근거리 적이 있는지 검사
-            else if(_unit.UnitTargetRangeType == Types.UnitTargetRangeType.Long && _unit.TryFindShortRangeEnemy())
+            else if (_unit.UnitTargetRangeType == Types.UnitTargetRangeType.Long && _unit.TryFindShortRangeEnemy())
             {
                 return unitStates[(int)Types.UnitFSMType.Idle];
             }
@@ -98,8 +110,6 @@ public class UnitState_Attack : AUnitState
 
     virtual protected void OnUnitEventHandler(Types.UnitEventType unitBodyEventType, Unit unit)
     {
-        Debug.Log("UnitEventListener " + unitBodyEventType);
-
         switch (unitBodyEventType)
         {
             case Types.UnitEventType.None:

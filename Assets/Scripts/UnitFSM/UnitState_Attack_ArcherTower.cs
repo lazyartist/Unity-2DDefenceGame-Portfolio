@@ -38,6 +38,7 @@ public class UnitState_Attack_ArcherTower : UnitState_Attack
             _attackChildUnitIndex = 0;
         }
 
+        //Debug.Log((Time.time - _lastAttackFireTime));
         _lastAttackFireTime = Time.time;
     }
 }

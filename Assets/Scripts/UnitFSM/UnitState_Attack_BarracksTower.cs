@@ -39,8 +39,6 @@ public class UnitState_Attack_BarracksTower : AUnitState
 
     void OnUnitEventHandler(Types.UnitEventType unitBodyEventType, Unit unit)
     {
-        Debug.Log("UnitEventListener " + unitBodyEventType);
-
         switch (unitBodyEventType)
         {
             case Types.UnitEventType.None:

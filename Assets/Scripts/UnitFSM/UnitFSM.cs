@@ -8,18 +8,10 @@ public class UnitFSM : MonoBehaviour
     public AUnitState[] UnitStates;
     public AUnitState FirstUnitState;
     public AUnitState CurUnitState;
-    //public Types.UnitFSMType CurUnitFSMType;
     public Unit Unit;
 
     private void Awake()
     {
-        //for (int i = 0; i < UnitStates.Length; i++)
-        //{
-        //    AUnitState aUnitState = UnitStates[i];
-        //    aUnitState.enabled = CurUnitState == aUnitState;
-        //    aUnitState.UnitFSMType = (Types.UnitFSMType)i;
-        //    aUnitState.Init(Unit, UnitStates);
-        //}
     }
 
     void Start()

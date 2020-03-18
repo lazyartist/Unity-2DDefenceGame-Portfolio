@@ -108,7 +108,6 @@ public class StageManager : SingletonBase<StageManager>
 
             if (wave.NextWaveInterval > 0)
             {
-                Debug.Log("wave.NextWaveInterval " + wave.NextWaveInterval);
                 yield return new WaitForSeconds(wave.NextWaveInterval);
             }
 

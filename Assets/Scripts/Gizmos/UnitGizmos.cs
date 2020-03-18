@@ -35,7 +35,7 @@ public class UnitGizmos : MonoBehaviour
             if (unit.HasEnemyUnit())
             {
                 Gizmos.color = unit.TeamData.TeamColor;
-                Gizmos.DrawLine(transform.position, unit.EnemyUnit.transform.position);
+                Gizmos.DrawLine(unit.GetCenterPosition(), unit.EnemyUnit.GetCenterPosition());
             }
             // 랠리포인트
             if (unit.UnitMovePoint.UnitMovePointType == Types.UnitMovePointType.RallyPoint)

@@ -15,6 +15,7 @@ public class Unit : MonoBehaviour
     public UnitBody UnitBody;
     public Vector2 ColliderOffset;
     public Vector2 ColliderSize;
+    public float ColliderRadius;
     public UnitCenter UnitCenter; // 유닛의 중심 || 공격 범위의 중심, 외부에서 넣어줄 수도 있다.
     public Animator HitEffectAnimator;
     public UnitFSM UnitFSM;
@@ -50,6 +51,7 @@ public class Unit : MonoBehaviour
         {
             ColliderOffset = boxCollider.offset;
             ColliderSize = boxCollider.size;
+            ColliderRadius = new Vector2(ColliderSize.x * 0.5f, ColliderSize.y * 0.5f).magnitude;
         }
 
         // 초기는 RallyPoint로 설정
@@ -463,9 +465,11 @@ public class Unit : MonoBehaviour
     {
         if (HasEnemyUnit() == false) return false;
 
-        float distance = Vector3.Distance(GetFindPosition(UnitTargetRangeType), EnemyUnit.transform.position);
+        float distance = Vector3.Distance(GetFindPosition(UnitTargetRangeType), EnemyUnit.GetCenterPosition());
         float targetRange = GetCurTargetRange();
-        return distance < targetRange;
+        // 적 유닛과의 거리에서 적 유닛 외곽 원의 반지름을 뺀 값과 비교한다.
+        //Debug.Log(distance + ", " + targetRange + "," + (distance - EnemyUnit.ColliderRadius));
+        return (distance - EnemyUnit.ColliderRadius) < targetRange;
     }
 
     public Vector3 GetCenterPosition()

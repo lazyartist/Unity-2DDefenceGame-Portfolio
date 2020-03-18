@@ -35,7 +35,6 @@ public class UnitState_AttackOnce : UnitState_Attack
 
     override protected void OnUnitEventHandler(Types.UnitEventType unitBodyEventType, Unit unit)
     {
-        //Debug.Log("UnitEventListener " + unitBodyEventType);
         base.OnUnitEventHandler(unitBodyEventType, unit);
 
         switch (unitBodyEventType)

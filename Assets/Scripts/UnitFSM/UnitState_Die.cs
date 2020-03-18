@@ -24,8 +24,6 @@ public class UnitState_Die : AUnitState
 
     void OnUnitBodyEventHandler(Types.UnitEventType unitEventType, Unit unit)
     {
-        Debug.Log("UnitEventListener " + unitEventType);
-
         switch (unitEventType)
         {
             case Types.UnitEventType.None:

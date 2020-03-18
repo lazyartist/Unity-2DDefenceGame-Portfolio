@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// todo UnitBody -> UnitSprite
 public class UnitBody : MonoBehaviour
 {
     public Unit Unit;
@@ -27,7 +26,6 @@ public class UnitBody : MonoBehaviour
 
     public void AniEvent_AttackStart()
     {
-        Debug.Log("AniEvent_AttackStart");
         Unit.DispatchUnitEvent(Types.UnitEventType.AttackStart);
     }
 
@@ -38,7 +36,6 @@ public class UnitBody : MonoBehaviour
 
     public void AniEvent_AttackEnd()
     {
-        Debug.Log("AniEvent_AttackEnd");
         Unit.DispatchUnitEvent(Types.UnitEventType.AttackEnd);
     }
 
@@ -52,34 +49,4 @@ public class UnitBody : MonoBehaviour
         float rotationY = direction.x < 0 ? 180.0f : 0.0f;
         UnitBodyContainer.rotation = Quaternion.Euler(UnitBodyContainer.rotation.x, rotationY, UnitBodyContainer.rotation.z);
     }
-
-    //void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    Unit.OnTriggerEnter2DByUnitBody(collision);
-    //}
-
-    //void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    Unit.OnTriggerStay2DByUnitBody(collision);
-    //}
-
-    //void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    Unit.OnTriggerExit2DByUnitBody(collision);
-    //}
-
-    //void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    Debug.Log("OnTriggerEnter2D UnitBody");
-    //}
-
-    //void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    Debug.Log("OnTriggerStay2D UnitBody");
-    //}
-
-    //void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    Debug.Log("OnTriggerExit2D UnitBody");
-    //}
 }
