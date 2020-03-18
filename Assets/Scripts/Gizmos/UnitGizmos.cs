@@ -15,7 +15,7 @@ public class UnitGizmos : MonoBehaviour
             Gizmos.DrawWireSphere(transform.position, 0.05f);
             // 유닛 공격 타겟 범위
             Gizmos.color = unit.TeamData.TeamColor;
-            if (unit.UnitCenter != null && unit.UnitCenter.UnitData != null)
+            if (unit.UnitCenter != null)
             {
                 Gizmos.DrawWireSphere(unit.UnitCenter.transform.position, unit.GetTargetRange(Types.UnitTargetRangeType.Short));
                 Gizmos.DrawWireSphere(unit.UnitCenter.transform.position, unit.GetTargetRange(Types.UnitTargetRangeType.Long));
@@ -38,11 +38,19 @@ public class UnitGizmos : MonoBehaviour
                 Gizmos.DrawLine(transform.position, unit.EnemyUnit.transform.position);
             }
             // 랠리포인트
+            if (unit.UnitMovePoint.UnitMovePointType == Types.UnitMovePointType.RallyPoint)
+            {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawWireSphere(unit.transform.position + unit.UnitMovePoint.RallyPoint, 0.05f);
+                Gizmos.DrawLine(unit.transform.position, unit.UnitMovePoint.RallyPoint); 
+            }
+            // 자식 유닛 랠리포인트
             ChildUnitCreator childUnitCreator = unit.GetComponent<ChildUnitCreator>();
             if (childUnitCreator != null)
             {
                 Gizmos.color = Color.blue;
                 Gizmos.DrawWireSphere(childUnitCreator.transform.position + childUnitCreator.RallyPointInLocal, 0.05f);
+                Gizmos.DrawLine(transform.position, childUnitCreator.transform.position + childUnitCreator.RallyPointInLocal);
             }
         }
     }

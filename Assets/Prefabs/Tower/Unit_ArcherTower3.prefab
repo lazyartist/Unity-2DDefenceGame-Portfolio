@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819d6a576f1bf684ba296232caef0433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!114 &114087001747876468
 MonoBehaviour:
@@ -263,6 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a17a1445269e1448656cdd20509844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
   IsPlayAttackAni: 1
 --- !u!114 &114115664689400548
@@ -306,6 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed2e8f4bcca3784cb2ae74dc9ab6fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!114 &114335919656571876
 MonoBehaviour:
@@ -318,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2d9bbff02b152438b986d0c0f22559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!114 &114450510599905040
 MonoBehaviour:
@@ -360,9 +364,10 @@ MonoBehaviour:
   ParentUnit: {fileID: 114674793594176356}
   ChildUnitPrefab: {fileID: 114672875092321788, guid: f44b1f94d19a36f43be0b1244db60058,
     type: 2}
+  ChildUnitData: {fileID: 0}
   Units: []
   UnitDiedTimes: []
-  DiedUnitIndex: 0
+  ShortestCoolTimeDiedUnitIndex: 0
   RallyPointInLocal: {x: 1, y: 0, z: 0}
   IndividualRallyPointsInLocal:
   - {x: 0, y: 1.35, z: 0}
@@ -385,6 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba72158de67ea4d840dee2a50e1d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!114 &114505181194723900
 MonoBehaviour:
@@ -397,6 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7486dbc04cbece4488eb882c5c7d691b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!114 &114674793594176356
 MonoBehaviour:
@@ -411,9 +418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
   UnitData: {fileID: 11400000, guid: f247bfb9d30839747a2a7c40f2f82c40, type: 2}
-  AttackDatas:
-  - {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
-  AttackDataIndex: 0
+  ShortAttackDatas: []
   UnitBody: {fileID: 114115664689400548}
   ColliderOffset: {x: 0, y: 0}
   ColliderSize: {x: 0, y: 0}
@@ -429,6 +434,7 @@ MonoBehaviour:
   TakenCCData: {fileID: 0}
   IsDied: 0
   GoalComplete: 0
+  UnitTargetRangeType: 0
 --- !u!114 &114903981498451598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -461,7 +467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc1a4120e8c03d46bfc9001379522cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitData: {fileID: 0}
 --- !u!212 &212126575564206490
 SpriteRenderer:
   m_ObjectHideFlags: 1

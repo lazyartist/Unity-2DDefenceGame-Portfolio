@@ -408,6 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed2e8f4bcca3784cb2ae74dc9ab6fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!114 &114083970544744062
 MonoBehaviour:
@@ -420,6 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7486dbc04cbece4488eb882c5c7d691b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!114 &114111327920929096
 MonoBehaviour:
@@ -446,9 +448,12 @@ MonoBehaviour:
   ParentUnit: {fileID: 114991902228683878}
   ChildUnitPrefab: {fileID: 114611179643101524, guid: d720717e6a2f6104882e77ec5fcd3bac,
     type: 2}
+  ChildUnitData: {fileID: 11400000, guid: bda59f2bd842e414c8e2835066eb75e2, type: 2}
   Units: []
-  CenterRallyPointInLocal: {x: 1, y: 0, z: 0}
-  IndividualRallyPointInLocals: []
+  UnitDiedTimes: []
+  ShortestCoolTimeDiedUnitIndex: 0
+  RallyPointInLocal: {x: 1, y: 0, z: 0}
+  IndividualRallyPointsInLocal: []
   WaypointDataUsedRallyPosition: {fileID: 11400000, guid: 40a344690774efb44881420777e0fe92,
     type: 2}
   IsUseParentUnitCenter: 0
@@ -466,7 +471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc1a4120e8c03d46bfc9001379522cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitData: {fileID: 0}
 --- !u!114 &114447239558583854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -478,6 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e0cad7d3d86784a9f6547c9bebc655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!114 &114485995525816242
 MonoBehaviour:
@@ -490,6 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba72158de67ea4d840dee2a50e1d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!114 &114561099645385340
 MonoBehaviour:
@@ -523,6 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db18d6783e61f244911d8292c553d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!114 &114645467911676466
 MonoBehaviour:
@@ -565,6 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819d6a576f1bf684ba296232caef0433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!114 &114991902228683878
 MonoBehaviour:
@@ -579,9 +587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
   UnitData: {fileID: 11400000, guid: 9940e7965d4fe24429652e96876d797f, type: 2}
-  AttackDatas:
-  - {fileID: 11400000, guid: 741041b14276d454693bf3b3c21b5689, type: 2}
-  AttackDataIndex: 0
+  ShortAttackDatas: []
   UnitBody: {fileID: 114645467911676466}
   ColliderOffset: {x: 0, y: 0}
   ColliderSize: {x: 0, y: 0}
@@ -594,10 +600,10 @@ MonoBehaviour:
   LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1299584712736648}
   Health: 0
-  Speed: 1
-  IsDied: 0
   TakenCCData: {fileID: 0}
+  IsDied: 0
   GoalComplete: 0
+  UnitTargetRangeType: 0
 --- !u!212 &212209478913660530
 SpriteRenderer:
   m_ObjectHideFlags: 1

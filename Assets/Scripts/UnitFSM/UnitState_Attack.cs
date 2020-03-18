@@ -4,29 +4,16 @@ using UnityEngine;
 
 public class UnitState_Attack : AUnitState
 {
+    [Tooltip("true : Attack 애니 재생, false : Attack 애니 재생하지 않고 바로 AttackFire")]
     public bool IsPlayAttackAni = true;
 
     float _lastAttackFireTime;
     AttackData _attackData;
-
-    float[] _lastAttackFireTimes = { 0f, 0f, 0f, 0f };
-    bool _isPlayingAttackAni;
+    bool _isPlayingAttackAni; // Attack 애니가 재생 중인지 여부
 
     public override void Init(Unit unit, AUnitState[] unitStates)
     {
         base.Init(unit, unitStates);
-
-        for (int i = 0; i < _unit.ShortAttackDatas.Length; i++)
-        {
-            if (_unit.ShortAttackDatas[i].IsStartDelayForCoolTime)
-            {
-                _lastAttackFireTimes[i] = Time.time;
-            }
-            else
-            {
-                _lastAttackFireTimes[i] = 0f;
-            }
-        }
     }
 
     // implements AUnitState

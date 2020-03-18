@@ -6,6 +6,8 @@ public class ChildUnitCreator : MonoBehaviour
 {
     public Unit ParentUnit;
     public Unit ChildUnitPrefab;
+    [Tooltip("Null이면 부모의 UnitData 사용")]
+    public UnitData ChildUnitData;
     public Unit[] Units;
     public float[] UnitDiedTimes;
     public int ShortestCoolTimeDiedUnitIndex = 0; // 가장 짧은 쿨타임을 가진 사망 유닛 인덱스
@@ -115,13 +117,14 @@ public class ChildUnitCreator : MonoBehaviour
         return false;
     }
 
-    public void CreateUnits(int index)
+    public void CreateUnit(int index)
     {
         if (Units[index] == null)
         {
             Unit unit = UnitPoolManager.Inst.Get(ChildUnitPrefab.UnitData.UnitTypeName, ChildUnitPrefab);
             unit.transform.position = ParentUnit.SpawnPosition.transform.position;
             unit.transform.SetParent(ParentUnit.transform);
+            unit.UnitData = (ChildUnitData == null) ? ParentUnit.UnitData : ChildUnitData;
             unit.Init();
             unit.UnitEvent += OnUnitEvent;
             unit.gameObject.SetActive(true);
@@ -160,7 +163,7 @@ public class ChildUnitCreator : MonoBehaviour
 
             if ((Time.time - UnitDiedTimes[ShortestCoolTimeDiedUnitIndex]) >= coolTime)
             {
-                CreateUnits(ShortestCoolTimeDiedUnitIndex);
+                CreateUnit(ShortestCoolTimeDiedUnitIndex);
             }
         }
     }

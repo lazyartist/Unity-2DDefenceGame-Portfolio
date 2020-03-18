@@ -43,7 +43,6 @@ public class Unit : MonoBehaviour
     {
         gameObject.name += Consts.GetUnitNumber();
         TakenCCData = new CCData();
-        UnitCenter.UnitData = UnitData;
 
         unitRenderOrder = GetComponent<IUnitRenderOrder>();
 

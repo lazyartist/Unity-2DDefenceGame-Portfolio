@@ -122,7 +122,6 @@ public class Selector_MasterSkill : Selector
         Quaternion startAngle = Quaternion.Euler(_masterSkillData.SpawnAngle.x, _masterSkillData.SpawnAngle.y, _masterSkillData.SpawnAngle.z);
         Unit unit = Instantiate<Unit>(_masterSkillData.UnitPrefab, startPosition, startAngle, UIMasterSkillMenu.UnitContainer.transform);
         unit.gameObject.SetActive(true);
-        unit.ShortAttackDatas[0] = _masterSkillData.AttackData;
         unit.UnitMovePoint.SetRallyPoint(startPosition);
     }
 
