@@ -7206,7 +7206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5bcfd5278b8a542b4d46b989aa84d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StageData: {fileID: 11400000, guid: 3ef44b4b39cdf4441b2c1d610a40a477, type: 2}
+  StageData: {fileID: 11400000, guid: 3cb60f2dca5c92343b685023b2fa70d0, type: 2}
   UnitsContainer: {fileID: 2007183369}
 --- !u!4 &1654529991
 Transform:
@@ -8239,10 +8239,6 @@ Prefab:
     - target: {fileID: 4646428076936200, guid: 16db18843942b9643a02eb38cf03fd37, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350713528623468, guid: 16db18843942b9643a02eb38cf03fd37, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16db18843942b9643a02eb38cf03fd37, type: 2}

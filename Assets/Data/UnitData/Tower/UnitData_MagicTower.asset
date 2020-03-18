@@ -12,11 +12,19 @@ MonoBehaviour:
   m_Name: UnitData_MagicTower
   m_EditorClassIdentifier: 
   UnitTypeName: MagicTower
-  UnitPlaceType: 3
-  Health: 10
-  MoveSpeed: 2
-  TargetRange: 3.1
-  Gold: 0
-  StageHealthDamage: 1
+  UnitPlaceType: 2
   UnitTargetRangeCenterType: 1
   UnitSortingLayerType: 0
+  DefaultUnitTargetRangeType: 1
+  AttackDatasLists:
+  - TargetRange: 0
+    AttackDataListElements: []
+  - TargetRange: 2
+    AttackDataListElements:
+    - AttackData: {fileID: 11400000, guid: 37469bddf7a40834ea01ef29997ccd1e, type: 2}
+      Weight: 0
+  AttackCoolTime: 1
+  Health: 10
+  MoveSpeed: 2
+  Gold: 0
+  StageHealthDamage: 1

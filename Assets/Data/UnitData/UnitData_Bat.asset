@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Name: UnitData_Bat
   m_EditorClassIdentifier: 
   UnitTypeName: Bat
-  UnitPlaceType: 2
+  UnitPlaceType: 0
   UnitTargetRangeCenterType: 1
   UnitSortingLayerType: 1
+  DefaultUnitTargetRangeType: 0
   AttackDatasLists: []
-  ShortTargetRange: 1
-  LongTargetRange: 1
+  AttackCoolTime: 1
   Health: 8
   MoveSpeed: 0.6
   Gold: 3

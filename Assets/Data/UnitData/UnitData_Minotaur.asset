@@ -13,10 +13,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitTypeName: Minotaur
   UnitPlaceType: 1
-  Health: 30
-  MoveSpeed: 1.5
-  TargetRange: 1.5
-  Gold: 0
-  StageHealthDamage: 0
   UnitTargetRangeCenterType: 0
   UnitSortingLayerType: 0
+  DefaultUnitTargetRangeType: 0
+  AttackDatasLists:
+  - TargetRange: 1.5
+    AttackDataListElements:
+    - AttackData: {fileID: 11400000, guid: f5c6c177b39d2654194353eb7b20e637, type: 2}
+      Weight: 0
+  AttackCoolTime: 1
+  Health: 30
+  MoveSpeed: 1.5
+  Gold: 0
+  StageHealthDamage: 0

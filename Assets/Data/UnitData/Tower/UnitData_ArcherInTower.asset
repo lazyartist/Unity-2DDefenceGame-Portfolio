@@ -15,6 +15,7 @@ MonoBehaviour:
   UnitPlaceType: 2
   UnitTargetRangeCenterType: 1
   UnitSortingLayerType: 0
+  DefaultUnitTargetRangeType: 1
   AttackDatasLists: []
   AttackCoolTime: 1
   Health: 1

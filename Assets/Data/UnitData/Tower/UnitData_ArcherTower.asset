@@ -12,11 +12,19 @@ MonoBehaviour:
   m_Name: UnitData_ArcherTower
   m_EditorClassIdentifier: 
   UnitTypeName: ArcherTower
-  UnitPlaceType: 3
-  Health: 1
-  MoveSpeed: 1
-  TargetRange: 3
-  Gold: 0
-  StageHealthDamage: 0
+  UnitPlaceType: 2
   UnitTargetRangeCenterType: 1
   UnitSortingLayerType: 0
+  DefaultUnitTargetRangeType: 1
+  AttackDatasLists:
+  - TargetRange: 0
+    AttackDataListElements: []
+  - TargetRange: 2.5
+    AttackDataListElements:
+    - AttackData: {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
+      Weight: 0
+  AttackCoolTime: 1
+  Health: 1
+  MoveSpeed: 1
+  Gold: 0
+  StageHealthDamage: 0

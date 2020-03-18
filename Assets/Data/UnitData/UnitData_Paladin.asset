@@ -13,10 +13,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitTypeName: Paladin
   UnitPlaceType: 1
-  Health: 30
-  MoveSpeed: 2
-  TargetRange: 1
-  Gold: 0
-  StageHealthDamage: 1
   UnitTargetRangeCenterType: 0
   UnitSortingLayerType: 0
+  DefaultUnitTargetRangeType: 0
+  AttackDatasLists:
+  - TargetRange: 1.5
+    AttackDataListElements:
+    - AttackData: {fileID: 11400000, guid: 05e2c4613fdb63141ab69eb43b8b31a3, type: 2}
+      Weight: 0
+  AttackCoolTime: 1
+  Health: 30
+  MoveSpeed: 2
+  Gold: 0
+  StageHealthDamage: 1
