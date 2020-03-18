@@ -111,7 +111,9 @@ public class UnitState_Attack : AUnitState
                 _isPlayingAttackAni = true;
                 break;
             case Types.UnitEventType.AttackEnd:
-                _isPlayingAttackAni = false;
+                {
+                    _isPlayingAttackAni = false;
+                }
                 break;
             case Types.UnitEventType.Die:
                 break;

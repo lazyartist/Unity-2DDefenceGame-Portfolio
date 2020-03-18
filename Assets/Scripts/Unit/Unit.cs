@@ -332,11 +332,11 @@ public class Unit : MonoBehaviour
 
     public bool TryFindShortRangeEnemy()
     {
-        Vector3 findPosition = GetFindPosition(Types.UnitTargetRangeType.Short);
         float targetRange = GetTargetRange(Types.UnitTargetRangeType.Short);
-        Unit enemyUnit = null;
         if (targetRange > 0f)
         {
+            Vector3 findPosition = GetFindPosition(Types.UnitTargetRangeType.Short);
+            Unit enemyUnit = null;
             enemyUnit = GetEnemyOrNull(findPosition, Consts.GetUnitLayerMask(TeamData.EnemyTeamType, Types.UnitPlaceType.Ground), targetRange);
             if (enemyUnit != null)
             {
@@ -350,11 +350,11 @@ public class Unit : MonoBehaviour
 
     public bool TryFindLongRangeEnemy()
     {
-        Vector3 findPosition = GetFindPosition(Types.UnitTargetRangeType.Long);
-        Unit enemyUnit = null;
         float targetRange = GetTargetRange(Types.UnitTargetRangeType.Long);
         if (targetRange > 0f)
         {
+            Vector3 findPosition = GetFindPosition(Types.UnitTargetRangeType.Long);
+            Unit enemyUnit = null;
             // 원거리 타겟중 공중유닛을 먼저 찾는다.
             enemyUnit = GetEnemyOrNull(findPosition, Consts.GetUnitLayerMask(TeamData.EnemyTeamType, Types.UnitPlaceType.Air), targetRange);
             if (enemyUnit == null)

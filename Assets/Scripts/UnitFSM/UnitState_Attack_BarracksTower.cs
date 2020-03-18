@@ -69,17 +69,5 @@ public class UnitState_Attack_BarracksTower : AUnitState
     {
         // 쿨타임이 지난 모든 유닛을 생성
         _childUnitCreator.CreateAllUnits(_unit.GetAttackData().CoolTime);
-        //for (int i = 0; i < _childUnitCreator.MaxUnitCount; i++)
-        //{
-        //    if(_childUnitCreator.DiedUnitIndex == -1)
-        //    {
-        //        break;
-        //    }
-
-        //    if ((Time.time - _childUnitCreator.UnitDiedTimes[_childUnitCreator.DiedUnitIndex]) > _unit.GetAttackData().CoolTime)
-        //    {
-        //        _childUnitCreator.CreateUnits(_childUnitCreator.DiedUnitIndex);
-        //    }
-        //}
     }
 }
