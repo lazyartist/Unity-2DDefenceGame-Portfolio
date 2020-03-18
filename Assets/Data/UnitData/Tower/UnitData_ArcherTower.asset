@@ -23,7 +23,7 @@ MonoBehaviour:
     AttackDataListElements:
     - AttackData: {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
       Weight: 0
-  AttackCoolTime: 1
+  AttackCoolTime: 0.7
   Health: 1
   MoveSpeed: 1
   Gold: 0
