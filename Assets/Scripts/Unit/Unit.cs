@@ -91,6 +91,7 @@ public class Unit : MonoBehaviour
         unitRenderOrder.Init(UnitData.UnitSortingLayerType.ToString());
         UnitFSM.Reset();
         UnitBody.Reset();
+        SetUnitTargetRangeType(UnitData.DefaultUnitTargetRangeType);
         DispatchUnitEvent(Types.UnitEventType.Live);
     }
 
@@ -325,7 +326,7 @@ public class Unit : MonoBehaviour
         }
 
         // 타겟을 못 찾았다.
-        SetUnitTargetRangeType(Types.UnitTargetRangeType.Short);
+        SetUnitTargetRangeType(UnitData.DefaultUnitTargetRangeType);
         return false;
     }
 

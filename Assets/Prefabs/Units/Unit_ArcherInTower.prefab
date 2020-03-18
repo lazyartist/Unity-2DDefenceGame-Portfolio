@@ -336,6 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed2e8f4bcca3784cb2ae74dc9ab6fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!114 &114271592312121844
 MonoBehaviour:
@@ -380,6 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba72158de67ea4d840dee2a50e1d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!114 &114622293231981828
 MonoBehaviour:
@@ -392,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7486dbc04cbece4488eb882c5c7d691b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!114 &114623566354632706
 MonoBehaviour:
@@ -420,9 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamData: {fileID: 11400000, guid: 4c2032964ff32d24f920252bf1ed4484, type: 2}
   UnitData: {fileID: 11400000, guid: b3dcea9eee960ee4cb62757e4edfaf4a, type: 2}
-  AttackDatas:
-  - {fileID: 11400000, guid: 5dc19c4a44f8fa54487401bfbe944894, type: 2}
-  AttackDataIndex: 0
+  ShortAttackDatas: []
   UnitBody: {fileID: 114674158599414336}
   ColliderOffset: {x: 0, y: 0}
   ColliderSize: {x: 0, y: 0}
@@ -435,10 +436,10 @@ MonoBehaviour:
   LastEnemyPosition: {x: 0, y: 0, z: 0}
   SpawnPosition: {fileID: 1685357474663072}
   Health: 0
-  Speed: 1
-  IsDied: 0
   TakenCCData: {fileID: 0}
+  IsDied: 0
   GoalComplete: 0
+  UnitTargetRangeType: 0
 --- !u!114 &114674158599414336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -480,6 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819d6a576f1bf684ba296232caef0433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!114 &114817695641088798
 MonoBehaviour:
@@ -503,6 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a17a1445269e1448656cdd20509844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
   IsPlayAttackAni: 1
 --- !u!114 &114898018253472554
@@ -516,7 +519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc1a4120e8c03d46bfc9001379522cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitData: {fileID: 0}
 --- !u!114 &114960341470601430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -528,6 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e0cad7d3d86784a9f6547c9bebc655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitFSMType: 0
   PrevUnitState: {fileID: 0}
 --- !u!212 &212630968892714004
 SpriteRenderer:

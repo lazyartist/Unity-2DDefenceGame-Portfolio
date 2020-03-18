@@ -111,7 +111,8 @@ public class TowerBuilder : MonoBehaviour
     public void ShowRange(Unit unit, SpriteRenderer rangeSR, Vector3 position)
     {
         rangeSR.transform.position = position;
-        rangeSR.transform.localScale = new Vector3(unit.GetCurTargetRange() * 2f, unit.GetCurTargetRange() * 2f, 1);
+        float targetRange = unit.GetTargetRange(unit.UnitData.DefaultUnitTargetRangeType);
+        rangeSR.transform.localScale = new Vector3(targetRange * 2f, targetRange * 2f, 1);
         rangeSR.enabled = true;
     }
 

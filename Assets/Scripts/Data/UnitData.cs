@@ -11,6 +11,7 @@ public class UnitData : ScriptableObject
     public Types.UnitPlaceType UnitPlaceType;
     public Types.UnitTargetRangeCenterType UnitTargetRangeCenterType;
     public Types.UnitSortingLayerType UnitSortingLayerType; // for sprite render
+    public Types.UnitTargetRangeType DefaultUnitTargetRangeType;
 
     [Header("AttackDatas[Short, Long]")]
     public AttackDataList[] AttackDatasLists;
