@@ -39,9 +39,9 @@ GameObject:
   - component: {fileID: 114967502376588390}
   - component: {fileID: 50595680946373142}
   - component: {fileID: 114473184380942948}
-  - component: {fileID: 114194787798188144}
+  - component: {fileID: 114734102174180336}
   - component: {fileID: 114228830754148118}
-  - component: {fileID: 114350856978957396}
+  - component: {fileID: 114446248034174574}
   - component: {fileID: 114025742899576568}
   - component: {fileID: 114150701794301852}
   - component: {fileID: 114072999202522946}
@@ -294,19 +294,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitFSMType: 0
   PrevUnitState: {fileID: 0}
---- !u!114 &114194787798188144
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1350713528623468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b2d9bbff02b152438b986d0c0f22559, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UnitFSMType: 0
-  PrevUnitState: {fileID: 0}
 --- !u!114 &114228830754148118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,20 +307,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitFSMType: 0
   PrevUnitState: {fileID: 0}
---- !u!114 &114350856978957396
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1350713528623468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78a17a1445269e1448656cdd20509844, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UnitFSMType: 0
-  PrevUnitState: {fileID: 0}
-  IsPlayAttackAni: 1
 --- !u!114 &114371486477906474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -372,6 +345,20 @@ MonoBehaviour:
   IsSetRallyPointToNearlyWayPoint: 0
   MaxUnitCount: 1
   RallyPointRadius: 0
+--- !u!114 &114446248034174574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350713528623468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf6f6249dcf06f4fbd9fa431ece2124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitFSMType: 0
+  PrevUnitState: {fileID: 0}
+  IsPlayAttackAni: 0
 --- !u!114 &114473184380942948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -384,14 +371,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitStates:
-  - {fileID: 114194787798188144}
+  - {fileID: 114734102174180336}
   - {fileID: 114228830754148118}
-  - {fileID: 114350856978957396}
+  - {fileID: 114446248034174574}
   - {fileID: 114025742899576568}
   - {fileID: 114150701794301852}
   - {fileID: 114072999202522946}
-  FirstUnitState: {fileID: 114194787798188144}
-  CurUnitState: {fileID: 114194787798188144}
+  FirstUnitState: {fileID: 114734102174180336}
+  CurUnitState: {fileID: 114734102174180336}
   Unit: {fileID: 114967502376588390}
 --- !u!114 &114594138945018940
 MonoBehaviour:
@@ -423,6 +410,19 @@ MonoBehaviour:
   WayPoint: {fileID: 0}
   RallyPoint: {x: 0, y: 0, z: 0}
   IsArrived: 0
+--- !u!114 &114734102174180336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350713528623468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b2d9bbff02b152438b986d0c0f22559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitFSMType: 0
+  PrevUnitState: {fileID: 0}
 --- !u!114 &114967502376588390
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,18 +13,25 @@ public class UnitFSM : MonoBehaviour
 
     private void Awake()
     {
+        //for (int i = 0; i < UnitStates.Length; i++)
+        //{
+        //    AUnitState aUnitState = UnitStates[i];
+        //    aUnitState.enabled = CurUnitState == aUnitState;
+        //    aUnitState.UnitFSMType = (Types.UnitFSMType)i;
+        //    aUnitState.Init(Unit, UnitStates);
+        //}
+    }
+
+    void Start()
+    {
         for (int i = 0; i < UnitStates.Length; i++)
         {
             AUnitState aUnitState = UnitStates[i];
             aUnitState.enabled = CurUnitState == aUnitState;
             aUnitState.UnitFSMType = (Types.UnitFSMType)i;
-            //aUnitState.CurUnitFSMType = (Types.UnitFSMType)Enum.Parse(typeof(Types.UnitFSMType), i.ToString());
             aUnitState.Init(Unit, UnitStates);
         }
-    }
 
-    void Start()
-    {
         CurUnitState.EnterState();
     }
 

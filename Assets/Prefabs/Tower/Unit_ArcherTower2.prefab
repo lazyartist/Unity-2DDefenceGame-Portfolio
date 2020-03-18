@@ -55,9 +55,9 @@ GameObject:
   - component: {fileID: 114020502159223494}
   - component: {fileID: 50793208220764224}
   - component: {fileID: 114674556697720780}
-  - component: {fileID: 114001781614897208}
+  - component: {fileID: 114574852973535534}
   - component: {fileID: 114857458356429436}
-  - component: {fileID: 114706498568562138}
+  - component: {fileID: 114701933236085652}
   - component: {fileID: 114301619810195028}
   - component: {fileID: 114664718411126866}
   - component: {fileID: 114206645618487856}
@@ -240,19 +240,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114001781614897208
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1649567556702122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b2d9bbff02b152438b986d0c0f22559, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UnitFSMType: 0
-  PrevUnitState: {fileID: 0}
 --- !u!114 &114020502159223494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -405,6 +392,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc1a4120e8c03d46bfc9001379522cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114574852973535534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1649567556702122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b2d9bbff02b152438b986d0c0f22559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitFSMType: 0
+  PrevUnitState: {fileID: 0}
 --- !u!114 &114664718411126866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -430,16 +430,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitStates:
-  - {fileID: 114001781614897208}
+  - {fileID: 114574852973535534}
   - {fileID: 114857458356429436}
-  - {fileID: 114706498568562138}
+  - {fileID: 114701933236085652}
   - {fileID: 114301619810195028}
   - {fileID: 114664718411126866}
   - {fileID: 114206645618487856}
-  FirstUnitState: {fileID: 114001781614897208}
-  CurUnitState: {fileID: 114001781614897208}
+  FirstUnitState: {fileID: 114574852973535534}
+  CurUnitState: {fileID: 114574852973535534}
   Unit: {fileID: 114020502159223494}
---- !u!114 &114706498568562138
+--- !u!114 &114701933236085652
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -447,12 +447,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1649567556702122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78a17a1445269e1448656cdd20509844, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cf6f6249dcf06f4fbd9fa431ece2124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UnitFSMType: 0
   PrevUnitState: {fileID: 0}
-  IsPlayAttackAni: 1
+  IsPlayAttackAni: 0
 --- !u!114 &114857458356429436
 MonoBehaviour:
   m_ObjectHideFlags: 1

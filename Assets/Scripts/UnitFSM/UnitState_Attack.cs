@@ -7,9 +7,9 @@ public class UnitState_Attack : AUnitState
     [Tooltip("true : Attack 애니 재생, false : Attack 애니 재생하지 않고 바로 AttackFire")]
     public bool IsPlayAttackAni = true;
 
-    float _lastAttackFireTime;
-    AttackData _attackData;
-    bool _isPlayingAttackAni; // Attack 애니가 재생 중인지 여부
+    protected float _lastAttackFireTime;
+    protected AttackData _attackData;
+    protected bool _isPlayingAttackAni; // Attack 애니가 재생 중인지 여부
 
     public override void Init(Unit unit, AUnitState[] unitStates)
     {
@@ -96,7 +96,7 @@ public class UnitState_Attack : AUnitState
         return null;
     }
 
-    void OnUnitEventHandler(Types.UnitEventType unitBodyEventType, Unit unit)
+    virtual protected void OnUnitEventHandler(Types.UnitEventType unitBodyEventType, Unit unit)
     {
         Debug.Log("UnitEventListener " + unitBodyEventType);
 
@@ -126,7 +126,7 @@ public class UnitState_Attack : AUnitState
         }
     }
 
-    virtual public void AttackFire()
+    virtual protected void AttackFire()
     {
         AudioManager.Inst.PlayAttackFire(_attackData);
 
@@ -158,7 +158,7 @@ public class UnitState_Attack : AUnitState
         _lastAttackFireTime = Time.time;
     }
 
-    void Hit()
+    protected void Hit()
     {
         // 공격이 히트하는 순간 다른 유닛의 공격에 의해 공격대상이 이미 죽었을 수 있다
         if (_unit.HasEnemyUnit())

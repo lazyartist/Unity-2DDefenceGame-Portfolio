@@ -63,7 +63,7 @@ public class ChildUnitCreator : MonoBehaviour
         float minDistance = 999f;
         if (parentUnit != null)
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(parentUnit.transform.position, parentUnit.GetCurTargetRange()* radiusScale, _wayPointLayerMask);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(parentUnit.transform.position, parentUnit.GetCurTargetRange() * radiusScale, _wayPointLayerMask);
             for (int i = 0; i < colliders.Length; i++)
             {
                 Collider2D collider = colliders[i];
@@ -96,7 +96,6 @@ public class ChildUnitCreator : MonoBehaviour
 
             if (rallyPoint != null)
             {
-                //CenterRallyPointInLocal = transform.position - rallyPoint.transform.position;
                 RallyPointInLocal = rallyPoint.transform.position - transform.position;
             }
         }
@@ -284,6 +283,18 @@ public class ChildUnitCreator : MonoBehaviour
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position + IndividualRallyPointsInLocal[i], 0.1f);
             Gizmos.DrawIcon(transform.position + IndividualRallyPointsInLocal[i], "RallyPoint_Flag");
+        }
+    }
+
+    public Unit GetUnit(int index)
+    {
+        if (index < Units.Length)
+        {
+            return Units[index];
+        }
+        else
+        {
+            return null;
         }
     }
 }

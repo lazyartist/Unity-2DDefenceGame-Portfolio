@@ -8,6 +8,20 @@ public class UnitState_Idle : AUnitState
     public override void EnterState()
     {
         _unit.UnitBody.Animator.SetTrigger("Idle");
+
+        // test
+        ChildUnitCreator childUnitCreator = GetComponent<ChildUnitCreator>();
+        if (childUnitCreator != null)
+        {
+            childUnitCreator.CreateAllUnits();
+
+            UnitRenderOrder unitRenderOrder = GetComponent<UnitRenderOrder>();
+            for (int i = 0; i < childUnitCreator.Units.Length; i++)
+            {
+                unitRenderOrder.SpriteRenderers[i + 1] = childUnitCreator.Units[i].UnitBody.UnitSR;
+            }
+            unitRenderOrder.CalcRenderOrder(); 
+        }
     }
 
     public override void ExitState()

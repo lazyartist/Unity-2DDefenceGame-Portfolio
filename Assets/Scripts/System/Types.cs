@@ -147,4 +147,9 @@ static public class Types {
     {
         RallyPoint, UnitCenter
     }
+
+    public enum UnitCommandType
+    {
+        ToAttackState, ToMoveState
+    }
 }

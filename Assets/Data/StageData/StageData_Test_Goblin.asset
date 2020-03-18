@@ -24,7 +24,7 @@ MonoBehaviour:
     type: 2}
   HeroUnitIcon: {fileID: 21300000, guid: 49172337a63da83488f7f5ecff1e7dfe, type: 3}
   HeroUnitRespawnCoolTime: 1
-  FirstHeroRallyPoint: {x: 9.77, y: -2.13, z: 0}
+  FirstHeroRallyPoint: {x: -2.66, y: -2.13, z: 0}
   Health: 20
   Gold: 100
   StartTimeScale: 1

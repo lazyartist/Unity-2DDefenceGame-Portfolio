@@ -37,14 +37,13 @@ public class Unit : MonoBehaviour
     public Types.UnitTargetRangeType UnitTargetRangeType;
 
     LayerMask[] _enemyLayerMasks = new LayerMask[(int)Types.UnitPlaceType.Count];
-    IUnitRenderOrder unitRenderOrder;
+    IUnitRenderOrder _unitRenderOrder;
+    List<UnitCommand> _unitCommands;
 
     protected void Awake()
     {
         gameObject.name += Consts.GetUnitNumber();
         TakenCCData = new CCData();
-
-        unitRenderOrder = GetComponent<IUnitRenderOrder>();
 
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
         if (boxCollider != null)
@@ -55,6 +54,9 @@ public class Unit : MonoBehaviour
 
         // 초기는 RallyPoint로 설정
         UnitMovePoint.SetRallyPoint(transform.position);
+
+        _unitRenderOrder = GetComponent<IUnitRenderOrder>();
+        _unitCommands = new List<UnitCommand>();
     }
 
     protected void Start()
@@ -88,7 +90,7 @@ public class Unit : MonoBehaviour
         GoalComplete = false;
         Health = UnitData.Health;
         InitLayer();
-        unitRenderOrder.Init(UnitData.UnitSortingLayerType.ToString());
+        _unitRenderOrder.Init(UnitData.UnitSortingLayerType.ToString());
         UnitFSM.Reset();
         UnitBody.Reset();
         SetUnitTargetRangeType(UnitData.DefaultUnitTargetRangeType);
@@ -162,7 +164,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    void AddEnemyUnit(Unit unit)
+    public void AddEnemyUnit(Unit unit)
     {
         if (HasEnemyUnit())
         {
@@ -485,7 +487,7 @@ public class Unit : MonoBehaviour
         return attackDataListElement.AttackData;
     }
 
-    void SetUnitTargetRangeType(Types.UnitTargetRangeType unitTargetRangeType)
+    public void SetUnitTargetRangeType(Types.UnitTargetRangeType unitTargetRangeType)
     {
         UnitTargetRangeType = unitTargetRangeType;
     }
@@ -505,6 +507,30 @@ public class Unit : MonoBehaviour
         else
         {
             return UnitData.AttackDatasLists[unitTargetRangeTypeIndex].TargetRange;
+        }
+    }
+
+    public void AddUnitCommand(UnitCommand unitCommand)
+    {
+        _unitCommands.Add(unitCommand);
+    }
+
+    public bool ExistUnitCommand()
+    {
+        return _unitCommands.Count > 0;
+    }
+
+    public UnitCommand PopUnitCommand()
+    {
+        if (_unitCommands.Count == 0)
+        {
+            return null;
+        }
+        else
+        {
+            UnitCommand unitCommandToReturn = _unitCommands[0];
+            _unitCommands.RemoveAt(0);
+            return unitCommandToReturn;
         }
     }
 }

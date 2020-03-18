@@ -19,7 +19,7 @@ MonoBehaviour:
   Power: 3
   AttackRange: 0.5
   IsStartDelayForCoolTime: 0
-  CoolTime: 0.3
+  CoolTime: 3
   CCData: {fileID: 0}
   StartAudioName: 
   FireAudioName: Projectile/Arrow_Fly
