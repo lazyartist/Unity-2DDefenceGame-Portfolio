@@ -96,6 +96,9 @@ public class UnitState_Attack : AUnitState
                         _isPlayingAttackAni = true; // AniEvent 호출 타이밍이 정확하지 않기 때문에 여기서 지정한다.
                         _unit.UnitBody.Animator.SetTrigger(_attackData.AttackAniName);
                         AudioManager.Inst.PlayAttackStart(_attackData);
+
+                        // test
+                        _attackData.AttackLogicBase.TryFindTarget(_attackData);
                     }
                     else
                     {

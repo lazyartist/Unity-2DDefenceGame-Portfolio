@@ -23,4 +23,6 @@ public class AttackData : ScriptableObject
     public string FireAudioName;
     public string HitAudioName;
     public float AudioVolume = 1.0f;
+
+    public AttackLogicBase AttackLogicBase;
 }
