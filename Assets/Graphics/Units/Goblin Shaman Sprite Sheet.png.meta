@@ -1,64 +1,174 @@
 fileFormatVersion: 2
 guid: 7e5f23d55a652aa4a8962a79139b298d
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Goblin Shaman Sprite Sheet_0
-    21300002: Goblin Shaman Sprite Sheet_1
-    21300004: Goblin Shaman Sprite Sheet_2
-    21300006: Goblin Shaman Sprite Sheet_3
-    21300008: Goblin Shaman Sprite Sheet_4
-    21300010: Goblin Shaman Sprite Sheet_5
-    21300012: Goblin Shaman Sprite Sheet_6
-    21300014: Goblin Shaman Sprite Sheet_7
-    21300016: Goblin Shaman Sprite Sheet_8
-    21300018: Goblin Shaman Sprite Sheet_9
-    21300020: Goblin Shaman Sprite Sheet_10
-    21300022: Goblin Shaman Sprite Sheet_11
-    21300024: Goblin Shaman Sprite Sheet_12
-    21300026: Goblin Shaman Sprite Sheet_13
-    21300028: Goblin Shaman Sprite Sheet_14
-    21300030: Goblin Shaman Sprite Sheet_15
-    21300032: Goblin Shaman Sprite Sheet_16
-    21300034: Goblin Shaman Sprite Sheet_17
-    21300036: Goblin Shaman Sprite Sheet_18
-    21300038: Goblin Shaman Sprite Sheet_19
-    21300040: Goblin Shaman Sprite Sheet_20
-    21300042: Goblin Shaman Sprite Sheet_21
-    21300044: Goblin Shaman Sprite Sheet_22
-    21300046: Goblin Shaman Sprite Sheet_23
-    21300048: Goblin Shaman Sprite Sheet_24
-    21300050: Goblin Shaman Sprite Sheet_25
-    21300052: Goblin Shaman Sprite Sheet_26
-    21300054: Goblin Shaman Sprite Sheet_27
-    21300056: Goblin Shaman Sprite Sheet_28
-    21300058: Goblin Shaman Sprite Sheet_29
-    21300060: Goblin Shaman Sprite Sheet_30
-    21300062: Goblin Shaman Sprite Sheet_31
-    21300064: Goblin Shaman Sprite Sheet_32
-    21300066: Goblin Shaman Sprite Sheet_33
-    21300068: Goblin Shaman Sprite Sheet_34
-    21300070: Goblin Shaman Sprite Sheet_35
-    21300072: Goblin Shaman Sprite Sheet_36
-    21300074: Goblin Shaman Sprite Sheet_37
-    21300076: Goblin Shaman Sprite Sheet_38
-    21300078: Goblin Shaman Sprite Sheet_39
-    21300080: Goblin Shaman Sprite Sheet_40
-    21300082: Goblin Shaman Sprite Sheet_41
-    21300084: Goblin Shaman Sprite Sheet_42
-    21300086: Goblin Shaman Sprite Sheet_43
-    21300088: Goblin Shaman Sprite Sheet_44
-    21300090: Goblin Shaman Sprite Sheet_45
-    21300092: Goblin Shaman Sprite Sheet_46
-    21300094: Goblin Shaman Sprite Sheet_47
-    21300096: Goblin Shaman Sprite Sheet_48
-    21300098: Goblin Shaman Sprite Sheet_49
-    21300100: Goblin Shaman Sprite Sheet_50
-    21300102: Goblin Shaman Sprite Sheet_51
-    21300104: Goblin Shaman Sprite Sheet_52
-    21300106: Goblin Shaman Sprite Sheet_53
-    21300108: Goblin Shaman Sprite Sheet_54
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Goblin Shaman Sprite Sheet_0
+  - first:
+      213: 21300002
+    second: Goblin Shaman Sprite Sheet_1
+  - first:
+      213: 21300004
+    second: Goblin Shaman Sprite Sheet_2
+  - first:
+      213: 21300006
+    second: Goblin Shaman Sprite Sheet_3
+  - first:
+      213: 21300008
+    second: Goblin Shaman Sprite Sheet_4
+  - first:
+      213: 21300010
+    second: Goblin Shaman Sprite Sheet_5
+  - first:
+      213: 21300012
+    second: Goblin Shaman Sprite Sheet_6
+  - first:
+      213: 21300014
+    second: Goblin Shaman Sprite Sheet_7
+  - first:
+      213: 21300016
+    second: Goblin Shaman Sprite Sheet_8
+  - first:
+      213: 21300018
+    second: Goblin Shaman Sprite Sheet_9
+  - first:
+      213: 21300020
+    second: Goblin Shaman Sprite Sheet_10
+  - first:
+      213: 21300022
+    second: Goblin Shaman Sprite Sheet_11
+  - first:
+      213: 21300024
+    second: Goblin Shaman Sprite Sheet_12
+  - first:
+      213: 21300026
+    second: Goblin Shaman Sprite Sheet_13
+  - first:
+      213: 21300028
+    second: Goblin Shaman Sprite Sheet_14
+  - first:
+      213: 21300030
+    second: Goblin Shaman Sprite Sheet_15
+  - first:
+      213: 21300032
+    second: Goblin Shaman Sprite Sheet_16
+  - first:
+      213: 21300034
+    second: Goblin Shaman Sprite Sheet_17
+  - first:
+      213: 21300036
+    second: Goblin Shaman Sprite Sheet_18
+  - first:
+      213: 21300038
+    second: Goblin Shaman Sprite Sheet_19
+  - first:
+      213: 21300040
+    second: Goblin Shaman Sprite Sheet_20
+  - first:
+      213: 21300042
+    second: Goblin Shaman Sprite Sheet_21
+  - first:
+      213: 21300044
+    second: Goblin Shaman Sprite Sheet_22
+  - first:
+      213: 21300046
+    second: Goblin Shaman Sprite Sheet_23
+  - first:
+      213: 21300048
+    second: Goblin Shaman Sprite Sheet_24
+  - first:
+      213: 21300050
+    second: Goblin Shaman Sprite Sheet_25
+  - first:
+      213: 21300052
+    second: Goblin Shaman Sprite Sheet_26
+  - first:
+      213: 21300054
+    second: Goblin Shaman Sprite Sheet_27
+  - first:
+      213: 21300056
+    second: Goblin Shaman Sprite Sheet_28
+  - first:
+      213: 21300058
+    second: Goblin Shaman Sprite Sheet_29
+  - first:
+      213: 21300060
+    second: Goblin Shaman Sprite Sheet_30
+  - first:
+      213: 21300062
+    second: Goblin Shaman Sprite Sheet_31
+  - first:
+      213: 21300064
+    second: Goblin Shaman Sprite Sheet_32
+  - first:
+      213: 21300066
+    second: Goblin Shaman Sprite Sheet_33
+  - first:
+      213: 21300068
+    second: Goblin Shaman Sprite Sheet_34
+  - first:
+      213: 21300070
+    second: Goblin Shaman Sprite Sheet_35
+  - first:
+      213: 21300072
+    second: Goblin Shaman Sprite Sheet_36
+  - first:
+      213: 21300074
+    second: Goblin Shaman Sprite Sheet_37
+  - first:
+      213: 21300076
+    second: Goblin Shaman Sprite Sheet_38
+  - first:
+      213: 21300078
+    second: Goblin Shaman Sprite Sheet_39
+  - first:
+      213: 21300080
+    second: Goblin Shaman Sprite Sheet_40
+  - first:
+      213: 21300082
+    second: Goblin Shaman Sprite Sheet_41
+  - first:
+      213: 21300084
+    second: Goblin Shaman Sprite Sheet_42
+  - first:
+      213: 21300086
+    second: Goblin Shaman Sprite Sheet_43
+  - first:
+      213: 21300088
+    second: Goblin Shaman Sprite Sheet_44
+  - first:
+      213: 21300090
+    second: Goblin Shaman Sprite Sheet_45
+  - first:
+      213: 21300092
+    second: Goblin Shaman Sprite Sheet_46
+  - first:
+      213: 21300094
+    second: Goblin Shaman Sprite Sheet_47
+  - first:
+      213: 21300096
+    second: Goblin Shaman Sprite Sheet_48
+  - first:
+      213: 21300098
+    second: Goblin Shaman Sprite Sheet_49
+  - first:
+      213: 21300100
+    second: Goblin Shaman Sprite Sheet_50
+  - first:
+      213: 21300102
+    second: Goblin Shaman Sprite Sheet_51
+  - first:
+      213: 21300104
+    second: Goblin Shaman Sprite Sheet_52
+  - first:
+      213: 21300106
+    second: Goblin Shaman Sprite Sheet_53
+  - first:
+      213: 21300108
+    second: Goblin Shaman Sprite Sheet_54
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -75,9 +185,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -87,8 +200,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -109,11 +222,17 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -123,8 +242,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -134,8 +255,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -145,7 +268,22 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -165,6 +303,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: da67de91f37fb474fa020ed8c17bbaac
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -185,6 +324,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 2f86be980a9ee5b4f9b0d79fccaf99aa
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -205,6 +345,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 23c079c375d00f14e9495fc4c60caaef
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -225,6 +366,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 0fcbf2d6d7241b940aa2b5ebd314b5ac
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -245,6 +387,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 897752762a36a3f40ae5c78c82255ecd
+      internalID: 21300008
       vertices: []
       indices: 
       edges: []
@@ -265,6 +408,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 2baab0fe2ae41a547bdbd75179129cca
+      internalID: 21300010
       vertices: []
       indices: 
       edges: []
@@ -285,6 +429,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 579b6f2063e9fb1438c36f64dc052447
+      internalID: 21300012
       vertices: []
       indices: 
       edges: []
@@ -305,6 +450,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b4cc06e157cfcf24aa61aa831deefca2
+      internalID: 21300014
       vertices: []
       indices: 
       edges: []
@@ -325,6 +471,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 00b3cb07b8af98e4bbec1c14fc5a5375
+      internalID: 21300016
       vertices: []
       indices: 
       edges: []
@@ -345,6 +492,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a541e59325bffdb4bbfb373551931935
+      internalID: 21300018
       vertices: []
       indices: 
       edges: []
@@ -365,6 +513,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d80a66f9cdefd5f479782027f77a9b5f
+      internalID: 21300020
       vertices: []
       indices: 
       edges: []
@@ -385,6 +534,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 8b26137ff181f6f46b8c30b281560f95
+      internalID: 21300022
       vertices: []
       indices: 
       edges: []
@@ -405,6 +555,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5e007f661a1847f41953b58647688d45
+      internalID: 21300024
       vertices: []
       indices: 
       edges: []
@@ -425,6 +576,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 55b2754ee279b7e41b216a67d90c7e48
+      internalID: 21300026
       vertices: []
       indices: 
       edges: []
@@ -445,6 +597,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 7f4530d9f1fc9984ba7312951996dc1b
+      internalID: 21300028
       vertices: []
       indices: 
       edges: []
@@ -465,6 +618,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5f7aab1a8988fdf469d1a7d2792a06ec
+      internalID: 21300030
       vertices: []
       indices: 
       edges: []
@@ -485,6 +639,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: c1b36b2dce44ae246991c0545362b099
+      internalID: 21300032
       vertices: []
       indices: 
       edges: []
@@ -505,6 +660,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 2a73e58725e22174f8db42bc229c8568
+      internalID: 21300034
       vertices: []
       indices: 
       edges: []
@@ -525,6 +681,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 70a3118f76076ac4791245b9f8914ff3
+      internalID: 21300036
       vertices: []
       indices: 
       edges: []
@@ -545,6 +702,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 2eb164de73c0bac42bb7db9321cf3d55
+      internalID: 21300038
       vertices: []
       indices: 
       edges: []
@@ -565,6 +723,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d35f21e41dc14fa478c2d2d54f3ae061
+      internalID: 21300040
       vertices: []
       indices: 
       edges: []
@@ -585,6 +744,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 588de58c1af531e4580e4eacf9bc4281
+      internalID: 21300042
       vertices: []
       indices: 
       edges: []
@@ -605,6 +765,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 92fb962b1c0c0f54da9d6c7d2b27599e
+      internalID: 21300044
       vertices: []
       indices: 
       edges: []
@@ -625,6 +786,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 9d4dd18954626284b948b1f449d91578
+      internalID: 21300046
       vertices: []
       indices: 
       edges: []
@@ -645,6 +807,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5e4cc5f9c9b12f347be31ec8f278f1b1
+      internalID: 21300048
       vertices: []
       indices: 
       edges: []
@@ -665,6 +828,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: e0f5268b9f1e1a94f96ef54cafd13fcb
+      internalID: 21300050
       vertices: []
       indices: 
       edges: []
@@ -685,6 +849,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 9157ef526704481459fef63cfe598911
+      internalID: 21300052
       vertices: []
       indices: 
       edges: []
@@ -705,6 +870,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 88634b88bb77d2d43bc8f8b8846f3e70
+      internalID: 21300054
       vertices: []
       indices: 
       edges: []
@@ -725,6 +891,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: ad16c1322bf50f84592b08b907d8ae29
+      internalID: 21300056
       vertices: []
       indices: 
       edges: []
@@ -745,6 +912,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5a1a1829d85dee140ade4e35f9700591
+      internalID: 21300058
       vertices: []
       indices: 
       edges: []
@@ -765,6 +933,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 4d84775092ec5c149b69bd2f537294d1
+      internalID: 21300060
       vertices: []
       indices: 
       edges: []
@@ -785,6 +954,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 4d9c1914ba1341140910edd11d115b20
+      internalID: 21300062
       vertices: []
       indices: 
       edges: []
@@ -805,6 +975,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 14ad0db791a9eb24fbdb1e20ccd599a3
+      internalID: 21300064
       vertices: []
       indices: 
       edges: []
@@ -825,6 +996,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 2cf31d3669765b84a95a0c21fb1435ed
+      internalID: 21300066
       vertices: []
       indices: 
       edges: []
@@ -845,6 +1017,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 453fc74db3694674a87698a0aca8498d
+      internalID: 21300068
       vertices: []
       indices: 
       edges: []
@@ -865,6 +1038,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 4044325f8b0625944969b29098861520
+      internalID: 21300070
       vertices: []
       indices: 
       edges: []
@@ -885,6 +1059,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: e0bcbed8e15be48418b6845da3eb4fea
+      internalID: 21300072
       vertices: []
       indices: 
       edges: []
@@ -905,6 +1080,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: cb4fa4deb8bd5f0428f1ba81b897a76c
+      internalID: 21300074
       vertices: []
       indices: 
       edges: []
@@ -925,6 +1101,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 1a772cf4afacd2541816c57119d63332
+      internalID: 21300076
       vertices: []
       indices: 
       edges: []
@@ -945,6 +1122,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 8aaf9c779ea76a64080aa065b96a27dd
+      internalID: 21300078
       vertices: []
       indices: 
       edges: []
@@ -965,6 +1143,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 99e2efebfbcac9c45a6cbe6fc23ed39d
+      internalID: 21300080
       vertices: []
       indices: 
       edges: []
@@ -985,6 +1164,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 90557029747925840969220276e3cfab
+      internalID: 21300082
       vertices: []
       indices: 
       edges: []
@@ -1005,6 +1185,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 02ce5f6032f680d4d9abcdba8232dd2d
+      internalID: 21300084
       vertices: []
       indices: 
       edges: []
@@ -1025,6 +1206,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d74fb91420d08274cac2376215aaa62c
+      internalID: 21300086
       vertices: []
       indices: 
       edges: []
@@ -1045,6 +1227,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 4692a96c63d7b2a4a8b4f4f7681ca27b
+      internalID: 21300088
       vertices: []
       indices: 
       edges: []
@@ -1065,6 +1248,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 010dfc6a3caf1dd44bf24e7ff021605c
+      internalID: 21300090
       vertices: []
       indices: 
       edges: []
@@ -1085,6 +1269,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a3339468a7bccb149b777a872ff929cd
+      internalID: 21300092
       vertices: []
       indices: 
       edges: []
@@ -1105,6 +1290,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b5c96b0539399ef4e8704844c1a9cec5
+      internalID: 21300094
       vertices: []
       indices: 
       edges: []
@@ -1125,6 +1311,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 12ae3d6e39160fe4dab0aefa49d002ad
+      internalID: 21300096
       vertices: []
       indices: 
       edges: []
@@ -1145,6 +1332,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: fdcacf818920c1848b582eb8e10cddc8
+      internalID: 21300098
       vertices: []
       indices: 
       edges: []
@@ -1165,6 +1353,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: fd3211e24e4da7746a159d9a64071b1d
+      internalID: 21300100
       vertices: []
       indices: 
       edges: []
@@ -1185,6 +1374,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b82cc512aa3847f4483b1914f45e8f05
+      internalID: 21300102
       vertices: []
       indices: 
       edges: []
@@ -1205,6 +1395,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: ec79564a2ea89fa44b77bd7231699ef4
+      internalID: 21300104
       vertices: []
       indices: 
       edges: []
@@ -1225,6 +1416,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: c623a3930f6443741a397cb76b70828b
+      internalID: 21300106
       vertices: []
       indices: 
       edges: []
@@ -1245,6 +1437,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d185c80aecd274049ba18101894804c8
+      internalID: 21300108
       vertices: []
       indices: 
       edges: []
@@ -1253,13 +1446,70 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: de3ea0e492931cd4c8f8739f753e7f35
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-  spritePackingTag: 
+    secondaryTextures: []
+    nameFileIdTable:
+      Goblin Shaman Sprite Sheet_0: 21300000
+      Goblin Shaman Sprite Sheet_1: 21300002
+      Goblin Shaman Sprite Sheet_10: 21300020
+      Goblin Shaman Sprite Sheet_11: 21300022
+      Goblin Shaman Sprite Sheet_12: 21300024
+      Goblin Shaman Sprite Sheet_13: 21300026
+      Goblin Shaman Sprite Sheet_14: 21300028
+      Goblin Shaman Sprite Sheet_15: 21300030
+      Goblin Shaman Sprite Sheet_16: 21300032
+      Goblin Shaman Sprite Sheet_17: 21300034
+      Goblin Shaman Sprite Sheet_18: 21300036
+      Goblin Shaman Sprite Sheet_19: 21300038
+      Goblin Shaman Sprite Sheet_2: 21300004
+      Goblin Shaman Sprite Sheet_20: 21300040
+      Goblin Shaman Sprite Sheet_21: 21300042
+      Goblin Shaman Sprite Sheet_22: 21300044
+      Goblin Shaman Sprite Sheet_23: 21300046
+      Goblin Shaman Sprite Sheet_24: 21300048
+      Goblin Shaman Sprite Sheet_25: 21300050
+      Goblin Shaman Sprite Sheet_26: 21300052
+      Goblin Shaman Sprite Sheet_27: 21300054
+      Goblin Shaman Sprite Sheet_28: 21300056
+      Goblin Shaman Sprite Sheet_29: 21300058
+      Goblin Shaman Sprite Sheet_3: 21300006
+      Goblin Shaman Sprite Sheet_30: 21300060
+      Goblin Shaman Sprite Sheet_31: 21300062
+      Goblin Shaman Sprite Sheet_32: 21300064
+      Goblin Shaman Sprite Sheet_33: 21300066
+      Goblin Shaman Sprite Sheet_34: 21300068
+      Goblin Shaman Sprite Sheet_35: 21300070
+      Goblin Shaman Sprite Sheet_36: 21300072
+      Goblin Shaman Sprite Sheet_37: 21300074
+      Goblin Shaman Sprite Sheet_38: 21300076
+      Goblin Shaman Sprite Sheet_39: 21300078
+      Goblin Shaman Sprite Sheet_4: 21300008
+      Goblin Shaman Sprite Sheet_40: 21300080
+      Goblin Shaman Sprite Sheet_41: 21300082
+      Goblin Shaman Sprite Sheet_42: 21300084
+      Goblin Shaman Sprite Sheet_43: 21300086
+      Goblin Shaman Sprite Sheet_44: 21300088
+      Goblin Shaman Sprite Sheet_45: 21300090
+      Goblin Shaman Sprite Sheet_46: 21300092
+      Goblin Shaman Sprite Sheet_47: 21300094
+      Goblin Shaman Sprite Sheet_48: 21300096
+      Goblin Shaman Sprite Sheet_49: 21300098
+      Goblin Shaman Sprite Sheet_5: 21300010
+      Goblin Shaman Sprite Sheet_50: 21300100
+      Goblin Shaman Sprite Sheet_51: 21300102
+      Goblin Shaman Sprite Sheet_52: 21300104
+      Goblin Shaman Sprite Sheet_53: 21300106
+      Goblin Shaman Sprite Sheet_54: 21300108
+      Goblin Shaman Sprite Sheet_6: 21300012
+      Goblin Shaman Sprite Sheet_7: 21300014
+      Goblin Shaman Sprite Sheet_8: 21300016
+      Goblin Shaman Sprite Sheet_9: 21300018
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

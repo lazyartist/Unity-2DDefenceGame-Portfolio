@@ -1,25 +1,57 @@
 fileFormatVersion: 2
 guid: df44deb9c40d30048aeb86d1ca858a74
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Bat_Sprite_Sheet_0
-    21300002: Bat_Sprite_Sheet_1
-    21300004: Bat_Sprite_Sheet_2
-    21300006: Bat_Sprite_Sheet_3
-    21300008: Bat_Sprite_Sheet_4
-    21300010: Bat_Sprite_Sheet_5
-    21300012: Bat_Sprite_Sheet_6
-    21300014: Bat_Sprite_Sheet_7
-    21300016: Bat_Sprite_Sheet_8
-    21300018: Bat_Sprite_Sheet_9
-    21300020: Bat_Sprite_Sheet_10
-    21300022: Bat_Sprite_Sheet_11
-    21300024: Bat_Sprite_Sheet_12
-    21300026: Bat_Sprite_Sheet_13
-    21300028: Bat_Sprite_Sheet_14
-    21300030: Bat_Sprite_Sheet_15
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Bat_Sprite_Sheet_0
+  - first:
+      213: 21300002
+    second: Bat_Sprite_Sheet_1
+  - first:
+      213: 21300004
+    second: Bat_Sprite_Sheet_2
+  - first:
+      213: 21300006
+    second: Bat_Sprite_Sheet_3
+  - first:
+      213: 21300008
+    second: Bat_Sprite_Sheet_4
+  - first:
+      213: 21300010
+    second: Bat_Sprite_Sheet_5
+  - first:
+      213: 21300012
+    second: Bat_Sprite_Sheet_6
+  - first:
+      213: 21300014
+    second: Bat_Sprite_Sheet_7
+  - first:
+      213: 21300016
+    second: Bat_Sprite_Sheet_8
+  - first:
+      213: 21300018
+    second: Bat_Sprite_Sheet_9
+  - first:
+      213: 21300020
+    second: Bat_Sprite_Sheet_10
+  - first:
+      213: 21300022
+    second: Bat_Sprite_Sheet_11
+  - first:
+      213: 21300024
+    second: Bat_Sprite_Sheet_12
+  - first:
+      213: 21300026
+    second: Bat_Sprite_Sheet_13
+  - first:
+      213: 21300028
+    second: Bat_Sprite_Sheet_14
+  - first:
+      213: 21300030
+    second: Bat_Sprite_Sheet_15
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -36,9 +68,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -48,8 +83,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -70,11 +105,17 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -84,8 +125,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,8 +138,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -106,7 +151,22 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -126,6 +186,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 214a70c2914116449843202240565319
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -146,6 +207,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b19a52be8bce2bf4897caeb1bacd6c89
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -166,6 +228,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 56c81aed6ee0f3c4b8b264cab61ffee8
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -186,6 +249,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 8636a5fe3b678284fb19d40eeca79140
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -206,6 +270,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 805c0577cdb7f1f458f0512699ad012c
+      internalID: 21300008
       vertices: []
       indices: 
       edges: []
@@ -226,6 +291,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b633155d6a1f9d845ad287a37d7ba6da
+      internalID: 21300010
       vertices: []
       indices: 
       edges: []
@@ -246,6 +312,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: fcba4c77dfae3e44684638017441a3ff
+      internalID: 21300012
       vertices: []
       indices: 
       edges: []
@@ -266,6 +333,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5b130f01078973d49a566f5be7836344
+      internalID: 21300014
       vertices: []
       indices: 
       edges: []
@@ -286,6 +354,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: e5f421e5118136746a9a3450515870b8
+      internalID: 21300016
       vertices: []
       indices: 
       edges: []
@@ -306,6 +375,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 910d71cd3e23ef44bbe368b94aa1f8c4
+      internalID: 21300018
       vertices: []
       indices: 
       edges: []
@@ -326,6 +396,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 3aab2e24ca3bfce428ec4e2f95b07770
+      internalID: 21300020
       vertices: []
       indices: 
       edges: []
@@ -346,6 +417,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 6176ed8b9bad03844926397a31e29c18
+      internalID: 21300022
       vertices: []
       indices: 
       edges: []
@@ -366,6 +438,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 32832883bba70f246b33c777041ff5a2
+      internalID: 21300024
       vertices: []
       indices: 
       edges: []
@@ -386,6 +459,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 8d581ab0ee3ee274094cecf5dc1de9af
+      internalID: 21300026
       vertices: []
       indices: 
       edges: []
@@ -406,6 +480,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 1ba5c91fa5acd914680cf546194f4040
+      internalID: 21300028
       vertices: []
       indices: 
       edges: []
@@ -414,13 +489,30 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: c4c2d4353af3176499913c5c0216e2d1
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-  spritePackingTag: 
+    secondaryTextures: []
+    nameFileIdTable:
+      Bat_Sprite_Sheet_0: 21300000
+      Bat_Sprite_Sheet_1: 21300002
+      Bat_Sprite_Sheet_10: 21300020
+      Bat_Sprite_Sheet_11: 21300022
+      Bat_Sprite_Sheet_12: 21300024
+      Bat_Sprite_Sheet_13: 21300026
+      Bat_Sprite_Sheet_14: 21300028
+      Bat_Sprite_Sheet_2: 21300004
+      Bat_Sprite_Sheet_3: 21300006
+      Bat_Sprite_Sheet_4: 21300008
+      Bat_Sprite_Sheet_5: 21300010
+      Bat_Sprite_Sheet_6: 21300012
+      Bat_Sprite_Sheet_7: 21300014
+      Bat_Sprite_Sheet_8: 21300016
+      Bat_Sprite_Sheet_9: 21300018
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

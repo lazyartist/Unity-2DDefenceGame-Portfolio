@@ -1,59 +1,159 @@
 fileFormatVersion: 2
 guid: 2ece37b08a127814ba2f99a14e6a362e
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Archangel Sprite Sheet_0
-    21300002: Archangel Sprite Sheet_1
-    21300004: Archangel Sprite Sheet_2
-    21300006: Archangel Sprite Sheet_3
-    21300008: Archangel Sprite Sheet_4
-    21300010: Archangel Sprite Sheet_5
-    21300012: Archangel Sprite Sheet_6
-    21300014: Archangel Sprite Sheet_7
-    21300016: Archangel Sprite Sheet_8
-    21300018: Archangel Sprite Sheet_9
-    21300020: Archangel Sprite Sheet_10
-    21300022: Archangel Sprite Sheet_11
-    21300024: Archangel Sprite Sheet_12
-    21300026: Archangel Sprite Sheet_13
-    21300028: Archangel Sprite Sheet_14
-    21300030: Archangel Sprite Sheet_15
-    21300032: Archangel Sprite Sheet_16
-    21300034: Archangel Sprite Sheet_17
-    21300036: Archangel Sprite Sheet_18
-    21300038: Archangel Sprite Sheet_19
-    21300040: Archangel Sprite Sheet_20
-    21300042: Archangel Sprite Sheet_21
-    21300044: Archangel Sprite Sheet_22
-    21300046: Archangel Sprite Sheet_23
-    21300048: Archangel Sprite Sheet_24
-    21300050: Archangel Sprite Sheet_25
-    21300052: Archangel Sprite Sheet_26
-    21300054: Archangel Sprite Sheet_27
-    21300056: Archangel Sprite Sheet_28
-    21300058: Archangel Sprite Sheet_29
-    21300060: Archangel Sprite Sheet_30
-    21300062: Archangel Sprite Sheet_31
-    21300064: Archangel Sprite Sheet_32
-    21300066: Archangel Sprite Sheet_33
-    21300068: Archangel Sprite Sheet_34
-    21300070: Archangel Sprite Sheet_35
-    21300072: Archangel Sprite Sheet_36
-    21300074: Archangel Sprite Sheet_37
-    21300076: Archangel Sprite Sheet_38
-    21300078: Archangel Sprite Sheet_39
-    21300080: Archangel Sprite Sheet_40
-    21300082: Archangel Sprite Sheet_41
-    21300084: Archangel Sprite Sheet_42
-    21300086: Archangel Sprite Sheet_43
-    21300088: Archangel Sprite Sheet_44
-    21300090: Archangel Sprite Sheet_45
-    21300092: Archangel Sprite Sheet_46
-    21300094: Archangel Sprite Sheet_47
-    21300096: Archangel Sprite Sheet_48
-    21300098: Archangel Sprite Sheet_49
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Archangel Sprite Sheet_0
+  - first:
+      213: 21300002
+    second: Archangel Sprite Sheet_1
+  - first:
+      213: 21300004
+    second: Archangel Sprite Sheet_2
+  - first:
+      213: 21300006
+    second: Archangel Sprite Sheet_3
+  - first:
+      213: 21300008
+    second: Archangel Sprite Sheet_4
+  - first:
+      213: 21300010
+    second: Archangel Sprite Sheet_5
+  - first:
+      213: 21300012
+    second: Archangel Sprite Sheet_6
+  - first:
+      213: 21300014
+    second: Archangel Sprite Sheet_7
+  - first:
+      213: 21300016
+    second: Archangel Sprite Sheet_8
+  - first:
+      213: 21300018
+    second: Archangel Sprite Sheet_9
+  - first:
+      213: 21300020
+    second: Archangel Sprite Sheet_10
+  - first:
+      213: 21300022
+    second: Archangel Sprite Sheet_11
+  - first:
+      213: 21300024
+    second: Archangel Sprite Sheet_12
+  - first:
+      213: 21300026
+    second: Archangel Sprite Sheet_13
+  - first:
+      213: 21300028
+    second: Archangel Sprite Sheet_14
+  - first:
+      213: 21300030
+    second: Archangel Sprite Sheet_15
+  - first:
+      213: 21300032
+    second: Archangel Sprite Sheet_16
+  - first:
+      213: 21300034
+    second: Archangel Sprite Sheet_17
+  - first:
+      213: 21300036
+    second: Archangel Sprite Sheet_18
+  - first:
+      213: 21300038
+    second: Archangel Sprite Sheet_19
+  - first:
+      213: 21300040
+    second: Archangel Sprite Sheet_20
+  - first:
+      213: 21300042
+    second: Archangel Sprite Sheet_21
+  - first:
+      213: 21300044
+    second: Archangel Sprite Sheet_22
+  - first:
+      213: 21300046
+    second: Archangel Sprite Sheet_23
+  - first:
+      213: 21300048
+    second: Archangel Sprite Sheet_24
+  - first:
+      213: 21300050
+    second: Archangel Sprite Sheet_25
+  - first:
+      213: 21300052
+    second: Archangel Sprite Sheet_26
+  - first:
+      213: 21300054
+    second: Archangel Sprite Sheet_27
+  - first:
+      213: 21300056
+    second: Archangel Sprite Sheet_28
+  - first:
+      213: 21300058
+    second: Archangel Sprite Sheet_29
+  - first:
+      213: 21300060
+    second: Archangel Sprite Sheet_30
+  - first:
+      213: 21300062
+    second: Archangel Sprite Sheet_31
+  - first:
+      213: 21300064
+    second: Archangel Sprite Sheet_32
+  - first:
+      213: 21300066
+    second: Archangel Sprite Sheet_33
+  - first:
+      213: 21300068
+    second: Archangel Sprite Sheet_34
+  - first:
+      213: 21300070
+    second: Archangel Sprite Sheet_35
+  - first:
+      213: 21300072
+    second: Archangel Sprite Sheet_36
+  - first:
+      213: 21300074
+    second: Archangel Sprite Sheet_37
+  - first:
+      213: 21300076
+    second: Archangel Sprite Sheet_38
+  - first:
+      213: 21300078
+    second: Archangel Sprite Sheet_39
+  - first:
+      213: 21300080
+    second: Archangel Sprite Sheet_40
+  - first:
+      213: 21300082
+    second: Archangel Sprite Sheet_41
+  - first:
+      213: 21300084
+    second: Archangel Sprite Sheet_42
+  - first:
+      213: 21300086
+    second: Archangel Sprite Sheet_43
+  - first:
+      213: 21300088
+    second: Archangel Sprite Sheet_44
+  - first:
+      213: 21300090
+    second: Archangel Sprite Sheet_45
+  - first:
+      213: 21300092
+    second: Archangel Sprite Sheet_46
+  - first:
+      213: 21300094
+    second: Archangel Sprite Sheet_47
+  - first:
+      213: 21300096
+    second: Archangel Sprite Sheet_48
+  - first:
+      213: 21300098
+    second: Archangel Sprite Sheet_49
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -70,9 +170,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -82,8 +185,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -104,11 +207,17 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -118,8 +227,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -129,8 +240,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -140,7 +253,22 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -160,6 +288,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d782c044e6fe59f4ca07ddc4108dfb2a
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -180,6 +309,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 8f85f53d12716b846ba644bbb93421c5
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -200,6 +330,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 0e925f1edbc0fb643a3ae779d71a034a
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -220,6 +351,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: cdd23d44250538048b46a96a52dfed00
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -240,6 +372,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: cf58bbac9c819a4498c262622df03b0a
+      internalID: 21300008
       vertices: []
       indices: 
       edges: []
@@ -260,6 +393,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 1a53f42f5e15fc04f9f1e1ad863413d1
+      internalID: 21300010
       vertices: []
       indices: 
       edges: []
@@ -280,6 +414,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f4104589364db2e47b0b03b553311942
+      internalID: 21300012
       vertices: []
       indices: 
       edges: []
@@ -300,6 +435,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 949ba48ed5f39db4c92113f257ed4126
+      internalID: 21300014
       vertices: []
       indices: 
       edges: []
@@ -320,6 +456,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 16156d0b740db6d48a3913d04266ec8a
+      internalID: 21300016
       vertices: []
       indices: 
       edges: []
@@ -340,6 +477,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a5c96d7a1ff64be41a3904babc387b95
+      internalID: 21300018
       vertices: []
       indices: 
       edges: []
@@ -360,6 +498,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 47b826b8e5bdea04ca9dd219bc95eb81
+      internalID: 21300020
       vertices: []
       indices: 
       edges: []
@@ -380,6 +519,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: e9e020659819658489ac054ef4de9522
+      internalID: 21300022
       vertices: []
       indices: 
       edges: []
@@ -400,6 +540,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: df0a8d7490340d34fbbbc651095f4350
+      internalID: 21300024
       vertices: []
       indices: 
       edges: []
@@ -420,6 +561,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 3b28185cef5e24e49b97d98bb7db6716
+      internalID: 21300026
       vertices: []
       indices: 
       edges: []
@@ -440,6 +582,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 65ce9385adc4c3c4fbd75994b24049a4
+      internalID: 21300028
       vertices: []
       indices: 
       edges: []
@@ -460,6 +603,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 36aa79ea7845dee4ca6f412170bdac66
+      internalID: 21300030
       vertices: []
       indices: 
       edges: []
@@ -480,6 +624,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 11ecc7f60e6e4474fabfbbfbc24e91a3
+      internalID: 21300032
       vertices: []
       indices: 
       edges: []
@@ -500,6 +645,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b464dc7b4891db14da1b2de95e92426b
+      internalID: 21300034
       vertices: []
       indices: 
       edges: []
@@ -520,6 +666,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 58d56b5da798a5c4bb97d27abb77e13c
+      internalID: 21300036
       vertices: []
       indices: 
       edges: []
@@ -540,6 +687,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f0005c3a743ff2a408a7a50d702d4940
+      internalID: 21300038
       vertices: []
       indices: 
       edges: []
@@ -560,6 +708,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 3314b01741a42614f9c2318bede6d1f2
+      internalID: 21300040
       vertices: []
       indices: 
       edges: []
@@ -580,6 +729,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 81253b1586c7db84684cdac75eef025c
+      internalID: 21300042
       vertices: []
       indices: 
       edges: []
@@ -600,6 +750,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: ccab1c83aa017c849916ce0c43c761bd
+      internalID: 21300044
       vertices: []
       indices: 
       edges: []
@@ -620,6 +771,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: fff1eb93e2c086e4685837b6e9e7e905
+      internalID: 21300046
       vertices: []
       indices: 
       edges: []
@@ -640,6 +792,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 3672ffd1050a2d640ae9cfbdeff496aa
+      internalID: 21300048
       vertices: []
       indices: 
       edges: []
@@ -660,6 +813,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: cea190c007898994e980336dbcb14ed8
+      internalID: 21300050
       vertices: []
       indices: 
       edges: []
@@ -680,6 +834,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5fb1a284ced6bb14bb93482580f7a93e
+      internalID: 21300052
       vertices: []
       indices: 
       edges: []
@@ -700,6 +855,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 3a4a53b70d1a35c49a8398ca286c17bc
+      internalID: 21300054
       vertices: []
       indices: 
       edges: []
@@ -720,6 +876,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d4359d39308bdf8489b3f04d689c6d9b
+      internalID: 21300056
       vertices: []
       indices: 
       edges: []
@@ -740,6 +897,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 6655531a33668e341919019510c7a007
+      internalID: 21300058
       vertices: []
       indices: 
       edges: []
@@ -760,6 +918,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 455dc3ee9e5078b4e800afcdfe5fc30a
+      internalID: 21300060
       vertices: []
       indices: 
       edges: []
@@ -780,6 +939,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 32b45c90c84ed6d4dbe1aa85e172c66b
+      internalID: 21300062
       vertices: []
       indices: 
       edges: []
@@ -800,6 +960,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 1793fe2c8bbefec4fa918f829ca64ba4
+      internalID: 21300064
       vertices: []
       indices: 
       edges: []
@@ -820,6 +981,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a55f386be2df7ba46a00a4628f918ccb
+      internalID: 21300066
       vertices: []
       indices: 
       edges: []
@@ -840,6 +1002,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 2c8ec0603652475469ba9f6853116fc7
+      internalID: 21300068
       vertices: []
       indices: 
       edges: []
@@ -860,6 +1023,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 78b682c6f054df542a0552a1f404169b
+      internalID: 21300070
       vertices: []
       indices: 
       edges: []
@@ -880,6 +1044,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b2ffe7dcf2c75f64c83c0243a970867d
+      internalID: 21300072
       vertices: []
       indices: 
       edges: []
@@ -900,6 +1065,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a868dc51b193c744196ead354a21df63
+      internalID: 21300074
       vertices: []
       indices: 
       edges: []
@@ -920,6 +1086,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: af2b1bc518fdd23448d88e381ca3bdc6
+      internalID: 21300076
       vertices: []
       indices: 
       edges: []
@@ -940,6 +1107,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 4dae32c601cc6f84a9bebd457d9198f9
+      internalID: 21300078
       vertices: []
       indices: 
       edges: []
@@ -960,6 +1128,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 2a7b57842dc61554f94dd033ba7dc0f2
+      internalID: 21300080
       vertices: []
       indices: 
       edges: []
@@ -980,6 +1149,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 1907bcb916f84e14bba85f096ba4265e
+      internalID: 21300082
       vertices: []
       indices: 
       edges: []
@@ -1000,6 +1170,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a96f5c406d33ac042b77451709bcaf8e
+      internalID: 21300084
       vertices: []
       indices: 
       edges: []
@@ -1020,6 +1191,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 38ba352f71e67214bb32986f8b65a487
+      internalID: 21300086
       vertices: []
       indices: 
       edges: []
@@ -1040,6 +1212,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: aa6bf18b9c69ded4b956de3e122bb6ec
+      internalID: 21300088
       vertices: []
       indices: 
       edges: []
@@ -1060,6 +1233,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 70d99a6849d8c9447a67d49dd2793bbb
+      internalID: 21300090
       vertices: []
       indices: 
       edges: []
@@ -1080,6 +1254,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 1ec3e3054bc0f474aa297a68866787b5
+      internalID: 21300092
       vertices: []
       indices: 
       edges: []
@@ -1100,6 +1275,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a39b67e22339ee846b3f3a7557d22db4
+      internalID: 21300094
       vertices: []
       indices: 
       edges: []
@@ -1120,6 +1296,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: c2fb52c40611d394fb38562706cbdd16
+      internalID: 21300096
       vertices: []
       indices: 
       edges: []
@@ -1140,6 +1317,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 4e91baa9ac383fd43836958d74b905bb
+      internalID: 21300098
       vertices: []
       indices: 
       edges: []
@@ -1148,13 +1326,65 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 751ac1bfd23471143b9274b036acaa22
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-  spritePackingTag: 
+    secondaryTextures: []
+    nameFileIdTable:
+      Archangel Sprite Sheet_0: 21300000
+      Archangel Sprite Sheet_1: 21300002
+      Archangel Sprite Sheet_10: 21300020
+      Archangel Sprite Sheet_11: 21300022
+      Archangel Sprite Sheet_12: 21300024
+      Archangel Sprite Sheet_13: 21300026
+      Archangel Sprite Sheet_14: 21300028
+      Archangel Sprite Sheet_15: 21300030
+      Archangel Sprite Sheet_16: 21300032
+      Archangel Sprite Sheet_17: 21300034
+      Archangel Sprite Sheet_18: 21300036
+      Archangel Sprite Sheet_19: 21300038
+      Archangel Sprite Sheet_2: 21300004
+      Archangel Sprite Sheet_20: 21300040
+      Archangel Sprite Sheet_21: 21300042
+      Archangel Sprite Sheet_22: 21300044
+      Archangel Sprite Sheet_23: 21300046
+      Archangel Sprite Sheet_24: 21300048
+      Archangel Sprite Sheet_25: 21300050
+      Archangel Sprite Sheet_26: 21300052
+      Archangel Sprite Sheet_27: 21300054
+      Archangel Sprite Sheet_28: 21300056
+      Archangel Sprite Sheet_29: 21300058
+      Archangel Sprite Sheet_3: 21300006
+      Archangel Sprite Sheet_30: 21300060
+      Archangel Sprite Sheet_31: 21300062
+      Archangel Sprite Sheet_32: 21300064
+      Archangel Sprite Sheet_33: 21300066
+      Archangel Sprite Sheet_34: 21300068
+      Archangel Sprite Sheet_35: 21300070
+      Archangel Sprite Sheet_36: 21300072
+      Archangel Sprite Sheet_37: 21300074
+      Archangel Sprite Sheet_38: 21300076
+      Archangel Sprite Sheet_39: 21300078
+      Archangel Sprite Sheet_4: 21300008
+      Archangel Sprite Sheet_40: 21300080
+      Archangel Sprite Sheet_41: 21300082
+      Archangel Sprite Sheet_42: 21300084
+      Archangel Sprite Sheet_43: 21300086
+      Archangel Sprite Sheet_44: 21300088
+      Archangel Sprite Sheet_45: 21300090
+      Archangel Sprite Sheet_46: 21300092
+      Archangel Sprite Sheet_47: 21300094
+      Archangel Sprite Sheet_48: 21300096
+      Archangel Sprite Sheet_49: 21300098
+      Archangel Sprite Sheet_5: 21300010
+      Archangel Sprite Sheet_6: 21300012
+      Archangel Sprite Sheet_7: 21300014
+      Archangel Sprite Sheet_8: 21300016
+      Archangel Sprite Sheet_9: 21300018
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

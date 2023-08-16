@@ -1,53 +1,141 @@
 fileFormatVersion: 2
 guid: 3fa785d5a903ff346b438250bd427c6f
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Dwarf Sprite Sheet 1.3v_0
-    21300002: Dwarf Sprite Sheet 1.3v_1
-    21300004: Dwarf Sprite Sheet 1.3v_2
-    21300006: Dwarf Sprite Sheet 1.3v_3
-    21300008: Dwarf Sprite Sheet 1.3v_4
-    21300010: Dwarf Sprite Sheet 1.3v_5
-    21300012: Dwarf Sprite Sheet 1.3v_6
-    21300014: Dwarf Sprite Sheet 1.3v_7
-    21300016: Dwarf Sprite Sheet 1.3v_8
-    21300018: Dwarf Sprite Sheet 1.3v_9
-    21300020: Dwarf Sprite Sheet 1.3v_10
-    21300022: Dwarf Sprite Sheet 1.3v_11
-    21300024: Dwarf Sprite Sheet 1.3v_12
-    21300026: Dwarf Sprite Sheet 1.3v_13
-    21300028: Dwarf Sprite Sheet 1.3v_14
-    21300030: Dwarf Sprite Sheet 1.3v_15
-    21300032: Dwarf Sprite Sheet 1.3v_16
-    21300034: Dwarf Sprite Sheet 1.3v_17
-    21300036: Dwarf Sprite Sheet 1.3v_18
-    21300038: Dwarf Sprite Sheet 1.3v_19
-    21300040: Dwarf Sprite Sheet 1.3v_20
-    21300042: Dwarf Sprite Sheet 1.3v_21
-    21300044: Dwarf Sprite Sheet 1.3v_22
-    21300046: Dwarf Sprite Sheet 1.3v_23
-    21300048: Dwarf Sprite Sheet 1.3v_24
-    21300050: Dwarf Sprite Sheet 1.3v_25
-    21300052: Dwarf Sprite Sheet 1.3v_26
-    21300054: Dwarf Sprite Sheet 1.3v_27
-    21300056: Dwarf Sprite Sheet 1.3v_28
-    21300058: Dwarf Sprite Sheet 1.3v_29
-    21300060: Dwarf Sprite Sheet 1.3v_30
-    21300062: Dwarf Sprite Sheet 1.3v_31
-    21300064: Dwarf Sprite Sheet 1.3v_32
-    21300066: Dwarf Sprite Sheet 1.3v_33
-    21300068: Dwarf Sprite Sheet 1.3v_34
-    21300070: Dwarf Sprite Sheet 1.3v_35
-    21300072: Dwarf Sprite Sheet 1.3v_36
-    21300074: Dwarf Sprite Sheet 1.3v_37
-    21300076: Dwarf Sprite Sheet 1.3v_38
-    21300078: Dwarf Sprite Sheet 1.3v_39
-    21300080: Dwarf Sprite Sheet 1.3v_40
-    21300082: Dwarf Sprite Sheet 1.3v_41
-    21300084: Dwarf Sprite Sheet 1.3v_42
-    21300086: Dwarf Sprite Sheet 1.3v_43
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Dwarf Sprite Sheet 1.3v_0
+  - first:
+      213: 21300002
+    second: Dwarf Sprite Sheet 1.3v_1
+  - first:
+      213: 21300004
+    second: Dwarf Sprite Sheet 1.3v_2
+  - first:
+      213: 21300006
+    second: Dwarf Sprite Sheet 1.3v_3
+  - first:
+      213: 21300008
+    second: Dwarf Sprite Sheet 1.3v_4
+  - first:
+      213: 21300010
+    second: Dwarf Sprite Sheet 1.3v_5
+  - first:
+      213: 21300012
+    second: Dwarf Sprite Sheet 1.3v_6
+  - first:
+      213: 21300014
+    second: Dwarf Sprite Sheet 1.3v_7
+  - first:
+      213: 21300016
+    second: Dwarf Sprite Sheet 1.3v_8
+  - first:
+      213: 21300018
+    second: Dwarf Sprite Sheet 1.3v_9
+  - first:
+      213: 21300020
+    second: Dwarf Sprite Sheet 1.3v_10
+  - first:
+      213: 21300022
+    second: Dwarf Sprite Sheet 1.3v_11
+  - first:
+      213: 21300024
+    second: Dwarf Sprite Sheet 1.3v_12
+  - first:
+      213: 21300026
+    second: Dwarf Sprite Sheet 1.3v_13
+  - first:
+      213: 21300028
+    second: Dwarf Sprite Sheet 1.3v_14
+  - first:
+      213: 21300030
+    second: Dwarf Sprite Sheet 1.3v_15
+  - first:
+      213: 21300032
+    second: Dwarf Sprite Sheet 1.3v_16
+  - first:
+      213: 21300034
+    second: Dwarf Sprite Sheet 1.3v_17
+  - first:
+      213: 21300036
+    second: Dwarf Sprite Sheet 1.3v_18
+  - first:
+      213: 21300038
+    second: Dwarf Sprite Sheet 1.3v_19
+  - first:
+      213: 21300040
+    second: Dwarf Sprite Sheet 1.3v_20
+  - first:
+      213: 21300042
+    second: Dwarf Sprite Sheet 1.3v_21
+  - first:
+      213: 21300044
+    second: Dwarf Sprite Sheet 1.3v_22
+  - first:
+      213: 21300046
+    second: Dwarf Sprite Sheet 1.3v_23
+  - first:
+      213: 21300048
+    second: Dwarf Sprite Sheet 1.3v_24
+  - first:
+      213: 21300050
+    second: Dwarf Sprite Sheet 1.3v_25
+  - first:
+      213: 21300052
+    second: Dwarf Sprite Sheet 1.3v_26
+  - first:
+      213: 21300054
+    second: Dwarf Sprite Sheet 1.3v_27
+  - first:
+      213: 21300056
+    second: Dwarf Sprite Sheet 1.3v_28
+  - first:
+      213: 21300058
+    second: Dwarf Sprite Sheet 1.3v_29
+  - first:
+      213: 21300060
+    second: Dwarf Sprite Sheet 1.3v_30
+  - first:
+      213: 21300062
+    second: Dwarf Sprite Sheet 1.3v_31
+  - first:
+      213: 21300064
+    second: Dwarf Sprite Sheet 1.3v_32
+  - first:
+      213: 21300066
+    second: Dwarf Sprite Sheet 1.3v_33
+  - first:
+      213: 21300068
+    second: Dwarf Sprite Sheet 1.3v_34
+  - first:
+      213: 21300070
+    second: Dwarf Sprite Sheet 1.3v_35
+  - first:
+      213: 21300072
+    second: Dwarf Sprite Sheet 1.3v_36
+  - first:
+      213: 21300074
+    second: Dwarf Sprite Sheet 1.3v_37
+  - first:
+      213: 21300076
+    second: Dwarf Sprite Sheet 1.3v_38
+  - first:
+      213: 21300078
+    second: Dwarf Sprite Sheet 1.3v_39
+  - first:
+      213: 21300080
+    second: Dwarf Sprite Sheet 1.3v_40
+  - first:
+      213: 21300082
+    second: Dwarf Sprite Sheet 1.3v_41
+  - first:
+      213: 21300084
+    second: Dwarf Sprite Sheet 1.3v_42
+  - first:
+      213: 21300086
+    second: Dwarf Sprite Sheet 1.3v_43
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -64,9 +152,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -76,8 +167,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -98,11 +189,17 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -112,8 +209,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -123,8 +222,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -134,7 +235,22 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -154,6 +270,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 630f1c917e9d989488cfa709fe107edd
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -174,6 +291,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 7b8b4c0749d1d914bba752fd091147fe
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -194,6 +312,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: aec1d8d0c008abf4894f3a18251c506c
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -214,6 +333,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 6a86ec54655c4d141860761f26c70e39
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -234,6 +354,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: aae83364eb3a06843af238b9c08195de
+      internalID: 21300008
       vertices: []
       indices: 
       edges: []
@@ -254,6 +375,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b24692dd0756ddd4398192c58fbc9590
+      internalID: 21300010
       vertices: []
       indices: 
       edges: []
@@ -274,6 +396,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 6d9157b710f21294791ef30b68d56e25
+      internalID: 21300012
       vertices: []
       indices: 
       edges: []
@@ -294,6 +417,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 49c039fff3b78b249ab8bc232423ec2f
+      internalID: 21300014
       vertices: []
       indices: 
       edges: []
@@ -314,6 +438,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 14c4eddab5ede154c82e9d07a148fff5
+      internalID: 21300016
       vertices: []
       indices: 
       edges: []
@@ -334,6 +459,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d8d56bb23bdbc8648a2387ed03daa3bc
+      internalID: 21300018
       vertices: []
       indices: 
       edges: []
@@ -354,6 +480,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b3e9a7191517eef4890a6db8ef5758d6
+      internalID: 21300020
       vertices: []
       indices: 
       edges: []
@@ -374,6 +501,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: e4017f44668171845bf32cde23d99f53
+      internalID: 21300022
       vertices: []
       indices: 
       edges: []
@@ -394,6 +522,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 6393e1f0e64e0bb4ba7bd612669b26a5
+      internalID: 21300024
       vertices: []
       indices: 
       edges: []
@@ -414,6 +543,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 9ecc4bda921df6c42a7ef638efdbd48a
+      internalID: 21300026
       vertices: []
       indices: 
       edges: []
@@ -434,6 +564,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 65b81dfe29b8fae4d95d8ec0a567ce47
+      internalID: 21300028
       vertices: []
       indices: 
       edges: []
@@ -454,6 +585,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 29d3d65fe1a44dc44b21a02975957b13
+      internalID: 21300030
       vertices: []
       indices: 
       edges: []
@@ -474,6 +606,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a711d8aecd3f17349a2471aaed71ff49
+      internalID: 21300032
       vertices: []
       indices: 
       edges: []
@@ -494,6 +627,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 2aabb10e4f9333c4c8ba27eb38cab3dc
+      internalID: 21300034
       vertices: []
       indices: 
       edges: []
@@ -514,6 +648,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 3c47fc5221729854c9741555cd2c03ff
+      internalID: 21300036
       vertices: []
       indices: 
       edges: []
@@ -534,6 +669,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 857a784923e452046919641dd415e94e
+      internalID: 21300038
       vertices: []
       indices: 
       edges: []
@@ -554,6 +690,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5b20647a9a24a2348bb23c4671b3ba20
+      internalID: 21300040
       vertices: []
       indices: 
       edges: []
@@ -574,6 +711,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b67752cb38aeb5543a02ea9745c362f4
+      internalID: 21300042
       vertices: []
       indices: 
       edges: []
@@ -594,6 +732,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 27df04eb2570c7c48913fd2cf38f7b1c
+      internalID: 21300044
       vertices: []
       indices: 
       edges: []
@@ -614,6 +753,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: bca92c96e7bcea24ba7d3ea2796cdddc
+      internalID: 21300046
       vertices: []
       indices: 
       edges: []
@@ -634,6 +774,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 14c4f8e91bcce7d4e8dc9161aacac34f
+      internalID: 21300048
       vertices: []
       indices: 
       edges: []
@@ -654,6 +795,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 7ed234bf0f349ef448970b93c978fc27
+      internalID: 21300050
       vertices: []
       indices: 
       edges: []
@@ -674,6 +816,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 509ea07f0fc960c4683ba04b56ff6fe7
+      internalID: 21300052
       vertices: []
       indices: 
       edges: []
@@ -694,6 +837,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 61315c96cfda3ec4294482db183de259
+      internalID: 21300054
       vertices: []
       indices: 
       edges: []
@@ -714,6 +858,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 77790f82f5ede174aa925343077d2b02
+      internalID: 21300056
       vertices: []
       indices: 
       edges: []
@@ -734,6 +879,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 4ff464e439d38e746b18730f453ecbab
+      internalID: 21300058
       vertices: []
       indices: 
       edges: []
@@ -754,6 +900,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: de9eb05419e42454483f62858c17fc0b
+      internalID: 21300060
       vertices: []
       indices: 
       edges: []
@@ -774,6 +921,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: cec7d3368e9c327429c80b5c5711066c
+      internalID: 21300062
       vertices: []
       indices: 
       edges: []
@@ -794,6 +942,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d01f417ff9d2a5741bd982bd0be37f55
+      internalID: 21300064
       vertices: []
       indices: 
       edges: []
@@ -814,6 +963,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 98b85f81e35cea743bff6a48d85f64f4
+      internalID: 21300066
       vertices: []
       indices: 
       edges: []
@@ -834,6 +984,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: db5e78b856810444ea909d6b86b4697b
+      internalID: 21300068
       vertices: []
       indices: 
       edges: []
@@ -854,6 +1005,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 2e4ad9cd0e30e9142b5231e132fc500b
+      internalID: 21300070
       vertices: []
       indices: 
       edges: []
@@ -874,6 +1026,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: dc797b6287f65954dafe362638d2a0f7
+      internalID: 21300072
       vertices: []
       indices: 
       edges: []
@@ -894,6 +1047,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 9aabe2f353e04574bb64492d539fe896
+      internalID: 21300074
       vertices: []
       indices: 
       edges: []
@@ -914,6 +1068,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 8a19707848c404a4884a5f2ab4a55c80
+      internalID: 21300076
       vertices: []
       indices: 
       edges: []
@@ -934,6 +1089,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: e15f1f244eefd3045967a74937dbc365
+      internalID: 21300078
       vertices: []
       indices: 
       edges: []
@@ -954,6 +1110,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 702076bee745c684aa982447bd6f1fbe
+      internalID: 21300080
       vertices: []
       indices: 
       edges: []
@@ -974,6 +1131,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 94ddf61ad2ec8ad4bac0b93704dfb0e5
+      internalID: 21300082
       vertices: []
       indices: 
       edges: []
@@ -994,6 +1152,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a24657bfe4563bf4290ad1c4d596a683
+      internalID: 21300084
       vertices: []
       indices: 
       edges: []
@@ -1014,6 +1173,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d9a4c951a486ed44cb73c0ba699e9c7c
+      internalID: 21300086
       vertices: []
       indices: 
       edges: []
@@ -1022,13 +1182,59 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: f85353e820b8de74591522ebca6cb656
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-  spritePackingTag: 
+    secondaryTextures: []
+    nameFileIdTable:
+      Dwarf Sprite Sheet 1.3v_0: 21300000
+      Dwarf Sprite Sheet 1.3v_1: 21300002
+      Dwarf Sprite Sheet 1.3v_10: 21300020
+      Dwarf Sprite Sheet 1.3v_11: 21300022
+      Dwarf Sprite Sheet 1.3v_12: 21300024
+      Dwarf Sprite Sheet 1.3v_13: 21300026
+      Dwarf Sprite Sheet 1.3v_14: 21300028
+      Dwarf Sprite Sheet 1.3v_15: 21300030
+      Dwarf Sprite Sheet 1.3v_16: 21300032
+      Dwarf Sprite Sheet 1.3v_17: 21300034
+      Dwarf Sprite Sheet 1.3v_18: 21300036
+      Dwarf Sprite Sheet 1.3v_19: 21300038
+      Dwarf Sprite Sheet 1.3v_2: 21300004
+      Dwarf Sprite Sheet 1.3v_20: 21300040
+      Dwarf Sprite Sheet 1.3v_21: 21300042
+      Dwarf Sprite Sheet 1.3v_22: 21300044
+      Dwarf Sprite Sheet 1.3v_23: 21300046
+      Dwarf Sprite Sheet 1.3v_24: 21300048
+      Dwarf Sprite Sheet 1.3v_25: 21300050
+      Dwarf Sprite Sheet 1.3v_26: 21300052
+      Dwarf Sprite Sheet 1.3v_27: 21300054
+      Dwarf Sprite Sheet 1.3v_28: 21300056
+      Dwarf Sprite Sheet 1.3v_29: 21300058
+      Dwarf Sprite Sheet 1.3v_3: 21300006
+      Dwarf Sprite Sheet 1.3v_30: 21300060
+      Dwarf Sprite Sheet 1.3v_31: 21300062
+      Dwarf Sprite Sheet 1.3v_32: 21300064
+      Dwarf Sprite Sheet 1.3v_33: 21300066
+      Dwarf Sprite Sheet 1.3v_34: 21300068
+      Dwarf Sprite Sheet 1.3v_35: 21300070
+      Dwarf Sprite Sheet 1.3v_36: 21300072
+      Dwarf Sprite Sheet 1.3v_37: 21300074
+      Dwarf Sprite Sheet 1.3v_38: 21300076
+      Dwarf Sprite Sheet 1.3v_39: 21300078
+      Dwarf Sprite Sheet 1.3v_4: 21300008
+      Dwarf Sprite Sheet 1.3v_40: 21300080
+      Dwarf Sprite Sheet 1.3v_41: 21300082
+      Dwarf Sprite Sheet 1.3v_42: 21300084
+      Dwarf Sprite Sheet 1.3v_43: 21300086
+      Dwarf Sprite Sheet 1.3v_5: 21300010
+      Dwarf Sprite Sheet 1.3v_6: 21300012
+      Dwarf Sprite Sheet 1.3v_7: 21300014
+      Dwarf Sprite Sheet 1.3v_8: 21300016
+      Dwarf Sprite Sheet 1.3v_9: 21300018
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
