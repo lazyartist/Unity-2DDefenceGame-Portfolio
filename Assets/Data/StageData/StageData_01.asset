@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -16,92 +17,92 @@ MonoBehaviour:
   WavePhases:
   - Waves:
     - UnitPrefab: {fileID: 114528930007832794, guid: 30110b692cc8bad4ea9c96b3d4209115,
-        type: 2}
+        type: 3}
       UnitCount: 3
       NextWaveInterval: 0.5
       WayPointContainerIndex: 0
-    - UnitPrefab: {fileID: 114291473754489126, guid: f2931adb5f3318845871e932c4afab2f,
-        type: 2}
+    - UnitPrefab: {fileID: 114528930007832794, guid: 30110b692cc8bad4ea9c96b3d4209115,
+        type: 3}
+      UnitCount: 3
+      NextWaveInterval: 1
+      WayPointContainerIndex: 0
+    - UnitPrefab: {fileID: 114528930007832794, guid: 30110b692cc8bad4ea9c96b3d4209115,
+        type: 3}
       UnitCount: 3
       NextWaveInterval: 1
       WayPointContainerIndex: 0
     - UnitPrefab: {fileID: 114291473754489126, guid: f2931adb5f3318845871e932c4afab2f,
-        type: 2}
-      UnitCount: 4
+        type: 3}
+      UnitCount: 3
       NextWaveInterval: 1
       WayPointContainerIndex: 0
     - UnitPrefab: {fileID: 114291473754489126, guid: f2931adb5f3318845871e932c4afab2f,
-        type: 2}
+        type: 3}
       UnitCount: 3
-      NextWaveInterval: 0.5
-      WayPointContainerIndex: 0
-    - UnitPrefab: {fileID: 114291473754489126, guid: f2931adb5f3318845871e932c4afab2f,
-        type: 2}
-      UnitCount: 3
-      NextWaveInterval: 0.5
+      NextWaveInterval: 1
       WayPointContainerIndex: 0
   - Waves:
     - UnitPrefab: {fileID: 114528930007832794, guid: 30110b692cc8bad4ea9c96b3d4209115,
-        type: 2}
+        type: 3}
       UnitCount: 3
       NextWaveInterval: 1
       WayPointContainerIndex: 0
     - UnitPrefab: {fileID: 114291473754489126, guid: f2931adb5f3318845871e932c4afab2f,
-        type: 2}
+        type: 3}
       UnitCount: 4
-      NextWaveInterval: 0.5
+      NextWaveInterval: 3
       WayPointContainerIndex: 0
   - Waves:
     - UnitPrefab: {fileID: 114528930007832794, guid: 30110b692cc8bad4ea9c96b3d4209115,
-        type: 2}
+        type: 3}
       UnitCount: 4
       NextWaveInterval: 0.5
       WayPointContainerIndex: 0
     - UnitPrefab: {fileID: 114291473754489126, guid: f2931adb5f3318845871e932c4afab2f,
-        type: 2}
+        type: 3}
       UnitCount: 3
       NextWaveInterval: 1
       WayPointContainerIndex: 1
   - Waves:
     - UnitPrefab: {fileID: 114528930007832794, guid: 30110b692cc8bad4ea9c96b3d4209115,
-        type: 2}
+        type: 3}
       UnitCount: 4
       NextWaveInterval: 1
       WayPointContainerIndex: 0
     - UnitPrefab: {fileID: 114291473754489126, guid: f2931adb5f3318845871e932c4afab2f,
-        type: 2}
+        type: 3}
       UnitCount: 3
       NextWaveInterval: 0.5
       WayPointContainerIndex: 1
   - Waves:
     - UnitPrefab: {fileID: 114528930007832794, guid: 30110b692cc8bad4ea9c96b3d4209115,
-        type: 2}
+        type: 3}
       UnitCount: 3
       NextWaveInterval: 1
       WayPointContainerIndex: 1
     - UnitPrefab: {fileID: 114291473754489126, guid: f2931adb5f3318845871e932c4afab2f,
-        type: 2}
+        type: 3}
       UnitCount: 3
       NextWaveInterval: 1
       WayPointContainerIndex: 1
   - Waves:
     - UnitPrefab: {fileID: 114795718610798396, guid: 7697cf43afc86c041a6ad830432ab012,
-        type: 2}
+        type: 3}
       UnitCount: 1
       NextWaveInterval: 1
       WayPointContainerIndex: 0
     - UnitPrefab: {fileID: 114016150554347428, guid: 92bea04fa6610b540863c7ef3edfe108,
-        type: 2}
+        type: 3}
       UnitCount: 2
       NextWaveInterval: 2
       WayPointContainerIndex: 1
     - UnitPrefab: {fileID: 114795718610798396, guid: 7697cf43afc86c041a6ad830432ab012,
-        type: 2}
+        type: 3}
       UnitCount: 1
       NextWaveInterval: 2
       WayPointContainerIndex: 1
   HeroUnitPrefab: {fileID: 114673100649960536, guid: f7f0910329677ff49ac7bda7365c80dc,
-    type: 2}
+    type: 3}
   HeroUnitIcon: {fileID: 21300000, guid: 49172337a63da83488f7f5ecff1e7dfe, type: 3}
   HeroUnitRespawnCoolTime: 5
   FirstHeroRallyPoint: {x: 4.81, y: -2.13, z: 0}
